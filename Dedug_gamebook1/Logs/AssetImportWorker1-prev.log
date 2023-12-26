@@ -15,7 +15,11 @@ C:/Users/hyerin/Documents/Dedug/Dedug_gamebook1
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
+<<<<<<< HEAD
+51892
+=======
 61137
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 Successfully changed project path to: C:/Users/hyerin/Documents/Dedug/Dedug_gamebook1
 C:/Users/hyerin/Documents/Dedug/Dedug_gamebook1
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,12 +51,21 @@ C:/Users/hyerin/Documents/Dedug/Dedug_gamebook1
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< HEAD
+Player connection [10596] Host "[IP] 172.20.10.3 [Port] 0 [Flags] 2 [Guid] 3426586560 [EditorId] 3426586560 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NN2OFOM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [10596] Host "[IP] 172.20.10.3 [Port] 0 [Flags] 2 [Guid] 3426586560 [EditorId] 3426586560 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NN2OFOM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
+Refreshing native plugins compatible for Editor in 119.30 ms, found 4 plugins.
+=======
 Player connection [19876] Host "[IP] 192.168.0.175 [Port] 0 [Flags] 2 [Guid] 1577906764 [EditorId] 1577906764 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NN2OFOM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
 Player connection [19876] Host "[IP] 192.168.0.175 [Port] 0 [Flags] 2 [Guid] 1577906764 [EditorId] 1577906764 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NN2OFOM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
 Refreshing native plugins compatible for Editor in 152.94 ms, found 4 plugins.
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.33f1 (ee5a2aa03ab2)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 2021.3.33f1/Editor/Data/Resources/UnitySubsystems
@@ -68,11 +81,27 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 2021.3.33f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 2021.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity 2021.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< HEAD
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56484
+=======
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56188
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 2021.3.33f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity 2021.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+<<<<<<< HEAD
+Registered in 0.012020 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 106.24 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.753 seconds
+Domain Reload Profiling:
+	ReloadAssembly (753ms)
+		BeginReloadAssembly (122ms)
+=======
 Registered in 0.015361 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
@@ -83,11 +112,28 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (1173ms)
 		BeginReloadAssembly (152ms)
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
+<<<<<<< HEAD
+		EndReloadAssembly (520ms)
+			LoadAssemblies (119ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (114ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (337ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (80ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (106ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (99ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
+=======
 		EndReloadAssembly (835ms)
 			LoadAssemblies (151ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -102,30 +148,64 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (2ms)
 				ProcessInitializeOnLoadAttributes (168ms)
 				ProcessInitializeOnLoadMethodAttributes (77ms)
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< HEAD
+Registered in 0.010475 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 89.50 ms, found 4 plugins.
+=======
 Registered in 0.016679 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Refreshing native plugins compatible for Editor in 93.28 ms, found 4 plugins.
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
+- Completed reload, in  1.590 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1591ms)
+		BeginReloadAssembly (151ms)
+=======
 - Completed reload, in  1.558 seconds
 Domain Reload Profiling:
 	ReloadAssembly (1558ms)
 		BeginReloadAssembly (137ms)
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< HEAD
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (1330ms)
+			LoadAssemblies (149ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (225ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (868ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (23ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (90ms)
+				BeforeProcessingInitializeOnLoad (121ms)
+				ProcessInitializeOnLoadAttributes (582ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
+				AfterProcessingInitializeOnLoad (13ms)
+=======
 			CreateAndSetChildDomain (21ms)
 		EndReloadAssembly (1311ms)
 			LoadAssemblies (138ms)
@@ -142,12 +222,22 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (563ms)
 				ProcessInitializeOnLoadMethodAttributes (35ms)
 				AfterProcessingInitializeOnLoad (11ms)
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
+<<<<<<< HEAD
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4113 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 50 unused Assets / (46.3 KB). Loaded Objects now: 4560.
+Memory consumption went from 159.8 MB to 159.8 MB.
+Total: 3.623700 ms (FindLiveObjects: 0.360000 ms CreateObjectMapping: 0.123300 ms MarkObjects: 3.062700 ms  DeleteObjects: 0.076900 ms)
+=======
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
 Refreshing native plugins compatible for Editor in 0.86 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
@@ -155,6 +245,7 @@ Unloading 4077 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 48 unused Assets / (46.8 KB). Loaded Objects now: 4525.
 Memory consumption went from 158.2 MB to 158.1 MB.
 Total: 2.986300 ms (FindLiveObjects: 0.310900 ms CreateObjectMapping: 0.110900 ms MarkObjects: 2.488600 ms  DeleteObjects: 0.074800 ms)
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -170,6 +261,30 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
+<<<<<<< HEAD
+  Time since last request: 128745.565063 seconds.
+  path: Assets/Font/WantedSans-Bold.otf
+  artifactKey: Guid(6def7fc6f9c03c74eb1323a8e0407291) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Font/WantedSans-Bold.otf using Guid(6def7fc6f9c03c74eb1323a8e0407291) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4476b5db0b68609900ba0ac62425a7d6') in 0.136304 seconds 
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Font/WantedSans-Black.otf
+  artifactKey: Guid(78d870c462a64d94ba43ac76d0c4a2d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Font/WantedSans-Black.otf using Guid(78d870c462a64d94ba43ac76d0c4a2d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40bae1275944d7b6629ba7ba648ba22d') in 0.028913 seconds 
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Font/WantedSans-Medium.otf
+  artifactKey: Guid(3f7316560276ec541bd0fe3a50325ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Font/WantedSans-Medium.otf using Guid(3f7316560276ec541bd0fe3a50325ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2034a101e8ba824a0e364ed2f02f7b66') in 0.028055 seconds 
+Number of asset objects unloaded after import = 4
+=======
   Time since last request: 110632.144465 seconds.
   path: Assets/Readme.asset
   artifactKey: Guid(7f2c382dc2c22446db59030979f6e495) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -378,3 +493,4 @@ Number of updated assets reloaded before import = 0
 Start importing Assets/TutorialInfo/Icons/Help_Icon.png using Guid(9266273b8f123004195741f969177dda) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
  -> (artifact id: '1f7e9b1b2e0aef2f75baf4fbfaf059eb') in 0.046778 seconds 
 Number of asset objects unloaded after import = 1
+>>>>>>> parent of 936a5f3 (1226 게임북 UI 초안 완료)
