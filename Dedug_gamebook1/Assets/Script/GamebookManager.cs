@@ -10,9 +10,7 @@ public class GamebookMain : MonoBehaviour
     public Button startBtn;
     public Image mainblackBG;
 
-    public Button slotBtn1;
-    public Button slotBtn2;
-    public Button slotBtn3;
+ 
 
     void Start()
     {
@@ -23,9 +21,7 @@ public class GamebookMain : MonoBehaviour
         loadBtn.gameObject.SetActive(false);
         startBtn.gameObject.SetActive(false);
         mainblackBG.gameObject.SetActive(false);
-        slotBtn1.gameObject.SetActive(false);
-        slotBtn2.gameObject.SetActive(false);
-        slotBtn3.gameObject.SetActive(false);
+        
         // 버튼의 텍스트 업데이트
         UpdateButton();
         
@@ -48,13 +44,8 @@ public class GamebookMain : MonoBehaviour
 
     public void LoadClick()
     {
-        loadBtn.gameObject.SetActive(false);
-        startBtn.gameObject.SetActive(false);
-        
 
-        slotBtn1.gameObject.SetActive(true);
-        slotBtn2.gameObject.SetActive(true);
-        slotBtn3.gameObject.SetActive(true);
+        SceneManager.LoadScene("TalkScene");
 
     }
 
