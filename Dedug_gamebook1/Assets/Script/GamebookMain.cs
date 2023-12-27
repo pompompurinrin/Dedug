@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class GamebookManager : MonoBehaviour
 {
     public Image exitPopup; // 이미지 참조 변수
-   
+    public Button SaveBtn;
+    public Image savePopup;
+
     void Start()
     {
         // 나가기 버튼에 클릭 이벤트 등록
@@ -18,10 +20,40 @@ public class GamebookManager : MonoBehaviour
         bgmButton.onClick.AddListener(OnBGMButtonClicked);
         bgmButton = transform.Find("musicBtn").GetComponent<Button>();
 
+        SaveBtn = transform.Find("SaveBtn").GetComponent<Button>();
+        SaveBtn.onClick.AddListener(SaveButtonClicked);
+
+        SaveBtn.gameObject.SetActive(false);
         exitPopup.gameObject.SetActive(false);
+        savePopup.gameObject.SetActive(false);
+        
         // 버튼의 텍스트 업데이트
         UpdateButton();
+    }
+    void SaveButtonClicked()
+    {
+        savePopup.gameObject.SetActive(true);
+        Button saveButton = transform.Find("saveBtn").GetComponent<Button>();
+        saveButton.onClick.AddListener(realSave);
+
+        Button closeButton = savePopup.transform.Find("cancelBtn").GetComponent<Button>();
+        closeButton.onClick.AddListener(HidePopup);
+
+    }
+    
+    void realSave()
+    {
+        int love1 = MainController.love01;
+        int love2 = MainController.love02;
+        int love3 = MainController.love03;
+
+        PlayerPrefs.SetInt("love1", love1);
+        PlayerPrefs.SetInt("love2", love2);
+        PlayerPrefs.SetInt("love3", love3);
         
+        //clickNum = 해당 분기점 ID;
+        PlayerPrefs.Save();
+
     }
 
     void ShowPopup()
@@ -47,6 +79,7 @@ public class GamebookManager : MonoBehaviour
     {
         // 이미지 비활성화
         exitPopup.gameObject.SetActive(false);
+        savePopup.gameObject.SetActive(false);
     }
 
     public AudioSource bgmAudioSource; // 배경 음악을 재생하는 AudioSource

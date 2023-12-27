@@ -9,7 +9,7 @@ public class GamebookMain : MonoBehaviour
     public Button loadBtn;
     public Button startBtn;
     public Image mainblackBG;
-
+    
  
 
     void Start()
@@ -17,11 +17,18 @@ public class GamebookMain : MonoBehaviour
         // 버튼에 클릭 이벤트 리스너 추가
         bgmButton.onClick.AddListener(OnBGMButtonClicked);
         bgmButton = transform.Find("musicBtn").GetComponent<Button>();
+        Button startBtn = GameObject.Find("startBtn").GetComponent<Button>();
+        startBtn.onClick.AddListener(startBtnClick);
+
+        Button loadBtn = GameObject.Find("loadBtn").GetComponent<Button>();
+        loadBtn.onClick.AddListener(loadBtnClick);
 
         loadBtn.gameObject.SetActive(false);
         startBtn.gameObject.SetActive(false);
         mainblackBG.gameObject.SetActive(false);
-        
+
+
+
         // 버튼의 텍스트 업데이트
         UpdateButton();
         
@@ -36,18 +43,28 @@ public class GamebookMain : MonoBehaviour
 
       
     }
-
-    public void StartClick()
+    void loadBtnClick()
     {
-        SceneManager.LoadScene("TalkScene");
-    }
-
-    public void LoadClick()
-    {
-
+        MainController.love01 = PlayerPrefs.GetInt("love1", 0);
+        MainController.love02 = PlayerPrefs.GetInt("love2", 0);
+        MainController.love03 = PlayerPrefs.GetInt("love3", 0);
+        //MainController.clickNum = 선택지 분기 ID;
         SceneManager.LoadScene("TalkScene");
 
     }
+
+    void startBtnClick()
+    {
+        MainController.love01 = 0;
+        MainController.love02 = 0;
+        MainController.love03 = 0;
+
+        MainController.clickNum = 0;
+
+        SceneManager.LoadScene("TalkScene");
+
+    }
+
 
 
     public AudioSource bgmAudioSource; // 배경 음악을 재생하는 AudioSource
