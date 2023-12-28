@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GamebookManager : MonoBehaviour
+public class GamebookMain : MonoBehaviour
 {
     public Image exitPopup; // 이미지 참조 변수
     public Button SaveBtn;
     public Image savePopup;
-
+    public Text saveSystemText;
     void Start()
     {
         // 나가기 버튼에 클릭 이벤트 등록
@@ -20,24 +20,33 @@ public class GamebookManager : MonoBehaviour
         bgmButton.onClick.AddListener(OnBGMButtonClicked);
         bgmButton = transform.Find("musicBtn").GetComponent<Button>();
 
-        SaveBtn = transform.Find("SaveBtn").GetComponent<Button>();
+        SaveBtn = GameObject.Find("select").transform.Find("SaveBtn").GetComponent<Button>();
         SaveBtn.onClick.AddListener(SaveButtonClicked);
 
-        SaveBtn.gameObject.SetActive(false);
-        exitPopup.gameObject.SetActive(false);
-        savePopup.gameObject.SetActive(false);
-        
-        // 버튼의 텍스트 업데이트
-        UpdateButton();
-    }
-    void SaveButtonClicked()
-    {
-        savePopup.gameObject.SetActive(true);
-        Button saveButton = transform.Find("saveBtn").GetComponent<Button>();
+        Button saveButton = savePopup.transform.Find("saveBtn").GetComponent<Button>();
         saveButton.onClick.AddListener(realSave);
 
         Button closeButton = savePopup.transform.Find("cancelBtn").GetComponent<Button>();
-        closeButton.onClick.AddListener(HidePopup);
+        closeButton.onClick.AddListener(HidePopupup);
+
+        SaveBtn.gameObject.SetActive(false);
+        exitPopup.gameObject.SetActive(false);
+        GameObject.Find("saveSystemText").gameObject.SetActive(false);
+        GameObject.Find("savePopup").gameObject.SetActive(false);
+
+        // 버튼의 텍스트 업데이트
+        UpdateButton();
+    }
+
+
+    void SaveButtonClicked()
+    {
+        savePopup.gameObject.SetActive(true);
+        Button saveButton = savePopup.transform.Find("saveBtn").GetComponent<Button>();
+        saveButton.onClick.AddListener(realSave);
+
+        Button closeButton = savePopup.transform.Find("cancelBtn").GetComponent<Button>();
+        closeButton.onClick.AddListener(HidePopupup);
 
     }
     
@@ -54,6 +63,10 @@ public class GamebookManager : MonoBehaviour
         //clickNum = 해당 분기점 ID;
         PlayerPrefs.Save();
 
+        savePopup.gameObject.SetActive(false);
+
+        saveSystemText.gameObject.SetActive(true);
+        //text 페이드아웃 애니메이션 삽입 해야 됩니다.
     }
 
     void ShowPopup()
@@ -79,6 +92,11 @@ public class GamebookManager : MonoBehaviour
     {
         // 이미지 비활성화
         exitPopup.gameObject.SetActive(false);
+    }
+    void HidePopupup()
+    {
+        // 이미지 비활성화
+        
         savePopup.gameObject.SetActive(false);
     }
 

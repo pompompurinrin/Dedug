@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2093155332}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GamebookMain, Assembly-CSharp
         m_MethodName: LoadClick
         m_Mode: 1
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2093155332}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GamebookMain, Assembly-CSharp
         m_MethodName: StartClick
         m_Mode: 1
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2093155332}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GamebookMain, Assembly-CSharp
         m_MethodName: ShowPopup
         m_Mode: 1
@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093155327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b183b7efb2e774284aa50614555f1f, type: 3}
+  m_Script: {fileID: 11500000, guid: d5b8252b815846348b3ce6251cd438c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadBtn: {fileID: 97935693}

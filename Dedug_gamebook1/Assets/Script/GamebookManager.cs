@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GamebookMain : MonoBehaviour
+public class GamebookManager : MonoBehaviour
 {
     public Button loadBtn;
     public Button startBtn;
@@ -23,11 +23,14 @@ public class GamebookMain : MonoBehaviour
         Button loadBtn = GameObject.Find("loadBtn").GetComponent<Button>();
         loadBtn.onClick.AddListener(loadBtnClick);
 
+        Image mainblackBG = GameObject.Find("mainblackBG").GetComponent<Image>();
+
         loadBtn.gameObject.SetActive(false);
         startBtn.gameObject.SetActive(false);
         mainblackBG.gameObject.SetActive(false);
 
-
+        Button mainBtn = GameObject.Find("mainBtn").GetComponent<Button>();
+        mainBtn.onClick.AddListener(ShowPopup);
 
         // 버튼의 텍스트 업데이트
         UpdateButton();
