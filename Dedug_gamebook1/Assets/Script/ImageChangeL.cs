@@ -63,12 +63,7 @@ public class ImageChangeL : MonoBehaviour
         tagetCharictor = GetComponent<Image>();
     }
 
-    void Update()
-    {
-        ChangeCharictorImage();
-    }
-
-    public void ChangeCharictorImage()
+    public void ChangeCharictorImageL()
     {
 
         int clickNum = MainController.clickNum;
@@ -87,7 +82,7 @@ public class ImageChangeL : MonoBehaviour
                 }*/
 
         // 캐릭터 다시 투명화
-        if (data_Dialog[clickNum]["chrM"].ToString() == "0")
+        if (data_Dialog[clickNum]["chrL"].ToString() == "0")
         {
             tagetCharictor.sprite = chrictorNomal;
         }

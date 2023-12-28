@@ -408,7 +408,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn5
         m_Mode: 1
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtnEnd3
         m_Mode: 1
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn3
         m_Mode: 1
@@ -1747,8 +1747,8 @@ GameObject:
   - component: {fileID: 801445297}
   - component: {fileID: 801445296}
   - component: {fileID: 801445303}
-  - component: {fileID: 801445304}
   - component: {fileID: 801445305}
+  - component: {fileID: 801445304}
   m_Layer: 5
   m_Name: talkcanvas
   m_TagString: Untagged
@@ -1880,6 +1880,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 801445295}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5318d86d3a240f942b1352ee9a14e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 504275150}
+  talkText: {fileID: 1408084977}
+--- !u!114 &801445305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801445295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d65b2d168067947afcb4889809c9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1892,6 +1906,9 @@ MonoBehaviour:
   selectText3: {fileID: 1539503954}
   selectText4: {fileID: 1967169077}
   selectText5: {fileID: 1753759001}
+  selectTextEnd1: {fileID: 1196235538}
+  selectTextEnd2: {fileID: 1534424532}
+  selectTextEnd3: {fileID: 125019957}
   selectButton1: {fileID: 974208734}
   selectButton2: {fileID: 1878651725}
   selectButton3: {fileID: 539039959}
@@ -1902,20 +1919,6 @@ MonoBehaviour:
   selectButtonEnd3: {fileID: 278999695}
   SaveBtn: {fileID: 840841436}
   talkblackBG: {fileID: 659546978}
---- !u!114 &801445305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801445295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5318d86d3a240f942b1352ee9a14e40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 504275150}
-  talkText: {fileID: 1408084977}
 --- !u!1 &840018342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,7 +2425,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn1
         m_Mode: 1
@@ -2844,7 +2847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000076293945}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196235538
@@ -3436,7 +3439,55 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 1260984849}
+        m_TargetAssemblyTypeName: ImageChangeTalkBG, Assembly-CSharp
+        m_MethodName: ChangeBGImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321241070}
+        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
+        m_MethodName: ChangeCharictorImageR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157122}
+        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
+        m_MethodName: ChangeCharictorImageM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771186}
+        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
+        m_MethodName: ChangeCharictorImageL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: TextClick
         m_Mode: 1
@@ -3852,7 +3903,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtnEnd2
         m_Mode: 1
@@ -4066,7 +4117,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtnEnd1
         m_Mode: 1
@@ -4402,7 +4453,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn4
         m_Mode: 1
@@ -4536,7 +4587,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801445304}
+      - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn2
         m_Mode: 1

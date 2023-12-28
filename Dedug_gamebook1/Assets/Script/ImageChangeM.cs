@@ -63,12 +63,7 @@ public class ImageChangeM : MonoBehaviour
         tagetCharictor = GetComponent<Image>();
     }
 
-    void Update()
-    {
-        ChangeCharictorImage();
-    }
-
-    public void ChangeCharictorImage()
+    public void ChangeCharictorImageM()
     {
 
         int clickNum = MainController.clickNum;

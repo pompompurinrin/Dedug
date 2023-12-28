@@ -60,19 +60,12 @@ public class ImageChangeR : MonoBehaviour
     public Vector3 initialScale; // 초기 크기 저장 변수
 
 
-    int clickNum = MainController.clickNum;
-
     void Start()
     {
         tagetCharictor = GetComponent<Image>();
 
         // 초기 크기 저장
         initialScale = tagetCharictor.transform.localScale;
-    }
-
-    void Update()
-    {
-        ChangeCharictorImageR();
     }
 
     public void ChangeCharictorImageR()
@@ -102,7 +95,7 @@ public class ImageChangeR : MonoBehaviour
 
 
         // 캐릭터 다시 투명화
-        if (data_Dialog[clickNum]["chrM"].ToString() == "0")
+        if (data_Dialog[clickNum]["chrR"].ToString() == "0")
         {
             tagetCharictor.sprite = chrictorNomal;
         }

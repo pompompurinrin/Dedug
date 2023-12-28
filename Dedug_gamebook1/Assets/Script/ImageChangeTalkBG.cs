@@ -32,11 +32,6 @@ public class ImageChangeTalkBG : MonoBehaviour
         tagetBG = GetComponent<Image>();
     }
 
-    void Update()
-    {
-        ChangeBGImage();
-    }
-
     public void ChangeBGImage()
     {
 

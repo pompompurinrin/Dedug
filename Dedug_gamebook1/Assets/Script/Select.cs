@@ -64,8 +64,17 @@ public class Select : MonoBehaviour
             }
         }
 
+        // 엔딩 선택지
+        if (data_Dialog[clickNum]["textID"].ToString() == "1118")
+        {
+            GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
+            GameObject.Find("select").transform.Find("selctBtnEnd1").gameObject.SetActive(true);
+            GameObject.Find("select").transform.Find("selctBtnEnd2").gameObject.SetActive(true);
+            GameObject.Find("select").transform.Find("selctBtnEnd3").gameObject.SetActive(true);
+        }
+
         // 선택지 2개일 때
-        if(data_Dialog[clickNum]["selectText3"].ToString() == "0")
+        if (data_Dialog[clickNum]["selectText3"].ToString() == "0")
         {
             GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
             GameObject.Find("select").transform.Find("selctBtn4").gameObject.SetActive(true);
@@ -73,7 +82,7 @@ public class Select : MonoBehaviour
         }
 
         // 선택지 3개일 때
-        else
+        else if (data_Dialog[clickNum]["textID"].ToString() != "1118")
         {
             // 비활성화 선택지 오브젝트 활성화
             GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);

@@ -26,6 +26,10 @@ public class MainController : MonoBehaviour
     public Text selectText4;
     public Text selectText5;
 
+    public Text selectTextEnd1;
+    public Text selectTextEnd2;
+    public Text selectTextEnd3;
+
     // 선택지 버튼
     public Button selectButton1;
     public Button selectButton2;
@@ -90,6 +94,10 @@ public class MainController : MonoBehaviour
 
                 selectText4.text = data_Dialog[clickNum]["selectText1"].ToString();
                 selectText5.text = data_Dialog[clickNum]["selectText2"].ToString();
+
+                selectTextEnd1.text = "이브";
+                selectTextEnd2.text = "미카엘";
+                selectTextEnd3.text = "우디";
 
                 // 선택지 스크립트 선택지 버튼 출력 함수 실행
                 GameObject selectInstance = new GameObject("selectInstance");
