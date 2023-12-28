@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 17771185}
   - component: {fileID: 17771184}
   - component: {fileID: 17771186}
+  - component: {fileID: 17771187}
   m_Layer: 5
   m_Name: chrL
   m_TagString: Untagged
@@ -324,6 +325,51 @@ MonoBehaviour:
   ease: 6
   targetColor: {r: 1, g: 0, b: 0, a: 1}
   targetFadeValue: 0
+--- !u!114 &17771187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17771182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f497e6f3b7e3574d86c1300868bf179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrictorNomal: {fileID: 0}
+  nomal11: {fileID: 21300000, guid: a17d7fe13337c334089ddc3de2cfa5be, type: 3}
+  fun12: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
+  sad13: {fileID: 0}
+  surprise14: {fileID: 0}
+  shy15: {fileID: 0}
+  angry16: {fileID: 0}
+  nomal21: {fileID: 0}
+  fun22: {fileID: 0}
+  sad23: {fileID: 0}
+  surprise24: {fileID: 0}
+  shy25: {fileID: 0}
+  angry26: {fileID: 0}
+  nomal31: {fileID: 0}
+  fun32: {fileID: 21300000, guid: 1b0bc5c675714e84a8d53baa8c42875b, type: 3}
+  sad33: {fileID: 21300000, guid: 9caed043ea5988f4181309f3f9641011, type: 3}
+  surprise34: {fileID: 21300000, guid: bd383d8a72323f04fb244caeacc01864, type: 3}
+  shy35: {fileID: 0}
+  angry36: {fileID: 0}
+  nomal41: {fileID: 0}
+  fun42: {fileID: 0}
+  sad43: {fileID: 0}
+  surprise44: {fileID: 0}
+  shy45: {fileID: 0}
+  angry46: {fileID: 0}
+  nomal51: {fileID: 0}
+  nomal61: {fileID: 0}
+  tagetCharictor: {fileID: 0}
+  text: {fileID: 0}
+  targetScale: {x: 2, y: 2, z: 2}
+  ease: 6
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  targetFadeValue: 0
 --- !u!1 &17794376
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +454,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn5
@@ -470,6 +552,7 @@ GameObject:
   - component: {fileID: 46157121}
   - component: {fileID: 46157120}
   - component: {fileID: 46157122}
+  - component: {fileID: 46157123}
   m_Layer: 5
   m_Name: chrM
   m_TagString: Untagged
@@ -574,6 +657,51 @@ MonoBehaviour:
   angry46: {fileID: 21300000, guid: 9cf7070d85ca3e74ab05d687dc3d3d2b, type: 3}
   nomal51: {fileID: 21300000, guid: 9799877bf84912b4dbbf7028beef484e, type: 3}
   nomal61: {fileID: 21300000, guid: c1897a6d264efc74e960918a6e97146e, type: 3}
+  tagetCharictor: {fileID: 0}
+  text: {fileID: 0}
+  targetScale: {x: 2, y: 2, z: 2}
+  ease: 6
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  targetFadeValue: 0
+--- !u!114 &46157123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46157118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a33914254ce4d4b879dea75ab9f247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrictorNomal: {fileID: 0}
+  nomal11: {fileID: 0}
+  fun12: {fileID: 0}
+  sad13: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
+  surprise14: {fileID: 0}
+  shy15: {fileID: 0}
+  angry16: {fileID: 0}
+  nomal21: {fileID: 0}
+  fun22: {fileID: 0}
+  sad23: {fileID: 0}
+  surprise24: {fileID: 21300000, guid: 1ac2887fd976593458965c97a1e58992, type: 3}
+  shy25: {fileID: 0}
+  angry26: {fileID: 0}
+  nomal31: {fileID: 0}
+  fun32: {fileID: 0}
+  sad33: {fileID: 0}
+  surprise34: {fileID: 0}
+  shy35: {fileID: 0}
+  angry36: {fileID: 21300000, guid: d1b48de7288b02041a15359f3ef91b2f, type: 3}
+  nomal41: {fileID: 21300000, guid: 6f68676eebbc733469c81f3c57c574d9, type: 3}
+  fun42: {fileID: 21300000, guid: 21c5694fcefde6f4090b55e7fb045b10, type: 3}
+  sad43: {fileID: 21300000, guid: 5d3b76d9848bc5a469f964a1fe17bab4, type: 3}
+  surprise44: {fileID: 0}
+  shy45: {fileID: 0}
+  angry46: {fileID: 0}
+  nomal51: {fileID: 0}
+  nomal61: {fileID: 0}
   tagetCharictor: {fileID: 0}
   text: {fileID: 0}
   targetScale: {x: 2, y: 2, z: 2}
@@ -946,6 +1074,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtnEnd3
@@ -1008,6 +1172,7 @@ GameObject:
   - component: {fileID: 321241069}
   - component: {fileID: 321241068}
   - component: {fileID: 321241070}
+  - component: {fileID: 321241071}
   m_Layer: 5
   m_Name: chrR
   m_TagString: Untagged
@@ -1119,6 +1284,51 @@ MonoBehaviour:
   targetColor: {r: 1, g: 0, b: 0, a: 1}
   targetFadeValue: 0
   initialScale: {x: 0, y: 0, z: 0}
+--- !u!114 &321241071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321241066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbe234d3b2de1e4d844f536543d4a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrictorNomal: {fileID: 0}
+  nomal11: {fileID: 21300000, guid: a17d7fe13337c334089ddc3de2cfa5be, type: 3}
+  fun12: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
+  sad13: {fileID: 21300000, guid: 606c2cc02444ab3448ec4b1ef82078e6, type: 3}
+  surprise14: {fileID: 0}
+  shy15: {fileID: 0}
+  angry16: {fileID: 0}
+  nomal21: {fileID: 0}
+  fun22: {fileID: 0}
+  sad23: {fileID: 0}
+  surprise24: {fileID: 0}
+  shy25: {fileID: 0}
+  angry26: {fileID: 0}
+  nomal31: {fileID: 0}
+  fun32: {fileID: 0}
+  sad33: {fileID: 0}
+  surprise34: {fileID: 21300000, guid: bd383d8a72323f04fb244caeacc01864, type: 3}
+  shy35: {fileID: 21300000, guid: f860662a2fb350044905e57820b18e67, type: 3}
+  angry36: {fileID: 21300000, guid: d1b48de7288b02041a15359f3ef91b2f, type: 3}
+  nomal41: {fileID: 0}
+  fun42: {fileID: 0}
+  sad43: {fileID: 0}
+  surprise44: {fileID: 0}
+  shy45: {fileID: 0}
+  angry46: {fileID: 0}
+  nomal51: {fileID: 0}
+  nomal61: {fileID: 0}
+  tagetCharictor: {fileID: 0}
+  text: {fileID: 0}
+  targetScale: {x: 2, y: 2, z: 2}
+  ease: 6
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  targetFadeValue: 0
 --- !u!1 &454916321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1818,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn3
@@ -2582,6 +2828,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771186}
+        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
+        m_MethodName: ChangeCharictorImageL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn1
@@ -4060,6 +4342,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtnEnd2
@@ -4274,6 +4592,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtnEnd1
@@ -4610,6 +4964,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn4
@@ -4744,6 +5134,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 801445305}
         m_TargetAssemblyTypeName: MainController, Assembly-CSharp
         m_MethodName: ClickSelectBtn2

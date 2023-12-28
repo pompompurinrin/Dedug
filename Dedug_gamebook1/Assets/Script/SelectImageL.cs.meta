@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f59e5e271d798d54596f9a65c78d40f7
+guid: 7f497e6f3b7e3574d86c1300868bf179
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - chrictorNomal: {fileID: 21300000, guid: f23b2c36eb75cf442b187a4956b8739d, type: 3}
+  - chrictorNomal: {instanceID: 0}
   - nomal11: {fileID: 21300000, guid: a17d7fe13337c334089ddc3de2cfa5be, type: 3}
   - fun12: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
   - sad13: {instanceID: 0}
@@ -18,9 +18,9 @@ MonoImporter:
   - shy25: {instanceID: 0}
   - angry26: {instanceID: 0}
   - nomal31: {instanceID: 0}
-  - fun32: {instanceID: 0}
-  - sad33: {instanceID: 0}
-  - surprise34: {instanceID: 0}
+  - fun32: {fileID: 21300000, guid: 1b0bc5c675714e84a8d53baa8c42875b, type: 3}
+  - sad33: {fileID: 21300000, guid: 9caed043ea5988f4181309f3f9641011, type: 3}
+  - surprise34: {fileID: 21300000, guid: bd383d8a72323f04fb244caeacc01864, type: 3}
   - shy35: {instanceID: 0}
   - angry36: {instanceID: 0}
   - nomal41: {instanceID: 0}
