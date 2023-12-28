@@ -57,6 +57,7 @@ public class MainController : MonoBehaviour
     private void Start()
     {
         data_Dialog = CSVReader.Read("DedugScript");
+        audioSource = transform.GetComponentInChildren<AudioSource>();
     }
 
 
@@ -69,6 +70,8 @@ public class MainController : MonoBehaviour
             // CSV 파일 로드 및 캐릭터 이름, 대사 출력
             talkText.text = data_Dialog[clickNum]["talkText"].ToString();
             nameText.text = data_Dialog[clickNum]["name"].ToString();
+            ChangeBGM();
+            ChangeFX();
 
             // next ID에 값이 있을 경우 다음의 조건문 충족 및 실행
             object nextIDobject;
@@ -328,5 +331,186 @@ public class MainController : MonoBehaviour
             clickNum = 552;
         }
     }
+    public AudioClip Bgm1;
+    public AudioClip Bgm2;
+    public AudioClip Bgm3;
+    public AudioClip Bgm4;
+    public AudioClip Bgm5;
+    public AudioClip Bgm6;
+    public AudioClip Bgm7;
+    public AudioClip Bgm8;
+    public AudioClip Bgm9;
+    public AudioClip Bgm10;
+    public AudioClip Bgm11;
+    public AudioClip Bgm12;
+    public AudioClip Bgm13;
+    public Button bgmBtn;
+    public AudioSource audioSource;
+    public Sprite bgmOff;
 
+
+
+
+    public void ChangeBGM()
+    {
+
+        int clickNum = MainController.clickNum;
+        List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
+
+
+       
+        if (data_Dialog[clickNum]["BGM"].ToString() == "0")
+        {
+            audioSource.Stop();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "1")
+        {
+            audioSource.clip = Bgm1;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "2")
+        {
+            audioSource.clip = Bgm2;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "3")
+        {
+            audioSource.clip = Bgm3;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "4")
+        {
+            audioSource.clip = Bgm4;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "5")
+        {
+            audioSource.clip = Bgm5;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "6")
+        {
+            audioSource.clip = Bgm6;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "7")
+        {
+            audioSource.clip = Bgm7;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "8")
+        {
+            audioSource.clip = Bgm8;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "9")
+        {
+            audioSource.clip = Bgm9;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "10")
+        {
+            audioSource.clip = Bgm10;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "11")
+        {
+            audioSource.clip = Bgm11;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "12")
+        {
+            audioSource.clip = Bgm12;
+            audioSource.Play();
+        }
+        else if (data_Dialog[clickNum]["BGM"].ToString() == "13")
+        {
+            audioSource.clip = Bgm13;
+            audioSource.Play();
+        }
+        if (bgmBtn.image.sprite == bgmOff)
+        {
+            audioSource.Pause();
+        }
+    }
+
+    public AudioClip FX1;
+    public AudioClip FX2;
+    public AudioClip FX3;
+    public AudioClip FX4;
+    public AudioClip FX5;
+    public AudioClip FX6;
+    public AudioClip FX7;
+    public AudioClip FX8;
+    public AudioClip FX9;
+    public AudioClip FX10;
+
+    public AudioSource FXSource;
+   
+
+
+
+
+    public void ChangeFX()
+    {
+
+        int clickNum = MainController.clickNum;
+        List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
+
+
+        if (bgmBtn.image.sprite == bgmOff)
+        {
+            FXSource.Pause();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "1")
+        {
+            FXSource.clip = FX1;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "2")
+        {
+            FXSource.clip = FX2;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "3")
+        {
+            FXSource.clip = FX3;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "4")
+        {
+            FXSource.clip = FX4;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "5")
+        {
+            FXSource.clip = FX5;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "6")
+        {
+            FXSource.clip = FX6;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "7")
+        {
+            FXSource.clip = FX7;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "8")
+        {
+            FXSource.clip = FX8;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "9")
+        {
+            FXSource.clip = FX9;
+            FXSource.Play();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "10")
+        {
+            FXSource.clip = FX10;
+            FXSource.Play();
+        }
+    }
 }
