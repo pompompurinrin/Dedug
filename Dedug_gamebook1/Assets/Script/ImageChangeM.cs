@@ -74,11 +74,6 @@ public class ImageChangeM : MonoBehaviour
         int clickNum = MainController.clickNum;
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
 
-        /*        if (data_Dialog[clickNum]["action"].ToString() == "11")
-                {
-                    // 크기 증가
-                    tagetCharictor.transform.DOScale(targetScale, 3).SetEase(ease);
-                }*/
 
 
         // 캐릭터 다시 투명화

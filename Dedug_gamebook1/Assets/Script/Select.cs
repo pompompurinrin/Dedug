@@ -13,17 +13,17 @@ public class Select : MonoBehaviour
 
     public void SelectStart()
     {
-        int love01 = MainController.love01;
-        int love02 = MainController.love02;
-        int love03 = MainController.love03;
+        int evelove = MainController.evelove;
+        int micalove = MainController.micalove;
+        int woolove = MainController.woolove;
 
         int clickNum = MainController.clickNum;
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
 
         // 처음 3개 장소 선택지일 때
-        if (data_Dialog[clickNum]["textID"].ToString() == "0")
+        if (data_Dialog[clickNum]["textID"].ToString() == "36")
         {
-            if (love01 >= 1)
+            if (evelove >= 1)
             {
                 GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
                 GameObject.Find("select").transform.Find("selctBtn2").gameObject.SetActive(true);
@@ -31,7 +31,7 @@ public class Select : MonoBehaviour
                 GameObject.Find("select").transform.Find("SaveBtn").gameObject.SetActive(true);
             }
 
-            if (love02 >= 1)
+            if (micalove >= 1)
             {
                 GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
                 GameObject.Find("select").transform.Find("selctBtn1").gameObject.SetActive(true);
@@ -39,7 +39,7 @@ public class Select : MonoBehaviour
                 GameObject.Find("select").transform.Find("SaveBtn").gameObject.SetActive(true);
             }
 
-            if (love03 >= 1)
+            if (woolove >= 1)
             {
                 GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
                 GameObject.Find("select").transform.Find("selctBtn1").gameObject.SetActive(true);
@@ -47,7 +47,7 @@ public class Select : MonoBehaviour
                 GameObject.Find("select").transform.Find("SaveBtn").gameObject.SetActive(true);
             }
 
-            if (love01 >= 1 && love02 >= 1 && love03 >= 1)
+            if (evelove >= 1 && micalove >= 1 && woolove >= 1)
             {
                 GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
                 GameObject.Find("select").transform.Find("selctBtnEnd").gameObject.SetActive(true);

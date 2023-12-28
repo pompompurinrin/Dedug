@@ -48,9 +48,9 @@ public class GamebookManager : MonoBehaviour
     }
     void loadBtnClick()
     {
-        MainController.love01 = PlayerPrefs.GetInt("love1", 0);
-        MainController.love02 = PlayerPrefs.GetInt("love2", 0);
-        MainController.love03 = PlayerPrefs.GetInt("love3", 0);
+        MainController.evelove = PlayerPrefs.GetInt("evelove", 0);
+        MainController.micalove = PlayerPrefs.GetInt("micalove", 0);
+        MainController.woolove = PlayerPrefs.GetInt("woolove", 0);
         //MainController.clickNum = 선택지 분기 ID;
         SceneManager.LoadScene("TalkScene");
 
@@ -58,9 +58,9 @@ public class GamebookManager : MonoBehaviour
 
     void startBtnClick()
     {
-        MainController.love01 = 0;
-        MainController.love02 = 0;
-        MainController.love03 = 0;
+        MainController.evelove = 0;
+        MainController.micalove = 0;
+        MainController.woolove = 0;
 
         MainController.clickNum = 0;
 

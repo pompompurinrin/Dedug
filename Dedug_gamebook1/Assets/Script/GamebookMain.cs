@@ -61,13 +61,13 @@ public class GamebookMain : MonoBehaviour
     // 저장하기의 저장하기 눌렀을 때 저장되는거
     void realSave()
     {
-        int love1 = MainController.love01;
-        int love2 = MainController.love02;
-        int love3 = MainController.love03;
+        int evelove = MainController.evelove;
+        int micalove = MainController.micalove;
+        int woolove = MainController.woolove;
 
-        PlayerPrefs.SetInt("love1", love1);
-        PlayerPrefs.SetInt("love2", love2);
-        PlayerPrefs.SetInt("love3", love3);
+        PlayerPrefs.SetInt("evelove", evelove);
+        PlayerPrefs.SetInt("micalove", micalove);
+        PlayerPrefs.SetInt("woolove", woolove);
         
         //clickNum = 해당 분기점 ID;
         PlayerPrefs.Save();
