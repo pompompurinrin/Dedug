@@ -11,6 +11,10 @@ using Unity.VisualScripting;
 
 public class ImageChangeL : MonoBehaviour
 {
+
+    //기본 투명 이미지
+    public Sprite chrictorNomal;
+
     // 표정 리스트
     public Sprite nomal11;
     public Sprite fun12;
@@ -32,6 +36,17 @@ public class ImageChangeL : MonoBehaviour
     public Sprite surprise34;
     public Sprite shy35;
     public Sprite angry36;
+
+    public Sprite nomal41;
+    public Sprite fun42;
+    public Sprite sad43;
+    public Sprite surprise44;
+    public Sprite shy45;
+    public Sprite angry46;
+
+    public Sprite nomal51;
+
+    public Sprite nomal61;
 
     // 기본 투명 이미지
     public Image tagetCharictor;
@@ -59,16 +74,22 @@ public class ImageChangeL : MonoBehaviour
         int clickNum = MainController.clickNum;
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
 
-        if (data_Dialog[clickNum]["action"].ToString() == "11")
-        {
-            // 크기 증가
-            tagetCharictor.transform.DOScale(targetScale, 3).SetEase(ease);
-        }
+        /*        if (data_Dialog[clickNum]["action"].ToString() == "11")
+                {
+                    // 크기 증가
+                    tagetCharictor.transform.DOScale(targetScale, 3).SetEase(ease);
+                }
 
-        if (data_Dialog[clickNum]["action"].ToString() == "12")
+                if (data_Dialog[clickNum]["action"].ToString() == "12")
+                {
+                    // 크기 증가
+                    tagetCharictor.transform.DOShakeRotation(3);
+                }*/
+
+        // 캐릭터 다시 투명화
+        if (data_Dialog[clickNum]["chrM"].ToString() == "0")
         {
-            // 크기 증가
-            tagetCharictor.transform.DOShakeRotation(3);
+            tagetCharictor.sprite = chrictorNomal;
         }
 
         // 공략캐릭터1
@@ -162,6 +183,49 @@ public class ImageChangeL : MonoBehaviour
         if (data_Dialog[clickNum]["chrL"].ToString() == "36")
         {
             tagetCharictor.sprite = angry36;
+        }
+
+        // 헤일리
+        if (data_Dialog[clickNum]["chrL"].ToString() == "41")
+        {
+            tagetCharictor.sprite = nomal41;
+        }
+
+        if (data_Dialog[clickNum]["chrL"].ToString() == "42")
+        {
+            tagetCharictor.sprite = fun42;
+        }
+
+        if (data_Dialog[clickNum]["chrL"].ToString() == "43")
+        {
+            tagetCharictor.sprite = sad43;
+        }
+
+        if (data_Dialog[clickNum]["chrL"].ToString() == "44")
+        {
+            tagetCharictor.sprite = surprise44;
+        }
+
+        if (data_Dialog[clickNum]["chrL"].ToString() == "45")
+        {
+            tagetCharictor.sprite = shy45;
+        }
+
+        if (data_Dialog[clickNum]["chrL"].ToString() == "46")
+        {
+            tagetCharictor.sprite = angry46;
+        }
+
+        // 그 외
+        if (data_Dialog[clickNum]["chrL"].ToString() == "51")
+        {
+            tagetCharictor.sprite = nomal51;
+        }
+
+        // 그 외
+        if (data_Dialog[clickNum]["chrL"].ToString() == "61")
+        {
+            tagetCharictor.sprite = nomal61;
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GamebookMain : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class GamebookMain : MonoBehaviour
     public Button SaveBtn;
     public Image savePopup;
     public Text saveSystemText;
+
+    // FadeOut
+    public Color targetColor = Color.red;
+    public float fadeDuration = 2f;
+
     void Start()
     {
         // 나가기 버튼에 클릭 이벤트 등록
@@ -29,6 +35,7 @@ public class GamebookMain : MonoBehaviour
         Button closeButton = savePopup.transform.Find("cancelBtn").GetComponent<Button>();
         closeButton.onClick.AddListener(HidePopupup);
 
+        // 테스트하고 다시 활성화하기
         SaveBtn.gameObject.SetActive(false);
         exitPopup.gameObject.SetActive(false);
         GameObject.Find("saveSystemText").gameObject.SetActive(false);
@@ -39,6 +46,7 @@ public class GamebookMain : MonoBehaviour
     }
 
 
+    // 저장하기 눌렀을 때 저장 팝업 띄우기
     void SaveButtonClicked()
     {
         savePopup.gameObject.SetActive(true);
@@ -50,6 +58,7 @@ public class GamebookMain : MonoBehaviour
 
     }
     
+    // 저장하기의 저장하기 눌렀을 때 저장되는거
     void realSave()
     {
         int love1 = MainController.love01;
@@ -69,6 +78,7 @@ public class GamebookMain : MonoBehaviour
         //text 페이드아웃 애니메이션 삽입 해야 됩니다.
     }
 
+    // 나가기 팝업 띄우기
     void ShowPopup()
     {
         // 이미지 활성화
@@ -88,16 +98,20 @@ public class GamebookMain : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
+    // 나가기 버튼의 뒤로가기 눌렀을 때 나가기 팝업 닫기
     void HidePopup()
     {
         // 이미지 비활성화
         exitPopup.gameObject.SetActive(false);
     }
+
+    // 저장팝업 뒤로가기 눌렀을 때 닫기
     void HidePopupup()
     {
         // 이미지 비활성화
-        
+
         savePopup.gameObject.SetActive(false);
+
     }
 
     public AudioSource bgmAudioSource; // 배경 음악을 재생하는 AudioSource

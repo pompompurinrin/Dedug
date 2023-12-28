@@ -6,18 +6,11 @@ using TMPro;
 
 public class Select : MonoBehaviour
 {
+
     public Text nameText;
     public Text talkText;
 
-    public void Start()
-    {
-        GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(false);
-        GameObject.Find("select").transform.Find("selctBtn1").gameObject.SetActive(false);
-        GameObject.Find("select").transform.Find("selctBtn2").gameObject.SetActive(false);
-        GameObject.Find("select").transform.Find("selctBtn3").gameObject.SetActive(false);
-        GameObject.Find("select").transform.Find("SaveBtn").gameObject.SetActive(false);
-        GameObject.Find("select").transform.Find("selctBtnEnd").gameObject.SetActive(false);
-    }
+
     public void SelectStart()
     {
         int love01 = MainController.love01;
@@ -26,10 +19,9 @@ public class Select : MonoBehaviour
 
         int clickNum = MainController.clickNum;
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
-        Debug.Log("Click Number: " + clickNum);
 
         // 처음 3개 장소 선택지일 때
-        if (data_Dialog[clickNum]["talkID"].ToString() == "2")
+        if (data_Dialog[clickNum]["textID"].ToString() == "0")
         {
             if (love01 >= 1)
             {
@@ -76,8 +68,8 @@ public class Select : MonoBehaviour
         if(data_Dialog[clickNum]["selectText3"].ToString() == "0")
         {
             GameObject.Find("select").transform.Find("talkblackBG").gameObject.SetActive(true);
-            GameObject.Find("select").transform.Find("selctBtn1").gameObject.SetActive(true);
-            GameObject.Find("select").transform.Find("selctBtn2").gameObject.SetActive(true);
+            GameObject.Find("select").transform.Find("selctBtn4").gameObject.SetActive(true);
+            GameObject.Find("select").transform.Find("selctBtn5").gameObject.SetActive(true);
         }
 
         // 선택지 3개일 때

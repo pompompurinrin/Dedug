@@ -22,10 +22,17 @@ public class MainController : MonoBehaviour
     public Text selectText2;
     public Text selectText3;
 
+    // 선택지 2개 뜰 때
+    public Text selectText4;
+    public Text selectText5;
+
     // 선택지 버튼
     public Button selectButton1;
     public Button selectButton2;
     public Button selectButton3;
+
+    public Button selectButton4;
+    public Button selectButton5;
 
     // 선택지 출력 시 배경
     public Image talkblackBG;
@@ -53,6 +60,15 @@ public class MainController : MonoBehaviour
             talkText.text = data_Dialog[clickNum]["talkText"].ToString();
             nameText.text = data_Dialog[clickNum]["name"].ToString();
 
+            // next ID에 값이 있을 경우 다음의 조건문 충족 및 실행
+            object nextIDobject;
+            bool hasNectID = data_Dialog[clickNum].TryGetValue("next ID", out nextIDobject);
+
+            if (hasNectID && nextIDobject != null && !string.IsNullOrEmpty(nextIDobject.ToString()))
+            {
+                clickNum = (int)data_Dialog[clickNum]["next ID"];
+            }
+
             // 선택지 selectID에 값이 있을 경우 다음의 조건문 충족 및 실행
             object selectIDObject;
             bool hasSelectID = data_Dialog[clickNum].TryGetValue("selectText1", out selectIDObject);
@@ -66,10 +82,12 @@ public class MainController : MonoBehaviour
                 selectText2.text = data_Dialog[clickNum]["selectText2"].ToString();
                 selectText3.text = data_Dialog[clickNum]["selectText3"].ToString();
 
+                selectText4.text = data_Dialog[clickNum]["selectText1"].ToString();
+                selectText5.text = data_Dialog[clickNum]["selectText2"].ToString();
+
                 // 선택지 스크립트 선택지 버튼 출력 함수 실행
                 GameObject selectInstance = new GameObject("selectInstance");
                 Select script = selectInstance.AddComponent<Select>();
-                /*                Select selectInstance = new Select();*/
                 script.SelectStart();
             }
 
@@ -79,6 +97,7 @@ public class MainController : MonoBehaviour
             }
 
             // 엔딩 분기점
+            // ID값으로 세밀 조정해야 함
             if (love01 > 10)
             {
                 clickNum = 5;
@@ -94,15 +113,16 @@ public class MainController : MonoBehaviour
         selectButton2.gameObject.SetActive(false);
         selectButton3.gameObject.SetActive(false);
 
-        // 선택지에 따른 대사 출력
-        talkText.text = data_Dialog[clickNum]["answerText1"].ToString();
-        nameText.text = data_Dialog[clickNum]["ansewrName"].ToString();
-
         // 호감도 변경
         love01 += (int)data_Dialog[clickNum]["love1"];
 
         // 다음의 대사로 이동
         clickNum = (int)data_Dialog[clickNum]["next ID1"];
+
+        // 선택지에 따른 대사 출력
+        talkText.text = data_Dialog[clickNum]["answerText1"].ToString();
+        nameText.text = data_Dialog[clickNum]["answerName"].ToString();
+
     }
 
     public void ClickSelectBtn2()
@@ -112,12 +132,13 @@ public class MainController : MonoBehaviour
         selectButton2.gameObject.SetActive(false);
         selectButton3.gameObject.SetActive(false);
 
-        talkText.text = data_Dialog[clickNum]["answerText2"].ToString();
-        nameText.text = data_Dialog[clickNum]["ansewrName"].ToString();
-
         love02 += (int)data_Dialog[clickNum]["love2"];
 
         clickNum = (int)data_Dialog[clickNum]["next ID2"];
+
+        talkText.text = data_Dialog[clickNum]["answerText2"].ToString();
+        nameText.text = data_Dialog[clickNum]["answerName"].ToString();
+
     }
 
     public void ClickSelectBtn3()
@@ -127,11 +148,47 @@ public class MainController : MonoBehaviour
         selectButton2.gameObject.SetActive(false);
         selectButton3.gameObject.SetActive(false);
 
-        talkText.text = data_Dialog[clickNum]["answerText3"].ToString();
-        nameText.text = data_Dialog[clickNum]["ansewrName"].ToString();
-
         love03 += (int)data_Dialog[clickNum]["love3"];
 
         clickNum = (int)data_Dialog[clickNum]["next ID3"];
+
+        talkText.text = data_Dialog[clickNum]["answerText3"].ToString();
+        nameText.text = data_Dialog[clickNum]["answerName"].ToString();
+
     }
+
+    public void ClickSelectBtn4()
+    {
+        // 선택지 오브젝트 비활성화
+        talkblackBG.gameObject.SetActive(false);
+        selectButton4.gameObject.SetActive(false);
+        selectButton5.gameObject.SetActive(false);
+
+        // 호감도 변경
+        love01 += (int)data_Dialog[clickNum]["love1"];
+
+        // 다음의 대사로 이동
+        clickNum = (int)data_Dialog[clickNum]["next ID1"];
+
+        // 선택지에 따른 대사 출력
+        talkText.text = data_Dialog[clickNum]["answerText1"].ToString();
+        nameText.text = data_Dialog[clickNum]["answerName"].ToString();
+
+    }
+
+    public void ClickSelectBtn5()
+    {
+        talkblackBG.gameObject.SetActive(false);
+        selectButton4.gameObject.SetActive(false);
+        selectButton5.gameObject.SetActive(false);
+
+        love02 += (int)data_Dialog[clickNum]["love2"];
+
+        clickNum = (int)data_Dialog[clickNum]["next ID2"];
+
+        talkText.text = data_Dialog[clickNum]["answerText2"].ToString();
+        nameText.text = data_Dialog[clickNum]["answerName"].ToString();
+
+    }
+
 }

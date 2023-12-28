@@ -11,6 +11,9 @@ using Unity.VisualScripting;
 
 public class ImageChangeR : MonoBehaviour
 {
+    //기본 투명 이미지
+    public Sprite chrictorNomal;
+
     // 표정 리스트
     public Sprite nomal11;
     public Sprite fun12;
@@ -32,6 +35,17 @@ public class ImageChangeR : MonoBehaviour
     public Sprite surprise34;
     public Sprite shy35;
     public Sprite angry36;
+
+    public Sprite nomal41;
+    public Sprite fun42;
+    public Sprite sad43;
+    public Sprite surprise44;
+    public Sprite shy45;
+    public Sprite angry46;
+
+    public Sprite nomal51;
+
+    public Sprite nomal61;
 
     // 기본 투명 이미지
     public Image tagetCharictor;
@@ -68,26 +82,30 @@ public class ImageChangeR : MonoBehaviour
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
 
         // 증가한 이미지 크기를 원래 이미지 크기로 되돌리기
-        if (data_Dialog[clickNum]["action"].ToString() == "10")
+        /*        if (data_Dialog[clickNum]["action"].ToString() == "10")
+                {
+                    tagetCharictor.transform.DOScale(initialScale, 0).SetEase(ease);
+                }
+
+                if (data_Dialog[clickNum]["action"].ToString() == "11")
+                {
+                    // 크기 증가
+                    tagetCharictor.transform.DOScale(targetScale, 3).SetEase(ease);
+
+                }
+
+                if (data_Dialog[clickNum]["action"].ToString() == "12")
+                {
+                    // 크기 증가
+                    tagetCharictor.transform.DOShakeRotation(3);
+                }*/
+
+
+        // 캐릭터 다시 투명화
+        if (data_Dialog[clickNum]["chrM"].ToString() == "0")
         {
-            tagetCharictor.transform.DOScale(initialScale, 0).SetEase(ease);
+            tagetCharictor.sprite = chrictorNomal;
         }
-
-        if (data_Dialog[clickNum]["action"].ToString() == "11")
-        {
-            // 크기 증가
-            tagetCharictor.transform.DOScale(targetScale, 3).SetEase(ease);
-
-        }
-
-        if (data_Dialog[clickNum]["action"].ToString() == "12")
-        {
-            // 크기 증가
-            tagetCharictor.transform.DOShakeRotation(3);
-        }
-
-
-
 
         // 공략캐릭터1
         if (data_Dialog[clickNum]["chrR"].ToString() == "11")
@@ -182,6 +200,48 @@ public class ImageChangeR : MonoBehaviour
             tagetCharictor.sprite = angry36;
         }
 
+        // 헤일리
+        if (data_Dialog[clickNum]["chrR"].ToString() == "41")
+        {
+            tagetCharictor.sprite = nomal41;
+        }
+
+        if (data_Dialog[clickNum]["chrR"].ToString() == "42")
+        {
+            tagetCharictor.sprite = fun42;
+        }
+
+        if (data_Dialog[clickNum]["chrR"].ToString() == "43")
+        {
+            tagetCharictor.sprite = sad43;
+        }
+
+        if (data_Dialog[clickNum]["chrR"].ToString() == "44")
+        {
+            tagetCharictor.sprite = surprise44;
+        }
+
+        if (data_Dialog[clickNum]["chrR"].ToString() == "45")
+        {
+            tagetCharictor.sprite = shy45;
+        }
+
+        if (data_Dialog[clickNum]["chrR"].ToString() == "46")
+        {
+            tagetCharictor.sprite = angry46;
+        }
+
+        // 그 외
+        if (data_Dialog[clickNum]["chrR"].ToString() == "51")
+        {
+            tagetCharictor.sprite = nomal51;
+        }
+
+        // 그 외
+        if (data_Dialog[clickNum]["chrR"].ToString() == "61")
+        {
+            tagetCharictor.sprite = nomal61;
+        }
     }
 }
 
