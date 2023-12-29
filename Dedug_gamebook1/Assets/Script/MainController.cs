@@ -366,66 +366,79 @@ public class MainController : MonoBehaviour
         else if (data_Dialog[clickNum]["BGM"].ToString() == "1")
         {
             audioSource.clip = Bgm1;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "2")
         {
             audioSource.clip = Bgm2;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "3")
         {
             audioSource.clip = Bgm3;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "4")
         {
             audioSource.clip = Bgm4;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "5")
         {
             audioSource.clip = Bgm5;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "6")
         {
             audioSource.clip = Bgm6;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "7")
         {
             audioSource.clip = Bgm7;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "8")
         {
             audioSource.clip = Bgm8;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "9")
         {
             audioSource.clip = Bgm9;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "10")
         {
             audioSource.clip = Bgm10;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "11")
         {
             audioSource.clip = Bgm11;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "12")
         {
             audioSource.clip = Bgm12;
+            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "13")
         {
             audioSource.clip = Bgm13;
+            audioSource.loop = true;
             audioSource.Play();
         }
         if (bgmBtn.image.sprite == bgmOff)
@@ -458,11 +471,9 @@ public class MainController : MonoBehaviour
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
 
 
-        if (bgmBtn.image.sprite == bgmOff)
-        {
-            FXSource.Pause();
-        }
-        else if (data_Dialog[clickNum]["sound"].ToString() == "1")
+        
+
+        if (data_Dialog[clickNum]["sound"].ToString() == "1")
         {
             FXSource.clip = FX1;
             FXSource.Play();
