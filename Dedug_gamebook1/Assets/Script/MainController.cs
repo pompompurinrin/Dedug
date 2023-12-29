@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
@@ -43,6 +44,7 @@ public class MainController : MonoBehaviour
     public Button selectButtonEnd3;
 
     public Button SaveBtn;
+    public Button EndingBtn;
 
     // 선택지 출력 시 배경
     public Image talkblackBG;
@@ -107,6 +109,37 @@ public class MainController : MonoBehaviour
                 Select script = selectInstance.AddComponent<Select>();
                 script.SelectStart();
             }
+            EndingBtn = transform.Find("EndingBtn").GetComponent<Button>();
+            if (clickNum == 166)
+            {
+                // 진엔딩
+
+                EndingBtn.gameObject.SetActive(true);
+            }
+
+            if (clickNum == 217)
+            {
+                // 이브엔딩
+                EndingBtn.gameObject.SetActive(true);
+            }
+
+            if (clickNum == 385)
+            {
+                // 미카엘엔딩
+                EndingBtn.gameObject.SetActive(true);
+            }
+
+            if (clickNum == 551)
+            {
+                // 우디엔딩
+                EndingBtn.gameObject.SetActive(true);
+            }
+
+            if (clickNum == 562)
+            {
+                // 노멀엔딩
+                EndingBtn.gameObject.SetActive(true);
+            }
 
             else
             {
@@ -114,6 +147,13 @@ public class MainController : MonoBehaviour
             }
         }
     }
+   
+
+    public void ClickEndingBtn()
+    {
+        SceneManager.LoadScene("EndingScene");
+    }
+
 
     public void ClickSelectBtn1()
     {
@@ -137,7 +177,6 @@ public class MainController : MonoBehaviour
         // 다음의 대사로 이동
         clickNum = (int)data_Dialog[clickNum]["next ID1"];
 
-        clickNum++;
     }
 
     public void ClickSelectBtn2()
@@ -230,33 +269,20 @@ public class MainController : MonoBehaviour
         talkText.text = data_Dialog[clickNum]["answerText1"].ToString();
         nameText.text = "이브";
 
-        if (evelove >= 3)
-        {
-            clickNum = 168;
-        }
-
-        if (evelove == 3)
-        {
-            clickNum = 157;
-        }
-
-        if (micalove >= 2)
-        {
-            clickNum = 360;
-        }
-
-        if (woolove >= 2)
-        {
-            clickNum = 535;
-        }
-
-        if (evelove <= 1 && micalove <= 1 && woolove <= 1)
+        if (evelove <= 1)
         {
             clickNum = 552;
         }
 
+        else if (evelove < 3)
+        {
+            clickNum = 168;
+        }
 
-
+        else if (evelove == 3)
+        {
+            clickNum = 157;
+        }
     }
 
     public void ClickSelectBtnEnd2()
@@ -269,29 +295,14 @@ public class MainController : MonoBehaviour
         talkText.text = data_Dialog[clickNum]["answerText2"].ToString();
         nameText.text = "미카엘";
 
-        if (evelove >= 3)
-        {
-            clickNum = 168;
-        }
-
-        if (evelove == 3)
-        {
-            clickNum = 157;
-        }
-
-        if (micalove >= 2)
-        {
-            clickNum = 360;
-        }
-
-        if (woolove >= 2)
-        {
-            clickNum = 535;
-        }
-
-        if (evelove <= 1 && micalove <= 1 && woolove <= 1)
+        if (micalove <= 1)
         {
             clickNum = 552;
+        }
+
+        else if (micalove >= 2)
+        {
+            clickNum = 360;
         }
 
     }
@@ -306,19 +317,9 @@ public class MainController : MonoBehaviour
         talkText.text = data_Dialog[clickNum]["answerText3"].ToString();
         nameText.text = "우디";
 
-        if (evelove >= 3)
+        if (woolove <= 1)
         {
-            clickNum = 168;
-        }
-
-        if (evelove == 3)
-        {
-            clickNum = 157;
-        }
-
-        if (micalove >= 2)
-        {
-            clickNum = 360;
+            clickNum = 552;
         }
 
         if (woolove >= 2)
@@ -326,10 +327,6 @@ public class MainController : MonoBehaviour
             clickNum = 535;
         }
 
-        if (evelove <= 1 && micalove <= 1 && woolove <= 1)
-        {
-            clickNum = 552;
-        }
     }
     public AudioClip Bgm1;
     public AudioClip Bgm2;
@@ -366,79 +363,66 @@ public class MainController : MonoBehaviour
         else if (data_Dialog[clickNum]["BGM"].ToString() == "1")
         {
             audioSource.clip = Bgm1;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "2")
         {
             audioSource.clip = Bgm2;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "3")
         {
             audioSource.clip = Bgm3;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "4")
         {
             audioSource.clip = Bgm4;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "5")
         {
             audioSource.clip = Bgm5;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "6")
         {
             audioSource.clip = Bgm6;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "7")
         {
             audioSource.clip = Bgm7;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "8")
         {
             audioSource.clip = Bgm8;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "9")
         {
             audioSource.clip = Bgm9;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "10")
         {
             audioSource.clip = Bgm10;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "11")
         {
             audioSource.clip = Bgm11;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "12")
         {
             audioSource.clip = Bgm12;
-            audioSource.loop = true;
             audioSource.Play();
         }
         else if (data_Dialog[clickNum]["BGM"].ToString() == "13")
         {
             audioSource.clip = Bgm13;
-            audioSource.loop = true;
             audioSource.Play();
         }
         if (bgmBtn.image.sprite == bgmOff)
@@ -471,9 +455,11 @@ public class MainController : MonoBehaviour
         List<Dictionary<string, object>> data_Dialog = CSVReader.Read("DedugScript");
 
 
-        
-
-        if (data_Dialog[clickNum]["sound"].ToString() == "1")
+        if (bgmBtn.image.sprite == bgmOff)
+        {
+            FXSource.Pause();
+        }
+        else if (data_Dialog[clickNum]["sound"].ToString() == "1")
         {
             FXSource.clip = FX1;
             FXSource.Play();
