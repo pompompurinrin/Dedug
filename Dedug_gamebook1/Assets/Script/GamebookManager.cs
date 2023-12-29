@@ -37,12 +37,6 @@ public class GamebookManager : MonoBehaviour
         
     }
 
-    void update()
-    {
-
-    }
-
-
     public void ShowPopup()
     {
         // 이미지 활성화
@@ -57,7 +51,7 @@ public class GamebookManager : MonoBehaviour
         MainController.evelove = PlayerPrefs.GetInt("evelove", 0);
         MainController.micalove = PlayerPrefs.GetInt("micalove", 0);
         MainController.woolove = PlayerPrefs.GetInt("woolove", 0);
-        MainController.clickNum = 36;
+        //MainController.clickNum = 선택지 분기 ID;
         SceneManager.LoadScene("TalkScene");
 
     }

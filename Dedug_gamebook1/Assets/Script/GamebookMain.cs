@@ -9,7 +9,6 @@ public class GamebookMain : MonoBehaviour
 {
     public Image exitPopup; // 이미지 참조 변수
     public Button SaveBtn;
-   
     public Image savePopup;
     public Text saveSystemText;
 
@@ -75,12 +74,9 @@ public class GamebookMain : MonoBehaviour
 
         savePopup.gameObject.SetActive(false);
 
-      //  saveSystemText.gameObject.SetActive(true);
+        saveSystemText.gameObject.SetActive(true);
         //text 페이드아웃 애니메이션 삽입 해야 됩니다.
     }
-
-
-
 
     // 나가기 팝업 띄우기
     void ShowPopup()
@@ -118,9 +114,8 @@ public class GamebookMain : MonoBehaviour
 
     }
 
-  
-
     public AudioSource bgmAudioSource; // 배경 음악을 재생하는 AudioSource
+    public AudioSource FXAudioSource;
     public Button bgmButton; // BGM On/Off를 제어하는 버튼
     
     public Sprite bgmOn;
@@ -133,6 +128,7 @@ public class GamebookMain : MonoBehaviour
         {
             // BGM이 재생 중이면 정지
             bgmAudioSource.Pause();
+            FXAudioSource.Pause();
             bgmButton.image.sprite = bgmOff;
         }
         else

@@ -861,7 +861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 321.13}
+  m_AnchoredPosition: {x: 0, y: 161}
   m_SizeDelta: {x: 0, y: 264.4065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909137566
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -897,7 +897,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Touch to Screen
+  m_Text: Touch to Start
 --- !u!222 &1909137567
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1110,9 +1110,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2093155333}
-        m_TargetAssemblyTypeName: BlinkingText, Assembly-CSharp
-        m_MethodName: OnButtonPress
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GamebookMain, Assembly-CSharp
+        m_MethodName: ShowPopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1142,8 +1142,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a687c57e8efef19438517ace307165ec, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1187,7 +1187,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0ab403d194dc25744b498bdd481495ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 86daf7253b53442dba72659e220de05a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1301,7 +1301,6 @@ GameObject:
   - component: {fileID: 2093155329}
   - component: {fileID: 2093155328}
   - component: {fileID: 2093155332}
-  - component: {fileID: 2093155333}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1416,16 +1415,3 @@ MonoBehaviour:
   bgmButton: {fileID: 2033085353}
   bgmOn: {fileID: -1691731645, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
   bgmOff: {fileID: -1234761571, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
---- !u!114 &2093155333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093155327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07d87facdc7b9a14a9ba80d420ccad34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonText: {fileID: 1909137566}

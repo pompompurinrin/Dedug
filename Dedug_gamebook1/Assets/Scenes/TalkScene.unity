@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 17771185}
   - component: {fileID: 17771184}
   - component: {fileID: 17771186}
+  - component: {fileID: 17771187}
   m_Layer: 5
   m_Name: chrL
   m_TagString: Untagged
@@ -324,6 +325,51 @@ MonoBehaviour:
   ease: 6
   targetColor: {r: 1, g: 0, b: 0, a: 1}
   targetFadeValue: 0
+--- !u!114 &17771187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17771182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f497e6f3b7e3574d86c1300868bf179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrictorNomal: {fileID: 0}
+  nomal11: {fileID: 21300000, guid: a17d7fe13337c334089ddc3de2cfa5be, type: 3}
+  fun12: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
+  sad13: {fileID: 0}
+  surprise14: {fileID: 0}
+  shy15: {fileID: 0}
+  angry16: {fileID: 0}
+  nomal21: {fileID: 0}
+  fun22: {fileID: 0}
+  sad23: {fileID: 0}
+  surprise24: {fileID: 0}
+  shy25: {fileID: 0}
+  angry26: {fileID: 0}
+  nomal31: {fileID: 0}
+  fun32: {fileID: 21300000, guid: 1b0bc5c675714e84a8d53baa8c42875b, type: 3}
+  sad33: {fileID: 21300000, guid: 9caed043ea5988f4181309f3f9641011, type: 3}
+  surprise34: {fileID: 21300000, guid: bd383d8a72323f04fb244caeacc01864, type: 3}
+  shy35: {fileID: 0}
+  angry36: {fileID: 0}
+  nomal41: {fileID: 0}
+  fun42: {fileID: 0}
+  sad43: {fileID: 0}
+  surprise44: {fileID: 0}
+  shy45: {fileID: 0}
+  angry46: {fileID: 0}
+  nomal51: {fileID: 0}
+  nomal61: {fileID: 0}
+  tagetCharictor: {fileID: 0}
+  text: {fileID: 0}
+  targetScale: {x: 2, y: 2, z: 2}
+  ease: 6
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  targetFadeValue: 0
 --- !u!1 &17794376
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,9 +454,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -420,9 +466,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -432,9 +478,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -506,6 +552,7 @@ GameObject:
   - component: {fileID: 46157121}
   - component: {fileID: 46157120}
   - component: {fileID: 46157122}
+  - component: {fileID: 46157123}
   m_Layer: 5
   m_Name: chrM
   m_TagString: Untagged
@@ -610,6 +657,51 @@ MonoBehaviour:
   angry46: {fileID: 21300000, guid: 9cf7070d85ca3e74ab05d687dc3d3d2b, type: 3}
   nomal51: {fileID: 21300000, guid: 9799877bf84912b4dbbf7028beef484e, type: 3}
   nomal61: {fileID: 21300000, guid: c1897a6d264efc74e960918a6e97146e, type: 3}
+  tagetCharictor: {fileID: 0}
+  text: {fileID: 0}
+  targetScale: {x: 2, y: 2, z: 2}
+  ease: 6
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  targetFadeValue: 0
+--- !u!114 &46157123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46157118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a33914254ce4d4b879dea75ab9f247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrictorNomal: {fileID: 0}
+  nomal11: {fileID: 0}
+  fun12: {fileID: 0}
+  sad13: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
+  surprise14: {fileID: 0}
+  shy15: {fileID: 0}
+  angry16: {fileID: 0}
+  nomal21: {fileID: 0}
+  fun22: {fileID: 0}
+  sad23: {fileID: 0}
+  surprise24: {fileID: 21300000, guid: 1ac2887fd976593458965c97a1e58992, type: 3}
+  shy25: {fileID: 0}
+  angry26: {fileID: 0}
+  nomal31: {fileID: 0}
+  fun32: {fileID: 0}
+  sad33: {fileID: 0}
+  surprise34: {fileID: 0}
+  shy35: {fileID: 0}
+  angry36: {fileID: 21300000, guid: d1b48de7288b02041a15359f3ef91b2f, type: 3}
+  nomal41: {fileID: 21300000, guid: 6f68676eebbc733469c81f3c57c574d9, type: 3}
+  fun42: {fileID: 21300000, guid: 21c5694fcefde6f4090b55e7fb045b10, type: 3}
+  sad43: {fileID: 21300000, guid: 5d3b76d9848bc5a469f964a1fe17bab4, type: 3}
+  surprise44: {fileID: 0}
+  shy45: {fileID: 0}
+  angry46: {fileID: 0}
+  nomal51: {fileID: 0}
+  nomal61: {fileID: 0}
   tagetCharictor: {fileID: 0}
   text: {fileID: 0}
   targetScale: {x: 2, y: 2, z: 2}
@@ -931,7 +1023,7 @@ RectTransform:
   m_Children:
   - {fileID: 125019956}
   m_Father: {fileID: 1063609526}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -982,9 +1074,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -994,9 +1086,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1006,9 +1098,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1080,6 +1172,7 @@ GameObject:
   - component: {fileID: 321241069}
   - component: {fileID: 321241068}
   - component: {fileID: 321241070}
+  - component: {fileID: 321241071}
   m_Layer: 5
   m_Name: chrR
   m_TagString: Untagged
@@ -1191,6 +1284,51 @@ MonoBehaviour:
   targetColor: {r: 1, g: 0, b: 0, a: 1}
   targetFadeValue: 0
   initialScale: {x: 0, y: 0, z: 0}
+--- !u!114 &321241071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321241066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbe234d3b2de1e4d844f536543d4a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrictorNomal: {fileID: 0}
+  nomal11: {fileID: 21300000, guid: a17d7fe13337c334089ddc3de2cfa5be, type: 3}
+  fun12: {fileID: 21300000, guid: 105ce2052317307448cc22c7a1880a80, type: 3}
+  sad13: {fileID: 21300000, guid: 606c2cc02444ab3448ec4b1ef82078e6, type: 3}
+  surprise14: {fileID: 0}
+  shy15: {fileID: 0}
+  angry16: {fileID: 0}
+  nomal21: {fileID: 0}
+  fun22: {fileID: 0}
+  sad23: {fileID: 0}
+  surprise24: {fileID: 0}
+  shy25: {fileID: 0}
+  angry26: {fileID: 0}
+  nomal31: {fileID: 0}
+  fun32: {fileID: 0}
+  sad33: {fileID: 0}
+  surprise34: {fileID: 21300000, guid: bd383d8a72323f04fb244caeacc01864, type: 3}
+  shy35: {fileID: 21300000, guid: f860662a2fb350044905e57820b18e67, type: 3}
+  angry36: {fileID: 21300000, guid: d1b48de7288b02041a15359f3ef91b2f, type: 3}
+  nomal41: {fileID: 0}
+  fun42: {fileID: 0}
+  sad43: {fileID: 0}
+  surprise44: {fileID: 0}
+  shy45: {fileID: 0}
+  angry46: {fileID: 0}
+  nomal51: {fileID: 0}
+  nomal61: {fileID: 0}
+  tagetCharictor: {fileID: 0}
+  text: {fileID: 0}
+  targetScale: {x: 2, y: 2, z: 2}
+  ease: 6
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  targetFadeValue: 0
 --- !u!1 &454916321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,140 +1570,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462425866}
   m_CullTransparentMesh: 1
---- !u!1 &503172524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 503172525}
-  - component: {fileID: 503172528}
-  - component: {fileID: 503172527}
-  - component: {fileID: 503172526}
-  m_Layer: 5
-  m_Name: EndingBtn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &503172525
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503172524}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.9500047, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 545288889}
-  m_Father: {fileID: 801445299}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 795.7662, y: -384.49414}
-  m_SizeDelta: {x: 374.0427, y: 126.81}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &503172526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503172524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 503172527}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 801445305}
-        m_TargetAssemblyTypeName: MainController, Assembly-CSharp
-        m_MethodName: ClickEndingBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &503172527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503172524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b1ed996ad0ff48f408b8b58288e276fd, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &503172528
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503172524}
-  m_CullTransparentMesh: 1
 --- !u!1 &504275148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -784.1, y: 93}
+  m_AnchoredPosition: {x: -814.2387, y: 107}
   m_SizeDelta: {x: 263.5589, y: 88.9396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504275150
@@ -1637,7 +1641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\uCE90\uB9AD\uD130 \uC774\uB984\n"
 --- !u!222 &504275151
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1814,9 +1818,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1826,9 +1830,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1838,9 +1842,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1899,86 +1903,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539039957}
-  m_CullTransparentMesh: 1
---- !u!1 &545288888
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 545288889}
-  - component: {fileID: 545288891}
-  - component: {fileID: 545288890}
-  m_Layer: 5
-  m_Name: saveText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &545288889
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545288888}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 503172525}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &545288890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545288888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 587197b97c746da4a8f7dfed1e4c5ed5, type: 3}
-    m_FontSize: 45
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 80
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: END
---- !u!222 &545288891
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545288888}
   m_CullTransparentMesh: 1
 --- !u!1 &659546976
 GameObject:
@@ -2292,7 +2216,6 @@ RectTransform:
   - {fileID: 860332340}
   - {fileID: 2101795605}
   - {fileID: 731705898}
-  - {fileID: 503172525}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2320,6 +2243,7 @@ MonoBehaviour:
   targetColor: {r: 0, g: 0, b: 0, a: 0}
   fadeDuration: 3
   bgmAudioSource: {fileID: 860332341}
+  FXAudioSource: {fileID: 0}
   bgmButton: {fileID: 1056398638}
   bgmOn: {fileID: -1691731645, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
   bgmOff: {fileID: -1234761571, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
@@ -2370,7 +2294,6 @@ MonoBehaviour:
   selectButtonEnd2: {fileID: 1570600369}
   selectButtonEnd3: {fileID: 278999695}
   SaveBtn: {fileID: 840841436}
-  EndingBtn: {fileID: 0}
   talkblackBG: {fileID: 659546978}
   Bgm1: {fileID: 8300000, guid: 83424ebced98f744db653de15b721ea1, type: 3}
   Bgm2: {fileID: 8300000, guid: ae97ebba5ac866e4dac231773a48627d, type: 3}
@@ -2655,7 +2578,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 446f5c8ee78b93d4cb3f61818edf8180, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 86daf7253b53442dba72659e220de05a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2905,33 +2828,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 17771186}
         m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
         m_MethodName: ChangeCharictorImageL
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3147,10 +3070,10 @@ RectTransform:
   - {fileID: 539039958}
   - {fileID: 1878330763}
   - {fileID: 17794377}
+  - {fileID: 1906757240}
   - {fileID: 1591835695}
   - {fileID: 1570600368}
   - {fileID: 278999694}
-  - {fileID: 1906757240}
   m_Father: {fileID: 801445299}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3467,7 +3390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58460def049463f46928a9711e24ebf6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3776,13 +3699,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 142
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "~ \uD0DC\uC591\uC758 \uACE0\uBC31 ~"
+  m_Text: "\uC548\uB155\uD558\uC138\uC694.  \u25BC"
 --- !u!222 &1408084978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4368,7 +4291,7 @@ RectTransform:
   m_Children:
   - {fileID: 1534424531}
   m_Father: {fileID: 1063609526}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4419,9 +4342,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4431,9 +4354,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4443,9 +4366,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4618,7 +4541,7 @@ RectTransform:
   m_Children:
   - {fileID: 1196235537}
   m_Father: {fileID: 1063609526}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4669,9 +4592,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4681,9 +4604,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4693,9 +4616,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5041,9 +4964,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5053,9 +4976,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5065,9 +4988,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5211,9 +5134,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321241070}
-        m_TargetAssemblyTypeName: ImageChangeR, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageR
+      - m_Target: {fileID: 321241071}
+        m_TargetAssemblyTypeName: SelectImageR, Assembly-CSharp
+        m_MethodName: SelectImageChangeR
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5223,9 +5146,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 46157122}
-        m_TargetAssemblyTypeName: ImageChangeM, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageM
+      - m_Target: {fileID: 46157123}
+        m_TargetAssemblyTypeName: SelectImageM, Assembly-CSharp
+        m_MethodName: SelectImageChangeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5235,9 +5158,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 17771186}
-        m_TargetAssemblyTypeName: ImageChangeL, Assembly-CSharp
-        m_MethodName: ChangeCharictorImageL
+      - m_Target: {fileID: 17771187}
+        m_TargetAssemblyTypeName: SelectImageL, Assembly-CSharp
+        m_MethodName: SelectImageChangeL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5330,7 +5253,7 @@ RectTransform:
   m_Children:
   - {fileID: 840018343}
   m_Father: {fileID: 1063609526}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

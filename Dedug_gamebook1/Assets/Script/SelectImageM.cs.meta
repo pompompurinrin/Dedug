@@ -1,0 +1,40 @@
+fileFormatVersion: 2
+guid: 92a33914254ce4d4b879dea75ab9f247
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chrictorNomal: {instanceID: 0}
+  - nomal11: {instanceID: 0}
+  - fun12: {instanceID: 0}
+  - sad13: {fileID: 21300000, guid: 606c2cc02444ab3448ec4b1ef82078e6, type: 3}
+  - surprise14: {instanceID: 0}
+  - shy15: {instanceID: 0}
+  - angry16: {instanceID: 0}
+  - nomal21: {instanceID: 0}
+  - fun22: {instanceID: 0}
+  - sad23: {instanceID: 0}
+  - surprise24: {fileID: 21300000, guid: 1ac2887fd976593458965c97a1e58992, type: 3}
+  - shy25: {instanceID: 0}
+  - angry26: {instanceID: 0}
+  - nomal31: {instanceID: 0}
+  - fun32: {instanceID: 0}
+  - sad33: {instanceID: 0}
+  - surprise34: {instanceID: 0}
+  - shy35: {instanceID: 0}
+  - angry36: {fileID: 21300000, guid: d1b48de7288b02041a15359f3ef91b2f, type: 3}
+  - nomal41: {fileID: 21300000, guid: 6f68676eebbc733469c81f3c57c574d9, type: 3}
+  - fun42: {fileID: 21300000, guid: 21c5694fcefde6f4090b55e7fb045b10, type: 3}
+  - sad43: {fileID: 21300000, guid: 5d3b76d9848bc5a469f964a1fe17bab4, type: 3}
+  - surprise44: {instanceID: 0}
+  - shy45: {instanceID: 0}
+  - angry46: {instanceID: 0}
+  - nomal51: {instanceID: 0}
+  - nomal61: {instanceID: 0}
+  - tagetCharictor: {instanceID: 0}
+  - text: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
