@@ -37,10 +37,6 @@ public class GamebookManager : MonoBehaviour
         
     }
 
-    void update()
-    {
-
-    }
 
 
     public void ShowPopup()
