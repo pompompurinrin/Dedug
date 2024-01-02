@@ -354,7 +354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2B9\uAE09\uC2DC 1000\uACE8\uB4DC\uAC00 \uC18C\uBAA8\uB429\uB2C8\uB2E4."
+  m_Text: 
 --- !u!222 &369426229
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -735,11 +735,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d87fde8cb3a47a4994fd70cbc046c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NowRankImage: {fileID: 0}
-  NowRankName: {fileID: 0}
-  NextRankImage: {fileID: 0}
-  NextRankName: {fileID: 0}
-  SpendGoldText: {fileID: 0}
+  NowRankImage: {fileID: 1716378198}
+  NowRankName: {fileID: 914930072}
+  NextRankImage: {fileID: 2011363209}
+  NextRankName: {fileID: 1453551895}
+  nextRank: 1
+  PlusGuestState: {fileID: 755165706}
+  PlusGoldState: {fileID: 1867423628}
+  PlusFeverTime: {fileID: 1205456903}
+  PlusGoods: {fileID: 771485451}
+  ResultPlusGuestState: {fileID: 457134147}
+  ResultPlusGoldState: {fileID: 532834389}
+  ResultPlusFeverTime: {fileID: 525670597}
+  ResultPlusGoods: {fileID: 398015821}
+  SpendGoldText: {fileID: 309993119}
+  PopUPText: {fileID: 1870676233}
+  PopUPNotice: {fileID: 369426228}
 --- !u!1 &457134145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,8 +2035,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 452754263}
-        m_TargetAssemblyTypeName: RankManger, Assembly-CSharp
-        m_MethodName: RankPopUPClick
+        m_TargetAssemblyTypeName: RankManager, Assembly-CSharp
+        m_MethodName: RankPopUPClickConfirm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2158,7 +2169,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 452754263}
-        m_TargetAssemblyTypeName: RankManger, Assembly-CSharp
+        m_TargetAssemblyTypeName: RankManager, Assembly-CSharp
         m_MethodName: ResultExitClick
         m_Mode: 1
         m_Arguments:
@@ -3290,8 +3301,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 452754263}
-        m_TargetAssemblyTypeName: RankManger, Assembly-CSharp
-        m_MethodName: RankUPClick
+        m_TargetAssemblyTypeName: RankManager, Assembly-CSharp
+        m_MethodName: RankPopUPClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3808,7 +3819,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 452754263}
-        m_TargetAssemblyTypeName: RankManger, Assembly-CSharp
+        m_TargetAssemblyTypeName: RankManager, Assembly-CSharp
         m_MethodName: RankPopUPExitClick
         m_Mode: 1
         m_Arguments:
