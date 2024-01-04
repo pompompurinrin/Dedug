@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
-using UnityEditor.PackageManager.Requests;
-using System.Linq;
 
 public class RequestManager : MonoBehaviour
 {
 
+    // 커미션 프리팹
     public GameObject requestPrefab;
     private float requestTimer = 0f;
     public float requestTimeLimit = 2f;
 
+    // 커미션 프리팹 부모 객체
     public Transform requestParentObject;
 
     // 최대 커미션 리스트 생성 제항
@@ -25,6 +24,40 @@ public class RequestManager : MonoBehaviour
 
     // 피버타임 큰 손 손님 누적 수령 변수
     int feverNum = 0;
+
+    // 커미션 간 간격
+    public float requestListSpacing = 1f;
+
+    private List<GameObject> requestList = new List<GameObject>(); // 커미션을 관리할 리스트
+
+    // DrawAnimator 컴포넌트를 저장할 변수
+    private Animator DrawAnimator;
+
+    // GoldAnimator 컴포넌트를 저장할 변수
+    private Animator GoldAnimator;
+
+    // 커미션 프리팹 슬라이드로 사라지게 하는 변수 할당
+    public float slideDuration = 0.5f;
+    private bool isDeleting = false;
+
+
+    // 애니메이션 트리거, bool의 상태를 나타내는 열거형
+    private enum DrawAnimationState
+    {
+        DrawIdle,
+        Drawing,
+        getcha,
+        nothing
+    }
+
+    private DrawAnimationState currentAnimationState = DrawAnimationState.DrawIdle;
+
+    void Start()
+    {
+        // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
+        GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
+        DrawAnimator = GameObject.Find("charictorImg").GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -61,9 +94,6 @@ public class RequestManager : MonoBehaviour
         Text goldButtonText = newRequest.GetComponentInChildren<Button>().GetComponentInChildren<Text>();
         goldButtonText.text = randomRow["Gold"]; // "Gold" 열의 값을 버튼 텍스트에 설정
 
-
-
-
         // 이미지 파일 이름 동적으로 생성
         string imageFileName = "Image" + randomRow["Img"];
         imageComponent.sprite = Resources.Load<Sprite>(imageFileName);
@@ -71,33 +101,33 @@ public class RequestManager : MonoBehaviour
         nameText.text = randomRow["Name"];
         messageText.text = randomRow["Message"];
 
-        // Customer 값에 따라 색상 변경
+
+
+        // "Customer" 열 값을 변수에 저장
         int customerType = int.Parse(randomRow["Customer"]);
+
+        // 고객 값에 따라 색상 변경
         Color color = (customerType == 1) ? Color.white : Color.magenta;
         newRequest.GetComponent<Image>().color = color;
 
-        // 버튼 클릭한 프리팹의 "Customer" 값 확인
-        int customerTypeFever = int.Parse(randomRow["Customer"]);
-
-        // "Customer" 값이 2인 경우 feverImg 오브젝트 활성화
-        if (customerTypeFever == 2)
+        // RequestPrefabScript 컴포넌트를 찾고, 없으면 추가
+        RequestPrefabScript prefabScript = newRequest.GetComponent<RequestPrefabScript>();
+        if (prefabScript == null)
         {
-            feverNum++;
+            prefabScript = newRequest.AddComponent<RequestPrefabScript>();
         }
 
-            // 기존 프리팹들의 위치 조정
-            for (int i = 0; i < requestParentObject.childCount - 1; i++)
-        {
-            RectTransform child = requestParentObject.GetChild(i) as RectTransform;
-            RectTransform nextChild = requestParentObject.GetChild(i + 1) as RectTransform;
+        // customerType 값을 프리팹에 저장
+        prefabScript.SetCustomerType(customerType);
 
-            // 새로운 프리팹의 높이만큼 기존 프리팹을 아래로 이동
-            Vector2 newPosition = new Vector2(child.anchoredPosition.x, child.anchoredPosition.y - newRequest.GetComponent<RectTransform>().rect.height);
-            child.anchoredPosition = newPosition;
-        }
+        // 리스트에 추가
+        requestList.Insert(0, newRequest);
 
-        // 새로운 프리팹을 맨 위로 이동
-        newRequest.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        // 커미션 리스트 재정렬
+        RearrangeRequest();
+
+
+
 
         // 버튼 클릭 이벤트 추가
         Button button = newRequest.GetComponentInChildren<Button>();
@@ -109,41 +139,46 @@ public class RequestManager : MonoBehaviour
 
     public void OnRequestButtonClick(GameObject clickedButton, int goldValue)
     {
+
+        // 골드 획득 애니메이션 재생
+        StartCoroutine(PlayGetGoldAnimationAndSwitchToIdle());
+
+        // 애니메이션이 끝났을 때 DrawIdle 애니메이션으로 전환
+        StartCoroutine(PlayDAnimationAndSwitchToI());
+
         // GoldNum 업데이트
         goldNum += goldValue;
         goldText.text = goldNum.ToString();
 
-        // 피버 타임 발동 조건
-        if (feverNum == 2)
-        {
-            // feverImg 오브젝트 활성화
-            GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(true);
 
-            // 2초 뒤에 feverBg 오브젝트 활성화
-            StartCoroutine(ActivateFeverBgAfterDelay(2f));
+        // 프리팹에 저장된 customerType 값 가져오기
+        int customerType = clickedButton.GetComponent<RequestPrefabScript>().GetCustomerType();
+
+
+
+        // 피버 타임 발동 조건
+        if (customerType == 2)
+        {
+            feverNum++;
+
+            if (feverNum == 2)
+            {
+                // feverImg 오브젝트 활성화
+                GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(true);
+
+                // 2초 뒤에 feverBg 오브젝트 활성화
+                StartCoroutine(ActivateFeverBgAfterDelay(2f));
+
+                feverNum = 0;
+            }
         }
 
-        // 버튼 클릭시 해당 프리팹 삭제 및 아래 프리팹들 정렬
-        requestPrefabCount--;
-        Destroy(clickedButton);
+        // 커미션 삭제 함수 호출
+        DeleteRequest(clickedButton);
 
         if (requestPrefabCount == 0)
         {
             GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(true);
-        }
-
-        // 커미션 리스트 재정렬
-
-        float yOffset = 0f;
-
-        foreach (Transform child in requestParentObject)
-        {
-            if (child.gameObject.activeSelf)
-            {
-                RectTransform requestTransform = child.GetComponent<RectTransform>();
-                requestTransform.anchoredPosition = new Vector2(requestTransform.anchoredPosition.x, -yOffset);
-                yOffset += requestTransform.rect.height;
-            }
         }
 
         // 삭제 후 다시 생성 (현재 시간을 기준으로 다시 생성)
@@ -152,16 +187,115 @@ public class RequestManager : MonoBehaviour
             requestTimer = Mathf.Max(requestTimeLimit - requestTimer, 0f);
         }
     }
+
+    // 골드 획득 시 애니메이션
+    private IEnumerator PlayGetGoldAnimationAndSwitchToIdle()
+    {
+        // getGold 애니메이션을 2초 동안 재생
+        GoldAnimator.SetTrigger("getcha");
+
+        yield return new WaitForSeconds(1f);
+
+        GoldAnimator.SetTrigger("nothing");
+    }
+
+    // Drawing 애니메이션을 재생하고, 재생이 끝나면 DrawIdle 애니메이션으로 전환
+    private IEnumerator PlayDAnimationAndSwitchToI()
+    {
+        // Drawing 애니메이션을 2초 동안 재생
+        DrawAnimator.SetTrigger("Drawing");
+
+        currentAnimationState = DrawAnimationState.Drawing;
+
+        yield return new WaitForSeconds(2f);
+
+        // 재생이 끝나면 DrawIdle 애니메이션으로 전환
+        DrawAnimator.SetTrigger("DrawIdle");
+
+        currentAnimationState = DrawAnimationState.DrawIdle;
+    }
+
+    // 커미션 삭제 함수
+    public void DeleteRequest(GameObject request)
+    {
+        if (requestList.Contains(request))
+        {
+            requestPrefabCount--;
+
+            // 슬라이딩 애니메이션 적용
+            StartCoroutine(SlideAndDeleteRequest(request));
+        }
+    }
+
+    private IEnumerator SlideAndDeleteRequest(GameObject request)
+    {
+        isDeleting = true;
+
+        RectTransform rectTransform = request.GetComponent<RectTransform>();
+        Vector2 originalPosition = rectTransform.anchoredPosition;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < slideDuration)
+        {
+            float newX = Mathf.Lerp(originalPosition.x, -Screen.width, elapsedTime / slideDuration);
+            rectTransform.anchoredPosition = new Vector2(newX, 0f);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isDeleting = false;
+
+        // 실제 삭제
+        Destroy(request);
+        requestList.Remove(request);
+
+        RearrangeRequest();
+    }
+
+
+    // 커미션 재정렬 함수
+    void RearrangeRequest()
+    {
+        float yOffset = 0f;
+
+        for (int i = 0; i < requestList.Count; i++)
+        {
+            RectTransform requestTransform = requestList[i].GetComponent<RectTransform>();
+            requestTransform.anchoredPosition = new Vector2(requestTransform.anchoredPosition.x, yOffset);
+            yOffset -= requestTransform.rect.height + requestListSpacing;
+        }
+    }
+
+
+
     private IEnumerator ActivateFeverBgAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        feverNum = 0;
         GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(false);
         // 2초 뒤에 feverBg 오브젝트를 활성화
         GameObject.Find("feverStart").transform.Find("feverBg").gameObject.SetActive(true);
 
 
     }
+
+
+    // RequestPrefabScript 클래스를 프리팹에 추가하여 customerType 값을 저장하고 가져올 수 있도록 함
+    public class RequestPrefabScript : MonoBehaviour
+    {
+        private int customerType;
+
+        public void SetCustomerType(int type)
+        {
+            customerType = type;
+        }
+
+        public int GetCustomerType()
+        {
+            return customerType;
+        }
+    }
+
 
 }
