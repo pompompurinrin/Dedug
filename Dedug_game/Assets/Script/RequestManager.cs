@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RequestManager : MonoBehaviour
@@ -19,11 +20,11 @@ public class RequestManager : MonoBehaviour
     private int requestPrefabCount = 0;
 
     // 골드 획득 변수
-    int goldNum = 0;
+    int goldNum;
     public Text goldText;
 
     // 피버타임 큰 손 손님 누적 수령 변수
-    int feverNum = 0;
+    int feverNum;
 
     // 커미션 간 간격
     public float requestListSpacing = 1f;
@@ -54,6 +55,10 @@ public class RequestManager : MonoBehaviour
 
     void Start()
     {
+        // 공용 변수 설정
+        goldNum = DataManager.Instance.NowGold;
+        feverNum = DataManager.Instance.FeverNum;
+
         // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
         DrawAnimator = GameObject.Find("charictorImg").GetComponent<Animator>();
@@ -295,6 +300,11 @@ public class RequestManager : MonoBehaviour
         {
             return customerType;
         }
+    }
+
+    public void homeRequest()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 
 

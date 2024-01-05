@@ -13,6 +13,8 @@ public class FeverManager : MonoBehaviour
     public GameObject feverBg;
     public GameObject endBg;
 
+    int goldNum;
+
     // 피버타임 끝내는 버튼
     public Button endFever;
 
@@ -24,11 +26,26 @@ public class FeverManager : MonoBehaviour
 
     private float countdownTime = 10f;
 
+    // 이펙트 관련 변수
+    public GameObject feverEffectPrefab; // 클릭 이펙트 프리팹
+    public Transform effectSpawnPoint;    // 이펙트 생성 위치
+    public Transform feverParentObject; // 이펙트 생성 부모 객체
+
+
+    // 애니메이션 관련 변수
+    public Animator feverAnimator;
+    private bool isRunning = false;
+    private int clicksInSecond = 0;
+    private float clickTimer = 0f;
+
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
     void Start()
     {
+        // 공용 변수 설정
+        goldNum = DataManager.Instance.NowGold;
+
         feverButton.onClick.AddListener(OnClickFeverButton);
         UpdateFeverTimeText();
         data_Dialog = CSVReader.Read("FeverCSV");
@@ -36,6 +53,15 @@ public class FeverManager : MonoBehaviour
 
     void Update()
     {
+
+        // 클릭 횟수를 초당 초기화
+        clickTimer += Time.deltaTime;
+        if (clickTimer >= 1f)
+        {
+            clicksInSecond = 0;
+            clickTimer = 0f;
+        }
+
         if (feverBg.activeSelf && countdownTime > 0)
         {
             countdownTime -= Time.deltaTime;
@@ -56,6 +82,9 @@ public class FeverManager : MonoBehaviour
                     SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
 
                     endBg.SetActive(true);
+
+                    goldNum += 20;
+
                 }
 
                 if (feverGauge >= 11 && feverGauge <= 25)
@@ -67,6 +96,8 @@ public class FeverManager : MonoBehaviour
                     SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
 
                     endBg.SetActive(true);
+
+                    goldNum += 50;
                 }
 
                 if (feverGauge >= 26)
@@ -78,9 +109,15 @@ public class FeverManager : MonoBehaviour
                     SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
 
                     endBg.SetActive(true);
+
+                    goldNum += 80;
                 }
             }
         }
+
+        // 애니메이션 업데이트
+        UpdateAnimation();
+
     }
 
     void SetImageFromResultImg(string resultImgValue)
@@ -114,9 +151,28 @@ public class FeverManager : MonoBehaviour
     {
         if (countdownTime > 0)
         {
+            // 클릭 이펙트 함수 호출
+            CreateClickEffect();
             // feverButton 클릭 시 feverGauge 증가 및 feverSlider 이동
             feverGauge++;
             feverSlider.value = feverGauge;
+
+            // 클릭 횟수 증가
+            clicksInSecond++;
+        }
+    }
+
+    void CreateClickEffect()
+    {
+        if (feverEffectPrefab != null && feverParentObject != null)
+        {
+            // 현재 마우스 좌표를 가져와서 World 좌표로 변환
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f; // Z 축을 0으로 설정 (2D 게임의 경우)
+
+            // 클릭 이펙트를 생성하고 feverParentObject를 부모로 설정
+            GameObject clickEffect = Instantiate(feverEffectPrefab, mousePosition, Quaternion.identity, feverParentObject.transform);
+            Destroy(clickEffect, 1f); // 1초 후에 이펙트 제거 (원하는 시간으로 조절 가능)
         }
     }
 
@@ -124,6 +180,14 @@ public class FeverManager : MonoBehaviour
     {
         // feverTime 텍스트 업데이트
         feverTime.text = Mathf.CeilToInt(countdownTime).ToString();
+    }
+
+    void UpdateAnimation()
+    {
+        // 클릭 횟수가 2번 이상인 경우 feverRun 애니메이션 재생
+        // 그렇지 않으면 feverIdle 애니메이션 재생
+        isRunning = clicksInSecond >= 2;
+        feverAnimator.SetBool("Run", isRunning);
     }
 
     public void EndFiver()
