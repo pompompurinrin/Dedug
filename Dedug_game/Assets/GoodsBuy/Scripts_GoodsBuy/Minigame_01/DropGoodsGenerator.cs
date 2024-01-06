@@ -14,7 +14,7 @@ public class DropGoodsGenerator : MonoBehaviour
     int randomBombImage;
     int randomGoodsImage;
 
-    float span = 1f;  // 굿즈가 생성되는 주기
+    float span = 2f;  // 굿즈가 생성되는 주기
     float delta = 0;
     int randPrefab = 0;
 

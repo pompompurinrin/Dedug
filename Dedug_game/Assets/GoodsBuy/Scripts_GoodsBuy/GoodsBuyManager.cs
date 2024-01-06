@@ -11,18 +11,19 @@ public class GoodsBuyManager : MonoBehaviour
     public Image payMessagePopup;
     public Image gamePlayBG;
     public Image resultPopup;
-    public Image MainBG;
+    public Image mainBG;
 
 
 
-    // Start is called before the first frame update
     public void Start()
     {
-        MainBG.gameObject.SetActive(true);
+        mainBG.gameObject.SetActive(true);
         startPopup.gameObject.SetActive(false);
         payMessagePopup.gameObject.SetActive(false);
         gamePlayBG.gameObject.SetActive(false);
         resultPopup.gameObject.SetActive(false);
+
+        Debug.Log("미니게임첫화면");
     }
 
 
@@ -46,15 +47,17 @@ public class GoodsBuyManager : MonoBehaviour
         
         startPopup.gameObject.SetActive(false);
         payMessagePopup.gameObject.SetActive(false);
-        MainBG.gameObject.SetActive(false);
+        mainBG.gameObject.SetActive(false);
         gamePlayBG.gameObject.SetActive(true);
         gamePlayBG.GetComponent<Minigame_01_Manager>().Restart();
+        Debug.Log("게임재시작");
     }
 
     public void NoPay()
     {
 
         payMessagePopup.gameObject.SetActive(false);
+        Debug.Log("게임참여취소"); 
 
     }
 
