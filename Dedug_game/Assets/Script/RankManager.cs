@@ -50,9 +50,9 @@ public class RankManager : MonoBehaviour
 
     private void Awake()
     {
-        NowGold = PlayerPrefs.GetInt("NowGold", 0);
-        NowRank = PlayerPrefs.GetInt("NowRank", 0);
-        Goods3 = PlayerPrefs.GetString("Goods3", "");
+        NowGold = PlayerPrefs.GetInt("NowGold");
+        NowRank = PlayerPrefs.GetInt("NowRank");
+        Goods3 = PlayerPrefs.GetString("Goods3");
         DataManager.Instance.nowGold = NowGold;
         DataManager.Instance.nowRank = NowRank;
         DataManager.Instance.goods3 = Goods3;

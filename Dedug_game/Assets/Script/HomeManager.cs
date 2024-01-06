@@ -13,13 +13,16 @@ public class HomeManager : MonoBehaviour
     int NowGold;
     int NowRank;
     string Goods3;
+    int FeverNum;
     public void Start()
     {
-        NowGold = PlayerPrefs.GetInt("nowGold");
-        NowRank = PlayerPrefs.GetInt("nowRank");
-        Goods3 = PlayerPrefs.GetString("goods3");
+        NowGold = PlayerPrefs.GetInt("NowGold");
+        NowRank = PlayerPrefs.GetInt("NowRank");
+        Goods3 = PlayerPrefs.GetString("Goods3");
+        FeverNum = PlayerPrefs.GetInt("FeverNum");
         DataManager.Instance.nowGold = NowGold;
         DataManager.Instance.nowRank = NowRank;
+        FeverNum = DataManager.Instance.feverNum;
     }
     public void ClickRequestBtn()
     {

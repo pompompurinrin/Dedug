@@ -1,4 +1,4 @@
-level,rank,guest,goldplus,time,goods,rank_gold,ticket_gold,mainimage
-1,민간인,1,10,30s,3,100,100,1
-2,입문,2,20,30s,6,300,150,2
-3,패션 수집가,3,30,30s,9,500,200,3
+level,rank,guest,goldplus,time,goods,rank_gold,ticket_gold,mainimage,Goods
+1,민간??1,10,30s,3,100,100,1,,
+2,?�문,2,20,30s,6,300,150,2,3
+3,?�션 ?�집가,3,30,30s,9,500,200,3,5

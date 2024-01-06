@@ -20,7 +20,7 @@ public class RequestManager : MonoBehaviour
     private int requestPrefabCount = 0;
 
     // 골드 획득 변수
-    int goldNum;
+    int NowGold;
     public Text goldText;
 
     // 피버타임 큰 손 손님 누적 수령 변수
@@ -41,6 +41,8 @@ public class RequestManager : MonoBehaviour
     public float slideDuration = 0.5f;
     private bool isDeleting = false;
 
+    //혜린: 현재 랭크
+    int NowRank;
 
     // 애니메이션 트리거, bool의 상태를 나타내는 열거형
     private enum DrawAnimationState
@@ -53,15 +55,23 @@ public class RequestManager : MonoBehaviour
 
     private DrawAnimationState currentAnimationState = DrawAnimationState.DrawIdle;
 
+    private void Awake()
+    {
+        // 혜린: 공용 변수 설정 및 데이터 로드
+        NowGold = PlayerPrefs.GetInt("NowGold");
+        NowRank = PlayerPrefs.GetInt("NowRank");
+        feverNum = PlayerPrefs.GetInt("FeverNum");
+        NowRank = DataManager.Instance.nowRank;
+        NowGold = DataManager.Instance.nowGold;
+        feverNum = DataManager.Instance.feverNum;
+    }
     void Start()
     {
-        // 공용 변수 설정
-        goldNum = DataManager.Instance.NowGold;
-        feverNum = DataManager.Instance.FeverNum;
 
         // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
         DrawAnimator = GameObject.Find("charictorImg").GetComponent<Animator>();
+        goldText.text = DataManager.Instance.nowGold.ToString();
     }
 
     void Update()
@@ -73,6 +83,7 @@ public class RequestManager : MonoBehaviour
             CreateRequestPrefab();
             requestTimer = 0f;
         }
+        
     }
 
     void CreateRequestPrefab()
@@ -142,6 +153,15 @@ public class RequestManager : MonoBehaviour
         }
     }
 
+    public void Save()
+    {
+        // 혜린: PlayerPrefs에 현재 값 저장
+        PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        PlayerPrefs.SetInt("FeverNum", DataManager.Instance.feverNum);
+        PlayerPrefs.Save();
+    }
+
     public void OnRequestButtonClick(GameObject clickedButton, int goldValue)
     {
 
@@ -152,9 +172,9 @@ public class RequestManager : MonoBehaviour
         StartCoroutine(PlayDAnimationAndSwitchToI());
 
         // GoldNum 업데이트
-        goldNum += goldValue;
-        goldText.text = goldNum.ToString();
-
+        DataManager.Instance.nowGold += goldValue;
+        goldText.text = DataManager.Instance.nowGold.ToString();
+        Save();
 
         // 프리팹에 저장된 customerType 값 가져오기
         int customerType = clickedButton.GetComponent<RequestPrefabScript>().GetCustomerType();
@@ -164,9 +184,10 @@ public class RequestManager : MonoBehaviour
         // 피버 타임 발동 조건
         if (customerType == 2)
         {
-            feverNum++;
+            DataManager.Instance.feverNum++;
+            Save();
 
-            if (feverNum == 2)
+            if (DataManager.Instance.feverNum == 2)
             {
                 // feverImg 오브젝트 활성화
                 GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(true);
@@ -174,7 +195,8 @@ public class RequestManager : MonoBehaviour
                 // 2초 뒤에 feverBg 오브젝트 활성화
                 StartCoroutine(ActivateFeverBgAfterDelay(2f));
 
-                feverNum = 0;
+                DataManager.Instance.feverNum = 0;
+                Save();
             }
         }
 
@@ -304,6 +326,7 @@ public class RequestManager : MonoBehaviour
 
     public void homeRequest()
     {
+        Save();
         SceneManager.LoadScene("HomeScene");
     }
 

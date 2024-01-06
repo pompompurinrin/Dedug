@@ -13,7 +13,7 @@ public class FeverManager : MonoBehaviour
     public GameObject feverBg;
     public GameObject endBg;
 
-    int goldNum;
+    int NowGold;
 
     // 피버타임 끝내는 버튼
     public Button endFever;
@@ -44,7 +44,7 @@ public class FeverManager : MonoBehaviour
     void Start()
     {
         // 공용 변수 설정
-        goldNum = DataManager.Instance.NowGold;
+        NowGold = DataManager.Instance.nowGold;
 
         feverButton.onClick.AddListener(OnClickFeverButton);
         UpdateFeverTimeText();
@@ -83,7 +83,8 @@ public class FeverManager : MonoBehaviour
 
                     endBg.SetActive(true);
 
-                    goldNum += 20;
+                    DataManager.Instance.nowGold += 20;
+                    Save();
 
                 }
 
@@ -97,7 +98,8 @@ public class FeverManager : MonoBehaviour
 
                     endBg.SetActive(true);
 
-                    goldNum += 50;
+                    DataManager.Instance.nowGold += 50;
+                    Save();
                 }
 
                 if (feverGauge >= 26)
@@ -110,7 +112,8 @@ public class FeverManager : MonoBehaviour
 
                     endBg.SetActive(true);
 
-                    goldNum += 80;
+                    DataManager.Instance.nowGold += 80;
+                    Save();
                 }
             }
         }
@@ -118,6 +121,14 @@ public class FeverManager : MonoBehaviour
         // 애니메이션 업데이트
         UpdateAnimation();
 
+    }
+    public void Save()
+    {
+        // 혜린: PlayerPrefs에 현재 값 저장
+        PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        PlayerPrefs.SetInt("FeverNum", DataManager.Instance.feverNum);
+        PlayerPrefs.Save();
     }
 
     void SetImageFromResultImg(string resultImgValue)
