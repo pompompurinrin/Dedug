@@ -61,12 +61,14 @@ public class RequestManager : MonoBehaviour
         NowGold = PlayerPrefs.GetInt("NowGold");
         NowRank = PlayerPrefs.GetInt("NowRank");
         feverNum = PlayerPrefs.GetInt("FeverNum");
-        NowRank = DataManager.Instance.nowRank;
-        NowGold = DataManager.Instance.nowGold;
-        feverNum = DataManager.Instance.feverNum;
     }
-    void Start()
+
+    private void Start()
     {
+        // 다른 씬에서 데이터 로드
+        DataManager.Instance.nowGold = NowGold;
+        DataManager.Instance.nowRank = NowRank;
+        DataManager.Instance.feverNum = feverNum;
 
         // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();

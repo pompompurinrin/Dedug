@@ -13,6 +13,8 @@ public class FeverManager : MonoBehaviour
     public GameObject feverBg;
     public GameObject endBg;
 
+    public Text goldText;
+
     int NowGold;
 
     // 피버타임 끝내는 버튼
@@ -67,6 +69,9 @@ public class FeverManager : MonoBehaviour
             countdownTime -= Time.deltaTime;
             UpdateFeverTimeText();
 
+            // 애니메이션 업데이트
+            UpdateAnimation();
+
             if (countdownTime <= 0)
             {
                 // 카운트 다운이 0이 되면 feverBg를 비활성화하고 endBg를 활성화한다.
@@ -117,9 +122,6 @@ public class FeverManager : MonoBehaviour
                 }
             }
         }
-
-        // 애니메이션 업데이트
-        UpdateAnimation();
 
     }
     public void Save()
@@ -206,6 +208,7 @@ public class FeverManager : MonoBehaviour
         countdownTime = 10;
         feverSlider.value = 0;
         feverGauge = 0;
+        goldText.text = DataManager.Instance.nowGold.ToString();
         endBg.SetActive(false);
     }
 }
