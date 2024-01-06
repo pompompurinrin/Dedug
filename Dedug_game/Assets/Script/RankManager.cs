@@ -3,16 +3,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using static UnityEngine.Mesh;
+using System;
+
 public class RankManager : MonoBehaviour
 {
     // UI 요소들
     public Image NowRankImage;
     public Text NowRankName;
-
+    public Button RankUPBtn;
     public Image PopUPBG;
     public Image NextRankImage;
     public Text NextRankName;
-    public int nextRank;
+    int nextRank;
 
     // 각종 효과 및 결과를 나타내는 텍스트들
     public Text PlusGuestState;
@@ -23,7 +26,7 @@ public class RankManager : MonoBehaviour
     public Text ResultPlusGoldState;
     public Text ResultPlusFeverTime;
     public Text ResultPlusGoods;
-
+    public Text UnlockGoods;
     public Text SpendGoldText;
     int NowGold;
 
@@ -43,16 +46,26 @@ public class RankManager : MonoBehaviour
     private const string RankSampleFileName = "RankSample";
     private char[] TRIM_CHARS = { ' ', '\"' };
     int NowRank;
+    string Goods3;
 
+    private void Awake()
+    {
+        NowGold = PlayerPrefs.GetInt("NowGold", 0);
+        NowRank = PlayerPrefs.GetInt("NowRank", 0);
+        Goods3 = PlayerPrefs.GetString("Goods3", "");
+        DataManager.Instance.nowGold = NowGold;
+        DataManager.Instance.nowRank = NowRank;
+        DataManager.Instance.goods3 = Goods3;
+    }
     private void Start()
     {
         // 초기화 및 필요한 게임 데이터 로드
-        NowGold = DataManager.Instance.NowGold;
-        NowRank = DataManager.Instance.NowRank;
+        nextRank = DataManager.Instance.nowRank + 1;
+        
         RankPopUPBG = GameObject.Find("RankPopUPBG").GetComponent<Image>();
         Unlock = GameObject.Find("UnlockCanvas").GetComponent<Canvas>();
         Result = GameObject.Find("ResultCanvas").GetComponent<Canvas>();
-
+        RankUPBtn = GameObject.Find("RankUPBtn").GetComponent<Button>();
         anim = GameObject.Find("RankPopUPGroup").GetComponent<Animator>();
 
         RankPopUPBG.gameObject.SetActive(false);
@@ -72,23 +85,24 @@ public class RankManager : MonoBehaviour
     private void SetupRankInfo()
     {
         // 현재 랭크와 다음 랭크의 정보 설정
-        NowRankName.text = data_Dialog[NowRank]["rank"].ToString();
+        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
         NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
-
+        Goods3 = data_Dialog[nextRank]["Goods"].ToString();
         // 각종 효과 및 비용 텍스트 설정
         PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
         PlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
         PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
         PlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
-        SpendGoldText.text = NowGold.ToString() + "/" + data_Dialog[NowRank]["rank_gold"].ToString();
+
+        
     }
 
     private int GetIntValue(string key)
     {
         // CSV 데이터에서 특정 키의 정수값을 가져오는 메서드
-        if (NowRank >= 0 && NowRank < data_Dialog.Count)
+        if (DataManager.Instance.nowRank >= 0 && DataManager.Instance.nowRank < data_Dialog.Count)
         {
-            string value = data_Dialog[NowRank][key]?.ToString();
+            string value = data_Dialog[DataManager.Instance.nowRank][key]?.ToString();
             if (value != null)
             {
                 value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
@@ -105,7 +119,29 @@ public class RankManager : MonoBehaviour
 
     public void UnlockCheck()
     {
-        // 언락 여부 확인하는 메서드 (아직 구현되지 않음)
+        //여기서 데이터매니저에게 검사하는 방법이 뭔지 모르겠음... 굿즈 테이블에 따라 바뀔 것 같음
+        if (DataManager.Instance.goods3.ToString() != data_Dialog[nextRank]["Goods"].ToString())
+        {
+            UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["Goods"].ToString() + "을 획득하면 해금됩니다.";
+            Unlock.gameObject.SetActive(true);
+        }    
+        else
+        {
+            Unlock.gameObject.SetActive(false);
+        }
+
+        if (DataManager.Instance.nowGold >= Convert.ToInt32(data_Dialog[nextRank]["rank_gold"]))
+        {
+            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+            SpendGoldText.color = Color.black;
+            RankUPBtn.interactable = true;  // 버튼 활성화
+        }
+        else
+        {
+            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+            SpendGoldText.color = Color.red;
+            RankUPBtn.interactable = false;  // 버튼 비활성화
+        }
     }
 
     public void RankPopUPClick()
@@ -120,9 +156,9 @@ public class RankManager : MonoBehaviour
     public void RankPopUPClickConfirm()
     {
         // 랭크 팝업 확인 클릭 시 호출되는 메서드
-        NowGold -= GetIntValue("rank_gold");
+        DataManager.Instance.nowGold -= Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["rank_gold"]);
 
-        NowRank++;
+        DataManager.Instance.nowRank++;
         nextRank++;
 
         if (nextRank >= data_Dialog.Count)
@@ -130,10 +166,11 @@ public class RankManager : MonoBehaviour
             nextRank = 0; // 또는 다른 초기값으로 설정 가능
         }
 
+        Save();
         // 랭크 정보 및 결과 텍스트 업데이트
-        NowRankName.text = data_Dialog[NowRank]["rank"].ToString();
+        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
         NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
-        SpendGoldText.text = NowGold.ToString() + "/" + data_Dialog[NowRank]["rank_gold"].ToString();
+        SpendGoldText.text = DataManager.Instance.nowGold.ToString() + "/" + data_Dialog[DataManager.Instance.nowRank]["rank_gold"].ToString();
 
         ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
         ResultPlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
@@ -144,8 +181,9 @@ public class RankManager : MonoBehaviour
         anim.SetTrigger("DoHide");
         RankPopUPBG.gameObject.SetActive(false);
         Result.gameObject.SetActive(true);
-
-        NowRankName.text = data_Dialog[NowRank]["rank"].ToString();
+        UnlockCheck();
+        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+        
     }
 
     public void RankPopUPExitClick()
@@ -161,5 +199,29 @@ public class RankManager : MonoBehaviour
         Result.gameObject.SetActive(false);
         RankPopUPBG.gameObject.SetActive(false);
     }
-    
+
+    public void Save()
+    {
+        // PlayerPrefs에 현재 값 저장
+        PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        PlayerPrefs.SetString("Goods3", DataManager.Instance.goods3);
+        PlayerPrefs.Save();
+    }
+
+    public void HomeClick()
+    {
+        Save();
+        SceneManager.LoadScene("HomeScene");
+    }    
+    public void testGoods3()
+    {
+        DataManager.Instance.goods3 = "3";
+        UnlockCheck();
+    }    
+    public void testGold()
+    {
+        DataManager.Instance.nowGold = DataManager.Instance.nowGold + 100;
+        UnlockCheck();
+    }
 }

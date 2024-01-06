@@ -12,16 +12,15 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    private void SaveGame()
+    public static void SaveGame()
     {
         // 게임 상태를 저장하는 코드 작성
-        PlayerPrefs.SetInt("NowRank", DataManager.Instance.NowRank);
-        PlayerPrefs.SetInt("NowGold", DataManager.Instance.NowGold);
-        
-
-        // 기타 필요한 데이터 저장
-        // PlayerPrefs.SetString("KeyName", "Value");
-
+        PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        PlayerPrefs.SetInt("Goods1", DataManager.Instance.goods1);
+        PlayerPrefs.SetInt("Goods2", DataManager.Instance.goods2);
+        PlayerPrefs.SetString("Goods3", DataManager.Instance.goods3);
+       
         PlayerPrefs.Save();
     }
     private void Start()
@@ -29,14 +28,15 @@ public class SaveManager : MonoBehaviour
         LoadGame();
     }
 
-    private void LoadGame()
+    public static void LoadGame()
     {
         // 저장된 데이터가 있는지 확인
-        if (PlayerPrefs.HasKey("PlayerScore"))
+        if (PlayerPrefs.HasKey("NowGold"))
         {
             // 저장된 데이터를 불러오는 코드 작성
-            int NowGold = PlayerPrefs.GetInt("NowGold");
-            int NowRank = PlayerPrefs.GetInt("NowRank");
+            //NowGold = PlayerPrefs.GetInt("nowGold");
+            //NowRank = PlayerPrefs.GetInt("nowRank");
+           // FeverNum = PlayerPrefs.GetInt("feverNum");
             //float playerPositionX = PlayerPrefs.GetFloat("PlayerPositionX");
             // float playerPositionY = PlayerPrefs.GetFloat("PlayerPositionY");
 
@@ -44,8 +44,8 @@ public class SaveManager : MonoBehaviour
             // string value = PlayerPrefs.GetString("KeyName");
 
             // 불러온 데이터를 게임에 적용
-            DataManager.Instance.NowGold = NowGold;
-            DataManager.Instance.NowRank = NowRank;
+           // DataManager.Instance.nowGold = NowGold;
+           // DataManager.Instance.nowRank = NowRank;
             // PlayerController.Instance.transform.position = new Vector2(playerPositionX, playerPositionY);
         }
     }
