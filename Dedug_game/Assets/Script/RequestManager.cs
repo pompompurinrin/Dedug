@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,9 @@ public class RequestManager : MonoBehaviour
     int NowGold;
     public Text goldText;
 
+    // 피버타임
+    public static float countdownTime;
+
     // 피버타임 큰 손 손님 누적 수령 변수
     int feverNum;
 
@@ -43,6 +47,10 @@ public class RequestManager : MonoBehaviour
 
     //혜린: 현재 랭크
     int NowRank;
+
+    // 랭크 출력 텍스트
+    public Text rankText;
+
 
     // 애니메이션 트리거, bool의 상태를 나타내는 열거형
     private enum DrawAnimationState
@@ -70,6 +78,9 @@ public class RequestManager : MonoBehaviour
         DataManager.Instance.nowRank = NowRank;
         DataManager.Instance.feverNum = feverNum;
 
+        // 랭크 데이터 업데이트
+        rankText.text = DataManager.Instance.nowRank.ToString();
+
         // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
         DrawAnimator = GameObject.Find("charictorImg").GetComponent<Animator>();
@@ -85,14 +96,24 @@ public class RequestManager : MonoBehaviour
             CreateRequestPrefab();
             requestTimer = 0f;
         }
-        
+
     }
 
     void CreateRequestPrefab()
     {
         // CustomerCSV 파일에서 랜덤한 행 가져오기
         List<Dictionary<string, string>> csvData = RequestCSVReader.Read("CustomerCSV");
-        Dictionary<string, string> randomRow = csvData[Random.Range(0, csvData.Count)];
+
+        // NowRank에 따라 불러올 수 있는 Grade 값의 범위를 설정
+        int minGradeValue = 1;
+        int maxGradeValue = NowRank + 1;
+
+        // CSV에서 랜덤한 행 중에서 조건에 맞는 행을 선택
+        List<Dictionary<string, string>> filteredData = csvData
+            .Where(row => int.TryParse(row["Grade"], out int grade) && grade >= minGradeValue && grade <= maxGradeValue)
+            .ToList();
+
+        Dictionary<string, string> randomRow = filteredData[Random.Range(0, filteredData.Count)];
 
         // requestPrefab 생성
         GameObject newRequest = Instantiate(requestPrefab, requestParentObject);
@@ -108,9 +129,51 @@ public class RequestManager : MonoBehaviour
         Text nameText = newRequest.transform.Find("cosName").GetComponent<Text>();
         Text messageText = newRequest.transform.Find("cosText").GetComponent<Text>();
 
-        // Gold 텍스트 설정
+        // GoldNum 텍스트 설정
         Text goldButtonText = newRequest.GetComponentInChildren<Button>().GetComponentInChildren<Text>();
-        goldButtonText.text = randomRow["Gold"]; // "Gold" 열의 값을 버튼 텍스트에 설정
+
+        // CSV 파일의 Customer 값에 따라서 랜덤한 Gold 범위를 지정
+        int customerTypeGold = int.Parse(randomRow["Customer"]);
+        int goldValue = 0;
+
+        if (NowRank == 0)
+        {
+            if (customerTypeGold == 1)
+            {
+                goldValue = Random.Range(10, 21);
+            }
+            else if (customerTypeGold == 2)
+            {
+                goldValue = Random.Range(40, 51);
+            }
+        }
+
+        if (NowRank == 1)
+        {
+            if (customerTypeGold == 1)
+            {
+                goldValue = Random.Range(20, 31);
+            }
+            else if (customerTypeGold == 2)
+            {
+                goldValue = Random.Range(50, 61);
+            }
+        }
+
+        if (NowRank == 2)
+        {
+            if (customerTypeGold == 1)
+            {
+                goldValue = Random.Range(30, 41);
+            }
+            else if (customerTypeGold == 2)
+            {
+                goldValue = Random.Range(60, 71);
+            }
+        }
+
+        goldButtonText.text = goldValue.ToString();
+
 
         // 이미지 파일 이름 동적으로 생성
         string imageFileName = "Image" + randomRow["Img"];
@@ -151,7 +214,7 @@ public class RequestManager : MonoBehaviour
         Button button = newRequest.GetComponentInChildren<Button>();
         if (button != null)
         {
-            button.onClick.AddListener(() => OnRequestButtonClick(newRequest, int.Parse(randomRow["Gold"])));
+            button.onClick.AddListener(() => OnRequestButtonClick(newRequest, goldValue));
         }
     }
 
@@ -164,6 +227,7 @@ public class RequestManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    // 버튼 클릭 호출 함수
     public void OnRequestButtonClick(GameObject clickedButton, int goldValue)
     {
 
@@ -174,7 +238,7 @@ public class RequestManager : MonoBehaviour
         StartCoroutine(PlayDAnimationAndSwitchToI());
 
         // GoldNum 업데이트
-        DataManager.Instance.nowGold += goldValue;
+        DataManager.Instance.nowGold += int.Parse(clickedButton.GetComponentInChildren<Button>().GetComponentInChildren<Text>().text);
         goldText.text = DataManager.Instance.nowGold.ToString();
         Save();
 
@@ -189,7 +253,10 @@ public class RequestManager : MonoBehaviour
             DataManager.Instance.feverNum++;
             Save();
 
-            if (DataManager.Instance.feverNum == 2)
+            if ((NowRank == 0 && DataManager.Instance.feverNum == 2) ||
+            (NowRank == 1 && DataManager.Instance.feverNum == 4) ||
+            (NowRank == 2 && DataManager.Instance.feverNum == 6))
+
             {
                 // feverImg 오브젝트 활성화
                 GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(true);

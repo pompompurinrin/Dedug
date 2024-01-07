@@ -26,7 +26,10 @@ public class FeverManager : MonoBehaviour
     public Text endGold;
     public Image endImg;
 
-    private float countdownTime = 10f;
+    float countdownTime;
+
+    // 현재 랭크
+    int NowRank;
 
     // 이펙트 관련 변수
     public GameObject feverEffectPrefab; // 클릭 이펙트 프리팹
@@ -43,15 +46,43 @@ public class FeverManager : MonoBehaviour
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
-    void Start()
+    private void Awake()
+    {
+        // 혜린: 공용 변수 설정 및 데이터 로드
+        NowGold = PlayerPrefs.GetInt("NowGold");
+        NowRank = PlayerPrefs.GetInt("NowRank");
+    }
+
+    public void Start()
     {
         // 공용 변수 설정
-        NowGold = DataManager.Instance.nowGold;
+        DataManager.Instance.nowGold = NowGold;
+        DataManager.Instance.nowRank = NowRank;
+    }
+
+    public void OnEnable()
+    {
 
         feverButton.onClick.AddListener(OnClickFeverButton);
         UpdateFeverTimeText();
         data_Dialog = CSVReader.Read("FeverCSV");
+
+        // 랭크에 따라 countdownTime 초기화
+        if (NowRank == 0)
+        {
+            countdownTime = 5f;
+        }
+        else if (NowRank == 1)
+        {
+            countdownTime = 8f;
+        }
+        else if (NowRank == 2)
+        {
+            countdownTime = 10f;
+        }
+
     }
+
 
     void Update()
     {
@@ -66,6 +97,7 @@ public class FeverManager : MonoBehaviour
 
         if (feverBg.activeSelf && countdownTime > 0)
         {
+
             countdownTime -= Time.deltaTime;
             UpdateFeverTimeText();
 
@@ -210,5 +242,8 @@ public class FeverManager : MonoBehaviour
         feverGauge = 0;
         goldText.text = DataManager.Instance.nowGold.ToString();
         endBg.SetActive(false);
+
+
     }
+
 }
