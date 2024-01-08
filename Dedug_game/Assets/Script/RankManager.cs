@@ -46,22 +46,20 @@ public class RankManager : MonoBehaviour
     private const string RankSampleFileName = "RankSample";
     private char[] TRIM_CHARS = { ' ', '\"' };
     int NowRank;
-    string Goods3;
+    string RankGoods;
 
     private void Awake()
     {
-        NowGold = PlayerPrefs.GetInt("NowGold");
-        NowRank = PlayerPrefs.GetInt("NowRank");
-        Goods3 = PlayerPrefs.GetString("Goods3");
-        DataManager.Instance.nowGold = NowGold;
-        DataManager.Instance.nowRank = NowRank;
-        DataManager.Instance.goods3 = Goods3;
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
+        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
+        DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
+       
     }
     private void Start()
     {
         // 초기화 및 필요한 게임 데이터 로드
         nextRank = DataManager.Instance.nowRank + 1;
-        
+
         RankPopUPBG = GameObject.Find("RankPopUPBG").GetComponent<Image>();
         Unlock = GameObject.Find("UnlockCanvas").GetComponent<Canvas>();
         Result = GameObject.Find("ResultCanvas").GetComponent<Canvas>();
@@ -72,14 +70,14 @@ public class RankManager : MonoBehaviour
         Unlock.gameObject.SetActive(false);
         Result.gameObject.SetActive(false);
 
-       
+
         // CSV 파일에서 데이터 읽기
         data_Dialog = CSVReader.Read(RankSampleFileName);
 
         // 랭크 정보 설정 및 언락 확인
         SetupRankInfo();
         UnlockCheck();
-        
+
     }
 
     private void SetupRankInfo()
@@ -87,14 +85,14 @@ public class RankManager : MonoBehaviour
         // 현재 랭크와 다음 랭크의 정보 설정
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
         NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
-        Goods3 = data_Dialog[nextRank]["Goods"].ToString();
+        
         // 각종 효과 및 비용 텍스트 설정
         PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
         PlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
         PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
         PlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
 
-        
+
     }
 
     private int GetIntValue(string key)
@@ -120,11 +118,11 @@ public class RankManager : MonoBehaviour
     public void UnlockCheck()
     {
         //여기서 데이터매니저에게 검사하는 방법이 뭔지 모르겠음... 굿즈 테이블에 따라 바뀔 것 같음
-        if (DataManager.Instance.goods3.ToString() != data_Dialog[nextRank]["Goods"].ToString())
+        if (DataManager.Instance.goods3011 == 0)
         {
-            UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["Goods"].ToString() + "을 획득하면 해금됩니다.";
+            UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["GoodsName"].ToString() + "을 획득하면 해금됩니다.";
             Unlock.gameObject.SetActive(true);
-        }    
+        }
         else
         {
             Unlock.gameObject.SetActive(false);
@@ -183,7 +181,7 @@ public class RankManager : MonoBehaviour
         Result.gameObject.SetActive(true);
         UnlockCheck();
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
-        
+
     }
 
     public void RankPopUPExitClick()
@@ -205,7 +203,7 @@ public class RankManager : MonoBehaviour
         // PlayerPrefs에 현재 값 저장
         PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
-        PlayerPrefs.SetString("Goods3", DataManager.Instance.goods3);
+        PlayerPrefs.SetInt("Goods3011", DataManager.Instance.goods3011);
         PlayerPrefs.Save();
     }
 
@@ -213,15 +211,24 @@ public class RankManager : MonoBehaviour
     {
         Save();
         SceneManager.LoadScene("HomeScene");
-    }    
-    public void testGoods3()
+    }
+    public void testGoods3011()
     {
-        DataManager.Instance.goods3 = "3";
+        DataManager.Instance.goods3011 = 1;
         UnlockCheck();
-    }    
+    }
     public void testGold()
     {
         DataManager.Instance.nowGold = DataManager.Instance.nowGold + 100;
         UnlockCheck();
+    }
+
+    public void Clear()
+    {
+        DataManager.Instance.nowRank = 0;
+        DataManager.Instance. nowGold = 0;
+        DataManager.Instance.goods3011 = 0;
+        UnlockCheck();
+
     }
 }

@@ -17,9 +17,9 @@ public class SaveManager : MonoBehaviour
         // 게임 상태를 저장하는 코드 작성
         PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
-        PlayerPrefs.SetInt("Goods1", DataManager.Instance.goods1);
-        PlayerPrefs.SetInt("Goods2", DataManager.Instance.goods2);
-        PlayerPrefs.SetString("Goods3", DataManager.Instance.goods3);
+        PlayerPrefs.SetInt("Goods1011", DataManager.Instance.goods1011);
+        PlayerPrefs.SetInt("Goods2011", DataManager.Instance.goods2011);
+        PlayerPrefs.SetInt("Goods3011", DataManager.Instance.goods3011);
        
         PlayerPrefs.Save();
     }
