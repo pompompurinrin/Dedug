@@ -174,9 +174,8 @@ public class RequestManager : MonoBehaviour
 
         goldButtonText.text = goldValue.ToString();
 
-
-        // 이미지 파일 이름 동적으로 생성
-        string imageFileName = "Image" + randomRow["Img"];
+        // 이미지 로드
+        string imageFileName = randomRow["Img"];
         imageComponent.sprite = Resources.Load<Sprite>(imageFileName);
 
         nameText.text = randomRow["Name"];
