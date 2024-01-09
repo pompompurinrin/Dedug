@@ -5432,6 +5432,9 @@ MonoBehaviour:
   NowRankName: {fileID: 2129270096}
   Setting: {fileID: 830097272}
   SettingPopCanvas: {fileID: 1385558356}
+  Rank1: {fileID: 21300000, guid: d7ccd88c6e6527642b96bf1d859688a5, type: 3}
+  Rank2: {fileID: 21300000, guid: 7e42effc083e9db4a874214ca6d2b15b, type: 3}
+  Rank3: {fileID: 21300000, guid: 49e8561229b6d3b409d6317ac60017e4, type: 3}
 --- !u!1 &1799314260
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,11 +14,14 @@ public class TopbarManager : MonoBehaviour
 
     public Text GoldAmountText;
     public Text NowRankName;
-
+    Image NowRankImage;
     public Button Setting;
 
     public GameObject SettingPopCanvas;
-    
+
+    public Sprite Rank1;
+    public Sprite Rank2;
+    public Sprite Rank3;
 
     // CSV 파일을 읽어들일 데이터 리스트
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
@@ -34,7 +38,7 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
 
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
-
+        NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
         //시작 시 팝업을 비활성화
         SettingPopupCanvas.SetActive(false);
 
@@ -68,7 +72,21 @@ public class TopbarManager : MonoBehaviour
     void RankSetupInfo()
     {
         data_Dialog = CSVReader.Read(RankSampleFileName);
-        
+        if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 1)
+        {
+            NowRankImage.sprite = Rank1;
+            
+        }
+        else if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 2)
+        {
+            NowRankImage.sprite = Rank2;
+            
+        }
+        else if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 3)
+        {
+            NowRankImage.sprite = Rank3;
+            
+        }
         TopBar();
     }
 

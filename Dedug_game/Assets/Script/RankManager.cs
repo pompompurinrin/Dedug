@@ -17,6 +17,11 @@ public class RankManager : MonoBehaviour
     public Text NextRankName;
     int nextRank;
 
+    // sprite 지정
+    public Sprite Rank1;
+    public Sprite Rank2;
+    public Sprite Rank3;
+
     // 각종 효과 및 결과를 나타내는 텍스트들
     public Text PlusGuestState;
     public Text PlusGoldState;
@@ -59,7 +64,8 @@ public class RankManager : MonoBehaviour
     {
         // 초기화 및 필요한 게임 데이터 로드
         nextRank = DataManager.Instance.nowRank + 1;
-
+        NowRankImage = GameObject.Find("NowRankImage").GetComponent<Image>();
+        NextRankImage = GameObject.Find("NextRankImage").GetComponent<Image>();
         RankPopUPBG = GameObject.Find("RankPopUPBG").GetComponent<Image>();
         Unlock = GameObject.Find("UnlockCanvas").GetComponent<Canvas>();
         Result = GameObject.Find("ResultCanvas").GetComponent<Canvas>();
@@ -85,16 +91,31 @@ public class RankManager : MonoBehaviour
         // 현재 랭크와 다음 랭크의 정보 설정
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
         NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
-        
+
         // 각종 효과 및 비용 텍스트 설정
         PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
         PlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
         PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
         PlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
 
+        if(Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 1)
+        {
+            NowRankImage.sprite = Rank1;
+            NextRankImage.sprite = Rank2;
+        }
+        else if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 2)
+        {
+            NowRankImage.sprite = Rank2;
+            NextRankImage.sprite = Rank3;
+        }
+        else if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 3)
+        {
+            NowRankImage.sprite = Rank3;
+            NextRankImage.sprite = Rank1;
+        }
 
     }
-
+   
     private int GetIntValue(string key)
     {
         // CSV 데이터에서 특정 키의 정수값을 가져오는 메서드
@@ -108,6 +129,7 @@ public class RankManager : MonoBehaviour
                 {
                     return intValue;
                 }
+
             }
         }
 
@@ -166,8 +188,7 @@ public class RankManager : MonoBehaviour
 
         Save();
         // 랭크 정보 및 결과 텍스트 업데이트
-        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
-        NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
+        SetupRankInfo();
         SpendGoldText.text = DataManager.Instance.nowGold.ToString() + "/" + data_Dialog[DataManager.Instance.nowRank]["rank_gold"].ToString();
 
         ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
@@ -180,7 +201,7 @@ public class RankManager : MonoBehaviour
         RankPopUPBG.gameObject.SetActive(false);
         Result.gameObject.SetActive(true);
         UnlockCheck();
-        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+        
 
     }
 
@@ -228,6 +249,7 @@ public class RankManager : MonoBehaviour
         DataManager.Instance.nowRank = 0;
         DataManager.Instance. nowGold = 0;
         DataManager.Instance.goods3011 = 0;
+        SetupRankInfo();
         UnlockCheck();
 
     }
