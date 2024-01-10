@@ -15,6 +15,7 @@ public class UiManager : MonoBehaviour
     public Canvas BG_Cha1;
     public Canvas PopUpBG_GoodsInfo;
     public Canvas BG_Cha1_Story;
+    public Canvas PopUpBG_MainStoryCheck;
 
 
     public Text GoodsNameText;
@@ -48,6 +49,16 @@ public class UiManager : MonoBehaviour
     public Button Cha_1_Story3_Btn;
     public Button Back2Cha_1_btn;
 
+   //팝업창 다르게 하기 위해서, 처음 각 버튼을 눌렀는지 확인하는 작업을 위한 준비
+    private bool isFirstMainStory1BtnClick = true;
+    private bool isFirstMainStory2BtnClick = true;
+    private bool isFirstMainStory3BtnClick = true;
+    private bool isFirstCha1_Story1BtnClick = true;
+    private bool isFirstCha1_Story2BtnClick = true;
+    private bool isFirstCha1_Story3BtnClick = true;
+
+
+
     /* void Start()
      {
          BG_Home = GameObject.Find("BG_Home").GetComponent<Canvas>();
@@ -74,11 +85,9 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         FindAndAssignCanvas();
-        // 나머지 Start 내용...
+       }
 
-    }
-
-    void FindAndAssignCanvas()
+    void FindAndAssignCanvas() //null 오류가 자꾸 떠서 어디에 뭐가 없는지 검사하는 것
     {
         FindAndAssignCanvas("BG_Home", ref BG_Home);
         FindAndAssignCanvas("BG_MainStory", ref BG_MainStory);
@@ -88,6 +97,7 @@ public class UiManager : MonoBehaviour
         FindAndAssignCanvas("BG_Cha1", ref BG_Cha1);
         FindAndAssignCanvas("PopUpBG_GoodsInfo", ref PopUpBG_GoodsInfo);
         FindAndAssignCanvas("BG_Cha1_Story", ref BG_Cha1_Story);
+        FindAndAssignCanvas("PopUpBG_MainStoryCheck", ref PopUpBG_MainStoryCheck);
     }
 
     void FindAndAssignCanvas(string canvasName, ref Canvas canvasVariable)
@@ -110,7 +120,7 @@ public class UiManager : MonoBehaviour
         if (GoodsNameText == null)
         {
             Debug.LogError("GoodsNameText Text component is missing.");
-        }
+        }//여기까지가 검사
     }
 
 
@@ -134,9 +144,43 @@ public class UiManager : MonoBehaviour
 
     }
 
-    public void MainStory_1_BtnClick()
+    public void MainStory_1_BtnClick()   //최초 클릭시, 그 이후 클릭시 이미지 변경 하는 방법, 대신 no버튼, 스토리체크 버튼에 반영해줘야 함
     {
-        PopUpBG_MainStory.gameObject.SetActive(true);
+        if (isFirstMainStory1BtnClick)
+        {
+            PopUpBG_MainStory.gameObject.SetActive(true);
+            isFirstMainStory1BtnClick = false;
+        }
+        else
+        {
+            PopUpBG_MainStoryCheck.gameObject.SetActive(true);
+        }
+    }
+
+    public void MainStory_2_BtnClick()   
+    {
+        if (isFirstMainStory2BtnClick)
+        {
+            PopUpBG_MainStory.gameObject.SetActive(true);
+            isFirstMainStory2BtnClick = false;
+        }
+        else
+        {
+            PopUpBG_MainStoryCheck.gameObject.SetActive(true);
+        }
+    }
+
+    public void MainStory_3_BtnClick()
+    {
+        if (isFirstMainStory3BtnClick)
+        {
+            PopUpBG_MainStory.gameObject.SetActive(true);
+            isFirstMainStory3BtnClick = false;
+        }
+        else
+        {
+            PopUpBG_MainStoryCheck.gameObject.SetActive(true);
+        }
     }
 
     public void MainStoryYes_BtnClick()
@@ -157,22 +201,58 @@ public class UiManager : MonoBehaviour
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_Goldplus.gameObject.SetActive(false);
         Test.gameObject.SetActive(false);
-       
+        PopUpBG_MainStoryCheck.gameObject.SetActive(false);
+
     }
 
     public void OnMainStoryNo_BtnClick()
     {
         PopUpBG_MainStory.gameObject.SetActive(false);
-    }
-
-    public void OnCha_1_Story_BtnClick()
-    {
-        BG_Cha1_Story.gameObject.SetActive(true); 
+        PopUpBG_MainStoryCheck.gameObject.SetActive(false);
     }
 
     public void OnCha_1_Story1_BtnClick()
     {
-        PopUpBG_MainStory.gameObject.SetActive(true);
+        if (isFirstCha1_Story1BtnClick)
+        {
+            PopUpBG_MainStory.gameObject.SetActive(true);
+            isFirstCha1_Story1BtnClick = false;
+        }
+        else
+        {
+            PopUpBG_MainStoryCheck.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnCha_1_Story2_BtnClick()
+    {
+        if (isFirstCha1_Story2BtnClick)
+        {
+            PopUpBG_MainStory.gameObject.SetActive(true);
+            isFirstCha1_Story2BtnClick = false;
+        }
+        else
+        {
+            PopUpBG_MainStoryCheck.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnCha_1_Story3_BtnClick()
+    {
+        if (isFirstCha1_Story3BtnClick)
+        {
+            PopUpBG_MainStory.gameObject.SetActive(true);
+            isFirstCha1_Story3BtnClick = false;
+        }
+        else
+        {
+            PopUpBG_MainStoryCheck.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnCha_1_Story_BtnClick()
+    {
+        BG_Cha1_Story.gameObject.SetActive(true);
     }
 
 
@@ -182,7 +262,7 @@ public class UiManager : MonoBehaviour
     }
 
 
-    public void GoodsPopUpMessage(int targetGoodsID)
+    /*public void GoodsPopUpMessage(int targetGoodsID)  //팝업 메세지 텍스트 다르게 띄우려던 것
     {
         List<Dictionary<string, object>> goodsData = CSVReader.Read("GoodsCSV");
 
@@ -201,13 +281,13 @@ public class UiManager : MonoBehaviour
         }
 
         // PopUpBG_GoodsInfo를 활성화
-        PopUpBG_GoodsInfo.gameObject.SetActive(true);
-    }
+        PopUpBG_GoodsInfo.gameObject.SetActive(true);  
+    }*/
 
-    public void OnCha_1_1011_BtnClick()
+  /*  public void OnCha_1_1011_BtnClick()
     {
         GoodsPopUpMessage(1011);
-    }
+    }*/
 
    
     public void OnCha_1_1012_BtnClick()
