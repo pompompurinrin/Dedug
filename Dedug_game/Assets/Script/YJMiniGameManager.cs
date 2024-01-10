@@ -64,6 +64,22 @@ public class YJMiniGameManager : MonoBehaviour
     private Queue<Image> activeColorEffects = new Queue<Image>();
     private Queue<Button> expectedBongButtons = new Queue<Button>();
 
+    // 하드 응원봉 타임 동안 클릭 여부를 추적하는 변수
+    private bool isHardBongTimeButtonClick = false;
+
+    // 게임 일시정지 관련 변수
+    public Image stopBg;
+    public Button stop;
+    public Button keepGoing;
+    public Button goTitle;
+
+    public Image realStopBg;
+    public Button stopOk;
+    public Button stopNo;
+
+    // 게임 일시정지 상태를 나타내는 변수
+    private bool isGamePaused = false;
+
     private void Start()
     {
         // 게임 시작 시 호출되는 함수
@@ -119,6 +135,10 @@ public class YJMiniGameManager : MonoBehaviour
 
     private void UpdateGame()
     {
+        // 일시정지 상태에서는 게임 업데이트를 건너뛰기
+        if (isGamePaused)
+            return;
+
         // 0. 제한시간이 종료된 경우
         if (gameTime <= 0)
         {
@@ -132,7 +152,7 @@ public class YJMiniGameManager : MonoBehaviour
         gameTime--;
 
         // 2. bongTime 동안 랜덤한 colorEffect 활성화
-        if (gameTime >= 60 && gameTime % 6 == 0)
+        if (gameTime >= 75 && gameTime % 5 == 0)
         {
             ActivateRandomColorEffect();
             isBongTimeActive = true;
@@ -142,18 +162,68 @@ public class YJMiniGameManager : MonoBehaviour
         }
 
         // (5) countDown < 60일 경우
-        if (gameTime < 60 && gameTime % 10 == 0)
+        if (gameTime > 40 && gameTime < 75 && gameTime % 7 == 0)
         {
-            // 10초마다 랜덤한 colorEffect를 2가지 이미지를 3초 동안 활성화 후 비활성화
+            // 랜덤한 colorEffect를 2가지 이미지를 3초 동안 활성화 후 비활성화
             StartCoroutine(ActivateRandomColorEffects());
         }
 
+        if (gameTime <= 40 && gameTime % 10 == 0)
+        {
+            StartCoroutine(TooHardRandomColorEffects());
+        }
 
         // 3. 게임 버튼 클릭 처리
         if (Input.GetMouseButtonDown(0))
         {
             HandleButtonClick();
         }
+
+        // 4. 스코어가 0 미만으로 내려가지 않도록 확인
+        if (score < 0)
+        {
+            score = 0;
+            costText.text = score.ToString();
+        }
+    }
+
+    // 투 하드 봉타임 진행
+
+    private IEnumerator TooHardRandomColorEffects()
+    {
+        expectedBongButtons.Clear(); // 기존에 저장된 버튼 초기화
+
+        for (int i = 0; i < 3; i++)
+        {
+            // 랜덤한 colorEffect를 가져와서 큐에 추가
+            Image randomColorEffect = GetRandomColorEffect();
+            activeColorEffects.Enqueue(randomColorEffect);
+
+            // 1.5초 동안 활성화
+            randomColorEffect.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+
+            // 대응하는 bong 버튼을 tooExpectedBongButtons에 저장
+            expectedBongButtons.Enqueue(GetMatchingBongButton(randomColorEffect));
+
+            // 비활성화
+            randomColorEffect.gameObject.SetActive(false);
+        }
+
+        // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
+        isHardBongTimeActive = true;
+        isHardBongTimeButtonClick = true;
+        hardStart.gameObject.SetActive(true); // hardStart를 활성화
+        Invoke("DeactivateHardBongTime", hardBongTimeNext);
+
+        yield return new WaitForSeconds(hardBongTimeNext);
+
+        // hardBongTimeNext가 끝날 때 isHardBongTimeActive = false로 하고 동시에 hardStart를 비활성화
+        isHardBongTimeActive = false;
+        hardStart.gameObject.SetActive(false);
+
+        // hardBongTime이 종료되면 다시 activeColorEffects를 비움
+        activeColorEffects.Clear();
     }
 
     // 하드 봉타임 진행
@@ -180,6 +250,7 @@ public class YJMiniGameManager : MonoBehaviour
 
         // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
         isHardBongTimeActive = true;
+        isHardBongTimeButtonClick = true;
         hardStart.gameObject.SetActive(true); // hardStart를 활성화
         Invoke("DeactivateHardBongTime", hardBongTimeNext);
 
@@ -197,6 +268,16 @@ public class YJMiniGameManager : MonoBehaviour
     private void DeactivateHardBongTime()
     {
         isHardBongTimeActive = false;
+        // 하드 봉 타임 동안 버튼이 클릭되지 않았을 경우 score를 -1 감소
+        if (isHardBongTimeButtonClick == true)
+        {
+            score--;
+            costText.text = score.ToString();
+
+            // 오답 이미지 활성화
+            fail.gameObject.SetActive(true);
+            Invoke("DeactivateFailImage", 2.0f);
+        }
         // hardBongTime이 종료되면 다시 activeColorEffects를 비움
         activeColorEffects.Clear();
     }
@@ -285,9 +366,11 @@ public class YJMiniGameManager : MonoBehaviour
             }
         }
 
-
-        // 게임 종료 체크
-        CheckGameEnd();
+        if (isGameRunning)
+        {
+            // 게임 종료 체크
+            CheckGameEnd();
+        }
 
     }
 
@@ -321,6 +404,9 @@ public class YJMiniGameManager : MonoBehaviour
 
             // UI 업데이트
             UpdateUI();
+
+            // 클릭 여부 변수 초기화
+            isHardBongTimeButtonClick = false;
         }
     }
 
@@ -329,7 +415,7 @@ public class YJMiniGameManager : MonoBehaviour
     {
 
         // bongTime이 진행 중일 때만 처리
-        if (isBongTimeActive == true)
+        if (isGameRunning && isBongTimeActive == true)
         {
             // 활성화된 colorEffect와 대응되는 bong 버튼인지 확인
             if (IsMatchingBongButton(bongButton))
@@ -476,5 +562,63 @@ public class YJMiniGameManager : MonoBehaviour
         messageBg.SetActive(false);
         messageText.text = "";
         loveEffect.gameObject.SetActive(false);
+    }
+
+
+
+    // 게임 일시정지 버튼 클릭 시 호출되는 함수
+    public void StopButtonClick()
+    {
+        if (isGameRunning && !isGamePaused)
+        {
+            // 게임 일시정지
+            PauseGame();
+        }
+        else if (isGameRunning && isGamePaused)
+        {
+            // 게임 재개
+            ResumeGame();
+        }
+    }
+
+    // 게임 일시정지 처리
+    private void PauseGame()
+    {
+        isGamePaused = true;
+
+        // 게임 일시정지 UI 활성화
+        stopBg.gameObject.SetActive(true);
+    }
+
+    // 게임으로 돌아가기 버튼 함수
+    public void keepGoingClick()
+    {
+        // 게임 일시정지 UI 비활성화
+        stopBg.gameObject.SetActive(false);
+        ResumeGame();
+    }
+
+    // 굿즈구매로 돌아가기 버튼 함수
+    public void goTitleClick()
+    {
+        // 게임 일시정지 UI 비활성화
+        stopBg.gameObject.SetActive(false);
+
+        // 리얼스톱Bg 활성화
+        realStopBg.gameObject.SetActive(true);
+    }
+
+    // 게임으로 돌아가기 버튼 함수
+    public void stopNoClick()
+    {
+        // 리얼스톱Bg 활성화
+        realStopBg.gameObject.SetActive(false);
+        ResumeGame();
+    }
+
+    // 게임 재개 처리
+    private void ResumeGame()
+    {
+        isGamePaused = false;
     }
 }
