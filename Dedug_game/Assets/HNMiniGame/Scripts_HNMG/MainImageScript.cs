@@ -23,7 +23,7 @@ public class MainImageScript : MonoBehaviour
         // 이미지가 활성화되어 있고, 게임 컨트롤러가 이미지를 열 수 있는 상태일 때 실행
         if (image_unknown.activeSelf && gameController.canOpen)
         {
-            animator.SetTrigger("Flip");
+           
             // 이미지를 비활성화하고, 게임 컨트롤러의 imageOpened 함수 호출
             image_unknown.SetActive(false);
             gameController.imageOpened(this);
