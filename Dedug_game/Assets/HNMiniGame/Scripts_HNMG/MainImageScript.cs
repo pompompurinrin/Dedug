@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainImageScript : MonoBehaviour
@@ -12,14 +13,17 @@ public class MainImageScript : MonoBehaviour
     // 게임 컨트롤러와 연결되는 변수
     [SerializeField] private GameControllerScript gameController;
 
+    Animator animator;
+
     // 이미지를 클릭했을 때 호출되는 함수
     public void OnClick()
     {
-       
+        
 
         // 이미지가 활성화되어 있고, 게임 컨트롤러가 이미지를 열 수 있는 상태일 때 실행
         if (image_unknown.activeSelf && gameController.canOpen)
         {
+            animator.SetTrigger("Flip");
             // 이미지를 비활성화하고, 게임 컨트롤러의 imageOpened 함수 호출
             image_unknown.SetActive(false);
             gameController.imageOpened(this);
@@ -49,16 +53,17 @@ public class MainImageScript : MonoBehaviour
     {
         image_unknown.SetActive(true); // 이미지를 활성화하여 가림
     }
+    public void Start()
+    {
+        animator = GetComponent<Animator>();
+        image_unknown.SetActive(false); 
+        Invoke("DisableShowImage", 2);
+    }
     public void DisableShowImage()
     {
         image_show.SetActive(false); 
         image_unknown.SetActive(true);
 
 
-    }
-    public void Start()
-    {
-        image_unknown.SetActive(false); 
-        Invoke("DisableShowImage", 3);
     }
 }
