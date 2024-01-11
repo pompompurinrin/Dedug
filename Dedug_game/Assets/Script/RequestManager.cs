@@ -175,7 +175,7 @@ public class RequestManager : MonoBehaviour
         goldButtonText.text = goldValue.ToString();
 
         // 이미지 로드
-        string imageFileName = randomRow["Img"];
+        string imageFileName = "Customer" + randomRow["Img"];
         imageComponent.sprite = Resources.Load<Sprite>(imageFileName);
 
         nameText.text = randomRow["Name"];
