@@ -1,4 +1,4 @@
-level,rank,goldplus,guest,time,goods,rank_gold,ticket_gold,mainimage,GoodsName
-1,ë¯¼ê°„??1,10,10,30,100,100,1,,
-2,?…ë¬¸,20,2,30,3,300,150,2,ÃÊ·ÕÀÌÀÇ ¹îÁö
-3,?¨ì…˜ ?˜ì§‘ê°€,30,3,30,3,500,200,3,¹Ù´ÙÀÇ Å°¸µ
+level,rank,goldplus,guest,time,goods,rank_gold,ticket_gold,mainimage,GoodsName,ResultImg
+1,ë¯¼ê°„??1,10,10,30,100,100,1,,,Rank1_NoBG
+2,?…ë¬¸,20,2,30,3,300,150,2,ÃÊ·ÕÀÌÀÇ ¹îÁö,Rank2_NoBG
+3,?¨ì…˜ ?˜ì§‘ê°€,30,3,30,3,500,200,3,¹Ù´ÙÀÇ Å°¸µ,Rank3_NoBG

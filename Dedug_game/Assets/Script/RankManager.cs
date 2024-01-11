@@ -3,9 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-using static UnityEngine.Mesh;
 using System;
-using System.Net;
+
 
 public class RankManager : MonoBehaviour
 {
@@ -17,6 +16,8 @@ public class RankManager : MonoBehaviour
     public Image NextRankImage;
     public Text NextRankName;
     Image ResultChr;
+    public Image ResultBG;
+    public GameObject effectPrefab;
     int nextRank;
     public string imageFileName;
 
@@ -233,6 +234,16 @@ public class RankManager : MonoBehaviour
         
         imageFileName = data_Dialog[DataManager.Instance.nowRank]["ResultImg"].ToString();
         ResultChr.sprite = Resources.Load<Sprite>(imageFileName);
+
+        //GameObject effectInstance = Instantiate(effectPrefab, ResultChr.transform.position, Quaternion.identity);
+
+        // Vector3 newPosition = effectPrefab.transform.position;
+         //  newPosition.z = 2f;
+        //effectPrefab.transform.position = newPosition;
+
+        // ÇÁ¸®ÆÕ Å©±â ¼³Á¤
+        // Vector3 desiredScale = new Vector3(0.9f, 0.9f, 0.9f);  
+        //effectInstance.transform.localScale = desiredScale;
 
         ResultPlusGuestState.text = $"Ä¿¹Ì¼Ç µîÀå ¼Õ´Ô {GetIntValue("guest")}Á¾ »ó½Â";
         ResultPlusGoldState.text = $"Ä¿¹Ì¼Ç 1È¸´ç {GetIntValue("goldplus")}°ñµå »ó½Â";
