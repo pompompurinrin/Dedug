@@ -19,12 +19,8 @@ public class TimerController : MonoBehaviour
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
 
-        
-        
         Invoke("Timer", 4);
         InvokeRepeating("ReadyCounter", 0f, 1f);
-      
-
     }
 
     public void Timer()
@@ -32,6 +28,7 @@ public class TimerController : MonoBehaviour
         // 1초마다 타이머 업데이트
         InvokeRepeating("UpdateTimer", 0f, 1f);
     }
+
     public void ReadyCounter()
     {
         readyCount.gameObject.SetActive(true);

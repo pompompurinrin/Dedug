@@ -31,12 +31,12 @@ public class MainImageScript : MonoBehaviour
             Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
 
 
-            transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+            transform.DOScale(targetScale, 0.1f).OnComplete(() => // 람다식
 
             {
                 image_unknown.SetActive(false);
                 gameController.imageOpened(this);
-                transform.DOScale(originalScale, 0.2f);
+                transform.DOScale(originalScale, 0.1f);
 
             }
             
@@ -70,7 +70,7 @@ public class MainImageScript : MonoBehaviour
         Vector3 originalScale = transform.localScale;
         Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
        
-        transform.DOShakePosition(0.5f, 50).OnComplete(() =>
+        transform.DOShakePosition(0.3f, 50).OnComplete(() =>
 
 
             { transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식

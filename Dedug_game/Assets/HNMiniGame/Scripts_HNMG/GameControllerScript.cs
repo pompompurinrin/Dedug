@@ -43,6 +43,8 @@ public class GameControllerScript : MonoBehaviour
     // 게임이 시작될 때 호출되는 함수
     private void Start()
     {
+        
+
         // 이미지 위치를 무작위로 섞음
         int[] locations = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
 
@@ -68,7 +70,7 @@ public class GameControllerScript : MonoBehaviour
                 }
 
                 int index = j * columns + i;
-                Debug.Log(index);
+               
                 int id = locations[index];
                 gameImage.ChangeSprite(id, images[id]);
 
@@ -123,7 +125,7 @@ public class GameControllerScript : MonoBehaviour
             scoreText.text=score.ToString();
 
             Vector3 originalScale = new Vector3(1, 1, 1);
-            Vector3 targetScale = new Vector3(2f, 2f, 2f);
+            Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
 
 
 
