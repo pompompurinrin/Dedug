@@ -9,6 +9,11 @@ public class DataManager : Singleton<DataManager>
     public string goods3;
     //DataManager.instance.DataTable?
 
+    public int[] HyeJingoodsNum = new int[70];
+    // 리스트 배열 비슷한건데, 크기 지정을 안해도 되는 배열
+    // 나중에 원하는대로 리스트의 크기나 순서들을 바꿀 수가 있어
+    // 개수 != 0 확인을 해서 레드닷 띄우고, 확인하면 없애고
+
     void Awake()
     {
         DataLoad();

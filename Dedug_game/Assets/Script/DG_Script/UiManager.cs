@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -19,7 +20,9 @@ public class UiManager : MonoBehaviour
 
 
     public Text GoodsNameText;
+    public Text GoodsDesc;
 
+    public Image GoodsImage;
 
 
     public Button MainStory_Btn;
@@ -49,6 +52,8 @@ public class UiManager : MonoBehaviour
     public Button Cha_1_Story3_Btn;
     public Button Back2Cha_1_btn;
 
+   
+
    //팝업창 다르게 하기 위해서, 처음 각 버튼을 눌렀는지 확인하는 작업을 위한 준비
     private bool isFirstMainStory1BtnClick = true;
     private bool isFirstMainStory2BtnClick = true;
@@ -57,74 +62,44 @@ public class UiManager : MonoBehaviour
     private bool isFirstCha1_Story2BtnClick = true;
     private bool isFirstCha1_Story3BtnClick = true;
 
+    // CSV 파일을 읽어들일 데이터 리스트
+    List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
+/*    private const string GoodsCSV = "GoodsCSV";
+    private char[] TRIM_CHARS = { ' ', '\"' };*/
 
 
-    /* void Start()
+
+    void Start()
      {
-         BG_Home = GameObject.Find("BG_Home").GetComponent<Canvas>();
-         BG_MainStory = GameObject.Find("GameObjectManager").transform.Find("BG_MainStory").GetComponent<Canvas>(); 
+         //BG_Home = GameObject.Find("BG_Home").GetComponent<Canvas>();
+         //BG_MainStory = GameObject.Find("GameObjectManager").transform.Find("BG_MainStory").GetComponent<Canvas>(); 
 
-         PopUpBG_MainStory = GameObject.Find("PopUpBG_MainStory").GetComponent<Canvas>();
-         PopUpBG_Goldplus = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_Goldplus").GetComponent<Canvas>();
-         Test = GameObject.Find("GameObjectManager").transform.Find("Test").GetComponent<Canvas>();
-         BG_Cha1 = GameObject.Find("GameObjectManager").transform.Find("BG_Cha1").GetComponent<Canvas>();
-         PopUpBG_GoodsInfo = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_GoodsInfo").GetComponent<Canvas>();
-         BG_Cha1_Story = GameObject.Find("GameObjectManager").transform.Find("BG_Cha1_Story").GetComponent<Canvas>();
+         //PopUpBG_MainStory = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_MainStory").GetComponent<Canvas>();
+         //PopUpBG_Goldplus = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_Goldplus").GetComponent<Canvas>();
+         //Test = GameObject.Find("GameObjectManager").transform.Find("Test").GetComponent<Canvas>();
+         //BG_Cha1 = GameObject.Find("GameObjectManager").transform.Find("BG_Cha1").GetComponent<Canvas>();
+         //PopUpBG_GoodsInfo = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_GoodsInfo").GetComponent<Canvas>();
+         //BG_Cha1_Story = GameObject.Find("GameObjectManager").transform.Find("BG_Cha1_Story").GetComponent<Canvas>();
+         //PopUpBG_MainStoryCheck = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_MainStoryCheck").GetComponent<Canvas>();
 
-        GoodsNameText = GameObject.Find("GameObjectManager").transform.Find("GoodsNameText").GetComponent<Text>();
-
-        BG_MainStory.gameObject.SetActive(false); //GameObject.Find("GameObjectManager").transform.Find("BG_MainStory").gameObject.SetActive(true);
+         BG_MainStory.gameObject.SetActive(false); //GameObject.Find("GameObjectManager").transform.Find("BG_MainStory").gameObject.SetActive(true);
          PopUpBG_MainStory.gameObject.SetActive(false);
          PopUpBG_Goldplus.gameObject.SetActive(false);
          Test.gameObject.SetActive(false);
          BG_Cha1.gameObject.SetActive(false);
          PopUpBG_GoodsInfo.gameObject.SetActive(false);
          BG_Cha1_Story.gameObject.SetActive(false);
-     }*/
 
-    void Start()
-    {
-        FindAndAssignCanvas();
-       }
+        
 
-    void FindAndAssignCanvas() //null 오류가 자꾸 떠서 어디에 뭐가 없는지 검사하는 것
-    {
-        FindAndAssignCanvas("BG_Home", ref BG_Home);
-        FindAndAssignCanvas("BG_MainStory", ref BG_MainStory);
-        FindAndAssignCanvas("PopUpBG_MainStory", ref PopUpBG_MainStory);
-        FindAndAssignCanvas("PopUpBG_Goldplus", ref PopUpBG_Goldplus);
-        FindAndAssignCanvas("Test", ref Test);
-        FindAndAssignCanvas("BG_Cha1", ref BG_Cha1);
-        FindAndAssignCanvas("PopUpBG_GoodsInfo", ref PopUpBG_GoodsInfo);
-        FindAndAssignCanvas("BG_Cha1_Story", ref BG_Cha1_Story);
-        FindAndAssignCanvas("PopUpBG_MainStoryCheck", ref PopUpBG_MainStoryCheck);
+
+        // CSV 파일에서 데이터 읽기
+        data_Dialog = CSVReader.Read("GoodsCSV");
+
+        
+
     }
-
-    void FindAndAssignCanvas(string canvasName, ref Canvas canvasVariable)
-    {
-        Transform canvasTransform = GameObject.Find("GameObjectManager")?.transform.Find(canvasName);
-        if (canvasTransform != null)
-        {
-            canvasVariable = canvasTransform.GetComponent<Canvas>();
-            if (canvasVariable == null)
-            {
-                Debug.LogError($"{canvasName} Canvas component is missing.");
-            }
-        }
-        else
-        {
-            Debug.LogError($"{canvasName} Canvas not found.");
-        }
-
-        GoodsNameText = GameObject.Find("GameObjectManager").transform.Find("GoodsNameText").GetComponent<Text>();
-        if (GoodsNameText == null)
-        {
-            Debug.LogError("GoodsNameText Text component is missing.");
-        }//여기까지가 검사
-    }
-
-
-
+   
 
     public void MainStory_BtnClick()
     { 
@@ -262,58 +237,113 @@ public class UiManager : MonoBehaviour
     }
 
 
-    /*public void GoodsPopUpMessage(int targetGoodsID)  //팝업 메세지 텍스트 다르게 띄우려던 것
-    {
-        List<Dictionary<string, object>> goodsData = CSVReader.Read("GoodsCSV");
+ 
+     public GameObject[] sooA = new GameObject[20];
+     public GameObject[] bada = new GameObject[20];
+     public GameObject[] choLong = new GameObject[20];
 
-        // 굿즈 아이디가 일치하는 행 찾기
-        Dictionary<string, object> selectedGoods = goodsData.Find(goods =>
-            goods.ContainsKey("GoodsID") &&
-            goods["GoodsID"] is int && // 타입 체크를 통해 적절한 캐스팅이 가능한지 확인
-            (int)goods["GoodsID"] == targetGoodsID);
-
-        // 찾은 굿즈 정보를 PopUpBG_GoodsInfo에 반영
-        if (selectedGoods != null)
+     public void OnCha_1_1011_BtnClick()
+      {
+        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
+        for (int i = 0; i < sooA.Length; i++)
         {
-            // 예시: GoodsName을 Text로 표시
-            Text goodsNameText = PopUpBG_GoodsInfo.transform.Find("GoodsNameText").GetComponent<Text>();
-            goodsNameText.text = selectedGoods.ContainsKey("GoodsName") ? selectedGoods["GoodsName"].ToString() : "N/A";
+            if (selectGoods == sooA[i])
+            {
+                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
+                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
+                GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
+                GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
+                PopUpBG_GoodsInfo.gameObject.SetActive(true);
+            }
         }
+        //string imageFileName = "Goods1011";
+        //Debug.Log(imageFileName);
+        //GoodsImage.sprite = Resources.Load<Sprite>(imageFileName); 
+        
 
-        // PopUpBG_GoodsInfo를 활성화
-        PopUpBG_GoodsInfo.gameObject.SetActive(true);  
-    }*/
+        //GoodsNameText.text = data_Dialog[0]["GoodsName"].ToString();
+        //GoodsDesc.text = data_Dialog[0]["GoodsDesc"].ToString();
 
-  /*  public void OnCha_1_1011_BtnClick()
-    {
-        GoodsPopUpMessage(1011);
-    }*/
+        //PopUpBG_GoodsInfo.gameObject.SetActive(true);
 
-   
+    }
+
+    /* public void OnCha_2_1011_BtnClick()
+     {
+         GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
+         for (int i = 20; i < bada.Length + 40; i++)
+         {
+             if (selectGoods == bada[i])
+             {
+                 string imageFileName = data_Dialog[i]["GoodsID"].ToString();
+                 GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
+                 GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
+                 GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
+                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
+             }
+         }
+         //string imageFileName = "Goods1011";
+         //Debug.Log(imageFileName);
+         //GoodsImage.sprite = Resources.Load<Sprite>(imageFileName); 
+
+
+         //GoodsNameText.text = data_Dialog[0]["GoodsName"].ToString();
+         //GoodsDesc.text = data_Dialog[0]["GoodsDesc"].ToString();
+
+         //PopUpBG_GoodsInfo.gameObject.SetActive(true);
+
+     }*/
+
+
+
     public void OnCha_1_1012_BtnClick()
     {
-        PopUpBG_GoodsInfo.gameObject.SetActive(true);
+        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
+        for (int i = 0; i < sooA.Length; i++)
+        {
+            if (selectGoods == sooA[i])
+            {
+                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
+                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
+                GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
+                GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
+                PopUpBG_GoodsInfo.gameObject.SetActive(true);
+            }
+        }
+        //string imageFileName = data_Dialog[3]["GoodsID"].ToString();
+        //GoodsImage.sprite = Resources.Load<Sprite>("Goods"+imageFileName);
+
+        //GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
+        //GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
+        //PopUpBG_GoodsInfo.gameObject.SetActive(true);
     }
 
 
     public void OnCha_1_1013_BtnClick()
     {
+        GoodsNameText.text = data_Dialog[6]["GoodsName"].ToString();
+        GoodsDesc.text = data_Dialog[6]["GoodsDesc"].ToString();
         PopUpBG_GoodsInfo.gameObject.SetActive(true);
     }
 
     public void OnCha_1_1014_BtnClick()
     {
+        GoodsNameText.text = data_Dialog[9]["GoodsName"].ToString();
+        GoodsDesc.text = data_Dialog[9]["GoodsDesc"].ToString();
         PopUpBG_GoodsInfo.gameObject.SetActive(true);
     }
 
     public void OnCha_1_1015_BtnClick()
     {
+        GoodsNameText.text = data_Dialog[12]["GoodsName"].ToString();
+        GoodsDesc.text = data_Dialog[12]["GoodsDesc"].ToString();
         PopUpBG_GoodsInfo.gameObject.SetActive(true);
     }
 
     public void OnCha_1_1016_BtnClick()
     {
-       
+        GoodsNameText.text = data_Dialog[15]["GoodsName"].ToString();
+        GoodsDesc.text = data_Dialog[15]["GoodsDesc"].ToString();
         PopUpBG_GoodsInfo.gameObject.SetActive(true);
     }
 
