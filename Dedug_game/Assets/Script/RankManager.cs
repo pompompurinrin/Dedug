@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 using static UnityEngine.Mesh;
 using System;
+using System.Net;
 
 public class RankManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class RankManager : MonoBehaviour
     public Image PopUPBG;
     public Image NextRankImage;
     public Text NextRankName;
+    Image ResultChr;
     int nextRank;
+    public string imageFileName;
 
     // sprite 지정
     public Sprite Rank1;
@@ -50,9 +53,7 @@ public class RankManager : MonoBehaviour
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string RankSampleFileName = "RankSample";
     private char[] TRIM_CHARS = { ' ', '\"' };
-    int NowRank;
-    string RankGoods;
-
+    
     private void Awake()
     {
         DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
@@ -71,6 +72,7 @@ public class RankManager : MonoBehaviour
         Result = GameObject.Find("ResultCanvas").GetComponent<Canvas>();
         RankUPBtn = GameObject.Find("RankUPBtn").GetComponent<Button>();
         anim = GameObject.Find("RankPopUPGroup").GetComponent<Animator>();
+        ResultChr = Result.transform.Find("ResultCharacter").GetComponent<Image>();
 
         RankPopUPBG.gameObject.SetActive(false);
         Unlock.gameObject.SetActive(false);
@@ -88,17 +90,35 @@ public class RankManager : MonoBehaviour
 
     private void SetupRankInfo()
     {
-        // 현재 랭크와 다음 랭크의 정보 설정
-        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
-        NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
+        if (DataManager.Instance.nowRank >= 0 && DataManager.Instance.nowRank < data_Dialog.Count)
+        {
+            // 현재 랭크와 다음 랭크의 정보 설정
+            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+            NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
 
-        // 각종 효과 및 비용 텍스트 설정
-        PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
-        PlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
-        PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
-        PlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
+            // 각종 효과 및 비용 텍스트 설정
+            PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
+            PlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
+            PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
+            PlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
 
-        if(Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 1)
+        }
+        else
+        {
+            // 현재 랭크와 다음 랭크의 정보 설정
+            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+            NextRankName.text = " 당신은 이미 정상입니다 ";
+
+            // 각종 효과 및 비용 텍스트 설정
+            PlusGuestState.text = "축하합니다!";
+            PlusGoldState.text = "당신은 오타쿠의";
+            PlusFeverTime.text = "경지에 올랐습니다!";
+            PlusGoods.text = "이미 최고 등급에 도달했습니다!";
+            NowRankImage.sprite = Rank1;
+            
+        }
+
+        if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 1)
         {
             NowRankImage.sprite = Rank1;
             NextRankImage.sprite = Rank2;
@@ -113,7 +133,6 @@ public class RankManager : MonoBehaviour
             NowRankImage.sprite = Rank3;
             NextRankImage.sprite = Rank1;
         }
-
     }
    
     private int GetIntValue(string key)
@@ -140,10 +159,30 @@ public class RankManager : MonoBehaviour
     public void UnlockCheck()
     {
         //여기서 데이터매니저에게 검사하는 방법이 뭔지 모르겠음... 굿즈 테이블에 따라 바뀔 것 같음
-        if (DataManager.Instance.goods3011 == 0)
+        if (DataManager.Instance.nowRank == 0)
         {
-            UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["GoodsName"].ToString() + "을 획득하면 해금됩니다.";
-            Unlock.gameObject.SetActive(true);
+            if (DataManager.Instance.goods3011 == 0)
+            {
+                UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["GoodsName"].ToString() + "을 획득하면 해금됩니다.";
+                Unlock.gameObject.SetActive(true);
+            }
+            else
+            {
+                Unlock.gameObject.SetActive(false);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            if (DataManager.Instance.goods3021 == 0)
+            {
+                UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["GoodsName"].ToString() + "을 획득하면 해금됩니다.";
+                Unlock.gameObject.SetActive(true);
+            }
+            else
+            {
+                Unlock.gameObject.SetActive(false);
+            }
         }
         else
         {
@@ -151,17 +190,18 @@ public class RankManager : MonoBehaviour
         }
 
         if (DataManager.Instance.nowGold >= Convert.ToInt32(data_Dialog[nextRank]["rank_gold"]))
-        {
-            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
-            SpendGoldText.color = Color.black;
-            RankUPBtn.interactable = true;  // 버튼 활성화
-        }
-        else
-        {
-            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
-            SpendGoldText.color = Color.red;
-            RankUPBtn.interactable = false;  // 버튼 비활성화
-        }
+            {
+                SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+                SpendGoldText.color = Color.black;
+                RankUPBtn.interactable = true;  // 버튼 활성화
+            }
+            else
+            {
+                SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+                SpendGoldText.color = Color.red;
+                RankUPBtn.interactable = false;  // 버튼 비활성화
+            }
+        
     }
 
     public void RankPopUPClick()
@@ -190,6 +230,9 @@ public class RankManager : MonoBehaviour
         // 랭크 정보 및 결과 텍스트 업데이트
         SetupRankInfo();
         SpendGoldText.text = DataManager.Instance.nowGold.ToString() + "/" + data_Dialog[DataManager.Instance.nowRank]["rank_gold"].ToString();
+        
+        imageFileName = data_Dialog[DataManager.Instance.nowRank]["ResultImg"].ToString();
+        ResultChr.sprite = Resources.Load<Sprite>(imageFileName);
 
         ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
         ResultPlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
