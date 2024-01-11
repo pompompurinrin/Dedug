@@ -1215,7 +1215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66cbd4d47eaeb54daf21383c8366f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickEffectPrefab: {fileID: 7820549047591004765, guid: 85180990f249eb44f9d22374b03c2f90, type: 3}
 --- !u!1 &1082045193
 GameObject:
   m_ObjectHideFlags: 0

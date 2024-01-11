@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 
 
@@ -120,6 +121,38 @@ public class GameControllerScript : MonoBehaviour
             // 일치하면 점수 증가
             score++;
             scoreText.text=score.ToString();
+
+            Vector3 originalScale = new Vector3(1, 1, 1);
+            Vector3 targetScale = new Vector3(2f, 2f, 2f);
+
+
+
+            MainImageScript card1 = firstOpen;
+            
+
+
+            card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+
+            {
+
+                card1.transform.DOScale(originalScale, 0.2f);
+             
+
+            });
+            
+          
+ 
+            MainImageScript card2 = secondOpen;
+
+            card2.transform.DOScale(targetScale, 0.2f).OnComplete(() =>
+            {
+                card2.transform.DOScale(originalScale, 0.2f);
+                secondOpen = null;  // 변수 초기화 추가
+            });
+
+
+
+
             if (score == 10) // 두 이미지의 스프라이트 ID 비교
             {
 
