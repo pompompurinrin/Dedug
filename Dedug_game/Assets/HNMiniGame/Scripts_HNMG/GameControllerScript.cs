@@ -40,10 +40,16 @@ public class GameControllerScript : MonoBehaviour
         return array;
     }
 
+
+    public float score = 0; // 스코어 초기값
+    public Text scoreText; // 스코어 텍스트 출력
+   // public GameObject scoreText; // 스코어 텍스트 출력
+
+
+
     // 게임이 시작될 때 호출되는 함수
     private void Start()
     {
-        
 
         // 이미지 위치를 무작위로 섞음
         int[] locations = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
@@ -81,7 +87,9 @@ public class GameControllerScript : MonoBehaviour
                 gameImage.transform.position = new Vector3(positionX, positionY, startPosition.z);
                 gameImage.transform.SetParent(parent, false);
 
-                
+                //scoreText.GetComponent<GameObject>().SetActive(true);
+
+                scoreText.gameObject.SetActive(true);
             }
         }
     }
@@ -111,10 +119,18 @@ public class GameControllerScript : MonoBehaviour
             StartCoroutine(CheckGuessed());
         }
     }
-    public Image restartBtn;
-    public Image MainBG;
-    public float score = 0;
-    public Text scoreText;
+
+
+
+
+
+    // -------------------------------------------------------------------
+
+    public Image restartBtn; // 재시작 버튼
+    public Image MainBG; // 메인 배경
+    
+
+
     // 일치 여부를 확인하고 처리하는 코루틴
     private IEnumerator CheckGuessed()
     {
@@ -127,46 +143,26 @@ public class GameControllerScript : MonoBehaviour
             Vector3 originalScale = new Vector3(1, 1, 1);
             Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
 
-
-
             MainImageScript card1 = firstOpen;
-            
-
-
             card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
-
             {
-
                 card1.transform.DOScale(originalScale, 0.2f);
-             
-
             });
             
-          
- 
             MainImageScript card2 = secondOpen;
-
-            card2.transform.DOScale(targetScale, 0.2f).OnComplete(() =>
+            card2.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
             {
                 card2.transform.DOScale(originalScale, 0.2f);
                 secondOpen = null;  // 변수 초기화 추가
             });
 
-
-
-
             if (score == 10) // 두 이미지의 스프라이트 ID 비교
             {
-
                 MainBG.gameObject.SetActive(false);
                 restartBtn.gameObject.SetActive(true);
-                
-
-
             }
             
-
-        }
+       }
         else
         {
             // 일치하지 않으면 0.5초 후에 이미지를 닫음
@@ -189,7 +185,8 @@ public class GameControllerScript : MonoBehaviour
 
     public void Restart()
     {
-        Debug.Log("ddd");
+        
+        Debug.Log("HNMiniGameScene");
         
         SceneManager.LoadScene("HNMiniGameScene");
     }

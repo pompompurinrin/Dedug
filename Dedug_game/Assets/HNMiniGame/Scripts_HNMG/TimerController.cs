@@ -10,7 +10,7 @@ public class TimerController : MonoBehaviour
     public float readyCounter = 3f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
 
-
+    [SerializeField] private GameControllerScript scoreText;
 
 
     public void Start()

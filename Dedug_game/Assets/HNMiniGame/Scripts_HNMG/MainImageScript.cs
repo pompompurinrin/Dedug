@@ -8,13 +8,10 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MainImageScript : MonoBehaviour
 {
-    // 가리킨 이미지를 나타내는 GameObject 변수
-    [SerializeField] private GameObject image_unknown;
+    [SerializeField] private GameObject card_Back;
     [SerializeField] private GameObject image_show;
+    [SerializeField] private GameObject image_frame;
     
-   
-
-    // 게임 컨트롤러와 연결되는 변수
     [SerializeField] private GameControllerScript gameController;
 
 
@@ -24,9 +21,9 @@ public class MainImageScript : MonoBehaviour
         
 
         // 이미지가 활성화되어 있고, 게임 컨트롤러가 이미지를 열 수 있는 상태일 때 실행
-        if (image_unknown.activeSelf && gameController.canOpen)
+        if (card_Back.activeSelf && gameController.canOpen)
         {
-            //vector3 는 x, y, z로 구성된 3차원 좌표값. ( Vector2는 2d)
+            //vector3 는 x, y, z로 구성된 3차원 좌표값. (Vector2는 2d)
             Vector3 originalScale = transform.localScale;
             Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
 
@@ -34,7 +31,10 @@ public class MainImageScript : MonoBehaviour
             transform.DOScale(targetScale, 0.1f).OnComplete(() => // 람다식
 
             {
-                image_unknown.SetActive(false);
+                card_Back.SetActive(false);
+                image_frame.SetActive(true);
+
+
                 gameController.imageOpened(this);
                 transform.DOScale(originalScale, 0.1f);
 
@@ -76,7 +76,8 @@ public class MainImageScript : MonoBehaviour
             { transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
 
             {
-                image_unknown.SetActive(true);
+                card_Back.SetActive(true);
+                image_frame.SetActive(false);
 
                 transform.DOScale(originalScale, 0.2f);
 
@@ -90,14 +91,15 @@ public class MainImageScript : MonoBehaviour
     }
     public void Start()
     {
-       
-        image_unknown.SetActive(false); 
+
+        card_Back.SetActive(false); 
         Invoke("DisableShowImage", 2);
     }
     public void DisableShowImage()
     {
-        image_show.SetActive(false); 
-        image_unknown.SetActive(true);
+        image_show.SetActive(false);
+        card_Back.SetActive(true);
+        image_frame.SetActive(false);
 
 
     }
