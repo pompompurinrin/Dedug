@@ -27,7 +27,6 @@ public class ResultManager_real : MonoBehaviour
     public Image Reward1;
     public Image Reward2;
     public Image Reward3;
-    public Image GoodsImage;
 
     //숫자값 가져올거
     int Result1;
@@ -35,12 +34,19 @@ public class ResultManager_real : MonoBehaviour
     int UserScore;
 
 
+
+    // 리워드 리스트 선언을 여기서 시킴
+    public List<Image> Rewards = new List<Image>();
+
+
+
+
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
     void Start()
     {
         //PercentageTable_1에서 배열을 사용할게
-        data_Dialog = CSVReader.Read("PercentageTable_2");
+        data_Dialog = CSVReader.Read("GoodsTable_real");
 
         //어떤 컴포넌트에 배정할거임?
         ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
@@ -49,11 +55,33 @@ public class ResultManager_real : MonoBehaviour
         HomeBtn = GameObject.Find("Home").GetComponent<Button>();
         UserScoreText = GameObject.Find("UserScore").GetComponent<Text>();
 
+
+
+
+        // 이건 왜인지 모르겠는데 넣으라고 해서 일단 넣음
+        Rewards.Add(Reward1);
+        Rewards.Add(Reward2);
+        Rewards.Add(Reward3);
+
+
+
+
+        // 테스트용 시작 값이랑 넣은거
+        Setting();
+
+        // UserScore 동적으로 설정 (예시: 랜덤 값 설정)
+        UserScore = UnityEngine.Random.Range(1, 10);
+
+        Result2 = 3;
+        Result1 = 1;
+
+        Score();
     }
 
     List<int> gatchIdList;
     List<int> gatchPerList;
     List<int> rewards; // 줄 애들
+
 
     void Setting() // 씬 들어가자마자 한번 하면 됨
     {
@@ -74,7 +102,14 @@ public class ResultManager_real : MonoBehaviour
 
     public void GetGoods(int count) // 실제 가챠를 하는 부분. count에는 뽑고 싶은 수량 넣기
     {
-        rewards.Clear();
+
+
+        // 여기 한 줄 수정함 리스트 초기화
+        rewards = new List<int>(); // rewards 리스트 초기화
+
+
+
+
 
         for (int i = 0; i < Rewards.Count; i++)
         {
@@ -108,9 +143,6 @@ public class ResultManager_real : MonoBehaviour
             }
         }
     }
-
-
-    public List<Image> Rewards = new List<Image>(); // 
 
     //public void Rank1RandomSetting() // 확률과 굿즈 id로 이미지를 출력할게 -> 오답노트 아카이브용...
     //{
@@ -183,6 +215,8 @@ public class ResultManager_real : MonoBehaviour
 
         Save();
     }
+
+
     public void Save()
     {
         // PlayerPrefs에 현재 값 저장
