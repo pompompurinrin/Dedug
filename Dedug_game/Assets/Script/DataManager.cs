@@ -9,8 +9,6 @@ public class DataManager : Singleton<DataManager>
     public string goods3;
     //DataManager.instance.DataTable?
 
-    public int[] HyeJingoodsNum = new int[70];
-
     void Awake()
     {
         DataLoad();

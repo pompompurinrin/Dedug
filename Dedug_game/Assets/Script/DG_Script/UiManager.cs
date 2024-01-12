@@ -27,7 +27,6 @@ public class UiManager : MonoBehaviour
     public Text GoodsNameText;
     public Text GoodsDesc;
     public Text GoodsName;
-    public Text GoodsNum;
 
     public Image GoodsImage;
 
@@ -49,10 +48,10 @@ public class UiManager : MonoBehaviour
     public Button Cha_3_Story_Btn;
     public Button Cha_1_1011_Btn;
     public Button Cha_1_1012_Btn;
-    public Button Cha_1_1013_Btn;
-    public Button Cha_1_1014_Btn;
-    public Button Cha_1_1015_Btn;
-    public Button Cha_1_1016_Btn;
+    public Button Cha_1_1021_Btn;
+    public Button Cha_1_1022_Btn;
+    public Button Cha_1_1031_Btn;
+    public Button Cha_1_1032_Btn;
     public Button PopUpExit_Btn;
     public Button Cha_1_Story1_Btn;
     public Button Cha_1_Story2_Btn;
@@ -60,19 +59,19 @@ public class UiManager : MonoBehaviour
     public Button Back2Cha_1_btn;
     public Button Cha_2_2011_Btn;
     public Button Cha_2_2012_Btn;
-    public Button Cha_2_2013_Btn;
-    public Button Cha_2_2014_Btn;
-    public Button Cha_2_2015_Btn;
-    public Button Cha_2_2016_Btn;
+    public Button Cha_2_2021_Btn;
+    public Button Cha_2_2022_Btn;
+    public Button Cha_2_2031_Btn;
+    public Button Cha_2_2032_Btn;
     public Button Cha_2_Story1_Btn;
     public Button Cha_2_Story2_Btn;
     public Button Cha_2_Story3_Btn;
     public Button Cha_3_3011_Btn;
     public Button Cha_3_3012_Btn;
-    public Button Cha_3_3013_Btn;
-    public Button Cha_3_3014_Btn;
-    public Button Cha_3_3015_Btn;
-    public Button Cha_3_3016_Btn;
+    public Button Cha_3_3021_Btn;
+    public Button Cha_3_3022_Btn;
+    public Button Cha_3_3031_Btn;
+    public Button Cha_3_3032_Btn;
     public Button Cha_3_Story1_Btn;
     public Button Cha_3_Story2_Btn;
     public Button Cha_3_Story3_Btn;
@@ -95,43 +94,70 @@ public class UiManager : MonoBehaviour
 
     // CSV 파일을 읽어들일 데이터 리스트
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
-/*    private const string GoodsCSV = "GoodsCSV";
-    private char[] TRIM_CHARS = { ' ', '\"' };*/
 
 
+
+    private void Awake()
+    {
+        DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
+        DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
+        DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");
+        DataManager.Instance.goods1022 = PlayerPrefs.GetInt("Goods1022");
+        DataManager.Instance.goods1031 = PlayerPrefs.GetInt("Goods1031");
+        DataManager.Instance.goods1032 = PlayerPrefs.GetInt("Goods1032");
+        DataManager.Instance.goods2011 = PlayerPrefs.GetInt("Goods2011");
+        DataManager.Instance.goods2012 = PlayerPrefs.GetInt("Goods2012");
+        DataManager.Instance.goods2021 = PlayerPrefs.GetInt("Goods2021");
+        DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
+        DataManager.Instance.goods2031 = PlayerPrefs.GetInt("Goods2031");
+        DataManager.Instance.goods2032 = PlayerPrefs.GetInt("Goods2032");
+        DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
+        DataManager.Instance.goods3012 = PlayerPrefs.GetInt("Goods3012");
+        DataManager.Instance.goods3021 = PlayerPrefs.GetInt("Goods3021");
+        DataManager.Instance.goods3022 = PlayerPrefs.GetInt("Goods3022");
+        DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
+        DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
+
+
+    }
 
     void Start()
-     {
-         //BG_Home = GameObject.Find("BG_Home").GetComponent<Canvas>();
-         //BG_MainStory = GameObject.Find("GameObjectManager").transform.Find("BG_MainStory").GetComponent<Canvas>(); 
-
-         //PopUpBG_MainStory = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_MainStory").GetComponent<Canvas>();
-         //PopUpBG_Goldplus = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_Goldplus").GetComponent<Canvas>();
-         //Test = GameObject.Find("GameObjectManager").transform.Find("Test").GetComponent<Canvas>();
-         //BG_Cha1 = GameObject.Find("GameObjectManager").transform.Find("BG_Cha1").GetComponent<Canvas>();
-         //PopUpBG_GoodsInfo = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_GoodsInfo").GetComponent<Canvas>();
-         //BG_Cha1_Story = GameObject.Find("GameObjectManager").transform.Find("BG_Cha1_Story").GetComponent<Canvas>();
-         //PopUpBG_MainStoryCheck = GameObject.Find("GameObjectManager").transform.Find("PopUpBG_MainStoryCheck").GetComponent<Canvas>();
-
-         BG_MainStory.gameObject.SetActive(false); //GameObject.Find("GameObjectManager").transform.Find("BG_MainStory").gameObject.SetActive(true);
-         PopUpBG_MainStory.gameObject.SetActive(false);
-         PopUpBG_Goldplus.gameObject.SetActive(false);
-         Test.gameObject.SetActive(false);
-         BG_Cha1.gameObject.SetActive(false);
-         BG_Cha3.gameObject.SetActive(false);
-         BG_Cha2.gameObject.SetActive(false);
-         PopUpBG_GoodsInfo.gameObject.SetActive(false);
-         BG_Cha1_Story.gameObject.SetActive(false);
-         BG_Cha2_Story.gameObject.SetActive(false);
-         BG_Cha2_Story.gameObject.SetActive(false);
+    {
+        BG_MainStory.gameObject.SetActive(false); 
+        PopUpBG_MainStory.gameObject.SetActive(false);
+        PopUpBG_Goldplus.gameObject.SetActive(false);
+        Test.gameObject.SetActive(false);
+        BG_Cha1.gameObject.SetActive(false);
+        BG_Cha3.gameObject.SetActive(false);
+        BG_Cha2.gameObject.SetActive(false);
+        PopUpBG_GoodsInfo.gameObject.SetActive(false);
+        BG_Cha1_Story.gameObject.SetActive(false);
+        BG_Cha2_Story.gameObject.SetActive(false);
+        BG_Cha2_Story.gameObject.SetActive(false);
 
 
         // CSV 파일에서 데이터 읽기
-        data_Dialog = CSVReader.Read("GoodsCSV");
-
+        data_Dialog = CSVReader.Read("GoodsCSV_DG");
     }
-   
-// 홈화면에서 누를 수 있는 버튼들
+
+    public void GoodsNumInfo()
+    {
+        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
+        for (int i = 0; i < Goods.Length; i++)
+        {
+            if (selectGoods == Goods[i])
+            {
+                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
+                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
+                GoodsNameText.text = data_Dialog[i]["GoodsName"].ToString();
+                GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
+                GoodsName.text = data_Dialog[i]["GoodsName"].ToString();
+                PopUpBG_GoodsInfo.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    // 홈화면에서 누를 수 있는 버튼들
     public void MainStory_BtnClick()
     {
         BG_MainStory.gameObject.SetActive(true);
@@ -158,7 +184,7 @@ public class UiManager : MonoBehaviour
         BG_MainStory.gameObject.SetActive(false);
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha2.gameObject.SetActive(false);
-        BG_Cha3.gameObject.SetActive(false);   
+        BG_Cha3.gameObject.SetActive(false);
     }
 
     //BG_MainStory에서 누를 수 있는 버튼들
@@ -175,7 +201,7 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    public void MainStory_2_BtnClick()   
+    public void MainStory_2_BtnClick()
     {
         if (isFirstMainStory2BtnClick)
         {
@@ -224,7 +250,7 @@ public class UiManager : MonoBehaviour
     //이미 본 스토리 또 볼래? 팝업에서 뜨는 버튼들. 이때 no버튼은 처음 본 스토리 팝업과 동일하다
     public void StoryCheck_BtnClick()
     {
-       
+
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_Goldplus.gameObject.SetActive(false);
         Test.gameObject.SetActive(false);
@@ -274,120 +300,34 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    public GameObject[] sooA = new GameObject[20];
-    public GameObject[] bada = new GameObject[20];
-    public GameObject[] choLong = new GameObject[20];
+    public GameObject[] Goods = new GameObject[60];
+    
     //캐릭터 1창에서 누를 수 있는 버튼들
     public void OnCha_1_Story_BtnClick()
     {
         BG_Cha1_Story.gameObject.SetActive(true);
     }
 
-    public void OnCha_1_1011_BtnClick()
+    public void OnCha_goods_BtnClick()
     {
         GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < sooA.Length; i++)
+        for (int i = 0; i < Goods.Length; i++)
         {
-            if (selectGoods == sooA[i])
+            if (selectGoods == Goods[i])
             {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
+                string imageFileName = data_Dialog[i]["GoodsID"].ToString();    //DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
                 GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[0]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[0]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[0]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-        public void OnCha_1_1012_BtnClick()
-        {
-            GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-            for (int i = 0; i < sooA.Length; i++)
-            {
-                if (selectGoods == sooA[i])
-                {
-                    string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                    GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                    GoodsNameText.text = data_Dialog[1]["GoodsName"].ToString();
-                    GoodsDesc.text = data_Dialog[1]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[1]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-                }
-            }
-        }
+                GoodsNameText.text = data_Dialog[i]["GoodsName"].ToString();
+                GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
+                GoodsName.text = data_Dialog[i]["GoodsName"].ToString();
+                //GoodsNum.text = data_Dialog[i][""].ToString();
 
-    public void OnCha_1_1013_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < sooA.Length; i++)
-        {
-            if (selectGoods == sooA[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[2]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[2]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[2]["GoodsName"].ToString();
                 //GoodsNum.text = 데이터매니저에서 개수 가져오기
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
             }
         }
     }
 
-    public void OnCha_1_1014_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < sooA.Length; i++)
-        {
-            if (selectGoods == sooA[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[3]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public void OnCha_1_1015_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < sooA.Length; i++)
-        {
-            if (selectGoods == sooA[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[4]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[4]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[4]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-    public void OnCha_1_1016_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < sooA.Length; i++)
-        {
-            if (selectGoods == sooA[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[5]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[5]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[5]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
 
     //캐릭터 2 스토리 화면에서 누를 수 있는 버튼
     public void OnCha_2_Story1_BtnClick()
@@ -437,112 +377,8 @@ public class UiManager : MonoBehaviour
         BG_Cha2_Story.gameObject.SetActive(true);
     }
 
-    public void OnCha_2_2011_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < bada.Length; i++)
-        {
-            if (selectGoods == bada[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[20]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[20]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[20]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
 
-    public void OnCha_2_2012_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < bada.Length; i++)
-        {
-            if (selectGoods == bada[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[21]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[21]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[21]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
 
-    public void OnCha_2_2013_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < bada.Length; i++)
-        {
-            if (selectGoods == bada[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[22]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[22]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[22]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public void OnCha_2_2014_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < sooA.Length; i++)
-        {
-            if (selectGoods == sooA[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[23]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[23]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[23]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public void OnCha_2_2015_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < bada.Length; i++)
-        {
-            if (selectGoods == bada[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[24]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[24]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[24]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-    public void OnCha_2_2016_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < bada.Length; i++)
-        {
-            if (selectGoods == bada[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[25]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[25]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[25]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
 
     //캐릭터 3 스토리 화면에서 누를 수 있는 버튼
     public void OnCha_3_Story1_BtnClick()
@@ -591,111 +427,7 @@ public class UiManager : MonoBehaviour
         BG_Cha3_Story.gameObject.SetActive(true);
     }
 
-    public void OnCha_3_3011_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < choLong.Length; i++)
-        {
-            if (selectGoods == choLong[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[30]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[30]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[30]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-    public void OnCha_3_3012_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < choLong.Length; i++)
-        {
-            if (selectGoods == choLong[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[31]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[31]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[31]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
 
-    public void OnCha_3_3013_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < choLong.Length; i++)
-        {
-            if (selectGoods == choLong[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[32]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[32]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[32]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public void OnCha_3_3014_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < choLong.Length; i++)
-        {
-            if (selectGoods == choLong[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[33]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[33]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[33]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public void OnCha_3_3015_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < choLong.Length; i++)
-        {
-            if (selectGoods == choLong[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[34]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[34]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[34]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
-    public void OnCha_3_3016_BtnClick()
-    {
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < choLong.Length; i++)
-        {
-            if (selectGoods == choLong[i])
-            {
-                string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                GoodsNameText.text = data_Dialog[35]["GoodsName"].ToString();
-                GoodsDesc.text = data_Dialog[35]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[35]["GoodsName"].ToString();
-                //GoodsNum.text = 데이터매니저에서 개수 가져오기
-                PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            }
-        }
-    }
 
     //캐릭터 1창으로 돌아가는 버튼
     public void OnBack2Cha_1_btnClick()
@@ -717,61 +449,10 @@ public class UiManager : MonoBehaviour
     {
         PopUpBG_GoodsInfo.gameObject.SetActive(false);
     }
-
-
-
-
-
-    //string imageFileName = "Goods1011";
-    //Debug.Log(imageFileName);
-    //GoodsImage.sprite = Resources.Load<Sprite>(imageFileName); 
-
-
-    //GoodsNameText.text = data_Dialog[0]["GoodsName"].ToString();
-    //GoodsDesc.text = data_Dialog[0]["GoodsDesc"].ToString();
-
-    //PopUpBG_GoodsInfo.gameObject.SetActive(true);
-
-
-
-    /* public void OnCha_2_1011_BtnClick()
-     {
-         GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-         for (int i = 20; i < bada.Length + 40; i++)
-         {
-             if (selectGoods == bada[i])
-             {
-                 string imageFileName = data_Dialog[i]["GoodsID"].ToString();
-                 GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
-                 GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
-                 GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
-                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
-             }
-         }
-         //string imageFileName = "Goods1011";
-         //Debug.Log(imageFileName);
-         //GoodsImage.sprite = Resources.Load<Sprite>(imageFileName); 
-
-
-         //GoodsNameText.text = data_Dialog[0]["GoodsName"].ToString();
-         //GoodsDesc.text = data_Dialog[0]["GoodsDesc"].ToString();
-
-         //PopUpBG_GoodsInfo.gameObject.SetActive(true);
-
-     }*/
-
-
-
-
-    //string imageFileName = data_Dialog[3]["GoodsID"].ToString();
-    //GoodsImage.sprite = Resources.Load<Sprite>("Goods"+imageFileName);
-
-    //GoodsNameText.text = data_Dialog[3]["GoodsName"].ToString();
-    //GoodsDesc.text = data_Dialog[3]["GoodsDesc"].ToString();
-    //PopUpBG_GoodsInfo.gameObject.SetActive(true);
-
-
-
-
-
 }
+
+
+
+
+
+  
