@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 using System;
+using System.Collections;
 
 
 public class RankManager : MonoBehaviour
@@ -17,9 +18,12 @@ public class RankManager : MonoBehaviour
     public Text NextRankName;
     Image ResultChr;
     public Image ResultBG;
-    public GameObject effectPrefab;
+
     int nextRank;
     public string imageFileName;
+    
+    public GameObject EffectPrefab;
+    public GameObject _effectPrefab;
 
     // sprite 지정
     public Sprite Rank1;
@@ -54,13 +58,13 @@ public class RankManager : MonoBehaviour
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string RankSampleFileName = "RankSample";
     private char[] TRIM_CHARS = { ' ', '\"' };
-    
+
     private void Awake()
     {
         DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
         DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
-       
+
     }
     private void Start()
     {
@@ -74,12 +78,13 @@ public class RankManager : MonoBehaviour
         RankUPBtn = GameObject.Find("RankUPBtn").GetComponent<Button>();
         anim = GameObject.Find("RankPopUPGroup").GetComponent<Animator>();
         ResultChr = Result.transform.Find("ResultCharacter").GetComponent<Image>();
+        
 
         RankPopUPBG.gameObject.SetActive(false);
         Unlock.gameObject.SetActive(false);
         Result.gameObject.SetActive(false);
-
-
+        ClickTouchBtn.gameObject.SetActive(false);
+        _effectPrefab.gameObject.SetActive(false);
         // CSV 파일에서 데이터 읽기
         data_Dialog = CSVReader.Read(RankSampleFileName);
 
@@ -116,7 +121,7 @@ public class RankManager : MonoBehaviour
             PlusFeverTime.text = "경지에 올랐습니다!";
             PlusGoods.text = "이미 최고 등급에 도달했습니다!";
             NowRankImage.sprite = Rank1;
-            
+
         }
 
         if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 1)
@@ -135,7 +140,7 @@ public class RankManager : MonoBehaviour
             NextRankImage.sprite = Rank1;
         }
     }
-   
+
     private int GetIntValue(string key)
     {
         // CSV 데이터에서 특정 키의 정수값을 가져오는 메서드
@@ -191,18 +196,18 @@ public class RankManager : MonoBehaviour
         }
 
         if (DataManager.Instance.nowGold >= Convert.ToInt32(data_Dialog[nextRank]["rank_gold"]))
-            {
-                SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
-                SpendGoldText.color = Color.black;
-                RankUPBtn.interactable = true;  // 버튼 활성화
-            }
-            else
-            {
-                SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
-                SpendGoldText.color = Color.red;
-                RankUPBtn.interactable = false;  // 버튼 비활성화
-            }
-        
+        {
+            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+            SpendGoldText.color = Color.black;
+            RankUPBtn.interactable = true;  // 버튼 활성화
+        }
+        else
+        {
+            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+            SpendGoldText.color = Color.red;
+            RankUPBtn.interactable = false;  // 버튼 비활성화
+        }
+
     }
 
     public void RankPopUPClick()
@@ -213,9 +218,11 @@ public class RankManager : MonoBehaviour
         RankPopUPBG.gameObject.SetActive(true);
         anim.SetTrigger("DoShow");
     }
+    
 
     public void RankPopUPClickConfirm()
     {
+
         // 랭크 팝업 확인 클릭 시 호출되는 메서드
         DataManager.Instance.nowGold -= Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["rank_gold"]);
 
@@ -231,14 +238,15 @@ public class RankManager : MonoBehaviour
         // 랭크 정보 및 결과 텍스트 업데이트
         SetupRankInfo();
         SpendGoldText.text = DataManager.Instance.nowGold.ToString() + "/" + data_Dialog[DataManager.Instance.nowRank]["rank_gold"].ToString();
-        
+
         imageFileName = data_Dialog[DataManager.Instance.nowRank]["ResultImg"].ToString();
         ResultChr.sprite = Resources.Load<Sprite>(imageFileName);
+
 
         //GameObject effectInstance = Instantiate(effectPrefab, ResultChr.transform.position, Quaternion.identity);
 
         // Vector3 newPosition = effectPrefab.transform.position;
-         //  newPosition.z = 2f;
+        //  newPosition.z = 2f;
         //effectPrefab.transform.position = newPosition;
 
         // 프리팹 크기 설정
@@ -252,12 +260,59 @@ public class RankManager : MonoBehaviour
         PopUPText.text = "정말 " + data_Dialog[nextRank]["rank"].ToString() + "(으)로 승급하시겠습니까?";
         PopUPNotice.text = "승급시" + data_Dialog[nextRank]["rank_gold"].ToString() + "골드가 소모됩니다.";
         anim.SetTrigger("DoHide");
+
+
+        _effectPrefab.gameObject.SetActive(true);
+        ClickTouchBtn.gameObject.SetActive(true);
+
+        
         RankPopUPBG.gameObject.SetActive(false);
         Result.gameObject.SetActive(true);
         UnlockCheck();
         
+        
 
     }
+    public Button ClickTouchBtn;
+    public void ClickTouch()
+    {
+
+        Sequence buttonSequence = DOTween.Sequence();
+
+        // 버튼에 대한 스케일 및 페이딩 애니메이션 추가
+        ClickTouchBtn.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 2f);
+        ClickTouchBtn.image.DOFade(0f, 2f);
+
+        // 이펙트에 대한 스케일 및 페이딩 애니메이션 추가
+        GameObject effectInstance = Instantiate(EffectPrefab, ClickTouchBtn.transform.position, Quaternion.identity);
+        effectInstance.transform.SetParent(ClickTouchBtn.transform.parent);  // 이펙트의 부모를 버튼의 부모로 설정
+
+        Sequence effectSequence = DOTween.Sequence();
+        effectSequence.Append(effectInstance.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 2f));
+        effectSequence.Join(effectInstance.GetComponent<Image>().DOFade(0f, 2f));
+
+        // 버튼 및 이펙트 애니메이션 시퀀스 재생
+        buttonSequence.Play();
+        effectSequence.Play();
+        _effectPrefab.gameObject.SetActive(false);
+
+        // ResultCanvas를 오른쪽에서 왼쪽으로 0.2초 동안 부드럽게 이동
+        RectTransform resultRectTransform = Result.GetComponent<RectTransform>();
+        resultRectTransform.DOAnchorPosX(0f, 0.2f).OnComplete(() =>
+        {
+            // 애니메이션이 완료되면 실행될 코드
+            // 클릭 버튼을 다시 초기 상태에서 FadeIn 및 원래 크기로 애니메이션
+            ClickTouchBtn.image.DOFade(1f, 0f); // FadeIn
+            ClickTouchBtn.transform.DOScale(Vector3.one, 0f); // 원래 크기로 설정
+
+            // 2초 뒤에 ClickTouchBtn을 다시 클릭 가능하도록 설정
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                ClickTouchBtn.gameObject.SetActive(false);
+            });
+        });
+    }
+
 
     public void RankPopUPExitClick()
     {
@@ -271,6 +326,14 @@ public class RankManager : MonoBehaviour
         // 결과 창 종료 클릭 시 호출되는 메서드
         Result.gameObject.SetActive(false);
         RankPopUPBG.gameObject.SetActive(false);
+
+        // 여기서 이전 상태로 초기화 또는 다른 초기화 작업 수행
+        // 예를 들어, ResultCanvas를 오른쪽에서 왼쪽으로 이동하는 애니메이션 초기화
+        RectTransform resultRectTransform = Result.GetComponent<RectTransform>();
+        resultRectTransform.anchoredPosition = new Vector2(Screen.width, 0);
+        ClickTouchBtn.image.DOFade(1f, 0f); // FadeIn
+        ClickTouchBtn.transform.DOScale(Vector3.one, 0f);
+
     }
 
     public void Save()
@@ -301,7 +364,7 @@ public class RankManager : MonoBehaviour
     public void Clear()
     {
         DataManager.Instance.nowRank = 0;
-        DataManager.Instance. nowGold = 0;
+        DataManager.Instance.nowGold = 0;
         DataManager.Instance.goods3011 = 0;
         SetupRankInfo();
         UnlockCheck();
