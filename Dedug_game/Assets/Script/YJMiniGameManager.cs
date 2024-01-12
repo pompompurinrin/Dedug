@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening.Core.Easing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,9 +14,9 @@ public class YJMiniGameManager : MonoBehaviour
 
     // 메시지 출력 이미지 부모 객체
     public GameObject messageBg;
+    public GameObject messageBg02;
 
     // 메시지 타임 출력 텍스트 및 이펙트
-    public Text messageText;
     public Image loveEffect;
 
     // 응원봉 타이밍 판정 이미지
@@ -24,6 +25,7 @@ public class YJMiniGameManager : MonoBehaviour
 
     // 게임 대기시간 카운트
     public Text beforeCount;
+    public Image beforeImg;
 
     // 미니게임 탑 바 관련 변수 (점수, 제한시간)
     public Text costText;
@@ -32,6 +34,9 @@ public class YJMiniGameManager : MonoBehaviour
     // 마법소녀 캐릭터 및 관객(주인공) 애니메이션 이미지
     public Image badaChar;
     public Image meChar;
+    public Image meChar01;
+    public Image meChar02;
+    public Image meChar03;
 
     // 게임 버튼
     public Button message01;
@@ -67,6 +72,9 @@ public class YJMiniGameManager : MonoBehaviour
     // 하드 응원봉 타임 동안 클릭 여부를 추적하는 변수
     private bool isHardBongTimeButtonClick = false;
 
+    // 중복 컬러 방지를 위한 리스트 선언
+    private List<Image> availableColorEffects = new List<Image>();
+
     // 게임 일시정지 관련 변수
     public Image stopBg;
     public Button stop;
@@ -80,17 +88,40 @@ public class YJMiniGameManager : MonoBehaviour
     // 게임 일시정지 상태를 나타내는 변수
     private bool isGamePaused = false;
 
+    // 관중 흔들림
+    private float shakeRange = 0.2f;
+    private float shakeSpeed = 2f;
+
+    public AudioSource gameAudioSource;  // 게임 중 재생될 사운드
+
+    public AudioSource badamessage01_SFX;
+    public AudioSource badamessage02_SFX;
+
+    public AudioSource badasucces_SFX;
+    public AudioSource badafail_SFX;
+
+    public AudioSource badacount_SFX;
+
+    public AudioSource bongtime01;
+    public AudioSource bongtime02;
+    public AudioSource bongtime03;
+
+
     private void Start()
     {
         // 게임 시작 시 호출되는 함수
         StartGame();
+
+        gameAudioSource.loop = true;  // 반복 재생
+
     }
 
-    private void StartGame()
+private void StartGame()
     {
         // 게임 대기시간 초기화 및 대기시간 UI 활성화
         beforeGameTime = 3;
         beforeCount.gameObject.SetActive(true);
+        beforeImg.gameObject.SetActive(true);
         // 1초마다 CountDownBeforeGame 메소드 호출
         InvokeRepeating("CountDownBeforeGame", 1.0f, 1.0f);
     }
@@ -105,6 +136,7 @@ public class YJMiniGameManager : MonoBehaviour
         {
             // 게임 대기시간 종료 후 숨김
             beforeCount.gameObject.SetActive(false);
+            beforeImg.gameObject.SetActive(false);
             // CountDownBeforeGame 호출 중단
             CancelInvoke("CountDownBeforeGame");
 
@@ -114,7 +146,9 @@ public class YJMiniGameManager : MonoBehaviour
         else
         {
             // 대기시간 텍스트 갱신
+            badacount_SFX.Play();
             beforeCount.text = beforeGameTime.ToString();
+
         }
     }
 
@@ -123,12 +157,16 @@ public class YJMiniGameManager : MonoBehaviour
     {
         // 실제 게임 시작
         isGameRunning = true;
+
         // 초기 제한시간 설정
         gameTime = 90;
         countDown.text = gameTime.ToString();
+
         // 1초마다 UpdateGame 메소드 호출
         InvokeRepeating("UpdateGame", 1.0f, 1.0f);
-        // BGM 재생 등 게임 시작 관련 설정 추가 필요
+
+        gameAudioSource.Play();
+
 
     }
 
@@ -162,13 +200,13 @@ public class YJMiniGameManager : MonoBehaviour
         }
 
         // (5) countDown < 60일 경우
-        if (gameTime > 40 && gameTime < 75 && gameTime % 7 == 0)
+        if (gameTime > 42 && gameTime < 75 && gameTime % 7 == 0)
         {
             // 랜덤한 colorEffect를 2가지 이미지를 3초 동안 활성화 후 비활성화
             StartCoroutine(ActivateRandomColorEffects());
         }
 
-        if (gameTime <= 40 && gameTime % 10 == 0)
+        if (gameTime <= 42 && gameTime % 10 == 0)
         {
             StartCoroutine(TooHardRandomColorEffects());
         }
@@ -185,6 +223,57 @@ public class YJMiniGameManager : MonoBehaviour
             score = 0;
             costText.text = score.ToString();
         }
+
+        // meChar를 Y 축을 기준으로 왕복하도록 만드는 코드
+        if (isGameRunning)
+        {
+            float yOffset = Mathf.PingPong(Time.time * shakeSpeed, shakeRange * 2) - shakeRange;
+            Vector3 newPos = meChar.transform.position;
+            newPos.y = yOffset;
+            meChar.transform.position = newPos;
+        }
+
+        // meChar를 Y 축을 기준으로 왕복하도록 만드는 코드
+        if (isGameRunning)
+        {
+            float yOffset = Mathf.PingPong(Time.time * shakeSpeed, shakeRange * 2) - shakeRange;
+            Vector3 newPos = meChar01.transform.position;
+            newPos.y = yOffset;
+            meChar01.transform.position = newPos;
+        }
+
+        // meChar를 Y 축을 기준으로 왕복하도록 만드는 코드
+        if (isGameRunning)
+        {
+            float yOffset = Mathf.PingPong(Time.time * shakeSpeed, shakeRange * 2) - shakeRange;
+            Vector3 newPos = meChar02.transform.position;
+            newPos.y = yOffset;
+            meChar02.transform.position = newPos;
+        }
+
+        // meChar를 Y 축을 기준으로 왕복하도록 만드는 코드
+        if (isGameRunning)
+        {
+            float yOffset = Mathf.PingPong(Time.time * shakeSpeed, shakeRange * 2) - shakeRange;
+            Vector3 newPos = meChar03.transform.position;
+            newPos.y = yOffset;
+            meChar03.transform.position = newPos;
+        }
+
+        // 바다쨩 좌우로 흔들리게 만드는 코드
+        if (isGameRunning)
+        {
+            ShakeObject(badaChar, shakeRange, shakeSpeed);
+        }
+    }
+
+    // 바다쨩 흔들 함수
+    private void ShakeObject(Image obj, float range, float speed)
+    {
+        float xOffset = Mathf.PingPong(Time.time * speed, range * 2) - range;
+        Vector3 newPos = obj.transform.position;
+        newPos.x = xOffset;
+        obj.transform.position = newPos;
     }
 
     // 투 하드 봉타임 진행
@@ -201,6 +290,10 @@ public class YJMiniGameManager : MonoBehaviour
 
             // 1.5초 동안 활성화
             randomColorEffect.gameObject.SetActive(true);
+            
+            // 효과음 재생
+            PlayColorEffectSound(randomColorEffect);
+
             yield return new WaitForSeconds(1f);
 
             // 대응하는 bong 버튼을 tooExpectedBongButtons에 저장
@@ -239,6 +332,10 @@ public class YJMiniGameManager : MonoBehaviour
 
             // 1.5초 동안 활성화
             randomColorEffect.gameObject.SetActive(true);
+
+            // 효과음 재생
+            PlayColorEffectSound(randomColorEffect);
+
             yield return new WaitForSeconds(1.5f);
 
             // 대응하는 bong 버튼을 expectedBongButtons에 저장
@@ -264,6 +361,25 @@ public class YJMiniGameManager : MonoBehaviour
         activeColorEffects.Clear();
     }
 
+    // 효과음 재생 메소드
+    private void PlayColorEffectSound(Image colorEffect)
+    {
+        if (colorEffect == colorEffect01)
+        {
+            bongtime01.Play();
+        }
+
+        else if (colorEffect == colorEffect02)
+        {
+            bongtime02.Play();
+        }
+
+        else if (colorEffect == colorEffect03)
+        {
+            bongtime03.Play();
+        }
+    }
+
     // 하드 봉 타임 이후 처리
     private void DeactivateHardBongTime()
     {
@@ -276,6 +392,7 @@ public class YJMiniGameManager : MonoBehaviour
 
             // 오답 이미지 활성화
             fail.gameObject.SetActive(true);
+            badafail_SFX.Play();
             Invoke("DeactivateFailImage", 2.0f);
         }
         // hardBongTime이 종료되면 다시 activeColorEffects를 비움
@@ -304,9 +421,14 @@ public class YJMiniGameManager : MonoBehaviour
     // 일반 봉타임 컬러 이펙트 랜덤 활성화
     private void ActivateRandomColorEffect()
     {
+
         // 랜덤한 colorEffect 활성화 및 일정 시간 후에 비활성화
         Image randomColorEffect = GetRandomColorEffect();
         randomColorEffect.gameObject.SetActive(true);
+
+        // 효과음 재생
+        PlayColorEffectSound(randomColorEffect);
+
         Invoke("DeactivateColorEffect", bongTime);
     }
 
@@ -314,18 +436,18 @@ public class YJMiniGameManager : MonoBehaviour
     private Image GetRandomColorEffect()
     {
         // 랜덤한 colorEffect 반환
-        int randomIndex = Random.Range(1, 4);
-        switch (randomIndex)
+        if (availableColorEffects.Count == 0)
         {
-            case 1:
-                return colorEffect01;
-            case 2:
-                return colorEffect02;
-            case 3:
-                return colorEffect03;
-            default:
-                return colorEffect01;
+            // 사용 가능한 컬러 이펙트가 없으면 모든 컬러 이펙트를 다시 추가
+            availableColorEffects.AddRange(new List<Image> { colorEffect01, colorEffect02, colorEffect03 });
         }
+
+        // 랜덤한 컬러 이펙트 반환 및 사용 목록에서 제거
+        int randomIndex = Random.Range(0, availableColorEffects.Count);
+        Image randomColorEffect = availableColorEffects[randomIndex];
+        availableColorEffects.RemoveAt(randomIndex);
+
+        return randomColorEffect;
     }
 
     private void DeactivateColorEffect()
@@ -362,6 +484,7 @@ public class YJMiniGameManager : MonoBehaviour
 
                 // 오답 이미지 활성화
                 fail.gameObject.SetActive(true);
+                badafail_SFX.Play();
                 Invoke("DeactivateFailImage", 2.0f);
             }
         }
@@ -383,22 +506,38 @@ public class YJMiniGameManager : MonoBehaviour
 
             if (EventSystem.current.currentSelectedGameObject == expectedButton.gameObject)
             {
+                // 이미 실행 중인 Invoke 중지
+                CancelInvoke("DeactivateSuccessImage");
+
+                // 이미지 초기화
+                success.gameObject.SetActive(false);
+                badasucces_SFX.Stop();
+
                 // 버튼이 올바른 순서로 클릭되었을 때
                 score++;
                 costText.text = score.ToString();
 
                 // 정답 이미지 활성화
                 success.gameObject.SetActive(true);
+                badasucces_SFX.Play();
                 Invoke("DeactivateSuccessImage", 0.5f);
             }
             else
             {
+                // 이미 실행 중인 Invoke 중지
+                CancelInvoke("DeactivateFailImage");
+
+                // 이미지 초기화
+                fail.gameObject.SetActive(false);
+                badafail_SFX.Stop();
+
                 // 버튼이 잘못 클릭되었을 때
                 score--;
                 costText.text = score.ToString();
 
                 // 오답 이미지 활성화
                 fail.gameObject.SetActive(true);
+                badafail_SFX.Play();
                 Invoke("DeactivateFailImage", 0.5f);
             }
 
@@ -426,6 +565,7 @@ public class YJMiniGameManager : MonoBehaviour
 
                 // 정답 이미지 활성화
                 success.gameObject.SetActive(true);
+                badasucces_SFX.Play();
                 Invoke("DeactivateSuccessImage", 2.0f);
             }
             else
@@ -436,6 +576,7 @@ public class YJMiniGameManager : MonoBehaviour
 
                 // 오답 이미지 활성화
                 fail.gameObject.SetActive(true);
+                badafail_SFX.Play();
                 Invoke("DeactivateFailImage", 2.0f);
             }
 
@@ -527,6 +668,9 @@ public class YJMiniGameManager : MonoBehaviour
 
     private void EndGame()
     {
+        // 게임 종료 시 사운드 중지
+        gameAudioSource.Stop();
+
         // 게임 종료 시 호출되는 함수
         endBg.SetActive(true);
         isGameRunning = false;
@@ -536,34 +680,46 @@ public class YJMiniGameManager : MonoBehaviour
     {
         if (isBongTimeActive == false && isGameRunning == true)
         {
+            badamessage01_SFX.Play();
             // message01 버튼 클릭 시 호출되는 함수
-            StartCoroutine(DisplayMessage("message01"));
+            StartCoroutine(DisplayMessage01());
         }
     }
 
-    public void OnMessage02ButtonClick()
+    public void OnMessage02ButtonClick02()
     {
         if (isBongTimeActive == false && isGameRunning == true)
         {
+            badamessage02_SFX.Play();
             // message02 버튼 클릭 시 호출되는 함수
-            StartCoroutine(DisplayMessage("message02"));
+            StartCoroutine(DisplayMessage02());
         }
     }
 
-    private IEnumerator DisplayMessage(string message)
+    private IEnumerator DisplayMessage01()
     {
         // 메시지 출력 및 일정 시간 후에 숨김
         messageBg.SetActive(true);
-        messageText.text = message;
         loveEffect.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(2.0f);
 
         messageBg.SetActive(false);
-        messageText.text = "";
         loveEffect.gameObject.SetActive(false);
     }
 
+
+    private IEnumerator DisplayMessage02()
+    {
+        // 메시지 출력 및 일정 시간 후에 숨김
+        messageBg02.SetActive(true);
+        loveEffect.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        messageBg02.SetActive(false);
+        loveEffect.gameObject.SetActive(false);
+    }
 
 
     // 게임 일시정지 버튼 클릭 시 호출되는 함수
