@@ -731,7 +731,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1720771680}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
         m_MethodName: HomeClick
         m_Mode: 1
@@ -1489,17 +1489,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1720771675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f17cfc998ab7c640a42039ee4b0e3ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 02e23509bbabf8545a0a6ab7fcc3bee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameName: 
-  ResultBG: {fileID: 87725492}
-  ScoreBG: {fileID: 204689368}
-  Scoretxt: {fileID: 582640871}
-  Rewardtxt: {fileID: 224684142}
-  Restart: {fileID: 2120621639}
+  ResultBG: {fileID: 0}
+  ScoreBG: {fileID: 0}
+  Scoretxt: {fileID: 0}
+  Rewardtxt: {fileID: 0}
+  Restart: {fileID: 0}
   HomeBtn: {fileID: 0}
   UserScoreText: {fileID: 0}
+  Reward1: {fileID: 0}
+  Reward2: {fileID: 0}
+  Reward3: {fileID: 0}
+  GoodsImage: {fileID: 0}
+  Rewards:
+  - {fileID: 0}
 --- !u!1 &1776186674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,7 +1770,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1720771680}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
         m_MethodName: RestartClick
         m_Mode: 1
