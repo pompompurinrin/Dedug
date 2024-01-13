@@ -137,7 +137,7 @@ public class UiManager : MonoBehaviour
 
 
         // CSV 파일에서 데이터 읽기
-        data_Dialog = CSVReader.Read("GoodsCSV_DG");
+        data_Dialog = CSVReader.Read("GoodsTable_real");
     }
 
     public void GoodsNumInfo()
