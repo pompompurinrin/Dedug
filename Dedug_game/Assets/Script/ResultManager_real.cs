@@ -21,7 +21,7 @@ public class ResultManager_real : MonoBehaviour
     public Button HomeBtn;
 
     // 각종 효과 및 결과를 나타내는 텍스트들
-    public Text UserScoretxt; //얘는 게임에서 저장 된 유저 점수를 불러올 것임!! 
+    public Text UserScoreText; //얘는 게임에서 저장 된 유저 점수를 불러올 것임!! 
    
     // 게임 오브젝트 및 캔버스 관련 변수
     public Image Reward1;
@@ -34,22 +34,29 @@ public class ResultManager_real : MonoBehaviour
     int UserScore;
 
 
+
     // 리워드 리스트 선언을 여기서 시킴
     public List<Image> Rewards = new List<Image>();
+
+
+
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
     void Start()
     {
         //PercentageTable_1에서 배열을 사용할게
-        data_Dialog = CSVReader.Read("PercentageTable_real");
+        data_Dialog = CSVReader.Read("GoodsTable_real");
 
         //어떤 컴포넌트에 배정할거임?
         ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
         ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         Restart = GameObject.Find("Restart").GetComponent<Button>();
         HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-        //UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
+        UserScoreText = GameObject.Find("UserScore").GetComponent<Text>();
+
+
+
 
         // 이건 왜인지 모르겠는데 넣으라고 해서 일단 넣음
         Rewards.Add(Reward1);
@@ -57,20 +64,24 @@ public class ResultManager_real : MonoBehaviour
         Rewards.Add(Reward3);
 
 
+
+
         // 테스트용 시작 값이랑 넣은거
         Setting();
 
         // UserScore 동적으로 설정 (예시: 랜덤 값 설정)
         UserScore = UnityEngine.Random.Range(1, 10);
+
         Result2 = 3;
         Result1 = 1;
+
         Score();
     }
 
     List<int> gatchIdList;
     List<int> gatchPerList;
     List<int> rewards; // 줄 애들
-    
+
 
     void Setting() // 씬 들어가자마자 한번 하면 됨
     {
@@ -80,10 +91,10 @@ public class ResultManager_real : MonoBehaviour
 
         for (int i = 0; i < data_Dialog.Count; i++)
         {
-            if ((int)data_Dialog[i]["Nowrank"] == rank)
+            if ((int)data_Dialog[i]["nowrank"] == rank)
             {
-                gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
-                gatchIdList.Add((int)data_Dialog[i]["Percentage"]);
+                gatchPerList.Add((int)data_Dialog[i]["percentage"]);
+                gatchIdList.Add((int)data_Dialog[i]["percentage"]);
             }
         }
         
@@ -95,6 +106,10 @@ public class ResultManager_real : MonoBehaviour
 
         // 여기 한 줄 수정함 리스트 초기화
         rewards = new List<int>(); // rewards 리스트 초기화
+
+
+
+
 
         for (int i = 0; i < Rewards.Count; i++)
         {
@@ -110,7 +125,7 @@ public class ResultManager_real : MonoBehaviour
         for(int i = 0; i < count; i++) // 몇번
         {
             GetItems(randMaxValue); // 뽑기
-            Rewards[i].sprite = Resources.Load<Sprite>("Goods" + rewards[i]);
+            Rewards[i].sprite = Resources.Load<Sprite>("goods" + rewards[i]);
             Rewards[i].gameObject.SetActive(true); // 바뀌었으니 켜라
         }
     }
