@@ -44,6 +44,7 @@ public class HomeManager : MonoBehaviour
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject GoodsBuy = GameObject.Find("GoodsBuy");
+   
 
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);
         
@@ -87,6 +88,8 @@ public class HomeManager : MonoBehaviour
             }
 
         }
+
+        
     }
     
 
