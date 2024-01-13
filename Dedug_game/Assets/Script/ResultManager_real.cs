@@ -22,7 +22,8 @@ public class ResultManager_real : MonoBehaviour
 
     // 각종 효과 및 결과를 나타내는 텍스트들
     public Text UserScoretxt; //얘는 게임에서 저장 된 유저 점수를 불러올 것임!! 
-   
+    public string imageFileName; // 얘는 CSV에서 Goods열의 숫자를 가져와서 이미지로 뽑아낼거임!!
+
     // 게임 오브젝트 및 캔버스 관련 변수
     public Image Reward1;
     public Image Reward2;
@@ -110,7 +111,10 @@ public class ResultManager_real : MonoBehaviour
         for(int i = 0; i < count; i++) // 몇번
         {
             GetItems(randMaxValue); // 뽑기
-            Rewards[i].sprite = Resources.Load<Sprite>("Goods" + rewards[i]);
+
+                string imageFileName = data_Dialog[i]["Goods"].ToString();
+                Rewards[i].sprite = Resources.Load<Sprite>("Goods" + imageFileName);
+            
             Rewards[i].gameObject.SetActive(true); // 바뀌었으니 켜라
         }
     }
