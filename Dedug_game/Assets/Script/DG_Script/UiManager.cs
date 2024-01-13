@@ -29,6 +29,7 @@ public class UiManager : MonoBehaviour
     public Text GoodsName;
 
     public Image GoodsImage;
+    public Image RedDot1011;
 
 
     public Button MainStory_Btn;
@@ -75,7 +76,6 @@ public class UiManager : MonoBehaviour
     public Button Cha_3_Story1_Btn;
     public Button Cha_3_Story2_Btn;
     public Button Cha_3_Story3_Btn;
-
 
 
     //팝업창 다르게 하기 위해서, 처음 각 버튼을 눌렀는지 확인하는 작업을 위한 준비
@@ -320,10 +320,15 @@ public class UiManager : MonoBehaviour
                 GoodsNameText.text = data_Dialog[i]["GoodsName"].ToString();
                 GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
                 GoodsName.text = data_Dialog[i]["GoodsName"].ToString();
+
+
+                
+
                 //GoodsNum.text = data_Dialog[i][""].ToString();
 
                 //GoodsNum.text = 데이터매니저에서 개수 가져오기
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
+            
             }
         }
     }
@@ -448,6 +453,7 @@ public class UiManager : MonoBehaviour
     public void OnPopUpExit_BtnClick()
     {
         PopUpBG_GoodsInfo.gameObject.SetActive(false);
+        Destroy(RedDot1011.gameObject);
     }
 }
 

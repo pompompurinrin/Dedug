@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,27 +26,66 @@ public class GoodsNumManager : MonoBehaviour
     public Text Goods3031Num;
     public Text Goods3032Num;
 
-    public Image Lock_1011;
-    public Image Lock_1012;
-    public Image Lock_1021;
-    public Image Lock_1022;
-    public Image Lock_1031;
-    public Image Lock_1032;
+    public Image UnlockBG1011;
+    public Image UnlockBG1012;
+    public Image UnlockBG1021;
+    public Image UnlockBG1022;
+    public Image UnlockBG1031;
+    public Image UnlockBG1032;
+    public Image UnlockBG2011;
+    public Image UnlockBG2012;
+    public Image UnlockBG2021;
+    public Image UnlockBG2022;
+    public Image UnlockBG2031;
+    public Image UnlockBG2032;
+    public Image UnlockBG3011;
+    public Image UnlockBG3012;
+    public Image UnlockBG3021;
+    public Image UnlockBG3022;
+    public Image UnlockBG3031;
+    public Image UnlockBG3032;
 
-    public Image Lock_2011;
-    public Image Lock_2012;
-    public Image Lock_2021;
-    public Image Lock_2022;
-    public Image Lock_2031;
-    public Image Lock_2032;
+    public Image RedDot1011;
+    public Image RedDot1012;
+    public Image RedDot1021;
+    public Image RedDot1022;
+    public Image RedDot1031;
+    public Image RedDot1032;
+    public Image RedDot2011;
+    public Image RedDot2012;
+    public Image RedDot2021;
+    public Image RedDot2022;
+    public Image RedDot2031;
+    public Image RedDot2032;
+    public Image RedDot3011;
+    public Image RedDot3012;
+    public Image RedDot3021;
+    public Image RedDot3022;
+    public Image RedDot3031;
+    public Image RedDot3032;
 
-    public Image Lock_3011;
-    public Image Lock_3012;
-    public Image Lock_3021;
-    public Image Lock_3022;
-    public Image Lock_3031;
-    public Image Lock_3032;
+    private bool isFirstCha_1_1011_BtnClick = true;
+    private bool isFirstCha_1_1012_BtnClick = true;
+    private bool isFirstCha_1_1021_BtnClick = true;
+    private bool isFirstCha_1_1022_BtnClick = true;
+    private bool isFirstCha_1_1031_BtnClick = true;
+    private bool isFirstCha_1_1032_BtnClick = true;
+    private bool isFirstCha_2_2011_BtnClick = true;
+    private bool isFirstCha_2_2012_BtnClick = true;
+    private bool isFirstCha_2_2021_BtnClick = true;
+    private bool isFirstCha_2_2022_BtnClick = true;
+    private bool isFirstCha_2_2031_BtnClick = true;
+    private bool isFirstCha_2_2032_BtnClick = true;
+    private bool isFirstCha_3_3011_BtnClick = true;
+    private bool isFirstCha_3_3012_BtnClick = true;
+    private bool isFirstCha_3_3021_BtnClick = true;
+    private bool isFirstCha_3_3022_BtnClick = true;
+    private bool isFirstCha_3_3031_BtnClick = true;
+    private bool isFirstCha_3_3032_BtnClick = true;
 
+
+
+    public Button testGoods1021;
     private void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -68,12 +108,11 @@ public class GoodsNumManager : MonoBehaviour
         DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
     }
 
-    
 
-    public void OnEnable() 
+
+    public void OnEnable()
     {
-        
-            //GoodsNum.text = 데이터매니저에서 개수 가져오기
+        //GoodsNum.text = 데이터매니저에서 개수 가져오기
         Goods1011Num.text = "X" + DataManager.Instance.goods1011.ToString();
         Goods1012Num.text = "X" + DataManager.Instance.goods1012.ToString();
         Goods1021Num.text = "X" + DataManager.Instance.goods1021.ToString();
@@ -93,33 +132,67 @@ public class GoodsNumManager : MonoBehaviour
         Goods3031Num.text = "X" + DataManager.Instance.goods3031.ToString();
         Goods3032Num.text = "X" + DataManager.Instance.goods3032.ToString();
 
+        RedDot1011.gameObject.SetActive(false);
 
-    }
-   /* public void GoodsUnlock()
-    {
-        if (Goods1011Num.text == "X0")
-        {
-            
-            Lock_1011.interactable(false);
-        }
-        else
-        {
-            Lock_1011.gameObject.SetActive(true);
-        }
-    }*/
-
-    public void UnlockCheck()
-    {
         if (DataManager.Instance.goods1011 == 0)
-            Lock_1011.gameObject.SetActive(true);
-
-        else
             {
-            Lock_1011.gameObject.SetActive(false);
-        }
-        }
+                UnlockBG1011.gameObject.SetActive(true);
+            }
+            else
+            {
+                UnlockBG1011.gameObject.SetActive(false);
+                RedDot1011.gameObject.gameObject.SetActive(true);
+
+            // Destroy the RedDot1011 GameObject
+
+
+            isFirstCha_1_1011_BtnClick = false;
+            }
     }
-    
+    /* public void GoodsUnlock()
+     {
+         if (Goods1011Num.text == "X0")
+         {
+
+             Lock_1011.interactable(false);
+         }
+         else
+         {
+             Lock_1011.gameObject.SetActive(true);
+         }
+     }*/
+
+    public void OntestGoods1011Click()
+    {
+        DataManager.Instance.goods1011 = DataManager.Instance.goods1011 + 100;
+        //sUnlockCheck();
+    }
+
+    /* public void UnlockCheck()
+     {
+         if (DataManager.Instance.goods1011 == 0)
+             UnlockBG1011.gameObject.SetActive(true);
+
+         else
+             {
+             UnlockBG1011.gameObject.SetActive(false);
+             RedDot1011.gameObject.SetActive(true);
+         }
+         }
+
+     public void OnCha_1_1011_BtnClick()
+     {
+         if (isFirstCha_1_1011_BtnClick)
+         {
+             isFirstCha_1_1011_BtnClick = false;
+             RedDots1011.gameObject.SetActive(tre);
+         }
+     }
+     */
+}
+
+
+
 
 
 /*using System.Collections;
