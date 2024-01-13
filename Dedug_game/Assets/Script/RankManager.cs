@@ -13,6 +13,7 @@ public class RankManager : MonoBehaviour
     public Image NowRankImage;
     public Text NowRankName;
     public Button RankUPBtn;
+
     public Image PopUPBG;
     public Image NextRankImage;
     public Text NextRankName;
@@ -20,8 +21,9 @@ public class RankManager : MonoBehaviour
     public Image ResultBG;
 
     int nextRank;
-    public string imageFileName;
-    
+    public string NowimageFileName;
+    public string NextimageFileName;
+
     public GameObject EffectPrefab;
     public GameObject _effectPrefab;
 
@@ -43,6 +45,11 @@ public class RankManager : MonoBehaviour
     public Text SpendGoldText;
     int NowGold;
 
+    public AudioSource bgm1AudioSource;
+    public AudioSource bgm2AudioSource;
+    public AudioSource sfx1AudioSource;
+    public AudioSource sfx2AudioSource;
+
     // 게임 오브젝트 및 캔버스 관련 변수
     private GameObject RankPopUP;
     private Image RankPopUPBG;
@@ -56,7 +63,7 @@ public class RankManager : MonoBehaviour
 
     // CSV 파일을 읽어들일 데이터 리스트
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
-    private const string RankSampleFileName = "RankSample";
+    private const string RankFileName = "RankTable";
     private char[] TRIM_CHARS = { ' ', '\"' };
 
     private void Awake()
@@ -86,12 +93,25 @@ public class RankManager : MonoBehaviour
         ClickTouchBtn.gameObject.SetActive(false);
         _effectPrefab.gameObject.SetActive(false);
         // CSV 파일에서 데이터 읽기
-        data_Dialog = CSVReader.Read(RankSampleFileName);
+        data_Dialog = CSVReader.Read(RankFileName);
+
+        bgm1AudioSource.loop = true;
+        bgm1AudioSource.Play();
+
+        // BGM2 중지
+        bgm2AudioSource.Stop();
+        sfx1AudioSource.Stop();
+        sfx2AudioSource.Stop();
+
 
         // 랭크 정보 설정 및 언락 확인
         SetupRankInfo();
         UnlockCheck();
 
+    }
+    public void PlaySFX1()
+    {
+        sfx1AudioSource.Play();
     }
 
     private void SetupRankInfo()
@@ -99,20 +119,20 @@ public class RankManager : MonoBehaviour
         if (DataManager.Instance.nowRank >= 0 && DataManager.Instance.nowRank < data_Dialog.Count)
         {
             // 현재 랭크와 다음 랭크의 정보 설정
-            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
-            NextRankName.text = data_Dialog[nextRank]["rank"].ToString();
+            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
+            NextRankName.text = data_Dialog[nextRank]["RankName"].ToString();
 
             // 각종 효과 및 비용 텍스트 설정
-            PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
-            PlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
-            PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
-            PlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
+            PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("GuestPlus")}종 상승";
+            PlusGoldState.text = $"커미션 1회당 {GetIntValue("GoldPlus")}골드 상승";
+            PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("FeverTimePlus")}초 상승";
+            PlusGoods.text = $"좋은 굿즈 획득 확률 상승";
 
         }
-        else
+        else if(DataManager.Instance.nowRank >= 10)
         {
             // 현재 랭크와 다음 랭크의 정보 설정
-            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
             NextRankName.text = " 당신은 이미 정상입니다 ";
 
             // 각종 효과 및 비용 텍스트 설정
@@ -120,25 +140,15 @@ public class RankManager : MonoBehaviour
             PlusGoldState.text = "당신은 오타쿠의";
             PlusFeverTime.text = "경지에 올랐습니다!";
             PlusGoods.text = "이미 최고 등급에 도달했습니다!";
-            NowRankImage.sprite = Rank1;
+
+            NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
+            NextimageFileName = data_Dialog[nextRank]["MainImage"].ToString();
+            NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
+            NextRankImage.sprite = Resources.Load<Sprite>(NextimageFileName);
 
         }
 
-        if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 1)
-        {
-            NowRankImage.sprite = Rank1;
-            NextRankImage.sprite = Rank2;
-        }
-        else if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 2)
-        {
-            NowRankImage.sprite = Rank2;
-            NextRankImage.sprite = Rank3;
-        }
-        else if (Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["level"]) == 3)
-        {
-            NowRankImage.sprite = Rank3;
-            NextRankImage.sprite = Rank1;
-        }
+       
     }
 
     private int GetIntValue(string key)
@@ -169,7 +179,8 @@ public class RankManager : MonoBehaviour
         {
             if (DataManager.Instance.goods3011 == 0)
             {
-                UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["GoodsName"].ToString() + "을 획득하면 해금됩니다.";
+                //UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["Ranktest"].ToString() + "을 획득하면 해금됩니다.";
+                UnlockGoods.text = "굿즈" + "응가" + "을 획득하면 해금됩니다.";
                 Unlock.gameObject.SetActive(true);
             }
             else
@@ -182,7 +193,8 @@ public class RankManager : MonoBehaviour
         {
             if (DataManager.Instance.goods3021 == 0)
             {
-                UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["GoodsName"].ToString() + "을 획득하면 해금됩니다.";
+                //UnlockGoods.text = "굿즈" + data_Dialog[nextRank]["Ranktest"].ToString() + "을 획득하면 해금됩니다.";
+                UnlockGoods.text = "굿즈" + "응가" + "을 획득하면 해금됩니다.";
                 Unlock.gameObject.SetActive(true);
             }
             else
@@ -195,17 +207,24 @@ public class RankManager : MonoBehaviour
             Unlock.gameObject.SetActive(false);
         }
 
-        if (DataManager.Instance.nowGold >= Convert.ToInt32(data_Dialog[nextRank]["rank_gold"]))
+        if (DataManager.Instance.nowGold >= Convert.ToInt32(data_Dialog[nextRank]["RankGold"]))
         {
-            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["RankGold"]}";
             SpendGoldText.color = Color.black;
             RankUPBtn.interactable = true;  // 버튼 활성화
         }
         else
         {
-            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["rank_gold"]}";
+            SpendGoldText.text = $"{DataManager.Instance.nowGold}/{data_Dialog[nextRank]["RankGold"]}";
             SpendGoldText.color = Color.red;
             RankUPBtn.interactable = false;  // 버튼 비활성화
+        }
+
+        if (DataManager.Instance.nowRank >= 10)
+        {
+            SpendGoldText.text = $"최고 등급 달성!";
+            SpendGoldText.color = Color.red;
+            RankUPBtn.interactable = false;
         }
 
     }
@@ -213,8 +232,8 @@ public class RankManager : MonoBehaviour
     public void RankPopUPClick()
     {
         // 랭크 팝업 클릭 시 호출되는 메서드
-        PopUPText.text = "정말 " + data_Dialog[nextRank]["rank"].ToString() + "(으)로 승급하시겠습니까?";
-        PopUPNotice.text = "승급시" + data_Dialog[nextRank]["rank_gold"].ToString() + "골드가 소모됩니다.";
+        PopUPText.text = "정말 " + data_Dialog[nextRank]["RankName"].ToString() + "(으)로 승급하시겠습니까?";
+        PopUPNotice.text = "승급시" + data_Dialog[nextRank]["RankGold"].ToString() + "골드가 소모됩니다.";
         RankPopUPBG.gameObject.SetActive(true);
         anim.SetTrigger("DoShow");
     }
@@ -222,25 +241,27 @@ public class RankManager : MonoBehaviour
 
     public void RankPopUPClickConfirm()
     {
+        // BGM1 Pause
+        bgm1AudioSource.Pause();
+
+        // BGM2 플레이
+        bgm2AudioSource.loop = true;
+        bgm2AudioSource.Play();
 
         // 랭크 팝업 확인 클릭 시 호출되는 메서드
-        DataManager.Instance.nowGold -= Convert.ToInt32(data_Dialog[DataManager.Instance.nowRank]["rank_gold"]);
+        DataManager.Instance.nowGold -= Convert.ToInt32(data_Dialog[nextRank]["RankGold"]);
 
         DataManager.Instance.nowRank++;
         nextRank++;
 
-        if (nextRank >= data_Dialog.Count)
-        {
-            nextRank = 0; // 또는 다른 초기값으로 설정 가능
-        }
 
         Save();
         // 랭크 정보 및 결과 텍스트 업데이트
         SetupRankInfo();
-        SpendGoldText.text = DataManager.Instance.nowGold.ToString() + "/" + data_Dialog[DataManager.Instance.nowRank]["rank_gold"].ToString();
+        SpendGoldText.text = DataManager.Instance.nowGold.ToString() + "/" + data_Dialog[DataManager.Instance.nowRank]["RankGold"].ToString();
 
-        imageFileName = data_Dialog[DataManager.Instance.nowRank]["ResultImg"].ToString();
-        ResultChr.sprite = Resources.Load<Sprite>(imageFileName);
+        NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["Mainlmage"].ToString();
+        ResultChr.sprite = Resources.Load<Sprite>(NowimageFileName);
 
 
         //GameObject effectInstance = Instantiate(effectPrefab, ResultChr.transform.position, Quaternion.identity);
@@ -253,14 +274,18 @@ public class RankManager : MonoBehaviour
         // Vector3 desiredScale = new Vector3(0.9f, 0.9f, 0.9f);  
         //effectInstance.transform.localScale = desiredScale;
 
-        ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("guest")}종 상승";
-        ResultPlusGoldState.text = $"커미션 1회당 {GetIntValue("goldplus")}골드 상승";
-        ResultPlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("time")}초 상승";
-        ResultPlusGoods.text = $"굿즈 {GetIntValue("goods")}개 해금";
-        PopUPText.text = "정말 " + data_Dialog[nextRank]["rank"].ToString() + "(으)로 승급하시겠습니까?";
-        PopUPNotice.text = "승급시" + data_Dialog[nextRank]["rank_gold"].ToString() + "골드가 소모됩니다.";
+        ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("GuestPlus")}종 상승";
+        ResultPlusGoldState.text = $"커미션 1회당 {GetIntValue("GoldPlus")}골드 상승";
+        ResultPlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("FeverTimePlus")}초 상승";
+        ResultPlusGoods.text = $"좋은 굿즈 획득 확률 상승";
+        PopUPText.text = "정말 " + data_Dialog[nextRank]["RankName"].ToString() + "(으)로 승급하시겠습니까?";
+        PopUPNotice.text = "승급시" + data_Dialog[nextRank]["RankGold"].ToString() + "골드가 소모됩니다.";
         anim.SetTrigger("DoHide");
 
+        NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["Mainlmage"].ToString();
+        NextimageFileName = data_Dialog[nextRank]["Mainlmage"].ToString();
+        NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
+        NextRankImage.sprite = Resources.Load<Sprite>(NextimageFileName);
 
         _effectPrefab.gameObject.SetActive(true);
         ClickTouchBtn.gameObject.SetActive(true);
@@ -276,6 +301,8 @@ public class RankManager : MonoBehaviour
     public Button ClickTouchBtn;
     public void ClickTouch()
     {
+        // SFX2 플레이
+        sfx2AudioSource.Play();
 
         Sequence buttonSequence = DOTween.Sequence();
 
@@ -326,6 +353,10 @@ public class RankManager : MonoBehaviour
         // 결과 창 종료 클릭 시 호출되는 메서드
         Result.gameObject.SetActive(false);
         RankPopUPBG.gameObject.SetActive(false);
+        
+        bgm2AudioSource.Stop();
+        // BGM1 플레이
+        bgm1AudioSource.UnPause();
 
         // 여기서 이전 상태로 초기화 또는 다른 초기화 작업 수행
         // 예를 들어, ResultCanvas를 오른쪽에서 왼쪽으로 이동하는 애니메이션 초기화
@@ -366,6 +397,7 @@ public class RankManager : MonoBehaviour
         DataManager.Instance.nowRank = 0;
         DataManager.Instance.nowGold = 0;
         DataManager.Instance.goods3011 = 0;
+        nextRank = 1;
         SetupRankInfo();
         UnlockCheck();
 

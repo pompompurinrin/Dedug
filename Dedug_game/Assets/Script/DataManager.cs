@@ -52,7 +52,7 @@ public class DataManager : Singleton<DataManager>
 
     private void DataLoad()
     {
-        DataTable = CSVReader.Read("RankSample");
+        DataTable = CSVReader.Read("RankTable");
     }
 
 
