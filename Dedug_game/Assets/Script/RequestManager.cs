@@ -45,11 +45,27 @@ public class RequestManager : MonoBehaviour
     public float slideDuration = 0.5f;
     private bool isDeleting = false;
 
+    public GameObject feverBefore;
+
     //혜린: 현재 랭크
     int NowRank;
 
     // 랭크 출력 텍스트
     public Text rankText;
+
+    public GameObject feverStart;
+    public GameObject feverBg;
+
+    public AudioSource coin01;
+    public AudioSource coin02;
+
+    public AudioSource comitionBGM;
+    public AudioSource feverBGM;
+
+    public AudioSource feverBeforeSFX;
+
+    // 피버 이펙트
+    public GameObject feverBeforeEffect;
 
 
     // 애니메이션 트리거, bool의 상태를 나타내는 열거형
@@ -85,6 +101,8 @@ public class RequestManager : MonoBehaviour
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
         DrawAnimator = GameObject.Find("charictorImg").GetComponent<Animator>();
         goldText.text = DataManager.Instance.nowGold.ToString();
+
+        comitionBGM.Play();
     }
 
     void Update()
@@ -245,23 +263,33 @@ public class RequestManager : MonoBehaviour
         int customerType = clickedButton.GetComponent<RequestPrefabScript>().GetCustomerType();
 
 
+        if (customerType == 1)
+        {
+            coin01.Play();
+        }
 
         // 피버 타임 발동 조건
         if (customerType == 2)
         {
             DataManager.Instance.feverNum++;
             Save();
+            coin02.Play();
 
             if ((NowRank == 0 && DataManager.Instance.feverNum == 2) ||
             (NowRank == 1 && DataManager.Instance.feverNum == 4) ||
             (NowRank == 2 && DataManager.Instance.feverNum == 6))
 
             {
+                
                 // feverImg 오브젝트 활성화
-                GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(true);
+                feverBefore.SetActive(true);
+                feverBeforeEffect.SetActive(true);
+                feverBeforeSFX.Play();
 
                 // 2초 뒤에 feverBg 오브젝트 활성화
                 StartCoroutine(ActivateFeverBgAfterDelay(2f));
+
+                comitionBGM.Stop();
 
                 DataManager.Instance.feverNum = 0;
                 Save();
@@ -368,9 +396,11 @@ public class RequestManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        GameObject.Find("nullBg").transform.Find("feverImg").gameObject.SetActive(false);
+        feverBefore.gameObject.SetActive(false);
         // 2초 뒤에 feverBg 오브젝트를 활성화
-        GameObject.Find("feverStart").transform.Find("feverBg").gameObject.SetActive(true);
+        feverBGM.Play();
+        feverStart.gameObject.SetActive(true);
+        feverBg.gameObject.SetActive(true);
 
 
     }

@@ -1,10 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class FeverManager : MonoBehaviour
 {
+    public GameObject feverStart;
     public Button feverButton;
     public Text feverTime;
     public int feverGauge;
@@ -43,6 +46,23 @@ public class FeverManager : MonoBehaviour
     private int clicksInSecond = 0;
     private float clickTimer = 0f;
 
+    // 파티클 관련
+    public Image result;
+    public GameObject shinePinkParticle;
+
+    // 엔드 화면 파티클
+    public GameObject basic;
+    public GameObject happy;
+
+    public AudioSource EndSFX01;
+    public AudioSource EndSFX02;
+    public AudioSource EndSFX03;
+    public AudioSource resultSFX;
+
+    public AudioSource comitionBGM;
+
+    public AudioSource feverBGM;
+
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
@@ -62,7 +82,6 @@ public class FeverManager : MonoBehaviour
 
     public void OnEnable()
     {
-
         feverButton.onClick.AddListener(OnClickFeverButton);
         UpdateFeverTimeText();
         data_Dialog = CSVReader.Read("FeverCSV");
@@ -106,56 +125,136 @@ public class FeverManager : MonoBehaviour
 
             if (countdownTime <= 0)
             {
+                
                 // 카운트 다운이 0이 되면 feverBg를 비활성화하고 endBg를 활성화한다.
                 feverBg.SetActive(false);
 
                 // feverGauge 검사
                 if (feverGauge >= 1 && feverGauge <= 10)
                 {
-                    endText.text = data_Dialog[0]["ResultExplain"].ToString();
-                    endTitle.text = data_Dialog[0]["ResultGrade"].ToString();
-                    endGold.text = data_Dialog[0]["FeverGold"].ToString();
+                    feverBGM.Stop();
+                    // result와 Shine_pink 파티클 오브젝트를 활성화
+                    result.gameObject.SetActive(true);
+                    shinePinkParticle.SetActive(true);
+                    resultSFX.Play();
 
-                    SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
+                    StartCoroutine(DeactivateParticlesAfterDelay(2f)); // 2초 후에 파티클 비활성화
 
-                    endBg.SetActive(true);
-
-                    DataManager.Instance.nowGold += 20;
-                    Save();
 
                 }
 
                 if (feverGauge >= 11 && feverGauge <= 25)
                 {
-                    endText.text = data_Dialog[1]["ResultExplain"].ToString();
-                    endTitle.text = data_Dialog[1]["ResultGrade"].ToString();
-                    endGold.text = data_Dialog[1]["FeverGold"].ToString();
+                    feverBGM.Stop();
+                    // result와 Shine_pink 파티클 오브젝트를 활성화
+                    result.gameObject.SetActive(true);
+                    shinePinkParticle.SetActive(true);
+                    resultSFX.Play();
 
-                    SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
+                    StartCoroutine(DeactivateParticlesAfterDelay02(2f)); // 2초 후에 파티클 비활성화
 
-                    endBg.SetActive(true);
 
-                    DataManager.Instance.nowGold += 50;
-                    Save();
+
+
                 }
 
                 if (feverGauge >= 26)
                 {
-                    endText.text = data_Dialog[2]["ResultExplain"].ToString();
-                    endTitle.text = data_Dialog[2]["ResultGrade"].ToString();
-                    endGold.text = data_Dialog[2]["FeverGold"].ToString();
+                    feverBGM.Stop();
+                    // result와 Shine_pink 파티클 오브젝트를 활성화
+                    result.gameObject.SetActive(true);
+                    shinePinkParticle.SetActive(true);
+                    resultSFX.Play();
 
-                    SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
+                    StartCoroutine(DeactivateParticlesAfterDelay02(2f)); // 2초 후에 파티클 비활성화
 
-                    endBg.SetActive(true);
 
-                    DataManager.Instance.nowGold += 80;
-                    Save();
                 }
             }
         }
 
     }
+
+    IEnumerator DeactivateParticlesAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        shinePinkParticle.SetActive(false);
+
+        endText.text = data_Dialog[0]["ResultExplain"].ToString();
+        endTitle.text = data_Dialog[0]["ResultGrade"].ToString();
+        endGold.text = data_Dialog[0]["FeverGold"].ToString();
+
+        SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
+
+        DataManager.Instance.nowGold += 20;
+        Save();
+
+        endBg.SetActive(true);
+
+        // endBg를 작게 가운데서부터 페이드인
+        endBg.SetActive(true);
+        endBg.transform.localScale = Vector3.zero; // 초기 크기를 0으로 설정
+
+        // DOTween을 사용하여 페이드인 애니메이션 적용
+        endBg.transform.DOScale(Vector3.one, 1.5f).SetEase(Ease.OutBounce); // 원래 크기로 1.5초 동안 페이드인
+        EndSFX01.Play();
+
+    }
+
+    IEnumerator DeactivateParticlesAfterDelay02(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        shinePinkParticle.SetActive(false);
+
+        endText.text = data_Dialog[1]["ResultExplain"].ToString();
+        endTitle.text = data_Dialog[1]["ResultGrade"].ToString();
+        endGold.text = data_Dialog[1]["FeverGold"].ToString();
+
+        SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
+
+        DataManager.Instance.nowGold += 50;
+        Save();
+
+        // endBg를 작게 가운데서부터 페이드인
+        endBg.SetActive(true);
+        endBg.transform.localScale = Vector3.zero; // 초기 크기를 0으로 설정
+
+        // DOTween을 사용하여 페이드인 애니메이션 적용
+        endBg.transform.DOScale(Vector3.one, 1.5f).SetEase(Ease.OutBounce); // 원래 크기로 1.5초 동안 페이드인
+        basic.gameObject.SetActive(true);
+        EndSFX02.Play();
+
+    }
+
+    IEnumerator DeactivateParticlesAfterDelay03(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        shinePinkParticle.SetActive(false);
+
+        endText.text = data_Dialog[2]["ResultExplain"].ToString();
+        endTitle.text = data_Dialog[2]["ResultGrade"].ToString();
+        endGold.text = data_Dialog[2]["FeverGold"].ToString();
+
+        SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
+
+        DataManager.Instance.nowGold += 80;
+        Save();
+
+        // endBg를 작게 가운데서부터 페이드인
+        endBg.SetActive(true);
+        endBg.transform.localScale = Vector3.zero; // 초기 크기를 0으로 설정
+
+        // DOTween을 사용하여 페이드인 애니메이션 적용
+        endBg.transform.DOScale(Vector3.one, 1.5f).SetEase(Ease.OutBounce); // 원래 크기로 1.5초 동안 페이드인
+        happy.gameObject.SetActive(true);
+        EndSFX03.Play();
+
+    }
+
+
     public void Save()
     {
         // 혜린: PlayerPrefs에 현재 값 저장
@@ -241,8 +340,14 @@ public class FeverManager : MonoBehaviour
         feverSlider.value = 0;
         feverGauge = 0;
         goldText.text = DataManager.Instance.nowGold.ToString();
-        endBg.SetActive(false);
 
+        // result와 Shine_pink 파티클 오브젝트를 비활성화
+        result.gameObject.SetActive(false);
+        endBg.SetActive(false);
+        basic.gameObject.SetActive(false);
+        feverStart.gameObject.SetActive(false);
+
+        comitionBGM.Play();
 
     }
 
