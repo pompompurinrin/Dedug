@@ -22,7 +22,11 @@ public class TopbarManager : MonoBehaviour
     public GameObject GamePopups;
     public GameObject GanbareBada;
     public GameObject GoldLack;
-    
+
+    public AudioSource bgm1AudioSource;
+    public AudioSource sfx1AudioSource;
+ 
+
 
 
 
@@ -81,7 +85,6 @@ public class TopbarManager : MonoBehaviour
         GameObject GoldLack = GameObject.Find("GoldLack");
 
 
-
         if (MenuUI != null)
         {
             if (MenuUI.activeSelf)
@@ -123,6 +126,15 @@ public class TopbarManager : MonoBehaviour
 
 
 
+    }
+
+    public void PlaySFX1()
+    {
+        sfx1AudioSource.Play();
+    }
+    public void StopBGM1()
+    {
+        bgm1AudioSource.Stop();
     }
     private int GetIntValue(string key)
     {

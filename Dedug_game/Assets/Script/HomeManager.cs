@@ -14,6 +14,9 @@ public class HomeManager : MonoBehaviour
     public Sprite[] homeImgs;
     public Image homeImg;
 
+    public AudioSource bgm1AudioSource;
+    public AudioSource sfx1AudioSource;
+  
 
     public Text charDialogue;
     public Text charName;
@@ -47,8 +50,10 @@ public class HomeManager : MonoBehaviour
    
 
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);
-        
-        
+
+        bgm1AudioSource.Play();
+        bgm1AudioSource.loop = true;
+
         CharHomeList();
         CharNameList();
 
@@ -92,7 +97,14 @@ public class HomeManager : MonoBehaviour
         
     }
     
-
+    public void PlaySFX1()
+    {
+        sfx1AudioSource.Play();
+    }
+    public void StopBGM1()
+    {
+        bgm1AudioSource.Stop();
+    }
     public void ClickRequestBtn()
     {
         SceneManager.LoadScene("RequestScene");
@@ -174,8 +186,6 @@ public class HomeManager : MonoBehaviour
             {
                 nameList.Add(info["CharName"].ToString());
             }
-            
-            
         }
 
     }
