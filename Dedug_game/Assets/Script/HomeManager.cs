@@ -10,6 +10,7 @@ public class HomeManager : MonoBehaviour
    
 
     public GameObject ChangeCharPopup;
+    public GameObject GoodsBuy;
     public Sprite[] homeImgs;
     public Image homeImg;
 
@@ -42,6 +43,7 @@ public class HomeManager : MonoBehaviour
     {
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
+        GameObject GoodsBuy = GameObject.Find("GoodsBuy");
 
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);
         
@@ -57,6 +59,7 @@ public class HomeManager : MonoBehaviour
         }
         homeImg.sprite = homeImgs[0];
         charName.text = nameList[0];
+        
         //시작 시 팝업을 비활성화
 
         if (ChangeCharPopup != null)
@@ -66,7 +69,24 @@ public class HomeManager : MonoBehaviour
                 ChangeCharPopup.SetActive(false);
             }
 
-        }  
+        }
+
+        if (MenuUI != null)
+        {
+            if (MenuUI.activeSelf)
+            {
+                MenuUI.SetActive(false);
+            }
+        }
+
+        if (GoodsBuy != null)
+        {
+            if (GoodsBuy.activeSelf)
+            {
+                GoodsBuy.SetActive(false);
+            }
+
+        }
     }
     
 
@@ -81,9 +101,15 @@ public class HomeManager : MonoBehaviour
     }
     public void ClickGoodsBtn()
     {
-        SceneManager.LoadScene("GoodsSBuycene");
+        SceneManager.LoadScene("GoodsSBuyScene");
     }
 
+    public void ClickCollectionBtn()
+    {
+        SceneManager.LoadScene("DG_Scene");
+    }
+
+ 
     public void OnButtonClick_ChangeCharPopup()
     {
         // 캐릭터 교체 팝업을 활성화
@@ -97,6 +123,13 @@ public class HomeManager : MonoBehaviour
 
         ChangeCharPopup.SetActive(false);
     }
+
+    public void OnButtonClick_GoodsBuy()
+    {
+        GoodsBuy.SetActive(true);
+    }
+
+    
 
     public void OnClickChange(int ImgNumber)
     {

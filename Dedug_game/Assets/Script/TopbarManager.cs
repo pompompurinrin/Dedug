@@ -18,8 +18,13 @@ public class TopbarManager : MonoBehaviour
 
     public GameObject SettingPopCanvas;
     public GameObject MenuUI;
+    public GameObject GoodsBuy;
+    public GameObject GamePopups;
+    public GameObject GanbareBada;
+    public GameObject GoldLack;
     
-    
+
+
 
     Dictionary<int, Sprite> rankDic = new Dictionary<int, Sprite>();
     public Sprite[] rankImg;
@@ -29,7 +34,33 @@ public class TopbarManager : MonoBehaviour
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string RankSampleFileName = "RankSample";
     private char[] TRIM_CHARS = { ' ', '\"' };
-    
+
+    public void TopBar()
+    {
+        if (GoldAmountText != null)
+        {
+
+            GoldAmountText.text = DataManager.Instance.nowGold.ToString();
+        }
+        if (NowRankName != null)
+        {
+
+            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+        }
+
+        if (gradeImg != null)
+        {
+
+            gradeImg.sprite = rankDic[NowRank];
+        }
+
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        PlayerPrefs.Save();
+    }
     void Start()
     {
        
@@ -43,8 +74,13 @@ public class TopbarManager : MonoBehaviour
 
         RankImage();
         RankSetupInfo();
-       
+
+        GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
+        GameObject GamePopups = GameObject.Find("GamePopups");
+        GameObject GoldLack = GameObject.Find("GoldLack");
+
+
 
         if (MenuUI != null)
         {
@@ -64,7 +100,29 @@ public class TopbarManager : MonoBehaviour
 
 
         }
-       
+
+        if (GamePopups != null)
+        {
+            if (GamePopups.activeSelf)
+            {
+                GamePopups.SetActive(false);
+            }
+
+
+        }
+
+        if (GoldLack != null)
+        {
+            if (GoldLack.activeSelf)
+            {
+                GoldLack.SetActive(false);
+            }
+
+
+        }
+
+
+
     }
     private int GetIntValue(string key)
     {
@@ -93,28 +151,18 @@ public class TopbarManager : MonoBehaviour
         TopBar();
     }
 
-    public void TopBar()
+    
+    // Start is called before the first frame update
+    public void RankImage()
     {
-        if (GoldAmountText != null)
+
+        for (int i = 0; i < rankImg.Length; i++)
         {
+            rankDic.Add(i, rankImg[i]);
 
-            GoldAmountText.text = DataManager.Instance.nowGold.ToString();
-        }
-        if (NowRankName != null)
-        {
-
-            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
-        }
-
-        if (gradeImg != null)
-        {
-
-           gradeImg.sprite = rankDic[NowRank];
         }
 
     }
-    // Start is called before the first frame update
-    
 
     public void OnButtonClick_SettingPopup()
     {
@@ -143,15 +191,48 @@ public class TopbarManager : MonoBehaviour
         MenuUI.SetActive(false);
     }
 
-    public void RankImage()
+    public void OnButtonClick_OffGoodsBuy()
     {
-       
-        for (int i = 0; i < rankImg.Length; i++)
-        {
-            rankDic.Add(i, rankImg[i]);
-            
-        }
-
+        // 굿즈 구매 팝업 비활성화
+        GoodsBuy.SetActive(false);
     }
+
+    public void OnButtonClick_OnGanbare()
+    {
+        // 간바레 바다짱 팝업 활성화
+         GamePopups.SetActive(true);
+         GanbareBada.SetActive(true);
+    }
+
+    public void OnButtonClick_OffGanbare()
+    {
+        // 간바레 바다짱 팝업 비활성화
+        GamePopups.SetActive(false);
+        GanbareBada.SetActive(false);
+    }
+    
+    public void Click_GanbareBadaStart()
+    {
+        if (DataManager.Instance.nowGold >= 100)
+        {
+            DataManager.Instance.nowGold = DataManager.Instance.nowGold -100;
+            TopBar();
+            Save();
+            SceneManager.LoadScene("YJMiniGameScene");
+        }
+       else if (DataManager.Instance.nowGold < 100)
+        {
+            GoldLack.SetActive(true);
+        }
+    }
+    public void Click_OffGoldLack()
+    {
+        GoldLack.SetActive(false);
+    }
+    
+
+    
+
 }
+
 
