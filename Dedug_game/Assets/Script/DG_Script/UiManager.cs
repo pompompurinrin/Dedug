@@ -47,6 +47,14 @@ public class UiManager : MonoBehaviour
     public Image RedDot3022;
     public Image RedDot3031;
     public Image RedDot3032;
+    public Image RedDotMain_2;
+    public Image RedDotMain_3;
+    public Image RedDotCha_1_2;
+    public Image RedDotCha_1_3;
+    public Image RedDotCha_2_2;
+    public Image RedDotCha_2_3;
+    public Image RedDotCha_3_2;
+    public Image RedDotCha_3_3;
 
 
     public Button MainStory_Btn;
@@ -488,6 +496,15 @@ public class UiManager : MonoBehaviour
         Destroy(RedDot3022.gameObject);
         Destroy(RedDot3031.gameObject);
         Destroy(RedDot3032.gameObject);
+        Destroy(RedDotMain_2.gameObject);
+        Destroy(RedDotMain_3.gameObject);
+        Destroy(RedDotCha_1_2.gameObject);
+        Destroy(RedDotCha_1_3.gameObject);
+        Destroy(RedDotCha_2_2.gameObject);
+        Destroy(RedDotCha_2_3.gameObject);
+        Destroy(RedDotCha_3_2.gameObject);
+        Destroy(RedDotCha_3_3.gameObject);
+
     }
 
     public void OntestGoods2022Click()
