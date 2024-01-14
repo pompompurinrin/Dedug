@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public class RequestManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class RequestManager : MonoBehaviour
     // 골드 획득 변수
     int NowGold;
     public Text goldText;
+
+    // 골드 획득 연출 텍스트
+    public Text getGoldText;
 
     // 피버타임
     public static float countdownTime;
@@ -66,6 +70,11 @@ public class RequestManager : MonoBehaviour
 
     // 피버 이펙트
     public GameObject feverBeforeEffect;
+
+    // 큰 손 손님 이펙트
+    public GameObject customer2Prefab; // 클릭 이펙트 프리팹
+    public Transform effectSpawnPoint;    // 이펙트 생성 위치
+    public Transform customer2ParentObject; // 이펙트 생성 부모 객체
 
 
     // 애니메이션 트리거, bool의 상태를 나타내는 열거형
@@ -146,6 +155,9 @@ public class RequestManager : MonoBehaviour
         Image imageComponent = newRequest.transform.Find("cosImg").GetComponent<Image>();
         Text nameText = newRequest.transform.Find("cosName").GetComponent<Text>();
         Text messageText = newRequest.transform.Find("cosText").GetComponent<Text>();
+        Image rareImage = newRequest.transform.Find("requestBg").GetComponent<Image>();
+
+        Image cosBtn = newRequest.transform.Find("cosButton").GetComponent<Image>();
 
         // GoldNum 텍스트 설정
         Text goldButtonText = newRequest.GetComponentInChildren<Button>().GetComponentInChildren<Text>();
@@ -199,21 +211,38 @@ public class RequestManager : MonoBehaviour
         nameText.text = randomRow["Name"];
         messageText.text = randomRow["Message"];
 
-
+        // 랜덤힌 골드 값을 변수에 저장
+        int goldValueType = goldValue;
 
         // "Customer" 열 값을 변수에 저장
         int customerType = int.Parse(randomRow["Customer"]);
 
-        // 고객 값에 따라 색상 변경
-        Color color = (customerType == 1) ? Color.white : Color.magenta;
-        newRequest.GetComponent<Image>().color = color;
+        if(customerType == 2)
+        {
+            rareImage.sprite = Resources.Load<Sprite>("customerType2");
+            cosBtn.sprite = Resources.Load<Sprite>("customerType2Btn");
 
-        // RequestPrefabScript 컴포넌트를 찾고, 없으면 추가
-        RequestPrefabScript prefabScript = newRequest.GetComponent<RequestPrefabScript>();
+        }
+
+
+
+
+    /*        // 고객 값에 따라 색상 변경
+            Color color = (customerType == 1) ? Color.white : Color.magenta;
+            newRequest.GetComponent<Image>().color = color;*/
+
+
+
+
+    // RequestPrefabScript 컴포넌트를 찾고, 없으면 추가
+    RequestPrefabScript prefabScript = newRequest.GetComponent<RequestPrefabScript>();
         if (prefabScript == null)
         {
             prefabScript = newRequest.AddComponent<RequestPrefabScript>();
         }
+
+        // 골드 값을 프리팹에 저장
+        prefabScript.SetgoldValueType(goldValueType);
 
         // customerType 값을 프리팹에 저장
         prefabScript.SetCustomerType(customerType);
@@ -251,6 +280,9 @@ public class RequestManager : MonoBehaviour
         // 골드 획득 애니메이션 재생
         StartCoroutine(PlayGetGoldAnimationAndSwitchToIdle());
 
+        int goldValueType = clickedButton.GetComponent<RequestPrefabScript>().GetgoldValuetype();
+        getGoldText.text = goldValueType.ToString();
+
         // 애니메이션이 끝났을 때 DrawIdle 애니메이션으로 전환
         StartCoroutine(PlayDAnimationAndSwitchToI());
 
@@ -274,6 +306,14 @@ public class RequestManager : MonoBehaviour
             DataManager.Instance.feverNum++;
             Save();
             coin02.Play();
+
+            // 현재 마우스 좌표를 가져와서 World 좌표로 변환
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f; // Z 축을 0으로 설정 (2D 게임의 경우)
+
+            // 클릭 이펙트를 생성하고 feverParentObject를 부모로 설정
+            GameObject clickEffect = Instantiate(customer2Prefab, mousePosition, Quaternion.identity, customer2ParentObject.transform);
+            Destroy(clickEffect, 1f); // 1초 후에 이펙트 제거 (원하는 시간으로 조절 가능)
 
             if ((NowRank == 0 && DataManager.Instance.feverNum == 2) ||
             (NowRank == 1 && DataManager.Instance.feverNum == 4) ||
@@ -405,10 +445,21 @@ public class RequestManager : MonoBehaviour
 
     }
 
-
     // RequestPrefabScript 클래스를 프리팹에 추가하여 customerType 값을 저장하고 가져올 수 있도록 함
     public class RequestPrefabScript : MonoBehaviour
     {
+        private int goldValueType;
+
+        public void SetgoldValueType(int goldValuetype)
+        {
+            goldValueType = goldValuetype;
+        }
+
+        public int GetgoldValuetype()
+        {
+            return goldValueType;
+        }
+
         private int customerType;
 
         public void SetCustomerType(int type)

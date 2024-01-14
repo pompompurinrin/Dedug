@@ -63,6 +63,8 @@ public class FeverManager : MonoBehaviour
 
     public AudioSource feverBGM;
 
+    public AudioSource feverClickSFX;
+
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
@@ -297,6 +299,7 @@ public class FeverManager : MonoBehaviour
         {
             // 클릭 이펙트 함수 호출
             CreateClickEffect();
+            feverClickSFX.Play();
             // feverButton 클릭 시 feverGauge 증가 및 feverSlider 이동
             feverGauge++;
             feverSlider.value = feverGauge;
