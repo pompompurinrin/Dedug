@@ -30,6 +30,23 @@ public class UiManager : MonoBehaviour
 
     public Image GoodsImage;
     public Image RedDot1011;
+    public Image RedDot1012;
+    public Image RedDot1021;
+    public Image RedDot1022;
+    public Image RedDot1031;
+    public Image RedDot1032;
+    public Image RedDot2011;
+    public Image RedDot2012;
+    public Image RedDot2021;
+    public Image RedDot2022;
+    public Image RedDot2031;
+    public Image RedDot2032;
+    public Image RedDot3011;
+    public Image RedDot3012;
+    public Image RedDot3021;
+    public Image RedDot3022;
+    public Image RedDot3031;
+    public Image RedDot3032;
 
 
     public Button MainStory_Btn;
@@ -454,11 +471,33 @@ public class UiManager : MonoBehaviour
     {
         PopUpBG_GoodsInfo.gameObject.SetActive(false);
         Destroy(RedDot1011.gameObject);
+        Destroy(RedDot1012.gameObject);
+        Destroy(RedDot1021.gameObject);
+        Destroy(RedDot1022.gameObject);
+        Destroy(RedDot1031.gameObject);
+        Destroy(RedDot1032.gameObject);
+        Destroy(RedDot2011.gameObject);
+        Destroy(RedDot2012.gameObject);
+        Destroy(RedDot2021.gameObject);
+        Destroy(RedDot2022.gameObject);
+        Destroy(RedDot2031.gameObject);
+        Destroy(RedDot2032.gameObject);
+        Destroy(RedDot3011.gameObject);
+        Destroy(RedDot3012.gameObject);
+        Destroy(RedDot3021.gameObject);
+        Destroy(RedDot3022.gameObject);
+        Destroy(RedDot3031.gameObject);
+        Destroy(RedDot3032.gameObject);
     }
+
+    public void OntestGoods2022Click()
+    {
+        DataManager.Instance.goods1031 = DataManager.Instance.goods1031 + 100;
+    }
+
 }
 
 
 
 
 
-  
