@@ -338,7 +338,7 @@ public class UiManager : MonoBehaviour
     {
         BG_Cha1_Story.gameObject.SetActive(true);
     }
-    public Image RedDot;
+    
     public void OnCha_goods_BtnClick()
     {
         GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
@@ -351,20 +351,20 @@ public class UiManager : MonoBehaviour
                 GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
                 GoodsNameText.text = data_Dialog[i]["GoodsName"].ToString();
                 GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
-                //string reddotname = "RedDot" + data_Dialog[i]["RedDotID"].ToString();
-
-
-               // GameObject redDotObject = GameObject.Find(reddotname);
-                //if (redDotObject != null)
-               // {
-                //    redDotObject.SetActive(true);
-               // }
-
-
-                //GoodsNum.text = data_Dialog[i][""].ToString();
-
                 //GoodsNum.text = 데이터매니저에서 개수 가져오기
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
+
+                if (selectGoods == Goods[i])
+                {
+                    string reddotname = "RedDot" + data_Dialog[i]["RedDotID"].ToString();
+
+                    GameObject redDotObject = GameObject.Find(reddotname);
+                    if (redDotObject != null)
+                    {
+                        redDotObject.SetActive(false);
+                    }
+                    
+                }
 
             }
         }
@@ -490,27 +490,16 @@ public class UiManager : MonoBehaviour
     public void OnPopUpExit_BtnClick()
     {
         PopUpBG_GoodsInfo.gameObject.SetActive(false);
+        
 
     }
+
+
 
     public void OntestGoods2022Click()
     {
         DataManager.Instance.goods1031 = DataManager.Instance.goods1031 + 100;
-        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
-        for (int i = 0; i < Goods.Length; i++)
-        {
-            if (selectGoods == Goods[i])
-            {
-                string reddotname = "RedDot" + data_Dialog[i]["RedDotID"].ToString();
 
-                GameObject redDotObject = GameObject.Find(reddotname);
-                if (redDotObject != null)
-                {
-                    redDotObject.SetActive(false);
-                }
-
-            }
-        }
     }
 }
 
