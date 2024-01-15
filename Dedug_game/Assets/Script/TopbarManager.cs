@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +14,7 @@ public class TopbarManager : MonoBehaviour
 
     public Text GoldAmountText;
     public Text NowRankName;
-    public Image gradeImg;
+    public Image NowRankImage;
 
     public GameObject SettingPopCanvas;
     public GameObject MenuUI;
@@ -25,7 +25,8 @@ public class TopbarManager : MonoBehaviour
 
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
- 
+
+    public string NowimageFileName;
 
 
 
@@ -36,7 +37,7 @@ public class TopbarManager : MonoBehaviour
 
     // CSV 파일을 읽어들일 데이터 리스트
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
-    private const string RankSampleFileName = "RankSample";
+    private const string RankFileName = "RankTable";
     private char[] TRIM_CHARS = { ' ', '\"' };
 
     public void TopBar()
@@ -49,13 +50,13 @@ public class TopbarManager : MonoBehaviour
         if (NowRankName != null)
         {
 
-            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["rank"].ToString();
+            NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
         }
 
-        if (gradeImg != null)
+        if (NowRankImage != null)
         {
 
-            gradeImg.sprite = rankDic[NowRank];
+            NowRankImage.sprite = rankDic[NowRank];
         }
 
     }
@@ -65,16 +66,30 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PlayerPrefs.Save();
     }
+
+    private void Awake()
+    {
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
+        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
+        NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
+        
+
+    }
+
+    private void Update()
+    {
+        GoldAmountText.text = DataManager.Instance.nowGold.ToString();
+        NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
+        NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["Mainlmage"].ToString();
+        NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
+       
+        
+    }
+
     void Start()
     {
        
-        NowGold = PlayerPrefs.GetInt("NowGold");
-        NowRank = PlayerPrefs.GetInt("NowRank");
-        Goods3 = PlayerPrefs.GetString("Goods3");
-        FeverNum = PlayerPrefs.GetInt("FeverNum");
-        DataManager.Instance.nowGold = NowGold;
-        DataManager.Instance.nowRank = NowRank;
-        FeverNum = DataManager.Instance.feverNum;
+        
 
         RankImage();
         RankSetupInfo();
@@ -158,7 +173,7 @@ public class TopbarManager : MonoBehaviour
 
     void RankSetupInfo()
     {
-        data_Dialog = CSVReader.Read(RankSampleFileName);
+        data_Dialog = CSVReader.Read(RankFileName);
 
         TopBar();
     }
