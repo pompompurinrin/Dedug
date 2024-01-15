@@ -9,8 +9,12 @@ using System.Collections;
 using Unity.VisualScripting;
 using Unity.Mathematics;
 
-public class ResultManager_real : MonoBehaviour
+public class ResultManager : MonoBehaviour
 {
+
+    //이거 결과창인데 우선 씬에 있는 canvas를 미니게임 canvas 안에 복붙
+    //스크립트도 기존에 쓰던거에 복붙하면 될 것 같습니다! 밑에 68~70 줄에 있는 것만 게임에 맞춰서 수정해주세요!
+
 
     // UI 요소들
     public Image ResultBG;
@@ -62,9 +66,9 @@ public class ResultManager_real : MonoBehaviour
         Setting();
 
         // UserScore 동적으로 설정 (예시: 랜덤 값 설정)
-        UserScore = UnityEngine.Random.Range(1, 10);
-        Result2 = 3;
-        Result1 = 1;
+        UserScore = UnityEngine.Random.Range(1, 10);//이부분은 유저 스코어다. 유저 스코어 텍스트랑 연결해주면 될 것 같습니다! 지금은 임의값 넣었으니 지우고 쓰세요!
+        Result2 = 3;//이건 게임 이후 결과창에서 굿즈를 3개 주는 기준을 정해주는 거예요. int값입니다!
+        Result1 = 1;//이건 게임 이후 결과창에서 굿즈를 2개 주는 기준을 정해주는 거예요. int값입니다!
         Score();
     }
 
@@ -90,7 +94,7 @@ public class ResultManager_real : MonoBehaviour
         
     }
 
-    public void GetGoods(int count) // 실제 가챠를 하는 부분. count에는 뽑고 싶은 수량 넣기
+    public void GetGoods(int _count) // 실제 가챠를 하는 부분. count에는 뽑고 싶은 수량 넣기
     {
 
 
@@ -108,7 +112,7 @@ public class ResultManager_real : MonoBehaviour
             randMaxValue += gatchPerList[i]; // 가중치 싹 다 더하기. 999, 1001 방지
         }
 
-        for(int i = 0; i < count; i++) // 몇번
+        for(int i = 0; i < _count; i++) // 몇번
         {
             GetItems(randMaxValue); // 뽑기
 
@@ -133,57 +137,10 @@ public class ResultManager_real : MonoBehaviour
         }
     }
 
-    //public void Rank1RandomSetting() // 확률과 굿즈 id로 이미지를 출력할게 -> 오답노트 아카이브용...
-    //{
-    //    rankid_1 = UnityEngine.Random.Range(0, 18); 
-    //    string imageFileName = data_Dialog[rankid_1]["goods"].ToString();
-    //    percentage = (int)data_Dialog[rankid_1]["percentage"];
 
-    //    Reward1.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-    //    Reward2.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-    //    Reward3.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-
-    //     //GoodsNum.text = 데이터매니저에서 개수 가져오기
-    //    Reward1.gameObject.SetActive(true);
-    //    Reward2.gameObject.SetActive(true);
-    //    Reward3.gameObject.SetActive(true);
-    //}
-
-    //public void Rank2RandomSetting() 
-    //{
-    //    rankid_2 = UnityEngine.Random.Range(18, 36);
-    //    string imageFileName = data_Dialog[rankid_2]["goods"].ToString();
-    //    percentage = (int)data_Dialog[rankid_2]["percentage"];
-
-    //    Reward1.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-    //    Reward2.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-    //    Reward3.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-
-    //    //GoodsNum.text = 데이터매니저에서 개수 가져오기
-    //    Reward1.gameObject.SetActive(true);
-    //    Reward2.gameObject.SetActive(true);
-    //    Reward3.gameObject.SetActive(true);
-    //}
-
-    //public void Rank3RandomSetting()
-    //{ 
-    //    rankid_3 = UnityEngine.Random.Range(36, 54);
-    //    string imageFileName = data_Dialog[rankid_3]["goods"].ToString();
-    //    percentage = (int)data_Dialog[rankid_3]["Percentage"];
-
-    //    Reward1.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-    //    Reward2.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-    //    Reward3.sprite = Resources.Load<Sprite>("goods" + imageFileName);
-
-    //    //GoodsNum.text = 데이터매니저에서 개수 가져오기
-    //    Reward1.gameObject.SetActive(true);
-    //    Reward2.gameObject.SetActive(true);
-    //    Reward3.gameObject.SetActive(true);
-    //}
-
+    public int _count = 0; // 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        int _count = 0; // 몇개 줄 지 설정하는 변수
 
         //굿즈 지급
         if (UserScore >= Result2) // 바꿔
