@@ -51,7 +51,7 @@ public class YJMiniGameManager : MonoBehaviour
     public Image colorEffect03;
 
     // 점수 및 제한시간, 대기시간 변수
-    int score;
+    public static int score;
     int gameTime;
     int beforeGameTime;
 
@@ -106,6 +106,10 @@ public class YJMiniGameManager : MonoBehaviour
     public AudioSource bongtime02;
     public AudioSource bongtime03;
 
+    // 게임 종료 시
+    public GameObject ResultCanvas;
+    public static bool badaResult;
+
 
     private void Start()
     {
@@ -159,7 +163,7 @@ private void StartGame()
         isGameRunning = true;
 
         // 초기 제한시간 설정
-        gameTime = 90;
+        gameTime = 3;
         countDown.text = gameTime.ToString();
 
         // 1초마다 UpdateGame 메소드 호출
@@ -672,7 +676,11 @@ private void StartGame()
         gameAudioSource.Stop();
 
         // 게임 종료 시 호출되는 함수
-        endBg.SetActive(true);
+        // badaResult = true;
+        ResultCanvas.SetActive(true);
+
+        // badaResult = false;
+
         isGameRunning = false;
     }
 
