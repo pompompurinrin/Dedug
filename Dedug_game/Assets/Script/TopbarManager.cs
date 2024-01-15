@@ -257,8 +257,28 @@ public class TopbarManager : MonoBehaviour
         GoldLack.SetActive(false);
     }
     
-
+    public void Click_Commision()
+    {
+        Save();
+        SceneManager.LoadScene("RequestScene");
+    }
     
+    public void Click_Collection()
+    {
+        Save();
+        SceneManager.LoadScene("DG_Scene");
+    }
+
+    public void Click_RankUP()
+    {
+        Save();
+        SceneManager.LoadScene("RankScene");
+    }
+    public void Click_Home()
+    {
+        Save();
+        SceneManager.LoadScene("HomeScene");
+    }
 
 }
 
