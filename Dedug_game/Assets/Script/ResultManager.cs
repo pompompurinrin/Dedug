@@ -3,11 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
-using System.Linq;
-using UnityEngine.EventSystems;
 using System.Collections;
-using Unity.VisualScripting;
-using Unity.Mathematics;
 
 public class ResultManager : MonoBehaviour
 {
@@ -67,23 +63,19 @@ public class ResultManager : MonoBehaviour
 
         Setting();
 
-        string imageFileName = "Goods" + data_Dialog[0]["Goods"].ToString();
-        //goodsSprites.Add(Resources.Load(imageFileName));
-        //testS = Resources.Load(imageFileName) as Sprite;
-
+        test = 10;
+        Score();
     }
 
     public List<Sprite> goodsSprites = new List<Sprite>();
-    public Sprite testS;
 
     public List<int> gatchIdList;
     public List<int> gatchPerList;
-    List<int> rewards; // 줄 애들
+    public List<int> rewards; // 줄 애들
 
     public void OnEnable()
     {
-        test = 10;
-        Score();
+
     }
 
 
@@ -91,7 +83,7 @@ public class ResultManager : MonoBehaviour
     {
         gatchPerList = new List<int>();
         gatchIdList = new List<int>();
-        //goodsSprites = new List<Sprite>();
+        goodsSprites = new List<Sprite>();
         int rank = DataManager.Instance.nowRank;
 
         for (int i = 0; i < data_Dialog.Count; i++)
@@ -102,10 +94,10 @@ public class ResultManager : MonoBehaviour
                 gatchIdList.Add((int)data_Dialog[i]["Percentage"]);
                 string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
                 goodsSprites.Add(Resources.Load<Sprite>(imageString));
-                
+
             }
         }
-        
+
     }
 
     public void GetGoods(int _count) // 실제 가챠를 하는 부분. count에는 뽑고 싶은 수량 넣기
@@ -115,9 +107,6 @@ public class ResultManager : MonoBehaviour
         {
             data_Dialog = CSVReader.Read("PercentageTable_real");
         }
-        // 여기 한 줄 수정함 리스트 초기화
-        rewards = new List<int>(); // rewards 리스트 초기화
-        _rewards = 0;
 
         for (int i = 0; i < RewardsImage.Count; i++)
         {
@@ -125,18 +114,16 @@ public class ResultManager : MonoBehaviour
         }
 
         int randMaxValue = 0; // 모든 가중치 값을 더하기 위한 변수. 휴먼 에러 방지 용
-        for(int i = 0; i < gatchPerList.Count; i++)
+        for (int i = 0; i < gatchPerList.Count; i++)
         {
             randMaxValue += gatchPerList[i]; // 가중치 싹 다 더하기. 999, 1001 방지
         }
 
-        for(int i = 0; i < _count; i++) // 몇번
+        for (int i = 0; i < _count; i++) // 몇번
         {
             GetItems(randMaxValue); // 뽑기
 
-            string imageFileName = "Goods" + data_Dialog[i]["Goods"].ToString() + ".png";
-
-            RewardsImage[i].sprite = goodsSprites[_rewards];
+            RewardsImage[i].sprite = rewardGoods[i];
             RewardsImage[i].gameObject.SetActive(true); // 바뀌었으니 켜라
         }
     }
@@ -144,27 +131,37 @@ public class ResultManager : MonoBehaviour
     void GetItems(int maxValue) // 뽑기. 랜덤 최대값 받기
     {
         int randValue = UnityEngine.Random.Range(0, maxValue); // 뽑을 애의 해당 가중치량
-        int checkRand = 0; // 가중치 체크용
-        for(int i = 0; i < gatchIdList.Count; i++)
+        int checkUpper = 0; // 가중치 체크용
+        int checkLower = 0;
+        for (int i = 0; i < gatchIdList.Count; i++)
         {
-            checkRand += gatchPerList[i];
-            if (randValue < checkRand)
+            checkUpper += gatchPerList[i];
+            if (i == 0)
             {
-                rewards.Add(gatchIdList[i]);
-                _rewards = i - 1;
+                checkUpper += gatchPerList[i];
+                if (randValue < checkUpper)
+                {
+                    rewards.Add(gatchIdList[i]);
+                    rewardGoods.Add(goodsSprites[i]);
+                }
             }
+            else
+            {
+                if (randValue >= checkLower && randValue < checkUpper)
+                {
+                    rewards.Add(gatchIdList[i]);
+                    rewardGoods.Add(goodsSprites[i]);
+                }
+            }
+            checkLower = checkUpper;
+
         }
-
-
     }
 
-    List<int> rewardGoods = new List<int>();
 
-    public int _rewards = 0;
+    public List<Sprite> rewardGoods = new List<Sprite>();
 
-    //public List<Sprite> rewardGoods = new List<Sprite>();
-
-     public int _count = 0; // 몇개 줄 지 설정하는 변수
+    public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
         //굿즈 지급
@@ -181,8 +178,6 @@ public class ResultManager : MonoBehaviour
         {
             _count = 1;
         }
-
-        Debug.Log(_count);
 
         GetGoods(_count);
 
