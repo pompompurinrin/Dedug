@@ -12,6 +12,8 @@ public class MainImageScript : MonoBehaviour
     [SerializeField] private GameObject image_show;
     [SerializeField] private GameObject image_frame;
     [SerializeField] private GameObject real_Image;
+    [SerializeField] public GameObject error_fx;      // 매칭 에러 효과
+    [SerializeField] public GameObject correct_fx;    // 매칭 성공 효과
 
     [SerializeField] private GameControllerScript gameController;
 
@@ -81,20 +83,19 @@ public class MainImageScript : MonoBehaviour
     {
         Vector3 originalScale = transform.localScale;
         Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
-       
+
+        error_fx.gameObject.SetActive(true);
+
         transform.DOShakePosition(0.3f, 50).OnComplete(() =>
 
-
             { transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
-
-            {
+                {
                 card_Back.SetActive(true);
                 image_frame.SetActive(false);
 
                 transform.DOScale(originalScale, 0.2f);
-
-            }
-
+                error_fx.gameObject.SetActive(false);
+                }           
             );
         });
         

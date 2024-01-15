@@ -57,8 +57,8 @@ public class GameControllerScript : MonoBehaviour
         Main_BGM2.Play();  // 재생
         correct_sfx.Stop();
         error_sfx.Stop();
-        correct_fx.gameObject.SetActive(false);
-        error_fx.gameObject.SetActive(false);
+        //correct_fx.gameObject.SetActive(false);
+        //error_fx.gameObject.SetActive(false);
 
     }
     // 게임이 시작될 때 호출되는 함수
@@ -165,21 +165,25 @@ public class GameControllerScript : MonoBehaviour
             scoreText.text= "Score : " + score.ToString() ;
             resultScoreText.text= "Score : " + score.ToString() ;
             correct_sfx.Play();
-            correct_fx.gameObject.SetActive(true);
+            //correct_fx.gameObject.SetActive(true);
 
             Vector3 originalScale = new Vector3(1, 1, 1);
             Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
 
             MainImageScript card1 = firstOpen;
+            
             card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
             {
                 card1.transform.DOScale(originalScale, 0.2f);
+                card1.correct_fx.gameObject.SetActive(true);
             });
             
             MainImageScript card2 = secondOpen;
+            
             card2.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
             {
                 card2.transform.DOScale(originalScale, 0.2f);
+                card2.correct_fx.gameObject.SetActive(true);
                 secondOpen = null;  // 변수 초기화 추가
             });
 
@@ -204,8 +208,8 @@ public class GameControllerScript : MonoBehaviour
             secondOpen.Close();
 
             error_sfx.Play();
-            error_fx.gameObject.SetActive(true);
-
+            //error_fx.gameObject.SetActive(true);
+                
 
 
         }
