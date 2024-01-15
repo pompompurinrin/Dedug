@@ -437,6 +437,7 @@ public class RequestManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         feverBefore.gameObject.SetActive(false);
+        feverBeforeEffect.gameObject.SetActive(false);
         // 2초 뒤에 feverBg 오브젝트를 활성화
         feverBGM.Play();
         feverStart.gameObject.SetActive(true);

@@ -6975,8 +6975,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
+      - m_Target: {fileID: 706020916}
+        m_TargetAssemblyTypeName: YJMiniGameManager, Assembly-CSharp
         m_MethodName: HomeClick
         m_Mode: 1
         m_Arguments:
@@ -7529,6 +7529,24 @@ MonoBehaviour:
   bongtime02: {fileID: 846633285}
   bongtime03: {fileID: 1804695384}
   ResultCanvas: {fileID: 1334343242}
+  ResultBG: {fileID: 116320288}
+  ScoreBG: {fileID: 814040428}
+  Scoretxt: {fileID: 1591929277}
+  Rewardtxt: {fileID: 394092480}
+  Restart: {fileID: 2108259987}
+  HomeBtn: {fileID: 642923661}
+  UserScoretxt: {fileID: 1591929277}
+  imageFileName: 
+  Reward1: {fileID: 1453678979}
+  Reward2: {fileID: 1117573122}
+  Reward3: {fileID: 1187604233}
+  RewardsImage: []
+  goodsSprites: []
+  gatchIdList: 
+  gatchPerList: 
+  rewards: 
+  rewardGoods: []
+  _count: 0
 --- !u!1 &706644481
 GameObject:
   m_ObjectHideFlags: 0
@@ -33821,7 +33839,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334343242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02e23509bbabf8545a0a6ab7fcc3bee0, type: 3}
   m_Name: 
@@ -33837,7 +33855,12 @@ MonoBehaviour:
   Reward1: {fileID: 1453678979}
   Reward2: {fileID: 1117573122}
   Reward3: {fileID: 1187604233}
-  Rewards: []
+  RewardsImage: []
+  goodsSprites: []
+  gatchIdList: 
+  gatchPerList: 
+  rewards: 
+  rewardGoods: []
   _count: 0
 --- !u!114 &1334343246
 MonoBehaviour:
@@ -51770,8 +51793,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
+      - m_Target: {fileID: 706020916}
+        m_TargetAssemblyTypeName: YJMiniGameManager, Assembly-CSharp
         m_MethodName: RestartClick
         m_Mode: 1
         m_Arguments:

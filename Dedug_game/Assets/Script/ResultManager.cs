@@ -4,12 +4,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ResultManager : MonoBehaviour
 {
 
-    //이거 결과창인데 우선 씬에 있는 canvas를 미니게임 canvas 안에 복붙
-    //스크립트도 기존에 쓰던거에 복붙하면 될 것 같습니다! 밑에 68~70 줄에 있는 것만 게임에 맞춰서 수정해주세요!
+    // 이거 결과창인데 우선 씬에 있는 canvas를 미니게임 canvas 안에 복붙
+    // 스크립트도 기존 미니게임 스크립트에 복붙, 160줄 Test 변수 부분과 점수 부분만 자신의 스코어 변수로 변경
+    // 자신이 게임 종료하는 함수 안에 Score(); 함수 실행
+    // 46번째 줄 Start의 어떤 컴포넌트에 배정할거임? 이거 전체 옮겨야 함 -> 자신이 게임 종료하는 함수 안, 결과창 오브젝트 활성화 바로 밑에 줄으로 (글로 설명하기 어려워서 이해 어려울 시 윤정에게 물어볼 것)
 
 
     // UI 요소들
@@ -29,15 +32,7 @@ public class ResultManager : MonoBehaviour
     public Image Reward2;
     public Image Reward3;
 
-    //숫자값 가져올거
-    int Result1;
-    int Result2;
-    int UserScore;
-
     int test;
-
-    bool bada = YJMiniGameManager.badaResult;
-    int badascore = YJMiniGameManager.score;
 
     // 리워드 리스트 선언을 여기서 시킴
     public List<Image> RewardsImage = new List<Image>();
@@ -62,9 +57,6 @@ public class ResultManager : MonoBehaviour
         RewardsImage.Add(Reward3);
 
         Setting();
-
-        test = 10;
-        Score();
     }
 
     public List<Sprite> goodsSprites = new List<Sprite>();
@@ -73,10 +65,6 @@ public class ResultManager : MonoBehaviour
     public List<int> gatchPerList;
     public List<int> rewards; // 줄 애들
 
-    public void OnEnable()
-    {
-
-    }
 
 
     void Setting() // 씬 들어가자마자 한번 하면 됨
@@ -164,6 +152,8 @@ public class ResultManager : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
+        Scoretxt.text = test.ToString();
+
         //굿즈 지급
         if (test >= 10) // 바꿔
         {
