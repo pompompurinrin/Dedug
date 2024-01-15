@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldAmountText: {fileID: 1431907570}
   NowRankName: {fileID: 1008629034}
-  gradeImg: {fileID: 947245112}
+  NowRankImage: {fileID: 0}
   SettingPopCanvas: {fileID: 1327514948}
   MenuUI: {fileID: 1200127055}
   GoodsBuy: {fileID: 0}
@@ -1923,6 +1923,7 @@ MonoBehaviour:
   GoldLack: {fileID: 0}
   bgm1AudioSource: {fileID: 0}
   sfx1AudioSource: {fileID: 0}
+  NowimageFileName: 
   rankImg:
   - {fileID: 21300000, guid: d026caee56a43ac4790af87b4199de9e, type: 3}
   - {fileID: 21300000, guid: 2edfbaf3abb949e4283caf2f3a0a536d, type: 3}
@@ -4083,7 +4084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &963016403
 RectTransform:
   m_ObjectHideFlags: 0

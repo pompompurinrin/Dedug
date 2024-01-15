@@ -276,9 +276,11 @@ public class RequestManager : MonoBehaviour
     // ¹öÆ° Å¬¸¯ È£Ãâ ÇÔ¼ö
     public void OnRequestButtonClick(GameObject clickedButton, int goldValue)
     {
-
+        
         // °ñµå È¹µæ ¾Ö´Ï¸ÞÀÌ¼Ç Àç»ý
         StartCoroutine(PlayGetGoldAnimationAndSwitchToIdle());
+        getGoldText.gameObject.SetActive(true);
+        Invoke("GetGoldTextfalse", 2f);
 
         int goldValueType = clickedButton.GetComponent<RequestPrefabScript>().GetgoldValuetype();
         getGoldText.text = goldValueType.ToString();
@@ -349,6 +351,11 @@ public class RequestManager : MonoBehaviour
         {
             requestTimer = Mathf.Max(requestTimeLimit - requestTimer, 0f);
         }
+    }
+
+    void GetGoldTextfalse()
+    {
+        getGoldText.gameObject.SetActive(false);
     }
 
     // °ñµå È¹µæ ½Ã ¾Ö´Ï¸ÞÀÌ¼Ç
