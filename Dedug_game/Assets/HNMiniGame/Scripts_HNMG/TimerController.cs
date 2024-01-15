@@ -1,17 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class TimerController : MonoBehaviour
 {
     public Slider timerSlider; // UI 슬라이더 연결
-    public float timer = 30f; // 제한 시간 30초 설정
+    public float timer = 60f; // 제한 시간 30초 설정
     public Text timeText; // 시간 출력
     public float readyCounter = 10f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
 
 
     [SerializeField] private GameControllerScript gameController;
+    
+
 
     public void Start()
     {
@@ -31,6 +36,10 @@ public class TimerController : MonoBehaviour
 
     public void ReadyCounter()
     {
+
+        if (gameController.isGamePaused)
+            return;
+
         readyCount.gameObject.SetActive(true);  
         readyCount.text = readyCounter.ToString() + "초 후 이미지가 사라집니다.";
         readyCounter -= 1f; // 타이머 감소
@@ -48,6 +57,9 @@ public class TimerController : MonoBehaviour
     }
     public void UpdateTimer()
     {
+        if (gameController.isGamePaused)
+            return;
+
         readyCount.gameObject.SetActive(false);
         gameController.scoreText.gameObject.SetActive(true);
 
@@ -74,11 +86,12 @@ public class TimerController : MonoBehaviour
     public void TimeOver()
     {
         restartBG.gameObject.SetActive(true);
+        gameController.restartBtn.gameObject.SetActive(true);
         MainBG.gameObject.SetActive(false);
-
+        gameController.Main_BGM2.Stop();
     }
 
-    
-    
+   
+
 
 }

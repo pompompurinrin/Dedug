@@ -41,9 +41,10 @@ public class GameControllerScript : MonoBehaviour
     }
 
 
-    public float score = 0; // 스코어 초기값
-    public Text scoreText; // 스코어 텍스트 출력
-                           // public GameObject scoreText; // 스코어 텍스트 출력
+    public float score = 0;           // 스코어 초기값
+    public Text resultScoreText;      // 스코어 텍스트 출력
+    public Text scoreText;            // 스코어 텍스트 출력
+                                    
 
     public AudioSource Main_BGM2;
 
@@ -53,7 +54,7 @@ public class GameControllerScript : MonoBehaviour
         // 게임 시작 시 호출되는 함수
         StartGame();
 
-        Main_BGM2.loop = true;  // 반복 재생
+        Main_BGM2.Play();  // 재생
         correct_sfx.Stop();
         error_sfx.Stop();
         correct_fx.gameObject.SetActive(false);
@@ -100,9 +101,10 @@ public class GameControllerScript : MonoBehaviour
                 gameImage.transform.position = new Vector3(positionX, positionY, startPosition.z);
                 gameImage.transform.SetParent(parent, false);
 
-                //scoreText.GetComponent<GameObject>().SetActive(true);
+                if (isGamePaused)
+                    return;
 
-                
+
 
             }
         }
@@ -140,7 +142,7 @@ public class GameControllerScript : MonoBehaviour
 
     // -------------------------------------------------------------------
 
-    public Image restartBG;  // 재시작 씬
+    public Image restartBtn;  // 재시작 씬
     public Image MainBG;     // 메인 배경
    
 
@@ -161,6 +163,7 @@ public class GameControllerScript : MonoBehaviour
             
             score++; // 일치하면 점수 증가
             scoreText.text= "Score : " + score.ToString() ;
+            resultScoreText.text= "Score : " + score.ToString() ;
             correct_sfx.Play();
             correct_fx.gameObject.SetActive(true);
 
@@ -184,7 +187,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 Main_BGM2.Stop();
                 MainBG.gameObject.SetActive(false);
-                restartBG.gameObject.SetActive(true);
+                restartBtn.gameObject.SetActive(true);
 
             }
 
@@ -235,6 +238,7 @@ public class GameControllerScript : MonoBehaviour
 
 
     // 게임 일시정지 관련 변수
+    public Image pauseBG;
     public Image stopBg;
     public Button stop;
     public Button keepGoing;
@@ -244,9 +248,10 @@ public class GameControllerScript : MonoBehaviour
     public Button stopOk;
     public Button stopNo;
 
+    [SerializeField] private TimerController timerController;
 
     // 게임 일시정지 상태를 나타내는 변수
-    private bool isGamePaused = false;
+    public bool isGamePaused = false;
 
     // 게임 일시정지 버튼 클릭 시 호출되는 함수
     public void StopButtonClick()
@@ -259,7 +264,8 @@ public class GameControllerScript : MonoBehaviour
         else if (isGamePaused)
         {
             // 게임 재개
-            stopBg.gameObject.SetActive(false);
+            pauseBG.gameObject.SetActive(false);
+            isGamePaused = false;
         }
     }
 
@@ -267,16 +273,20 @@ public class GameControllerScript : MonoBehaviour
     private void PauseGame()
     {
         isGamePaused = true;
-
         // 게임 일시정지 UI 활성화
+        pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
-        
+
+
     }
+   
+
 
     // 게임으로 돌아가기 버튼 함수
     public void keepGoingClick()
     {
         // 게임 일시정지 UI 비활성화
+        pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
         ResumeGame();
     }
@@ -285,9 +295,11 @@ public class GameControllerScript : MonoBehaviour
     public void goTitleClick()
     {
         // 게임 일시정지 UI 비활성화
+        pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
 
         // 리얼스톱Bg 활성화
+        pauseBG.gameObject.SetActive(true);
         realStopBg.gameObject.SetActive(true);
     }
 
@@ -295,13 +307,24 @@ public class GameControllerScript : MonoBehaviour
     public void stopNoClick()
     {
         // 리얼스톱Bg 활성화
+        pauseBG.gameObject.SetActive(false);
         realStopBg.gameObject.SetActive(false);
         ResumeGame();
     }
+
+    // 홈으로 버튼 함수
+    public void stopOkClick()
+    {
+        pauseBG.gameObject.SetActive(false);
+    }
+
 
     // 게임 재개 처리
     private void ResumeGame()
     {
         isGamePaused = false;
     }
+
+
+
 }
