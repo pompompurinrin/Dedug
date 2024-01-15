@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class GoodsNumManager : MonoBehaviour
-{
+{ 
+    public static int ClickNum = 0;
+
     public Text Goods1011Num;
     public Text Goods1012Num;
     public Text Goods1021Num;
@@ -80,17 +82,29 @@ public class GoodsNumManager : MonoBehaviour
     public Image RedDotCha_3_2;
     public Image RedDotCha_3_3;
 
+    public Button Cha_1_1011_Btn;
+    public Button Cha_1_1012_Btn;
+    public Button Cha_1_1021_Btn;
+    public Button Cha_1_1022_Btn;
+    public Button Cha_1_1031_Btn;
+    public Button Cha_1_1032_Btn;
+
+    
+    //public Button a = UiManager.Cha_1_1031_Btn;
+
 
     /*  private bool isFirstCha_1_1011_BtnClick = true;
       private bool isFirstCha_1_1012_BtnClick = true;
       private bool isFirstCha_1_1021_BtnClick = true;
-      private bool isFirstCha_1_1022_BtnClick = true;
-      private bool isFirstCha_1_1031_BtnClick = true;
-      private bool isFirstCha_1_1032_BtnClick = true;
+      private bool isFirstCha_1_1021_BtnClick = true;
+      private bool isFirstCha_1_1022_BtnClick = true;*/
+    private bool isFirstCha_1_1031_BtnClick = true;
+     /* private bool isFirstCha_1_1032_BtnClick = true;
       private bool isFirstCha_2_2011_BtnClick = true;
       private bool isFirstCha_2_2012_BtnClick = true;
       private bool isFirstCha_2_2021_BtnClick = true;
-      private bool isFirstCha_2_2022_BtnClick = true;
+      private bool isFirstCha_2_2022_BtnClick = true; RedDot1011.gameObject.gameObject.SetActive(true);
+            activeCha_1RedDotCnt++;
       private bool isFirstCha_2_2031_BtnClick = true;
       private bool isFirstCha_2_2032_BtnClick = true;
       private bool isFirstCha_3_3011_BtnClick = true;
@@ -170,10 +184,10 @@ public class GoodsNumManager : MonoBehaviour
         RedDot3032.gameObject.SetActive(false);
         RedDotMain_2.gameObject.SetActive(false);
         RedDotMain_3.gameObject.SetActive(false);
-        RedDotCha_1_2.gameObject.SetActive(false); 
-        RedDotCha_1_3.gameObject.SetActive(false); 
-        RedDotCha_2_2.gameObject.SetActive(false); 
-        RedDotCha_2_3.gameObject.SetActive(false); 
+        RedDotCha_1_2.gameObject.SetActive(false);
+        RedDotCha_1_3.gameObject.SetActive(false);
+        RedDotCha_2_2.gameObject.SetActive(false);
+        RedDotCha_2_3.gameObject.SetActive(false);
         RedDotCha_3_2.gameObject.SetActive(false);
         RedDotCha_3_3.gameObject.SetActive(false);
 
@@ -183,6 +197,8 @@ public class GoodsNumManager : MonoBehaviour
         int activeMainRedDotCnt = 0;
 
 
+
+
         if (DataManager.Instance.goods1011 == 0)
         {
             UnlockBG1011.gameObject.SetActive(true);
@@ -190,10 +206,12 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1011.gameObject.SetActive(false);
-            RedDot1011.gameObject.gameObject.SetActive(true);
-            activeCha_1RedDotCnt++;
+
             // isFirstCha_1_1011_BtnClick = false;
         }
+
+        //if (clicknum-> 두 번 이상이면 레드닷 꺼라.)
+
 
         if (DataManager.Instance.goods1012 == 0)
         {
@@ -238,10 +256,19 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1031.gameObject.SetActive(false);
-            RedDot1031.gameObject.gameObject.SetActive(true);
-            activeCha_1RedDotCnt++;
-            //  isFirstCha_1_1031_BtnClick = false;
-        }
+
+            if (isFirstCha_1_1031_BtnClick == true)
+            {
+                RedDot1031.gameObject.SetActive(true);
+                isFirstCha_1_1031_BtnClick = false;
+                activeCha_1RedDotCnt++;
+            }
+            else
+            {
+                RedDot1031.gameObject.SetActive(false);
+            }
+           
+            } 
 
         if (DataManager.Instance.goods1032 == 0)
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class UiManager : MonoBehaviour
 {
@@ -148,7 +149,7 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
-        BG_MainStory.gameObject.SetActive(false); 
+        BG_MainStory.gameObject.SetActive(false);
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_Goldplus.gameObject.SetActive(false);
         Test.gameObject.SetActive(false);
@@ -162,7 +163,7 @@ public class UiManager : MonoBehaviour
 
 
         // CSV 파일에서 데이터 읽기
-        data_Dialog = CSVReader.Read("GoodsTable_real");
+        data_Dialog = CSVReader.Read("GoodsCSV");
     }
 
     public void GoodsNumInfo()
@@ -178,7 +179,12 @@ public class UiManager : MonoBehaviour
                 GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
                 GoodsName.text = data_Dialog[i]["GoodsName"].ToString();
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
+                string RedDotName = "RedDot" + data_Dialog[i]["GoodsID"].ToString();
+                GameObject redDotObject = GameObject.Find(RedDotName);
+                redDotObject.gameObject.SetActive(false);
+
             }
+
         }
     }
 
@@ -326,13 +332,13 @@ public class UiManager : MonoBehaviour
     }
 
     public GameObject[] Goods = new GameObject[60];
-    
+
     //캐릭터 1창에서 누를 수 있는 버튼들
     public void OnCha_1_Story_BtnClick()
     {
         BG_Cha1_Story.gameObject.SetActive(true);
     }
-
+    public Image RedDot;
     public void OnCha_goods_BtnClick()
     {
         GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
@@ -341,19 +347,25 @@ public class UiManager : MonoBehaviour
             if (selectGoods == Goods[i])
             {
                 string imageFileName = data_Dialog[i]["GoodsID"].ToString();    //DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
+                string A = data_Dialog[i]["RedDotID"].ToString();
                 GoodsImage.sprite = Resources.Load<Sprite>("Goods" + imageFileName);
                 GoodsNameText.text = data_Dialog[i]["GoodsName"].ToString();
                 GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
-                GoodsName.text = data_Dialog[i]["GoodsName"].ToString();
+                //string reddotname = "RedDot" + data_Dialog[i]["RedDotID"].ToString();
 
 
-                
+               // GameObject redDotObject = GameObject.Find(reddotname);
+                //if (redDotObject != null)
+               // {
+                //    redDotObject.SetActive(true);
+               // }
+
 
                 //GoodsNum.text = data_Dialog[i][""].ToString();
 
                 //GoodsNum.text = 데이터매니저에서 개수 가져오기
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
-            
+
             }
         }
     }
@@ -478,41 +490,30 @@ public class UiManager : MonoBehaviour
     public void OnPopUpExit_BtnClick()
     {
         PopUpBG_GoodsInfo.gameObject.SetActive(false);
-        Destroy(RedDot1011.gameObject);
-        Destroy(RedDot1012.gameObject);
-        Destroy(RedDot1021.gameObject);
-        Destroy(RedDot1022.gameObject);
-        Destroy(RedDot1031.gameObject);
-        Destroy(RedDot1032.gameObject);
-        Destroy(RedDot2011.gameObject);
-        Destroy(RedDot2012.gameObject);
-        Destroy(RedDot2021.gameObject);
-        Destroy(RedDot2022.gameObject);
-        Destroy(RedDot2031.gameObject);
-        Destroy(RedDot2032.gameObject);
-        Destroy(RedDot3011.gameObject);
-        Destroy(RedDot3012.gameObject);
-        Destroy(RedDot3021.gameObject);
-        Destroy(RedDot3022.gameObject);
-        Destroy(RedDot3031.gameObject);
-        Destroy(RedDot3032.gameObject);
-        Destroy(RedDotMain_2.gameObject);
-        Destroy(RedDotMain_3.gameObject);
-        Destroy(RedDotCha_1_2.gameObject);
-        Destroy(RedDotCha_1_3.gameObject);
-        Destroy(RedDotCha_2_2.gameObject);
-        Destroy(RedDotCha_2_3.gameObject);
-        Destroy(RedDotCha_3_2.gameObject);
-        Destroy(RedDotCha_3_3.gameObject);
 
     }
 
     public void OntestGoods2022Click()
     {
         DataManager.Instance.goods1031 = DataManager.Instance.goods1031 + 100;
-    }
+        GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
+        for (int i = 0; i < Goods.Length; i++)
+        {
+            if (selectGoods == Goods[i])
+            {
+                string reddotname = "RedDot" + data_Dialog[i]["RedDotID"].ToString();
 
+                GameObject redDotObject = GameObject.Find(reddotname);
+                if (redDotObject != null)
+                {
+                    redDotObject.SetActive(false);
+                }
+
+            }
+        }
+    }
 }
+
 
 
 
