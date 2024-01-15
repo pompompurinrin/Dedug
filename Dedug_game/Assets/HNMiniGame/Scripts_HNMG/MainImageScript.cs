@@ -11,10 +11,22 @@ public class MainImageScript : MonoBehaviour
     [SerializeField] private GameObject card_Back;
     [SerializeField] private GameObject image_show;
     [SerializeField] private GameObject image_frame;
-    
+    [SerializeField] private GameObject real_Image;
+
     [SerializeField] private GameControllerScript gameController;
 
 
+    public void Start()
+    {
+        card_Back.SetActive(false);
+        Invoke("DisableShowImage", 3);
+    }
+    public void DisableShowImage()
+    {
+        image_show.SetActive(false);
+        card_Back.SetActive(true);
+        image_frame.SetActive(false);
+    }
     // 이미지를 클릭했을 때 호출되는 함수
     public void OnClick()
     {
@@ -59,7 +71,7 @@ public class MainImageScript : MonoBehaviour
     public void ChangeSprite(int id, Sprite image)
     {
         _spriteId = id;
-        GetComponent<Image>().sprite = image; // 스프라이트를 변경하기 위해 Image 컴포넌트를 가져와 사용
+        real_Image.GetComponent<Image>().sprite = image; // 스프라이트를 변경하기 위해 Image 컴포넌트를 가져와 사용
         image_show.GetComponent<Image>().sprite = image;
 
     }
@@ -85,22 +97,7 @@ public class MainImageScript : MonoBehaviour
 
             );
         });
-
-
         
     }
-    public void Start()
-    {
-
-        card_Back.SetActive(false); 
-        Invoke("DisableShowImage", 2);
-    }
-    public void DisableShowImage()
-    {
-        image_show.SetActive(false);
-        card_Back.SetActive(true);
-        image_frame.SetActive(false);
-
-
-    }
+  
 }

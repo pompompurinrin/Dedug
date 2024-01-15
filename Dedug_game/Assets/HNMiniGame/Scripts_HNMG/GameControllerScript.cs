@@ -43,12 +43,25 @@ public class GameControllerScript : MonoBehaviour
 
     public float score = 0; // 스코어 초기값
     public Text scoreText; // 스코어 텍스트 출력
-   // public GameObject scoreText; // 스코어 텍스트 출력
+                           // public GameObject scoreText; // 스코어 텍스트 출력
+
+    public AudioSource Main_BGM2;
 
 
-
-    // 게임이 시작될 때 호출되는 함수
     private void Start()
+    {
+        // 게임 시작 시 호출되는 함수
+        StartGame();
+
+        Main_BGM2.loop = true;  // 반복 재생
+        correct_sfx.Stop();
+        error_sfx.Stop();
+        correct_fx.gameObject.SetActive(false);
+        error_fx.gameObject.SetActive(false);
+
+    }
+    // 게임이 시작될 때 호출되는 함수
+    private void StartGame()
     {
 
         // 이미지 위치를 무작위로 섞음
@@ -89,7 +102,8 @@ public class GameControllerScript : MonoBehaviour
 
                 //scoreText.GetComponent<GameObject>().SetActive(true);
 
-                scoreText.gameObject.SetActive(true);
+                
+
             }
         }
     }
@@ -126,19 +140,29 @@ public class GameControllerScript : MonoBehaviour
 
     // -------------------------------------------------------------------
 
-    public Image restartBtn; // 재시작 버튼
-    public Image MainBG; // 메인 배경
-    
+    public Image restartBG;  // 재시작 씬
+    public Image MainBG;     // 메인 배경
+   
 
 
-    // 일치 여부를 확인하고 처리하는 코루틴
+    public AudioSource correct_sfx;     // 매칭 성공 사운드
+    public AudioSource error_sfx;       // 매칭 에러 사운드
+
+
+    public GameObject correct_fx;    // 매칭 성공 효과
+    public GameObject error_fx;      // 매칭 에러 효과
+
+
+    // 이미지 일치 여부를 확인하고 처리하는 코루틴
     private IEnumerator CheckGuessed()
     {
         if (firstOpen.spriteId == secondOpen.spriteId) // 두 이미지의 스프라이트 ID 비교
         {
-            // 일치하면 점수 증가
-            score++;
-            scoreText.text=score.ToString();
+            
+            score++; // 일치하면 점수 증가
+            scoreText.text= "Score : " + score.ToString() ;
+            correct_sfx.Play();
+            correct_fx.gameObject.SetActive(true);
 
             Vector3 originalScale = new Vector3(1, 1, 1);
             Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
@@ -156,12 +180,17 @@ public class GameControllerScript : MonoBehaviour
                 secondOpen = null;  // 변수 초기화 추가
             });
 
-            if (score == 10) // 두 이미지의 스프라이트 ID 비교
+            if (score == 10) 
             {
+                Main_BGM2.Stop();
                 MainBG.gameObject.SetActive(false);
-                restartBtn.gameObject.SetActive(true);
+                restartBG.gameObject.SetActive(true);
+
             }
+
             
+
+
        }
         else
         {
@@ -170,7 +199,21 @@ public class GameControllerScript : MonoBehaviour
 
             firstOpen.Close();
             secondOpen.Close();
+
+            error_sfx.Play();
+            error_fx.gameObject.SetActive(true);
+
+
+
         }
+
+
+
+
+
+
+
+
 
 
         // 열려진 이미지 변수 초기화
@@ -178,8 +221,7 @@ public class GameControllerScript : MonoBehaviour
         secondOpen = null;
     }
 
- 
-
+   
 
     // 게임 재시작 함수
 
@@ -189,5 +231,77 @@ public class GameControllerScript : MonoBehaviour
         Debug.Log("HNMiniGameScene");
         
         SceneManager.LoadScene("HNMiniGameScene");
+    }
+
+
+    // 게임 일시정지 관련 변수
+    public Image stopBg;
+    public Button stop;
+    public Button keepGoing;
+    public Button goTitle;
+
+    public Image realStopBg;
+    public Button stopOk;
+    public Button stopNo;
+
+
+    // 게임 일시정지 상태를 나타내는 변수
+    private bool isGamePaused = false;
+
+    // 게임 일시정지 버튼 클릭 시 호출되는 함수
+    public void StopButtonClick()
+    {
+        if (!isGamePaused)
+        {
+            // 게임 일시정지
+            PauseGame();
+        }
+        else if (isGamePaused)
+        {
+            // 게임 재개
+            stopBg.gameObject.SetActive(false);
+        }
+    }
+
+    // 게임 일시정지 처리
+    private void PauseGame()
+    {
+        isGamePaused = true;
+
+        // 게임 일시정지 UI 활성화
+        stopBg.gameObject.SetActive(true);
+        
+    }
+
+    // 게임으로 돌아가기 버튼 함수
+    public void keepGoingClick()
+    {
+        // 게임 일시정지 UI 비활성화
+        stopBg.gameObject.SetActive(false);
+        ResumeGame();
+    }
+
+    // 굿즈구매로 돌아가기 버튼 함수
+    public void goTitleClick()
+    {
+        // 게임 일시정지 UI 비활성화
+        stopBg.gameObject.SetActive(false);
+
+        // 리얼스톱Bg 활성화
+        realStopBg.gameObject.SetActive(true);
+    }
+
+    // 게임으로 돌아가기 버튼 함수
+    public void stopNoClick()
+    {
+        // 리얼스톱Bg 활성화
+        realStopBg.gameObject.SetActive(false);
+        ResumeGame();
+    }
+
+    // 게임 재개 처리
+    private void ResumeGame()
+    {
+        isGamePaused = false;
     }
 }
