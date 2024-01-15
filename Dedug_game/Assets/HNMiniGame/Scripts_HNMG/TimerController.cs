@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Unity.VisualScripting;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TimerController : MonoBehaviour
 {
@@ -26,6 +28,9 @@ public class TimerController : MonoBehaviour
 
         //Invoke("Timer", 4);
         InvokeRepeating("ReadyCounter", 0f, 1f);
+
+        //PercentageTable_1에서 배열을 사용할게
+        gameController.data_Dialog = CSVReader.Read("PercentageTable_real");
     }
 
     public void Timer()
@@ -61,7 +66,7 @@ public class TimerController : MonoBehaviour
             return;
 
         readyCount.gameObject.SetActive(false);
-        gameController.scoreText.gameObject.SetActive(true);
+        gameController.Scoretxt.gameObject.SetActive(true);
 
 
         timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
@@ -75,23 +80,29 @@ public class TimerController : MonoBehaviour
 
             timer = -1;
             TimeOver();
+
         }
     }
 
 
-    public Image restartBG;
-    public Image MainBG;
+  
 
     // 시간이 다 되면 게임 오버 화면을 활성화
     public void TimeOver()
     {
-        restartBG.gameObject.SetActive(true);
-        gameController.restartBtn.gameObject.SetActive(true);
-        MainBG.gameObject.SetActive(false);
+
+        gameController.Score();
+        gameController.ResultBG.gameObject.SetActive(true);
         gameController.Main_BGM2.Stop();
+        //어떤 컴포넌트에 배정할거임?
+        gameController.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
+        gameController.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
+        gameController.Restart = GameObject.Find("Restart").GetComponent<Button>();
+        gameController.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
+        gameController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
     }
 
-   
+
 
 
 }

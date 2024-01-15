@@ -120,6 +120,7 @@ public class YJMiniGameManager : MonoBehaviour
     public Image ResultBG;
     public Image ScoreBG;
     public Text Scoretxt;
+    public Text UserScore;
     public Text Rewardtxt;
     public Button Restart;
     public Button HomeBtn;
@@ -157,7 +158,7 @@ public class YJMiniGameManager : MonoBehaviour
         data_Dialog = CSVReader.Read("PercentageTable_real");
 
 
-        //UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
+        UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
 
         // 이건 왜인지 모르겠는데 넣으라고 해서 일단 넣음
         RewardsImage.Add(Reward1);
