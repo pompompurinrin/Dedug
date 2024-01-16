@@ -55,32 +55,7 @@ public class GoodsNumManager : MonoBehaviour
     public Image UnlockBGMain_2;
     public Image UnlockBGMain_3;
 
-    public Image RedDot1011;
-    public Image RedDot1012;
-    public Image RedDot1021;
-    public Image RedDot1022;
-    public Image RedDot1031;
-    public Image RedDot1032;
-    public Image RedDot2011;
-    public Image RedDot2012;
-    public Image RedDot2021;
-    public Image RedDot2022;
-    public Image RedDot2031;
-    public Image RedDot2032;
-    public Image RedDot3011;
-    public Image RedDot3012;
-    public Image RedDot3021;
-    public Image RedDot3022;
-    public Image RedDot3031;
-    public Image RedDot3032;
-    public Image RedDotMain_2;
-    public Image RedDotMain_3;
-    public Image RedDotCha_1_2;
-    public Image RedDotCha_1_3;
-    public Image RedDotCha_2_2;
-    public Image RedDotCha_2_3;
-    public Image RedDotCha_3_2;
-    public Image RedDotCha_3_3;
+
 
     public Button Cha_1_1011_Btn;
     public Button Cha_1_1012_Btn;
@@ -89,36 +64,30 @@ public class GoodsNumManager : MonoBehaviour
     public Button Cha_1_1031_Btn;
     public Button Cha_1_1032_Btn;
 
-    public int activeCha_1RedDotCnt = 0;
-    public int activeCha_2RedDotCnt = 0;
-    public int activeCha_3RedDotCnt = 0;
-    public int activeMainRedDotCnt = 0;
-    public int activeC1_STORYRedDotCnt = 0;
-    public int activeC2_STORYRedDotCnt = 0;
-    public int activeC3_STORYRedDotCnt = 0;
+
 
 
     //public Button a = UiManager.Cha_1_1031_Btn;
 
 
     private bool isFirstCha_1_1011_BtnClick = true;
-      private bool isFirstCha_1_1012_BtnClick = true;
-      private bool isFirstCha_1_1021_BtnClick = true;
-      private bool isFirstCha_1_1022_BtnClick = true;
-      private bool isFirstCha_1_1031_BtnClick = true;
-      private bool isFirstCha_1_1032_BtnClick = true;
-      private bool isFirstCha_2_2011_BtnClick = true;
-      private bool isFirstCha_2_2012_BtnClick = true;
-      private bool isFirstCha_2_2021_BtnClick = true;
-      private bool isFirstCha_2_2022_BtnClick = true; 
-      private bool isFirstCha_2_2031_BtnClick = true;
-      private bool isFirstCha_2_2032_BtnClick = true;
-      private bool isFirstCha_3_3011_BtnClick = true;
-      private bool isFirstCha_3_3012_BtnClick = true;
-      private bool isFirstCha_3_3021_BtnClick = true;
-      private bool isFirstCha_3_3022_BtnClick = true;
-      private bool isFirstCha_3_3031_BtnClick = true;
-      private bool isFirstCha_3_3032_BtnClick = true;
+    private bool isFirstCha_1_1012_BtnClick = true;
+    private bool isFirstCha_1_1021_BtnClick = true;
+    private bool isFirstCha_1_1022_BtnClick = true;
+    private bool isFirstCha_1_1031_BtnClick = true;
+    private bool isFirstCha_1_1032_BtnClick = true;
+    private bool isFirstCha_2_2011_BtnClick = true;
+    private bool isFirstCha_2_2012_BtnClick = true;
+    private bool isFirstCha_2_2021_BtnClick = true;
+    private bool isFirstCha_2_2022_BtnClick = true;
+    private bool isFirstCha_2_2031_BtnClick = true;
+    private bool isFirstCha_2_2032_BtnClick = true;
+    private bool isFirstCha_3_3011_BtnClick = true;
+    private bool isFirstCha_3_3012_BtnClick = true;
+    private bool isFirstCha_3_3021_BtnClick = true;
+    private bool isFirstCha_3_3022_BtnClick = true;
+    private bool isFirstCha_3_3031_BtnClick = true;
+    private bool isFirstCha_3_3032_BtnClick = true;
 
 
 
@@ -169,33 +138,7 @@ public class GoodsNumManager : MonoBehaviour
         Goods3031Num.text = "X" + DataManager.Instance.goods3031.ToString();
         Goods3032Num.text = "X" + DataManager.Instance.goods3032.ToString();
 
-        RedDot1011.gameObject.SetActive(false);
-        RedDot1012.gameObject.SetActive(false);
-        RedDot1021.gameObject.SetActive(false);
-        RedDot1022.gameObject.SetActive(false);
-        RedDot1031.gameObject.SetActive(false);
-        RedDot1032.gameObject.SetActive(false);
-        RedDot2032.gameObject.SetActive(false);
-        RedDot2011.gameObject.SetActive(false);
-        RedDot2012.gameObject.SetActive(false);
-        RedDot2021.gameObject.SetActive(false);
-        RedDot2022.gameObject.SetActive(false);
-        RedDot2031.gameObject.SetActive(false);
-        RedDot2032.gameObject.SetActive(false);
-        RedDot3011.gameObject.SetActive(false);
-        RedDot3012.gameObject.SetActive(false);
-        RedDot3021.gameObject.SetActive(false);
-        RedDot3022.gameObject.SetActive(false);
-        RedDot3031.gameObject.SetActive(false);
-        RedDot3032.gameObject.SetActive(false);
-        RedDotMain_2.gameObject.SetActive(false);
-        RedDotMain_3.gameObject.SetActive(false);
-        RedDotCha_1_2.gameObject.SetActive(false);
-        RedDotCha_1_3.gameObject.SetActive(false);
-        RedDotCha_2_2.gameObject.SetActive(false);
-        RedDotCha_2_3.gameObject.SetActive(false);
-        RedDotCha_3_2.gameObject.SetActive(false);
-        RedDotCha_3_3.gameObject.SetActive(false);
+
 
 
 
@@ -209,23 +152,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1011.gameObject.SetActive(false);
-            RedDot1011.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_1_1011_BtnClick == true)
-            {
-                RedDot1011.gameObject.SetActive(true);
-                isFirstCha_1_1011_BtnClick = false;
-            }
-            else
-            {
-                RedDot1011.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods1011 == 1)
-            {
-                activeCha_1RedDotCnt++;
-            }
         }
 
 
@@ -237,23 +164,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1012.gameObject.SetActive(false);
-            RedDot1012.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_1_1012_BtnClick == true)
-            {
-                RedDot1012.gameObject.SetActive(true);
-                isFirstCha_1_1012_BtnClick = false;
-            }
-            else
-            {
-                RedDot1012.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods1012 == 1)
-            {
-                activeCha_1RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods1021 == 0)
@@ -263,23 +174,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1021.gameObject.SetActive(false);
-            RedDot1021.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_1_1021_BtnClick == true)
-            {
-                RedDot1021.gameObject.SetActive(true);
-                isFirstCha_1_1021_BtnClick = false;
-            }
-            else
-            {
-                RedDot1021.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods1021 == 1)
-            {
-                activeCha_1RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods1022 == 0)
@@ -289,23 +184,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1022.gameObject.SetActive(false);
-            RedDot1022.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_1_1022_BtnClick == true)
-            {
-                RedDot1022.gameObject.SetActive(true);
-                isFirstCha_1_1022_BtnClick = false;
-            }
-            else
-            {
-                RedDot1022.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods1022 == 1)
-            {
-                activeCha_1RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods1031 == 0)
@@ -315,23 +194,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1031.gameObject.SetActive(false);
-            RedDot1031.gameObject.gameObject.SetActive(true);
-         
 
-            if (isFirstCha_1_1031_BtnClick == true)
-            {
-                RedDot1031.gameObject.SetActive(true);
-                isFirstCha_1_1031_BtnClick = false;
-            }
-            else
-            {
-                RedDot1031.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods1031 == 100)
-            {
-                activeCha_1RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods1032 == 0)
@@ -341,23 +204,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG1032.gameObject.SetActive(false);
-            RedDot1032.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_1_1032_BtnClick == true)
-            {
-                RedDot1032.gameObject.SetActive(true);
-                isFirstCha_1_1032_BtnClick = false;
-            }
-            else
-            {
-                RedDot1032.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods1032 == 1)
-            {
-                activeCha_1RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods2011 == 0)
@@ -367,23 +214,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG2011.gameObject.SetActive(false);
-            RedDot2011.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_2_2011_BtnClick == true)
-            {
-                RedDot2011.gameObject.SetActive(true);
-                isFirstCha_2_2011_BtnClick = false;
-            }
-            else
-            {
-                RedDot2011.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods2011 == 1)
-            {
-                activeCha_2RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods2012 == 0)
@@ -393,23 +224,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG2012.gameObject.SetActive(false);
-            RedDot2012.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_2_2012_BtnClick == true)
-            {
-                RedDot2012.gameObject.SetActive(true);
-                isFirstCha_2_2012_BtnClick = false;
-            }
-            else
-            {
-                RedDot2012.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods2012 == 1)
-            {
-                activeCha_2RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods2021 == 0)
@@ -419,23 +234,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG2021.gameObject.SetActive(false);
-            RedDot2021.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_2_2021_BtnClick == true)
-            {
-                RedDot2021.gameObject.SetActive(true);
-                isFirstCha_2_2021_BtnClick = false;
-            }
-            else
-            {
-                RedDot2021.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods2021 == 1)
-            {
-                activeCha_2RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods2022 == 0)
@@ -445,23 +244,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG2022.gameObject.SetActive(false);
-            RedDot2022.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_2_2022_BtnClick == true)
-            {
-                RedDot2022.gameObject.SetActive(true);
-                isFirstCha_2_2022_BtnClick = false;
-            }
-            else
-            {
-                RedDot2022.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods2022 == 1)
-            {
-                activeCha_2RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods2031 == 0)
@@ -471,23 +254,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG2031.gameObject.SetActive(false);
-            RedDot2031.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_2_2031_BtnClick == true)
-            {
-                RedDot2031.gameObject.SetActive(true);
-                isFirstCha_2_2031_BtnClick = false;
-            }
-            else
-            {
-                RedDot2031.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods2031 == 1)
-            {
-                activeCha_2RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods2032 == 0)
@@ -497,23 +264,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG2032.gameObject.SetActive(false);
-            RedDot2032.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_2_2032_BtnClick == true)
-            {
-                RedDot2032.gameObject.SetActive(true);
-                isFirstCha_2_2032_BtnClick = false;
-            }
-            else
-            {
-                RedDot2032.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods2032 == 1)
-            {
-                activeCha_2RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods3011 == 0)
@@ -523,23 +274,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG3011.gameObject.SetActive(false);
-            RedDot3011.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_3_3011_BtnClick == true)
-            {
-                RedDot3011.gameObject.SetActive(true);
-                isFirstCha_3_3011_BtnClick = false;
-            }
-            else
-            {
-                RedDot3011.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods3011 == 1)
-            {
-                activeCha_3RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods3012 == 0)
@@ -549,23 +284,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG3012.gameObject.SetActive(false);
-            RedDot3012.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_3_3012_BtnClick == true)
-            {
-                RedDot3012.gameObject.SetActive(true);
-                isFirstCha_3_3012_BtnClick = false;
-            }
-            else
-            {
-                RedDot3012.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods3012 == 1)
-            {
-                activeCha_3RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods3021 == 0)
@@ -575,23 +294,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG3021.gameObject.SetActive(false);
-            RedDot3021.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_3_3021_BtnClick == true)
-            {
-                RedDot3021.gameObject.SetActive(true);
-                isFirstCha_3_3021_BtnClick = false;
-            }
-            else
-            {
-                RedDot3021.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods3021 == 1)
-            {
-                activeCha_3RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods3022 == 0)
@@ -601,24 +304,7 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG3022.gameObject.SetActive(false);
-            RedDot3022.gameObject.gameObject.SetActive(true);
 
-
-           
-            if (isFirstCha_3_3022_BtnClick == true)
-            {
-                RedDot3022.gameObject.SetActive(true);
-                isFirstCha_3_3022_BtnClick = false;
-            }
-            else
-            {
-                RedDot3022.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods3022 == 1)
-            {
-                activeCha_3RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods3031 == 0)
@@ -628,23 +314,6 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG3031.gameObject.SetActive(false);
-            RedDot3031.gameObject.gameObject.SetActive(true);
-
-
-            if (isFirstCha_3_3031_BtnClick == true)
-            {
-                RedDot3031.gameObject.SetActive(true);
-                isFirstCha_3_3031_BtnClick = false;
-            }
-            else
-            {
-                RedDot3031.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods3031 == 1)
-            {
-                activeCha_3RedDotCnt++;
-            }
         }
 
         if (DataManager.Instance.goods3032 == 0)
@@ -654,27 +323,11 @@ public class GoodsNumManager : MonoBehaviour
         else
         {
             UnlockBG3032.gameObject.SetActive(false);
-            RedDot3032.gameObject.gameObject.SetActive(true);
 
-
-            if (isFirstCha_3_3032_BtnClick == true)
-            {
-                RedDot3032.gameObject.SetActive(true);
-                isFirstCha_3_3032_BtnClick = false;
-            }
-            else
-            {
-                RedDot3032.gameObject.SetActive(false);
-            }
-
-            if (DataManager.Instance.goods3032 == 1)
-            {
-                activeCha_3RedDotCnt++;
-            }
         }
 
 
-        //활성화 된 오브젝트의 수로 해금 체크
+        /*활성화 된 오브젝트의 수로 해금 체크
         if (activeCha_1RedDotCnt >= 3)
         {
             UnlockBG1_2.gameObject.SetActive(false);
@@ -769,5 +422,6 @@ public class GoodsNumManager : MonoBehaviour
         PlayerPrefs.SetInt("activeC3_STORYRedDotCnt", DataManager.Instance.activeC3_STORYRedDotCnt);
         PlayerPrefs.SetInt("activeMainRedDotCnt", DataManager.Instance.activeMainRedDotCnt);
         PlayerPrefs.Save();
+    }*/
     }
 }

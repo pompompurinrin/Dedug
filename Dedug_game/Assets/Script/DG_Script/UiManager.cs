@@ -30,33 +30,7 @@ public class UiManager : MonoBehaviour
     public Text GoodsName;
 
     public Image GoodsImage;
-    public Image RedDot1011;
-    public Image RedDot1012;
-    public Image RedDot1021;
-    public Image RedDot1022;
-    public Image RedDot1031;
-    public Image RedDot1032;
-    public Image RedDot2011;
-    public Image RedDot2012;
-    public Image RedDot2021;
-    public Image RedDot2022;
-    public Image RedDot2031;
-    public Image RedDot2032;
-    public Image RedDot3011;
-    public Image RedDot3012;
-    public Image RedDot3021;
-    public Image RedDot3022;
-    public Image RedDot3031;
-    public Image RedDot3032;
-    public Image RedDotMain_2;
-    public Image RedDotMain_3;
-    public Image RedDotCha_1_2;
-    public Image RedDotCha_1_3;
-    public Image RedDotCha_2_2;
-    public Image RedDotCha_2_3;
-    public Image RedDotCha_3_2;
-    public Image RedDotCha_3_3;
-
+   
 
     public Button MainStory_Btn;
     public Button Back2Home_btn;
@@ -179,9 +153,7 @@ public class UiManager : MonoBehaviour
                 GoodsDesc.text = data_Dialog[i]["GoodsDesc"].ToString();
                 GoodsName.text = data_Dialog[i]["GoodsName"].ToString();
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
-                string RedDotName = "RedDot" + data_Dialog[i]["GoodsID"].ToString();
-                GameObject redDotObject = GameObject.Find(RedDotName);
-                redDotObject.gameObject.SetActive(false);
+                
 
             }
 
@@ -197,7 +169,9 @@ public class UiManager : MonoBehaviour
     public void Cha_1_BtnClick()
     {
         BG_Cha1.gameObject.SetActive(true);
-    }
+
+            }
+    
 
     public void Cha_2_BtnClick()
     {
@@ -216,7 +190,9 @@ public class UiManager : MonoBehaviour
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha2.gameObject.SetActive(false);
         BG_Cha3.gameObject.SetActive(false);
-    }
+
+        }
+    
 
     //BG_MainStory에서 누를 수 있는 버튼들
     public void MainStory_1_BtnClick()   //최초 클릭시, 그 이후 클릭시 이미지 변경 하는 방법, 대신 no버튼, 스토리체크 버튼에 반영해줘야 함
@@ -354,17 +330,7 @@ public class UiManager : MonoBehaviour
                 //GoodsNum.text = 데이터매니저에서 개수 가져오기
                 PopUpBG_GoodsInfo.gameObject.SetActive(true);
 
-                if (selectGoods == Goods[i])
-                {
-                    string reddotname = "RedDot" + data_Dialog[i]["RedDotID"].ToString();
-
-                    GameObject redDotObject = GameObject.Find(reddotname);
-                    if (redDotObject != null)
-                    {
-                        redDotObject.SetActive(false);
-                    }
-                    
-                }
+               
 
             }
         }
@@ -501,6 +467,8 @@ public class UiManager : MonoBehaviour
         DataManager.Instance.goods1031 = DataManager.Instance.goods1031 + 100;
 
     }
+
+  
 }
 
 
