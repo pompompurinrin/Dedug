@@ -88,12 +88,12 @@ public class GoodsNumManager : MonoBehaviour
     public Slider ChorongGoodsSlider;
 
 
-    public Button Cha_1_1011_Btn;
+    /*public Button Cha_1_1011_Btn;
     public Button Cha_1_1012_Btn;
     public Button Cha_1_1021_Btn;
     public Button Cha_1_1022_Btn;
     public Button Cha_1_1031_Btn;
-    public Button Cha_1_1032_Btn;
+    public Button Cha_1_1032_Btn;*/
 
 
     public Button testGoods1021;

@@ -23,6 +23,7 @@ public class UiManager : MonoBehaviour
     public Canvas BG_Cha2_Story;
     public Canvas BG_Cha3_Story;
     public Canvas PopUpBG_MainStoryCheck;
+    public Canvas BG_SpecialGoods;
 
 
 
@@ -54,6 +55,10 @@ public class UiManager : MonoBehaviour
     public Button Cha_1_1022_Btn;
     public Button Cha_1_1031_Btn;
     public Button Cha_1_1032_Btn;
+    public Button Cha_1_1041_Btn;
+    public Button Cha_1_1042_Btn; 
+    public Button Cha_1_1051_Btn;
+    public Button Cha_1_1052_Btn;
     public Button PopUpExit_Btn;
     public Button Cha_1_Story1_Btn;
     public Button Cha_1_Story2_Btn;
@@ -65,6 +70,10 @@ public class UiManager : MonoBehaviour
     public Button Cha_2_2022_Btn;
     public Button Cha_2_2031_Btn;
     public Button Cha_2_2032_Btn;
+    public Button Cha_2_2041_Btn;
+    public Button Cha_2_2042_Btn;
+    public Button Cha_2_2051_Btn;
+    public Button Cha_2_2052_Btn;
     public Button Cha_2_Story1_Btn;
     public Button Cha_2_Story2_Btn;
     public Button Cha_2_Story3_Btn;
@@ -74,9 +83,24 @@ public class UiManager : MonoBehaviour
     public Button Cha_3_3022_Btn;
     public Button Cha_3_3031_Btn;
     public Button Cha_3_3032_Btn;
+    public Button Cha_3_3041_Btn;
+    public Button Cha_3_3042_Btn;
+    public Button Cha_3_3051_Btn;
+    public Button Cha_3_3052_Btn;
     public Button Cha_3_Story1_Btn;
     public Button Cha_3_Story2_Btn;
     public Button Cha_3_Story3_Btn;
+    public Button Special_4051_Btn;
+    public Button Special_4052_Btn;
+    public Button Special_4053_Btn;
+    public Button Special_4054_Btn;
+    public Button Special_4055_Btn;
+    public Button Special_4056_Btn;
+    public Button Special_4057_Btn;
+    public Button Special_4058_Btn;
+    public Button Special_4059_Btn;
+    public Button Special_4060_Btn;
+    public Button SpecialGoods_Btn;
 
 
     //팝업창 다르게 하기 위해서, 처음 각 버튼을 눌렀는지 확인하는 작업을 위한 준비
@@ -151,6 +175,7 @@ public class UiManager : MonoBehaviour
         BG_Cha1_Story.gameObject.SetActive(false);
         BG_Cha2_Story.gameObject.SetActive(false);
         BG_Cha2_Story.gameObject.SetActive(false);
+        BG_SpecialGoods.gameObject.SetActive(false);
 
 
         // CSV 파일에서 데이터 읽기
@@ -200,6 +225,11 @@ public class UiManager : MonoBehaviour
         BG_Cha3.gameObject.SetActive(true);
     }
 
+    public void SpecialGoods_BtnClick()
+    {
+        BG_SpecialGoods.gameObject.SetActive(true);
+    }
+
     //홈 화면으로 가는 버튼
     public void Back2Home_btnClick()
     {
@@ -207,8 +237,8 @@ public class UiManager : MonoBehaviour
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha2.gameObject.SetActive(false);
         BG_Cha3.gameObject.SetActive(false);
-
-        }
+        BG_SpecialGoods.gameObject.SetActive(false);
+    }
     
 
     //BG_MainStory에서 누를 수 있는 버튼들, 스토리 버튼을 클릭하면 싱글톤에 각 번호를 부여해서 값을 부여해야 함
