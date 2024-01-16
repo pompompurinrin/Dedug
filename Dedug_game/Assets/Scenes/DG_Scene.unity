@@ -455,7 +455,6 @@ GameObject:
   - component: {fileID: 46596574}
   - component: {fileID: 46596573}
   - component: {fileID: 46596572}
-  - component: {fileID: 46596575}
   m_Layer: 5
   m_Name: BG_Cha1_Story
   m_TagString: Untagged
@@ -553,25 +552,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &46596575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46596570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40538e065825e80438e9d6c106b120fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SUA_Goods: {fileID: 385942662}
-  BADA_Goods: {fileID: 1435126225}
-  CHORONG_Goods: {fileID: 845075516}
-  SUA_Story: {fileID: 46596570}
-  BADA_Story: {fileID: 823686713}
-  CHORONG_Story: {fileID: 2026077631}
-  Main_Story: {fileID: 498414671}
 --- !u!1 &50743108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3602,7 +3582,7 @@ GameObject:
   - component: {fileID: 311145738}
   - component: {fileID: 311145737}
   m_Layer: 5
-  m_Name: UnlockBG1_3
+  m_Name: UnlockChr1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4124,7 +4104,6 @@ GameObject:
   - component: {fileID: 385942666}
   - component: {fileID: 385942665}
   - component: {fileID: 385942664}
-  - component: {fileID: 385942667}
   m_Layer: 5
   m_Name: BG_Cha1
   m_TagString: Untagged
@@ -4219,69 +4198,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &385942667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385942662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd0da136a43d5b4c987a82603c3fac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Goods1011Num: {fileID: 1651409207}
-  Goods1012Num: {fileID: 903410519}
-  Goods1021Num: {fileID: 1439942224}
-  Goods1022Num: {fileID: 800282128}
-  Goods1031Num: {fileID: 440369916}
-  Goods1032Num: {fileID: 538923248}
-  Goods2011Num: {fileID: 744929832}
-  Goods2012Num: {fileID: 830079247}
-  Goods2021Num: {fileID: 283538187}
-  Goods2022Num: {fileID: 361240416}
-  Goods2031Num: {fileID: 200495853}
-  Goods2032Num: {fileID: 1663691537}
-  Goods3011Num: {fileID: 1169303732}
-  Goods3012Num: {fileID: 672002117}
-  Goods3021Num: {fileID: 523561082}
-  Goods3022Num: {fileID: 1129411176}
-  Goods3031Num: {fileID: 481972723}
-  Goods3032Num: {fileID: 1970301141}
-  UnlockBG1011: {fileID: 150423926}
-  UnlockBG1012: {fileID: 892819476}
-  UnlockBG1021: {fileID: 1648393945}
-  UnlockBG1022: {fileID: 806858481}
-  UnlockBG1031: {fileID: 1554786876}
-  UnlockBG1032: {fileID: 1916052121}
-  UnlockBG2011: {fileID: 652470953}
-  UnlockBG2012: {fileID: 241346239}
-  UnlockBG2021: {fileID: 1325548318}
-  UnlockBG2022: {fileID: 295943646}
-  UnlockBG2031: {fileID: 1334637748}
-  UnlockBG2032: {fileID: 206159134}
-  UnlockBG3011: {fileID: 331472333}
-  UnlockBG3012: {fileID: 895909710}
-  UnlockBG3021: {fileID: 1749994912}
-  UnlockBG3022: {fileID: 1428569344}
-  UnlockBG3031: {fileID: 1814648080}
-  UnlockBG3032: {fileID: 2003124755}
-  UnlockBG1_2: {fileID: 2026757163}
-  UnlockBG1_3: {fileID: 311145737}
-  UnlockBG2_2: {fileID: 546557453}
-  UnlockBG2_3: {fileID: 0}
-  UnlockBG3_2: {fileID: 1851729560}
-  UnlockBG3_3: {fileID: 1758783150}
-  UnlockBGMain_2: {fileID: 1365623193}
-  UnlockBGMain_3: {fileID: 394217792}
-  Cha_1_1011_Btn: {fileID: 973927896}
-  Cha_1_1012_Btn: {fileID: 823533343}
-  Cha_1_1021_Btn: {fileID: 1089628971}
-  Cha_1_1022_Btn: {fileID: 1617078191}
-  Cha_1_1031_Btn: {fileID: 1397545224}
-  Cha_1_1032_Btn: {fileID: 1509211881}
-  testGoods1021: {fileID: 2094275010}
 --- !u!1 &394217790
 GameObject:
   m_ObjectHideFlags: 0
@@ -4294,7 +4210,7 @@ GameObject:
   - component: {fileID: 394217793}
   - component: {fileID: 394217792}
   m_Layer: 5
-  m_Name: UnlockMain_2
+  m_Name: UnlockMain_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4576,10 +4492,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2120261666}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 70
+  m_MinValue: 1
+  m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 31.6
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6107,7 +6023,6 @@ GameObject:
   - component: {fileID: 498414675}
   - component: {fileID: 498414674}
   - component: {fileID: 498414673}
-  - component: {fileID: 498414676}
   m_Layer: 5
   m_Name: BG_MainStory
   m_TagString: Untagged
@@ -6205,69 +6120,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &498414676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498414671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd0da136a43d5b4c987a82603c3fac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Goods1011Num: {fileID: 1651409207}
-  Goods1012Num: {fileID: 903410519}
-  Goods1021Num: {fileID: 1439942224}
-  Goods1022Num: {fileID: 800282128}
-  Goods1031Num: {fileID: 440369916}
-  Goods1032Num: {fileID: 538923248}
-  Goods2011Num: {fileID: 744929832}
-  Goods2012Num: {fileID: 830079247}
-  Goods2021Num: {fileID: 283538187}
-  Goods2022Num: {fileID: 200495853}
-  Goods2031Num: {fileID: 361240416}
-  Goods2032Num: {fileID: 1663691537}
-  Goods3011Num: {fileID: 1169303732}
-  Goods3012Num: {fileID: 672002117}
-  Goods3021Num: {fileID: 523561082}
-  Goods3022Num: {fileID: 1129411176}
-  Goods3031Num: {fileID: 481972723}
-  Goods3032Num: {fileID: 1970301141}
-  UnlockBG1011: {fileID: 150423926}
-  UnlockBG1012: {fileID: 892819476}
-  UnlockBG1021: {fileID: 1648393945}
-  UnlockBG1022: {fileID: 806858481}
-  UnlockBG1031: {fileID: 1554786876}
-  UnlockBG1032: {fileID: 1916052121}
-  UnlockBG2011: {fileID: 652470953}
-  UnlockBG2012: {fileID: 241346239}
-  UnlockBG2021: {fileID: 1325548318}
-  UnlockBG2022: {fileID: 295943646}
-  UnlockBG2031: {fileID: 1334637748}
-  UnlockBG2032: {fileID: 206159134}
-  UnlockBG3011: {fileID: 331472333}
-  UnlockBG3012: {fileID: 895909710}
-  UnlockBG3021: {fileID: 1749994912}
-  UnlockBG3022: {fileID: 1428569344}
-  UnlockBG3031: {fileID: 1814648080}
-  UnlockBG3032: {fileID: 2003124755}
-  UnlockBG1_2: {fileID: 2026757163}
-  UnlockBG1_3: {fileID: 311145737}
-  UnlockBG2_2: {fileID: 546557453}
-  UnlockBG2_3: {fileID: 706509372}
-  UnlockBG3_2: {fileID: 1851729560}
-  UnlockBG3_3: {fileID: 1758783150}
-  UnlockBGMain_2: {fileID: 1365623193}
-  UnlockBGMain_3: {fileID: 394217792}
-  Cha_1_1011_Btn: {fileID: 973927896}
-  Cha_1_1012_Btn: {fileID: 823533343}
-  Cha_1_1021_Btn: {fileID: 1089628971}
-  Cha_1_1022_Btn: {fileID: 1617078191}
-  Cha_1_1031_Btn: {fileID: 1397545224}
-  Cha_1_1032_Btn: {fileID: 1509211881}
-  testGoods1021: {fileID: 2094275010}
 --- !u!1 &503155996
 GameObject:
   m_ObjectHideFlags: 0
@@ -7087,7 +6939,7 @@ GameObject:
   - component: {fileID: 546557454}
   - component: {fileID: 546557453}
   m_Layer: 5
-  m_Name: UnlockBG2_2
+  m_Name: UnlockChr2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8505,32 +8357,6 @@ MonoBehaviour:
   GoodsDesc: {fileID: 186028850}
   GoodsName: {fileID: 1425938413}
   GoodsImage: {fileID: 679086537}
-  RedDot1011: {fileID: 0}
-  RedDot1012: {fileID: 0}
-  RedDot1021: {fileID: 0}
-  RedDot1022: {fileID: 0}
-  RedDot1031: {fileID: 0}
-  RedDot1032: {fileID: 0}
-  RedDot2011: {fileID: 0}
-  RedDot2012: {fileID: 0}
-  RedDot2021: {fileID: 0}
-  RedDot2022: {fileID: 0}
-  RedDot2031: {fileID: 0}
-  RedDot2032: {fileID: 0}
-  RedDot3011: {fileID: 0}
-  RedDot3012: {fileID: 0}
-  RedDot3021: {fileID: 0}
-  RedDot3022: {fileID: 0}
-  RedDot3031: {fileID: 0}
-  RedDot3032: {fileID: 0}
-  RedDotMain_2: {fileID: 0}
-  RedDotMain_3: {fileID: 0}
-  RedDotCha_1_2: {fileID: 0}
-  RedDotCha_1_3: {fileID: 0}
-  RedDotCha_2_2: {fileID: 0}
-  RedDotCha_2_3: {fileID: 0}
-  RedDotCha_3_2: {fileID: 0}
-  RedDotCha_3_3: {fileID: 0}
   MainStory_Btn: {fileID: 728014054}
   Back2Home_btn: {fileID: 784789590}
   MainStory_1_Btn: {fileID: 73857279}
@@ -8727,16 +8553,99 @@ MonoBehaviour:
   m_GameObject: {fileID: 680742926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40538e065825e80438e9d6c106b120fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bd0da136a43d5b4c987a82603c3fac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SUA_Goods: {fileID: 385942662}
-  BADA_Goods: {fileID: 1435126225}
-  CHORONG_Goods: {fileID: 845075516}
-  SUA_Story: {fileID: 46596570}
-  BADA_Story: {fileID: 823686713}
-  CHORONG_Story: {fileID: 2026077631}
-  Main_Story: {fileID: 498414671}
+  Goods1011Num: {fileID: 0}
+  Goods1012Num: {fileID: 0}
+  Goods1021Num: {fileID: 0}
+  Goods1022Num: {fileID: 0}
+  Goods1031Num: {fileID: 0}
+  Goods1032Num: {fileID: 0}
+  Goods1041Num: {fileID: 0}
+  Goods1042Num: {fileID: 0}
+  Goods1051Num: {fileID: 0}
+  Goods1052Num: {fileID: 0}
+  Goods2011Num: {fileID: 0}
+  Goods2012Num: {fileID: 0}
+  Goods2021Num: {fileID: 0}
+  Goods2022Num: {fileID: 0}
+  Goods2031Num: {fileID: 0}
+  Goods2032Num: {fileID: 0}
+  Goods2041Num: {fileID: 0}
+  Goods2042Num: {fileID: 0}
+  Goods2051Num: {fileID: 0}
+  Goods2052Num: {fileID: 0}
+  Goods3011Num: {fileID: 0}
+  Goods3012Num: {fileID: 0}
+  Goods3021Num: {fileID: 0}
+  Goods3022Num: {fileID: 0}
+  Goods3031Num: {fileID: 0}
+  Goods3032Num: {fileID: 0}
+  Goods3041Num: {fileID: 0}
+  Goods3042Num: {fileID: 0}
+  Goods3051Num: {fileID: 0}
+  Goods3052Num: {fileID: 0}
+  UnlockBG1011: {fileID: 0}
+  UnlockBG1012: {fileID: 0}
+  UnlockBG1021: {fileID: 0}
+  UnlockBG1022: {fileID: 0}
+  UnlockBG1031: {fileID: 0}
+  UnlockBG1032: {fileID: 0}
+  UnlockBG1041: {fileID: 0}
+  UnlockBG1042: {fileID: 0}
+  UnlockBG1051: {fileID: 0}
+  UnlockBG1052: {fileID: 0}
+  UnlockBG2011: {fileID: 0}
+  UnlockBG2012: {fileID: 0}
+  UnlockBG2021: {fileID: 0}
+  UnlockBG2022: {fileID: 0}
+  UnlockBG2031: {fileID: 0}
+  UnlockBG2032: {fileID: 0}
+  UnlockBG2041: {fileID: 0}
+  UnlockBG2042: {fileID: 0}
+  UnlockBG2051: {fileID: 0}
+  UnlockBG2052: {fileID: 0}
+  UnlockBG3011: {fileID: 0}
+  UnlockBG3012: {fileID: 0}
+  UnlockBG3021: {fileID: 0}
+  UnlockBG3022: {fileID: 0}
+  UnlockBG3031: {fileID: 0}
+  UnlockBG3032: {fileID: 0}
+  UnlockBG3041: {fileID: 0}
+  UnlockBG3042: {fileID: 0}
+  UnlockBG3051: {fileID: 0}
+  UnlockBG3052: {fileID: 0}
+  MainStorySlider: {fileID: 0}
+  SuaStorySlider: {fileID: 0}
+  BadaStorySlider: {fileID: 0}
+  ChorongStorySlider: {fileID: 0}
+  SuaGoodsSlider: {fileID: 0}
+  BadaGoodsSlider: {fileID: 0}
+  ChorongGoodsSlider: {fileID: 0}
+  Cha_1_1011_Btn: {fileID: 0}
+  Cha_1_1012_Btn: {fileID: 0}
+  Cha_1_1021_Btn: {fileID: 0}
+  Cha_1_1022_Btn: {fileID: 0}
+  Cha_1_1031_Btn: {fileID: 0}
+  Cha_1_1032_Btn: {fileID: 0}
+  testGoods1021: {fileID: 0}
+  MainStoryGauge: 0
+  MainGoodsGauge: 0
+  SuaStoryGauge: 0
+  BadaStoryGauge: 0
+  ChorongStoryGauge: 0
+  SuaGoodsGauge: 0
+  BadaGoodsGauge: 0
+  ChorongGoodsGauge: 0
+  UnlockChr1_2: {fileID: 0}
+  UnlockChr1_3: {fileID: 0}
+  UnlockChr2_2: {fileID: 0}
+  UnlockChr2_3: {fileID: 0}
+  UnlockChr3_2: {fileID: 0}
+  UnlockChr3_3: {fileID: 0}
+  UnlockMain_2: {fileID: 0}
+  UnlockMain_3: {fileID: 0}
 --- !u!1 &684701569
 GameObject:
   m_ObjectHideFlags: 0
@@ -8798,10 +8707,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1914408828}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 70
+  m_MinValue: 1
+  m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 31.6
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8840,7 +8749,7 @@ GameObject:
   - component: {fileID: 706509373}
   - component: {fileID: 706509372}
   m_Layer: 5
-  m_Name: UnlockBG2_3
+  m_Name: UnlockCh2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11126,7 +11035,6 @@ GameObject:
   - component: {fileID: 845075520}
   - component: {fileID: 845075519}
   - component: {fileID: 845075518}
-  - component: {fileID: 845075521}
   m_Layer: 5
   m_Name: BG_Cha3
   m_TagString: Untagged
@@ -11227,69 +11135,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &845075521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845075516}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd0da136a43d5b4c987a82603c3fac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Goods1011Num: {fileID: 1651409207}
-  Goods1012Num: {fileID: 903410519}
-  Goods1021Num: {fileID: 1439942224}
-  Goods1022Num: {fileID: 800282128}
-  Goods1031Num: {fileID: 440369916}
-  Goods1032Num: {fileID: 538923248}
-  Goods2011Num: {fileID: 744929832}
-  Goods2012Num: {fileID: 830079247}
-  Goods2021Num: {fileID: 283538187}
-  Goods2022Num: {fileID: 200495853}
-  Goods2031Num: {fileID: 361240416}
-  Goods2032Num: {fileID: 1663691537}
-  Goods3011Num: {fileID: 1169303732}
-  Goods3012Num: {fileID: 672002117}
-  Goods3021Num: {fileID: 523561082}
-  Goods3022Num: {fileID: 481972723}
-  Goods3031Num: {fileID: 1129411176}
-  Goods3032Num: {fileID: 1970301141}
-  UnlockBG1011: {fileID: 150423926}
-  UnlockBG1012: {fileID: 892819476}
-  UnlockBG1021: {fileID: 1648393945}
-  UnlockBG1022: {fileID: 806858481}
-  UnlockBG1031: {fileID: 1554786876}
-  UnlockBG1032: {fileID: 1916052121}
-  UnlockBG2011: {fileID: 652470953}
-  UnlockBG2012: {fileID: 241346239}
-  UnlockBG2021: {fileID: 1325548318}
-  UnlockBG2022: {fileID: 295943646}
-  UnlockBG2031: {fileID: 1334637748}
-  UnlockBG2032: {fileID: 206159134}
-  UnlockBG3011: {fileID: 331472333}
-  UnlockBG3012: {fileID: 895909710}
-  UnlockBG3021: {fileID: 1749994912}
-  UnlockBG3022: {fileID: 1428569344}
-  UnlockBG3031: {fileID: 1814648080}
-  UnlockBG3032: {fileID: 2003124755}
-  UnlockBG1_2: {fileID: 2026757163}
-  UnlockBG1_3: {fileID: 311145737}
-  UnlockBG2_2: {fileID: 546557453}
-  UnlockBG2_3: {fileID: 706509372}
-  UnlockBG3_2: {fileID: 1851729560}
-  UnlockBG3_3: {fileID: 1758783150}
-  UnlockBGMain_2: {fileID: 1365623193}
-  UnlockBGMain_3: {fileID: 394217792}
-  Cha_1_1011_Btn: {fileID: 973927896}
-  Cha_1_1012_Btn: {fileID: 823533343}
-  Cha_1_1021_Btn: {fileID: 1089628971}
-  Cha_1_1022_Btn: {fileID: 1617078191}
-  Cha_1_1031_Btn: {fileID: 1397545224}
-  Cha_1_1032_Btn: {fileID: 1509211881}
-  testGoods1021: {fileID: 2094275010}
 --- !u!1 &867281703
 GameObject:
   m_ObjectHideFlags: 0
@@ -14721,9 +14566,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 6
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 3
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -15619,7 +15464,7 @@ GameObject:
   - component: {fileID: 1365623194}
   - component: {fileID: 1365623193}
   m_Layer: 5
-  m_Name: UnlockMain_1
+  m_Name: UnlockMain_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16525,7 +16370,6 @@ GameObject:
   - component: {fileID: 1435126229}
   - component: {fileID: 1435126228}
   - component: {fileID: 1435126227}
-  - component: {fileID: 1435126230}
   m_Layer: 5
   m_Name: BG_Cha2
   m_TagString: Untagged
@@ -16626,69 +16470,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1435126230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435126225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd0da136a43d5b4c987a82603c3fac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Goods1011Num: {fileID: 1651409207}
-  Goods1012Num: {fileID: 903410519}
-  Goods1021Num: {fileID: 1439942224}
-  Goods1022Num: {fileID: 800282128}
-  Goods1031Num: {fileID: 440369916}
-  Goods1032Num: {fileID: 538923248}
-  Goods2011Num: {fileID: 744929832}
-  Goods2012Num: {fileID: 830079247}
-  Goods2021Num: {fileID: 283538187}
-  Goods2022Num: {fileID: 200495853}
-  Goods2031Num: {fileID: 361240416}
-  Goods2032Num: {fileID: 1663691537}
-  Goods3011Num: {fileID: 1169303732}
-  Goods3012Num: {fileID: 672002117}
-  Goods3021Num: {fileID: 523561082}
-  Goods3022Num: {fileID: 481972723}
-  Goods3031Num: {fileID: 1129411176}
-  Goods3032Num: {fileID: 1970301141}
-  UnlockBG1011: {fileID: 150423926}
-  UnlockBG1012: {fileID: 892819476}
-  UnlockBG1021: {fileID: 1648393945}
-  UnlockBG1022: {fileID: 806858481}
-  UnlockBG1031: {fileID: 1554786876}
-  UnlockBG1032: {fileID: 1916052121}
-  UnlockBG2011: {fileID: 652470953}
-  UnlockBG2012: {fileID: 241346239}
-  UnlockBG2021: {fileID: 1325548318}
-  UnlockBG2022: {fileID: 295943646}
-  UnlockBG2031: {fileID: 1334637748}
-  UnlockBG2032: {fileID: 206159134}
-  UnlockBG3011: {fileID: 331472333}
-  UnlockBG3012: {fileID: 895909710}
-  UnlockBG3021: {fileID: 1749994912}
-  UnlockBG3022: {fileID: 1428569344}
-  UnlockBG3031: {fileID: 1814648080}
-  UnlockBG3032: {fileID: 2003124755}
-  UnlockBG1_2: {fileID: 2026757163}
-  UnlockBG1_3: {fileID: 311145737}
-  UnlockBG2_2: {fileID: 546557453}
-  UnlockBG2_3: {fileID: 706509372}
-  UnlockBG3_2: {fileID: 1851729560}
-  UnlockBG3_3: {fileID: 1758783150}
-  UnlockBGMain_2: {fileID: 1365623193}
-  UnlockBGMain_3: {fileID: 394217792}
-  Cha_1_1011_Btn: {fileID: 973927896}
-  Cha_1_1012_Btn: {fileID: 823533343}
-  Cha_1_1021_Btn: {fileID: 1089628971}
-  Cha_1_1022_Btn: {fileID: 1617078191}
-  Cha_1_1031_Btn: {fileID: 1397545224}
-  Cha_1_1032_Btn: {fileID: 1509211881}
-  testGoods1021: {fileID: 2094275010}
 --- !u!1 &1439942222
 GameObject:
   m_ObjectHideFlags: 0
@@ -20640,7 +20421,7 @@ GameObject:
   - component: {fileID: 1758783151}
   - component: {fileID: 1758783150}
   m_Layer: 5
-  m_Name: UnlockBG3_3
+  m_Name: UnlockChr3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21316,10 +21097,10 @@ RectTransform:
   m_Father: {fileID: 767397950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 127.5, y: -127.5}
-  m_SizeDelta: {x: 255, y: 255}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1822681925
 MonoBehaviour:
@@ -21888,7 +21669,7 @@ GameObject:
   - component: {fileID: 1851729561}
   - component: {fileID: 1851729560}
   m_Layer: 5
-  m_Name: UnlockBG3_2
+  m_Name: UnlockChr3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23533,7 +23314,7 @@ GameObject:
   - component: {fileID: 2026757164}
   - component: {fileID: 2026757163}
   m_Layer: 5
-  m_Name: UnlockBG1_2
+  m_Name: UnlockChr1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

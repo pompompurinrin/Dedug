@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
 using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -105,18 +106,34 @@ public class UiManager : MonoBehaviour
         DataManager.Instance.goods1022 = PlayerPrefs.GetInt("Goods1022");
         DataManager.Instance.goods1031 = PlayerPrefs.GetInt("Goods1031");
         DataManager.Instance.goods1032 = PlayerPrefs.GetInt("Goods1032");
+        DataManager.Instance.goods1041 = PlayerPrefs.GetInt("Goods1041");
+        DataManager.Instance.goods1042 = PlayerPrefs.GetInt("Goods1042");
+        DataManager.Instance.goods1051 = PlayerPrefs.GetInt("Goods1051");
+        DataManager.Instance.goods1052 = PlayerPrefs.GetInt("Goods1052");
+
         DataManager.Instance.goods2011 = PlayerPrefs.GetInt("Goods2011");
         DataManager.Instance.goods2012 = PlayerPrefs.GetInt("Goods2012");
         DataManager.Instance.goods2021 = PlayerPrefs.GetInt("Goods2021");
         DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
         DataManager.Instance.goods2031 = PlayerPrefs.GetInt("Goods2031");
         DataManager.Instance.goods2032 = PlayerPrefs.GetInt("Goods2032");
+        DataManager.Instance.goods2041 = PlayerPrefs.GetInt("Goods2041");
+        DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
+        DataManager.Instance.goods2051 = PlayerPrefs.GetInt("Goods2051");
+        DataManager.Instance.goods2052 = PlayerPrefs.GetInt("Goods2052");
+
         DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
         DataManager.Instance.goods3012 = PlayerPrefs.GetInt("Goods3012");
         DataManager.Instance.goods3021 = PlayerPrefs.GetInt("Goods3021");
         DataManager.Instance.goods3022 = PlayerPrefs.GetInt("Goods3022");
         DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
         DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
+        DataManager.Instance.goods3041 = PlayerPrefs.GetInt("Goods3041");
+        DataManager.Instance.goods3042 = PlayerPrefs.GetInt("Goods3042");
+        DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
+        DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
+
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
 
 
     }
@@ -194,7 +211,7 @@ public class UiManager : MonoBehaviour
         }
     
 
-    //BG_MainStory에서 누를 수 있는 버튼들
+    //BG_MainStory에서 누를 수 있는 버튼들, 스토리 버튼을 클릭하면 싱글톤에 각 번호를 부여해서 값을 부여해야 함
     public void MainStory_1_BtnClick()   //최초 클릭시, 그 이후 클릭시 이미지 변경 하는 방법, 대신 no버튼, 스토리체크 버튼에 반영해줘야 함
     {
         if (isFirstMainStory1BtnClick)
@@ -225,8 +242,11 @@ public class UiManager : MonoBehaviour
     {
         if (isFirstMainStory3BtnClick)
         {
+            DataManager.Instance.nowGold += 200;
+            
             PopUpBG_MainStory.gameObject.SetActive(true);
             isFirstMainStory3BtnClick = false;
+
         }
         else
         {
@@ -234,17 +254,31 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    //메인 스토리(처음) 볼래? 팝업
-    public void MainStoryYes_BtnClick()
+    //모든 스토리버튼을 처음 눌렀을 때 확인 버튼
+    public void FirstStoryYes_BtnClick()
     {
+        DataManager.Instance.nowGold += 200;
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PopUpBG_Goldplus.gameObject.SetActive(false);
+       // SceneManager.LoadScene("StoryScene");
         Test.gameObject.SetActive(true);
     }
 
+    
     public void OnMainStoryNo_BtnClick()
     {
+
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_MainStoryCheck.gameObject.SetActive(false);
+    }
+
+    //이미 본 스토리는 이 버튼 할당
+    public void AlreadyStoryYes_BtnClick()
+    {
+        
+        PopUpBG_Goldplus.gameObject.SetActive(false);
+        // SceneManager.LoadScene("StoryScene");
+        Test.gameObject.SetActive(true);
     }
 
     //이거는 스토리 자리임. 테스트 용으로 만든 이미지+ 버튼 
