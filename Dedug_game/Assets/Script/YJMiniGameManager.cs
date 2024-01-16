@@ -242,16 +242,18 @@ public class YJMiniGameManager : MonoBehaviour
         // 0. 제한시간이 종료된 경우
         if (gameTime <= 0 && isGameRunning)
         {
+            countDown.text = "0";
             // 게임 종료 처리
             EndGame();
             return;
         }
 
-
-        // 1. 실시간 카운트다운 갱신 및 BGM 재생
-        countDown.text = gameTime.ToString();
-        gameTime--;
-
+        if (gameTime > 0 && isGameRunning)
+        {
+            // 1. 실시간 카운트다운 갱신 및 BGM 재생
+            countDown.text = gameTime.ToString();
+            gameTime--;
+        }
 
         // 2. bongTime 동안 랜덤한 colorEffect 활성화
         if (gameTime >= 49 && gameTime % 5 == 0)
