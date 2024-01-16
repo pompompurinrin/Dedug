@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 public class GoodsNumManager : MonoBehaviour
 {
 
@@ -42,6 +43,16 @@ public class GoodsNumManager : MonoBehaviour
     public Text Goods3051Num;
     public Text Goods3052Num;
 
+    public Text Goods4051Num;
+    public Text Goods4052Num;
+    public Text Goods4053Num;
+    public Text Goods4054Num;
+    public Text Goods4055Num;
+    public Text Goods4056Num;
+    public Text Goods4057Num;
+    public Text Goods4058Num;
+    public Text Goods4059Num;
+    public Text Goods4060Num;
 
     public Image UnlockBG1011;
     public Image UnlockBG1012;
@@ -76,8 +87,16 @@ public class GoodsNumManager : MonoBehaviour
     public Image UnlockBG3051;
     public Image UnlockBG3052;
 
-
-
+    public Image UnlockBG4051;
+    public Image UnlockBG4052;
+    public Image UnlockBG4053;
+    public Image UnlockBG4054;
+    public Image UnlockBG4055;
+    public Image UnlockBG4056;
+    public Image UnlockBG4057;
+    public Image UnlockBG4058;
+    public Image UnlockBG4059;
+    public Image UnlockBG4060;
 
     public Slider MainStorySlider;
     public Slider SuaStorySlider;
@@ -86,7 +105,77 @@ public class GoodsNumManager : MonoBehaviour
     public Slider SuaGoodsSlider;
     public Slider BadaGoodsSlider;
     public Slider ChorongGoodsSlider;
+    public Slider SpecialGoodsSlider;
 
+    public Text MainStorySliderText;
+    public Text SuaStorySliderText;
+    public Text BadaStorySliderText;
+    public Text ChorongStorySliderText;
+    public Text SuaGoodsSliderText;
+    public Text BadaGoodsSliderText;
+    public Text ChorongGoodsSliderText;
+    public Text SpecialGoodsSliderText;
+
+    public int MainStoryGauge;
+    public int MainGoodsGauge;
+    public int SuaStoryGauge;
+    public int BadaStoryGauge;
+    public int ChorongStoryGauge;
+    public int SuaGoodsGauge;
+    public int BadaGoodsGauge;
+    public int ChorongGoodsGauge;
+    public int SpecialGoodsGauge;
+
+    private bool goods1011Applied = false;
+    private bool goods1012Applied = false;
+    private bool goods1021Applied = false;
+    private bool goods1022Applied = false;
+    private bool goods1031Applied = false;
+    private bool goods1032Applied = false;
+    private bool goods1041Applied = false;
+    private bool goods1042Applied = false;
+    private bool goods1051Applied = false;
+    private bool goods1052Applied = false;
+    private bool goods2011Applied = false;
+    private bool goods2012Applied = false;
+    private bool goods2021Applied = false;
+    private bool goods2022Applied = false;
+    private bool goods2031Applied = false;
+    private bool goods2032Applied = false;
+    private bool goods2041Applied = false;
+    private bool goods2042Applied = false;
+    private bool goods2051Applied = false;
+    private bool goods2052Applied = false;
+    private bool goods3011Applied = false;
+    private bool goods3012Applied = false;
+    private bool goods3021Applied = false;
+    private bool goods3022Applied = false;
+    private bool goods3031Applied = false;
+    private bool goods3032Applied = false;
+    private bool goods3041Applied = false;
+    private bool goods3042Applied = false;
+    private bool goods3051Applied = false;
+    private bool goods3052Applied = false;
+    private bool goods4051Applied = false;
+    private bool goods4052Applied = false;
+    private bool goods4053Applied = false;
+    private bool goods4054Applied = false;
+    private bool goods4055Applied = false;
+    private bool goods4056Applied = false;
+    private bool goods4057Applied = false;
+    private bool goods4058Applied = false;
+    private bool goods4059Applied = false;
+    private bool goods4060Applied = false;
+
+    public Image UnlockChr1_2;
+    public Image UnlockChr1_3;
+    public Image UnlockChr2_2;
+    public Image UnlockChr2_3;
+    public Image UnlockChr3_2;
+    public Image UnlockChr3_3;
+    public Image UnlockMain_2;
+    public Image UnlockMain_3;
+    public Image UnlockSpecial;
 
     /*public Button Cha_1_1011_Btn;
     public Button Cha_1_1012_Btn;
@@ -95,8 +184,8 @@ public class GoodsNumManager : MonoBehaviour
     public Button Cha_1_1031_Btn;
     public Button Cha_1_1032_Btn;*/
 
-
     public Button testGoods1021;
+
     private void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -131,363 +220,172 @@ public class GoodsNumManager : MonoBehaviour
         DataManager.Instance.goods3042 = PlayerPrefs.GetInt("Goods3042");
         DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
         DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
+
+        DataManager.Instance.goods4051 = PlayerPrefs.GetInt("Goods4051");
+        DataManager.Instance.goods4052 = PlayerPrefs.GetInt("Goods4052");
+        DataManager.Instance.goods4053 = PlayerPrefs.GetInt("Goods4053");
+        DataManager.Instance.goods4054 = PlayerPrefs.GetInt("Goods4054");
+        DataManager.Instance.goods4055 = PlayerPrefs.GetInt("Goods4055");
+        DataManager.Instance.goods4056 = PlayerPrefs.GetInt("Goods4056");
+        DataManager.Instance.goods4057 = PlayerPrefs.GetInt("Goods4057");
+        DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
+        DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
+        DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+
     }
 
-    public int MainStoryGauge;
-    public int MainGoodsGauge;
-    public int SuaStoryGauge;
-    public int BadaStoryGauge;
-    public int ChorongStoryGauge;
-    public int SuaGoodsGauge;
-    public int BadaGoodsGauge;
-    public int ChorongGoodsGauge;
-
-
-    private bool goods1011Applied = false;
-    private bool goods1012Applied = false;
-    private bool goods1021Applied = false;
-    private bool goods1022Applied = false;
-    private bool goods1031Applied = false;
-    private bool goods1032Applied = false;
-    private bool goods1041Applied = false;
-    private bool goods1042Applied = false;
-    private bool goods1051Applied = false;
-    private bool goods1052Applied = false;
-    private bool goods2011Applied = false;
-    private bool goods2012Applied = false;
-    private bool goods2021Applied = false;
-    private bool goods2022Applied = false;
-    private bool goods2031Applied = false;
-    private bool goods2032Applied = false;
-    private bool goods2041Applied = false;
-    private bool goods2042Applied = false;
-    private bool goods2051Applied = false;
-    private bool goods2052Applied = false;
-    private bool goods3011Applied = false;
-    private bool goods3012Applied = false;
-    private bool goods3021Applied = false;
-    private bool goods3022Applied = false;
-    private bool goods3031Applied = false;
-    private bool goods3032Applied = false;
-    private bool goods3041Applied = false;
-    private bool goods3042Applied = false;
-    private bool goods3051Applied = false;
-    private bool goods3052Applied = false;
-
-    public Image UnlockChr1_2;
-    public Image UnlockChr1_3;
-    public Image UnlockChr2_2;
-    public Image UnlockChr2_3;
-    public Image UnlockChr3_2;
-    public Image UnlockChr3_3;
-    public Image UnlockMain_2;
-    public Image UnlockMain_3;
+    
     // 이 메서드를 호출하여 MainStoryGauge를 업데이트합니다.
-    public void UpdateMainStoryGauge()
-    {
-        // Goods1011이 0이 아니고 goods1011Applied가 false인 경우에만 1을 더함
-        if (DataManager.Instance.goods1011 > 0 && !goods1011Applied)
-        {
-            MainStoryGauge++;
-            goods1011Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1012 > 0 && !goods1012Applied)
-        {
-            MainStoryGauge++;
-            goods1012Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1021 > 0 && !goods1021Applied)
-        {
-            MainStoryGauge++;
-            goods1021Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1022 > 0 && !goods1022Applied)
-        {
-            MainStoryGauge++;
-            goods1022Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1031 > 0 && !goods1031Applied)
-        {
-            MainStoryGauge++;
-            goods1031Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1032 > 0 && !goods1032Applied)
-        {
-            MainStoryGauge++;
-            goods1032Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1041 > 0 && !goods1041Applied)
-        {
-            MainStoryGauge++;
-            goods1041Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1042 > 0 && !goods1042Applied)
-        {
-            MainStoryGauge++;
-            goods1042Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1051 > 0 && !goods1051Applied)
-        {
-            MainStoryGauge++;
-            goods1051Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods1052 > 0 && !goods1052Applied)
-        {
-            MainStoryGauge++;
-            goods1052Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3011 > 0 && !goods3011Applied)
-        {
-            MainStoryGauge++;
-            goods3011Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3012 > 0 && !goods3012Applied)
-        {
-            MainStoryGauge++;
-            goods3012Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3021 > 0 && !goods3021Applied)
-        {
-            MainStoryGauge++;
-            goods3021Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3022 > 0 && !goods3022Applied)
-        {
-            MainStoryGauge++;
-            goods3022Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3031 > 0 && !goods3031Applied)
-        {
-            MainStoryGauge++;
-            goods3031Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3032 > 0 && !goods3032Applied)
-        {
-            MainStoryGauge++;
-            goods3032Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3041 > 0 && !goods3041Applied)
-        {
-            MainStoryGauge++;
-            goods3041Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3042 > 0 && !goods3042Applied)
-        {
-            MainStoryGauge++;
-            goods3042Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3051 > 0 && !goods3051Applied)
-        {
-            MainStoryGauge++;
-            goods3051Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods3052 > 0 && !goods3052Applied)
-        {
-            MainStoryGauge++;
-            goods3052Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2011 > 0 && !goods2011Applied)
-        {
-            MainStoryGauge++;
-            goods2011Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2012 > 0 && !goods2012Applied)
-        {
-            MainStoryGauge++;
-            goods2012Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2021 > 0 && !goods2021Applied)
-        {
-            MainStoryGauge++;
-            goods2021Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2022 > 0 && !goods2022Applied)
-        {
-            MainStoryGauge++;
-            goods2022Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2031 > 0 && !goods2031Applied)
-        {
-            MainStoryGauge++;
-            goods2031Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2032 > 0 && !goods2032Applied)
-        {
-            MainStoryGauge++;
-            goods2032Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2041 > 0 && !goods2041Applied)
-        {
-            MainStoryGauge++;
-            goods2041Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2042 > 0 && !goods2042Applied)
-        {
-            MainStoryGauge++;
-            goods2042Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2051 > 0 && !goods2051Applied)
-        {
-            MainStoryGauge++;
-            goods2051Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
-        if (DataManager.Instance.goods2052 > 0 && !goods2052Applied)
-        {
-            MainStoryGauge++;
-            goods2052Applied = true; // 1이 더해진 상태로 플래그 업데이트
-        }
+   
 
-        if(MainStoryGauge == 30)
-        {
-            MainStorySlider.value = 3;
-            UnlockMain_2.gameObject.SetActive(false);
-            UnlockMain_3.gameObject.SetActive(false);
-        }
-        else if(MainStoryGauge >= 15)
-        {
-            MainStorySlider.value = 2;
-            UnlockMain_2.gameObject.SetActive(false);
-        }
-        else
-        {
-            MainStorySlider.value = 1;
-        }
-
-    }
     public void UpdateSuaStoryGauge()
     {
         if (DataManager.Instance.goods1011 > 0 )
         {
-            UnlockBG1011.gameObject.SetActive(true);
+            UnlockBG1011.gameObject.SetActive(false);
 
             if (goods1011Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1011Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1011.gameObject.SetActive(false);
+            UnlockBG1011.gameObject.SetActive(true);
         }
 
-        if (DataManager.Instance.goods1012 > 0 && !goods1012Applied)
+        if (DataManager.Instance.goods1012 > 0 )
         {
-            UnlockBG1011.gameObject.SetActive(true);
+            UnlockBG1011.gameObject.SetActive(false);
+
             if (goods1012Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1012Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1012.gameObject.SetActive(false);
+            UnlockBG1012.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1021 > 0 && !goods1021Applied)
+        if (DataManager.Instance.goods1021 > 0 )
         {
-            UnlockBG1021.gameObject.SetActive(true);
+            UnlockBG1021.gameObject.SetActive(false);
             if (goods1021Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1021Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1021.gameObject.SetActive(false);
+            UnlockBG1021.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1022 > 0 && !goods1022Applied)
+        if (DataManager.Instance.goods1022 > 0 )
         {
-            UnlockBG1022.gameObject.SetActive(true);
+            UnlockBG1022.gameObject.SetActive(false);
             if (goods1022Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1022Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1021.gameObject.SetActive(false);
+            UnlockBG1021.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1031 > 0 && !goods1031Applied)
+        if (DataManager.Instance.goods1031 > 0 )
         {
-            UnlockBG1031.gameObject.SetActive(true);
+            UnlockBG1031.gameObject.SetActive(false);
             if (goods1031Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1031Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1031.gameObject.SetActive(false);
+            UnlockBG1031.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1032 > 0 && !goods1032Applied)
+        if (DataManager.Instance.goods1032 > 0 )
         {
-            UnlockBG1032.gameObject.SetActive(true);
+            UnlockBG1032.gameObject.SetActive(false);
             if (goods1032Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1032Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1032.gameObject.SetActive(false);
+            UnlockBG1032.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1041 > 0 && !goods1041Applied)
+        if (DataManager.Instance.goods1041 > 0 )
         {
-            UnlockBG1041.gameObject.SetActive(true);
+            UnlockBG1041.gameObject.SetActive(false);
             if (goods1041Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1041Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1041.gameObject.SetActive(false);
+            UnlockBG1041.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1042 > 0 && !goods1042Applied)
+        if (DataManager.Instance.goods1042 > 0 )
         {
-            UnlockBG1042.gameObject.SetActive(true);
+            UnlockBG1042.gameObject.SetActive(false);
             if (goods1042Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1042Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1042.gameObject.SetActive(false);
+            UnlockBG1042.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1051 > 0 && !goods1051Applied)
+            if (DataManager.Instance.goods1051 > 0 )
         {
-            UnlockBG1051.gameObject.SetActive(true);
+            UnlockBG1051.gameObject.SetActive(false);
             if (goods1051Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1051Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1051.gameObject.SetActive(false);
+            UnlockBG1051.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods1052 > 0 && !goods1052Applied)
+        if (DataManager.Instance.goods1052 > 0 )
         {
-            UnlockBG1011.gameObject.SetActive(true);
+            UnlockBG1011.gameObject.SetActive(false);
             if (goods1052Applied == false)
             {
+                MainStoryGauge++;
                 SuaGoodsGauge++;
                 goods1052Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG1052.gameObject.SetActive(false);
+            UnlockBG1052.gameObject.SetActive(true);
         }
+
+        SuaStorySlider.maxValue = 3;
+        SuaGoodsSlider.maxValue = 10;
 
         SuaGoodsSlider.value = SuaGoodsGauge;
 
@@ -506,150 +404,166 @@ public class GoodsNumManager : MonoBehaviour
         {
             SuaStorySlider.value = 1;
         }
+
+        SuaGoodsSliderText.text = SuaGoodsGauge.ToString() + "/10";
+        SuaStorySliderText.text = SuaStoryGauge.ToString() + "/3";
     }
 
     public void UpdateBadaStoryGauge()
     {
-        if (DataManager.Instance.goods2011 > 0 && !goods2011Applied)
+        if (DataManager.Instance.goods2011 > 0 )
         {
-            UnlockBG2011.gameObject.SetActive(true);
+            UnlockBG2011.gameObject.SetActive(false);
 
             if (goods2011Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2011Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2011.gameObject.SetActive(false);
+            UnlockBG2011.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2012 > 0 && !goods2012Applied)
+        if (DataManager.Instance.goods2012 > 0)
         {
-            UnlockBG2012.gameObject.SetActive(true);
+            UnlockBG2012.gameObject.SetActive(false);
 
             if (goods2012Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2012Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2012.gameObject.SetActive(false);
+            UnlockBG2012.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2021 > 0 && !goods2021Applied)
+        if (DataManager.Instance.goods2021 > 0 )
         {
-            UnlockBG2021.gameObject.SetActive(true);
+            UnlockBG2021.gameObject.SetActive(false);
 
             if (goods2021Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2021Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2021.gameObject.SetActive(false);
+            UnlockBG2021.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2022 > 0 && !goods2022Applied)
+        if (DataManager.Instance.goods2022 > 0 )
         {
-            UnlockBG2022.gameObject.SetActive(true);
+            UnlockBG2022.gameObject.SetActive(false);
 
             if (goods2022Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2022Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2022.gameObject.SetActive(false);
+            UnlockBG2022.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2031 > 0 && !goods2031Applied)
+        if (DataManager.Instance.goods2031 > 0 )
         {
-            UnlockBG2031.gameObject.SetActive(true);
+            UnlockBG2031.gameObject.SetActive(false);
 
             if (goods2031Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2031Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2031.gameObject.SetActive(false);
+            UnlockBG2031.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2032 > 0 && !goods2032Applied)
+        if (DataManager.Instance.goods2032 > 0 )
         {
-            UnlockBG2032.gameObject.SetActive(true);
+            UnlockBG2032.gameObject.SetActive(false);
 
             if (goods2032Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2032Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2032.gameObject.SetActive(false);
+            UnlockBG2032.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2041 > 0 && !goods2041Applied)
+        if (DataManager.Instance.goods2041 > 0 )
         {
-            UnlockBG2041.gameObject.SetActive(true);
+            UnlockBG2041.gameObject.SetActive(false);
 
             if (goods2041Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2041Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2041.gameObject.SetActive(false);
+            UnlockBG2041.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2042 > 0 && !goods2042Applied)
+        if (DataManager.Instance.goods2042 > 0 )
         {
-            UnlockBG2042.gameObject.SetActive(true);
+            UnlockBG2042.gameObject.SetActive(false);
 
             if (goods2042Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2042Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2042.gameObject.SetActive(false);
+            UnlockBG2042.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2051 > 0 && !goods2051Applied)
+        if (DataManager.Instance.goods2051 > 0 )
         {
-            UnlockBG2051.gameObject.SetActive(true);
+            UnlockBG2051.gameObject.SetActive(false);
 
             if (goods2051Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2051Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2051.gameObject.SetActive(false);
+            UnlockBG2051.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods2052 > 0 && !goods2052Applied)
+        if (DataManager.Instance.goods2052 > 0)
         {
-            UnlockBG2052.gameObject.SetActive(true);
+            UnlockBG2052.gameObject.SetActive(false);
 
             if (goods2052Applied == false)
             {
+                MainStoryGauge++;
                 BadaGoodsGauge++;
                 goods2052Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG2052.gameObject.SetActive(false);
+            UnlockBG2052.gameObject.SetActive(true);
         }
+
+        BadaStorySlider.maxValue = 3;
+        BadaGoodsSlider.maxValue = 10;
 
         BadaGoodsSlider.value = BadaGoodsGauge;
 
@@ -668,153 +582,165 @@ public class GoodsNumManager : MonoBehaviour
         {
             BadaStorySlider.value = 1;
         }
-
+        BadaGoodsSliderText.text = BadaGoodsGauge.ToString() + "/10";
+        BadaStorySliderText.text = BadaStoryGauge.ToString() + "/3";
 
     }
 
     public void UpdateChorongStoryGauge()
     {
-        if (DataManager.Instance.goods3011 > 0 && !goods3011Applied)
+        if (DataManager.Instance.goods3011 > 0 )
         {
-            UnlockBG3011.gameObject.SetActive(true);
+            UnlockBG3011.gameObject.SetActive(false);
 
             if (goods3011Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3011Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3011.gameObject.SetActive(false);
+            UnlockBG3011.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3012 > 0 && !goods3012Applied)
+        if (DataManager.Instance.goods3012 > 0 )
         {
-            UnlockBG3012.gameObject.SetActive(true);
+            UnlockBG3012.gameObject.SetActive(false);
 
             if (goods3012Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3012Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3012.gameObject.SetActive(false);
+            UnlockBG3012.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3021 > 0 && !goods3021Applied)
+        if (DataManager.Instance.goods3021 > 0 )
         {
-            UnlockBG3021.gameObject.SetActive(true);
+            UnlockBG3021.gameObject.SetActive(false);
 
             if (goods3021Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3021Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3021.gameObject.SetActive(false);
+            UnlockBG3021.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3022 > 0 && !goods3022Applied)
+        if (DataManager.Instance.goods3022 > 0 )
         {
-            UnlockBG3022.gameObject.SetActive(true);
+            UnlockBG3022.gameObject.SetActive(false);
 
             if (goods3022Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3022Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3022.gameObject.SetActive(false);
+            UnlockBG3022.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3031 > 0 && !goods3031Applied)
+        if (DataManager.Instance.goods3031 > 0 )
         {
-            UnlockBG3031.gameObject.SetActive(true);
+            UnlockBG3031.gameObject.SetActive(false);
 
             if (goods3031Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3031Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3031.gameObject.SetActive(false);
+            UnlockBG3031.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3032 > 0 && !goods3032Applied)
+        if (DataManager.Instance.goods3032 > 0 )
         {
-            UnlockBG3032.gameObject.SetActive(true);
+            UnlockBG3032.gameObject.SetActive(false);
 
             if (goods3032Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3032Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3032.gameObject.SetActive(false);
+            UnlockBG3032.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3041 > 0 && !goods3041Applied)
+        if (DataManager.Instance.goods3041 > 0 )
         {
-            UnlockBG3041.gameObject.SetActive(true);
+            UnlockBG3041.gameObject.SetActive(false);
 
             if (goods3041Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3041Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3041.gameObject.SetActive(false);
+            UnlockBG3041.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3042 > 0 && !goods3042Applied)
+        if (DataManager.Instance.goods3042 > 0 )
         {
-            UnlockBG3042.gameObject.SetActive(true);
+            UnlockBG3042.gameObject.SetActive(false);
 
             if (goods3042Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3042Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3042.gameObject.SetActive(false);
+            UnlockBG3042.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3051 > 0 && !goods3051Applied)
+        if (DataManager.Instance.goods3051 > 0 )
         {
-            UnlockBG3051.gameObject.SetActive(true);
+            UnlockBG3051.gameObject.SetActive(false);
 
             if (goods3051Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3051Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3051.gameObject.SetActive(false);
+            UnlockBG3051.gameObject.SetActive(true);
         }
-        if (DataManager.Instance.goods3052 > 0 && !goods3052Applied)
+        if (DataManager.Instance.goods3052 > 0 )
         {
-            UnlockBG3052.gameObject.SetActive(true);
+            UnlockBG3052.gameObject.SetActive(false);
 
             if (goods3052Applied == false)
             {
+                MainStoryGauge++;
                 ChorongGoodsGauge++;
                 goods3052Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
         else
         {
-            UnlockBG3052.gameObject.SetActive(false);
+            UnlockBG3052.gameObject.SetActive(true);
         }
-
+        ChorongStorySlider.maxValue = 3;
+        ChorongGoodsSlider.maxValue = 10;
         ChorongGoodsSlider.value = ChorongGoodsGauge;
 
         if(ChorongGoodsGauge == 10)
@@ -832,17 +758,197 @@ public class GoodsNumManager : MonoBehaviour
         {
             ChorongStorySlider.value = 1;
         }
+        ChorongGoodsSliderText.text = ChorongGoodsGauge.ToString() + "/10";
+        ChorongStorySliderText.text = ChorongStoryGauge.ToString() + "/3";
 
     }
 
-
-        public void Start()
+    public void UpdateSpecialGoodsGauge()
     {
+        if (DataManager.Instance.goods4051 > 0 )
+        {
+            UnlockBG4051.gameObject.SetActive(false);
 
-        UpdateMainStoryGauge();
+            if (goods4051Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4051Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4051.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4052 > 0 )
+        {
+            UnlockBG4052.gameObject.SetActive(false);
+
+            if (goods4052Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4052Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4052.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4053 > 0)
+        {
+            UnlockBG4053.gameObject.SetActive(false);
+
+            if (goods4053Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4053Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4053.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4054 > 0 )
+        {
+            UnlockBG4054.gameObject.SetActive(false);
+
+            if (goods4054Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4054Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4054.gameObject.SetActive(true);
+        }
+        
+        if (DataManager.Instance.goods4055 > 0 )
+        {
+            UnlockBG4055.gameObject.SetActive(false);
+
+            if (goods4055Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4055Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4055.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4056 > 0 )
+        {
+            UnlockBG4056.gameObject.SetActive(false);
+
+            if (goods4056Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4056Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4056.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4057 > 0 )
+        {
+            UnlockBG4057.gameObject.SetActive(false);
+
+            if (goods4057Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4057Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4057.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4058 > 0 )
+        {
+            UnlockBG4058.gameObject.SetActive(false);
+
+            if (goods4058Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4058Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4058.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4059 > 0 )
+        {
+            UnlockBG4059.gameObject.SetActive(false);
+
+            if (goods4059Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4059Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4059.gameObject.SetActive(true);
+        }
+        if (DataManager.Instance.goods4060 > 0 )
+        {
+            UnlockBG4060.gameObject.SetActive(false);
+
+            if (goods4060Applied == false)
+            {
+                SpecialGoodsGauge++;
+                goods4060Applied = true; // 1이 더해진 상태로 플래그 업데이트
+            }
+        }
+        else
+        {
+            UnlockBG4060.gameObject.SetActive(true);
+        }
+        
+        SpecialGoodsSlider.maxValue = 10;
+        SpecialGoodsSlider.value = SpecialGoodsGauge;
+
+        if (DataManager.Instance.nowRank == 4)
+        {
+            UnlockSpecial.gameObject.SetActive(false);
+            
+        }
+        else
+        {
+            UnlockSpecial.gameObject.SetActive(true);
+        }
+        SpecialGoodsSliderText.text = SpecialGoodsGauge.ToString() + "/10";
+        
+    }
+
+
+    public void Start()
+    {
+        
         UpdateSuaStoryGauge();
         UpdateBadaStoryGauge();
         UpdateChorongStoryGauge();
+
+        MainStorySlider.maxValue = 3;
+
+        if (MainStoryGauge == 30)
+        {
+            MainStorySlider.value = 3;
+            UnlockMain_2.gameObject.SetActive(false);
+            UnlockMain_3.gameObject.SetActive(false);
+        }
+        else if (MainStoryGauge >= 15)
+        {
+            MainStorySlider.value = 2;
+            UnlockMain_2.gameObject.SetActive(false);
+        }
+        else
+        {
+            MainStorySlider.value = 1;
+        }
+
         //GoodsNum.text = 데이터매니저에서 개수 가져오기
         Goods1011Num.text = "X" + DataManager.Instance.goods1011.ToString();
         Goods1012Num.text = "X" + DataManager.Instance.goods1012.ToString();
@@ -877,6 +983,16 @@ public class GoodsNumManager : MonoBehaviour
         Goods3051Num.text = "X" + DataManager.Instance.goods3051.ToString();
         Goods3052Num.text = "X" + DataManager.Instance.goods3052.ToString();
 
+        Goods4051Num.text = "X" + DataManager.Instance.goods4051.ToString();
+        Goods4052Num.text = "X" + DataManager.Instance.goods4052.ToString();
+        Goods4053Num.text = "X" + DataManager.Instance.goods4053.ToString();
+        Goods4054Num.text = "X" + DataManager.Instance.goods4054.ToString();
+        Goods4055Num.text = "X" + DataManager.Instance.goods4055.ToString();
+        Goods4056Num.text = "X" + DataManager.Instance.goods4056.ToString();
+        Goods4057Num.text = "X" + DataManager.Instance.goods4057.ToString();
+        Goods4058Num.text = "X" + DataManager.Instance.goods4058.ToString();
+        Goods4059Num.text = "X" + DataManager.Instance.goods4059.ToString();
+        Goods4060Num.text = "X" + DataManager.Instance.goods4060.ToString();
 
     }
 }

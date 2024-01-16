@@ -157,6 +157,17 @@ public class UiManager : MonoBehaviour
         DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
         DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
 
+        DataManager.Instance.goods4051 = PlayerPrefs.GetInt("Goods4051");
+        DataManager.Instance.goods4052 = PlayerPrefs.GetInt("Goods4052");
+        DataManager.Instance.goods4053 = PlayerPrefs.GetInt("Goods4053");
+        DataManager.Instance.goods4054 = PlayerPrefs.GetInt("Goods4054");
+        DataManager.Instance.goods4055 = PlayerPrefs.GetInt("Goods4055");
+        DataManager.Instance.goods4056 = PlayerPrefs.GetInt("Goods4056");
+        DataManager.Instance.goods4057 = PlayerPrefs.GetInt("Goods4057");
+        DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
+        DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
+        DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+
         DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
 
 
@@ -524,15 +535,112 @@ public class UiManager : MonoBehaviour
 
     }
 
-
-
-    public void OntestGoods2022Click()
+    public void TestAll()
     {
-        DataManager.Instance.goods1031 = DataManager.Instance.goods1031 + 100;
+        DataManager.Instance.nowRank = 4;
+        DataManager.Instance.nowGold = 0;
+        DataManager.Instance.feverNum = 0;
+        DataManager.Instance.goods1011 = 1;
+        DataManager.Instance.goods2011 = 1;
+        DataManager.Instance.goods3011 = 1;
+        DataManager.Instance.goods1012 = 1;
+        DataManager.Instance.goods2012 = 1;
+        DataManager.Instance.goods3012 = 1;
+        DataManager.Instance.goods1021 = 1;
+        DataManager.Instance.goods2021 = 1;
+        DataManager.Instance.goods3021 = 1;
+        DataManager.Instance.goods1022 = 1;
+        DataManager.Instance.goods2022 = 1;
+        DataManager.Instance.goods3022 = 1;
+        DataManager.Instance.goods1031 = 1;
+        DataManager.Instance.goods2031 = 1;
+        DataManager.Instance.goods3031 = 1;
+        DataManager.Instance.goods1032 = 1;
+        DataManager.Instance.goods2032 = 1;
+        DataManager.Instance.goods3032 = 1;
+        DataManager.Instance.goods1041 = 1;
+        DataManager.Instance.goods2041 = 1;
+        DataManager.Instance.goods3041 = 1;
+        DataManager.Instance.goods1042 = 1;
+        DataManager.Instance.goods2042 = 1;
+        DataManager.Instance.goods3042 = 1;
+        DataManager.Instance.goods1041 = 1;
+        DataManager.Instance.goods2041 = 1;
+        DataManager.Instance.goods3041 = 1;
+        DataManager.Instance.goods1052 = 1;
+        DataManager.Instance.goods2052 = 1;
+        DataManager.Instance.goods3052 = 1;
+        DataManager.Instance.goods4051 = 1;
+        DataManager.Instance.goods4052 = 1;
+        DataManager.Instance.goods4053 = 1;
+        DataManager.Instance.goods4054 = 1;
+        DataManager.Instance.goods4055 = 1;
+        DataManager.Instance.goods4056 = 1;
+        DataManager.Instance.goods4057 = 1;
+        DataManager.Instance.goods4058 = 1;
+        DataManager.Instance.goods4059 = 1;
+        DataManager.Instance.goods4060 = 1;
+    }
+
+    public void OntestGoods1021Click()
+    {
+        DataManager.Instance.goods1021 = DataManager.Instance.goods1021 + 3;
 
     }
 
+    public void Clear()
+    {
+        DataManager.Instance.nowRank = 0;
+        DataManager.Instance.nowGold = 0;
+        DataManager.Instance.feverNum = 0;
+        DataManager.Instance.goods1011 = 0;
+        DataManager.Instance.goods2011 = 0;
+        DataManager.Instance.goods3011 = 0;
+        DataManager.Instance.goods1012 = 0;
+        DataManager.Instance.goods2012 = 0;
+        DataManager.Instance.goods3012 = 0;
+        DataManager.Instance.goods1021 = 0;
+        DataManager.Instance.goods2021 = 0;
+        DataManager.Instance.goods3021 = 0;
+        DataManager.Instance.goods1022 = 0;
+        DataManager.Instance.goods2022 = 0;
+        DataManager.Instance.goods3022 = 0;
+        DataManager.Instance.goods1031 = 0;
+        DataManager.Instance.goods2031 = 0;
+        DataManager.Instance.goods3031 = 0;
+        DataManager.Instance.goods1032 = 0;
+        DataManager.Instance.goods2032 = 0;
+        DataManager.Instance.goods3032 = 0;
+        DataManager.Instance.goods1041 = 0;
+        DataManager.Instance.goods2041 = 0;
+        DataManager.Instance.goods3041 = 0;
+        DataManager.Instance.goods1042 = 0;
+        DataManager.Instance.goods2042 = 0;
+        DataManager.Instance.goods3042 = 0;
+        DataManager.Instance.goods1041 = 0;
+        DataManager.Instance.goods2041 = 0;
+        DataManager.Instance.goods3041 = 0;
+        DataManager.Instance.goods1052 = 0;
+        DataManager.Instance.goods2052 = 0;
+        DataManager.Instance.goods3052 = 0;
+        DataManager.Instance.goods4051 = 0;
+        DataManager.Instance.goods4052 = 0;
+        DataManager.Instance.goods4053 = 0;
+        DataManager.Instance.goods4054 = 0;
+        DataManager.Instance.goods4055 = 0;
+        DataManager.Instance.goods4056 = 0;
+        DataManager.Instance.goods4057 = 0;
+        DataManager.Instance.goods4058 = 0;
+        DataManager.Instance.goods4059 = 0;
+        DataManager.Instance.goods4060 = 0;
+        DataManager.Instance.storyID = 0;
+
+    }
   
+    public void HomeClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
 }
 
 
