@@ -80,7 +80,7 @@ public class TopbarManager : MonoBehaviour
     {
         GoldAmountText.text = DataManager.Instance.nowGold.ToString();
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
-        NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["Mainlmage"].ToString();
+        NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
         NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
        
         

@@ -1,11 +1,7 @@
-CSVNum,RankName,GuestPlus,GoldPlus,FeverTimePlus,FeverGauge,RankGold,TicketGold,Ranktest,Mainlmage
-0,민간인,2,20,5,10,100,50,,Rank1_NoBG
-1,입문,2,20,5,15,350,100,Goods1011,Rank2_NoBG
-2,패션 수집가,2,20,5,20,700,150,Goods1021,Rank3_NoBG
-3,만화카페 단골,2,10,3,23,1000,200,Goods1031,Rank1_NoBG
-4,수집광,2,10,2,25,1300,300,Goods1041,Rank1_NoBG
-5,차원 여행가,2,10,2,27,1500,400,Goods1051,Rank1_NoBG
-6,일반인 포기 선언,2,5,2,29,2000,550,Goods1061,Rank1_NoBG
-7,전문가,2,5,2,31,2300,700,Goods1071,Rank1_NoBG
-8,풀소유,2,5,2,32,2700,850,Goods1081,Rank1_NoBG
-9,러브포에버,2,0,1,33,3000,1000,Goods1091,Rank1_NoBG
+CSVNum,RankName,GuestPlus,GoldPlus,FeverTimePlus,FeverGauge,RankGold,TicketGold,Ranktest,MainImage
+0,민간??2,20,5,10,100,50,,,Rank1_NoBG
+1,?�문,2,20,5,15,350,100,Goods1011,Rank2_NoBG
+2,?�션 ?�집가,2,20,5,20,700,150,Goods1021,Rank3_NoBG
+3,만화카페 ?�골,2,10,3,23,1000,200,Goods1031,Rank1_NoBG
+4,?�집�?2,10,2,25,1300,300,,Goods1041,Rank1_NoBG
+5,차원 ?�행가,2,10,2,27,1500,400,Goods1051,Rank1_NoBG
