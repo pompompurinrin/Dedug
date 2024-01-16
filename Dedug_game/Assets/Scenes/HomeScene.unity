@@ -2786,7 +2786,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ee711f3d8ff8a73498508ce35cf62187, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f293ffd1a1d608a4588ce8f4809b5d45, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7076,7 +7076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldAmountText: {fileID: 906444818}
   NowRankName: {fileID: 2129270096}
-  gradeImg: {fileID: 1065621264}
+  NowRankImage: {fileID: 0}
   SettingPopCanvas: {fileID: 1385558356}
   MenuUI: {fileID: 1972983934}
   GoodsBuy: {fileID: 1135631846}
@@ -7085,6 +7085,7 @@ MonoBehaviour:
   GoldLack: {fileID: 2043678711}
   bgm1AudioSource: {fileID: 452054918}
   sfx1AudioSource: {fileID: 752190094}
+  NowimageFileName: 
   rankImg:
   - {fileID: 21300000, guid: d026caee56a43ac4790af87b4199de9e, type: 3}
   - {fileID: 21300000, guid: 2edfbaf3abb949e4283caf2f3a0a536d, type: 3}
