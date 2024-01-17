@@ -83,7 +83,7 @@ public class GameControllerScript : MonoBehaviour
         error_sfx.Stop();    // correct_sfx 정지
 
         //PercentageTable_1에서 배열을 사용할게
-        data_Dialog = CSVReader.Read("PercentageTable_real");
+        data_Dialog = CSVReader.Read("PercentageTable");
 
         // 이건 왜인지 모르겠는데 넣으라고 해서 일단 넣음
         RewardsImage.Add(Reward1);

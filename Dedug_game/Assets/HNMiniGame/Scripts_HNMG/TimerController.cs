@@ -30,7 +30,7 @@ public class TimerController : MonoBehaviour
         InvokeRepeating("ReadyCounter", 0f, 1f);
 
         //PercentageTable_1에서 배열을 사용할게
-        gameController.data_Dialog = CSVReader.Read("PercentageTable_real");
+        gameController.data_Dialog = CSVReader.Read("PercentageTable");
     }
 
     public void Timer()

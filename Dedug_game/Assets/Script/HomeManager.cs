@@ -124,7 +124,10 @@ public class HomeManager : MonoBehaviour
         SceneManager.LoadScene("DG_Scene");
     }
 
- 
+    public void ClickCardGame()
+    {
+        SceneManager.LoadScene("HNMiniGameScene");
+    }
     public void OnButtonClick_ChangeCharPopup()
     {
         // 캐릭터 교체 팝업을 활성화

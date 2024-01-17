@@ -39,7 +39,10 @@ public class TopbarManager : MonoBehaviour
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string RankFileName = "RankTable";
     private char[] TRIM_CHARS = { ' ', '\"' };
-
+    public void ClickCardGame()
+    {
+        SceneManager.LoadScene("HNMiniGameScene");
+    }
     public void TopBar()
     {
         if (GoldAmountText != null)
