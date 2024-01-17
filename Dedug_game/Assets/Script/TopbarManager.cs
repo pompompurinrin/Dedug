@@ -14,6 +14,7 @@ public class TopbarManager : MonoBehaviour
 
     public Text GoldAmountText;
     public Text NowRankName;
+    public Text GamePopuptext;
     public Image NowRankImage;
 
     public GameObject SettingPopCanvas;
@@ -22,6 +23,7 @@ public class TopbarManager : MonoBehaviour
     public GameObject GamePopups;
     public GameObject GanbareBada;
     public GameObject GoldLack;
+ 
 
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
@@ -93,7 +95,7 @@ public class TopbarManager : MonoBehaviour
     {
        
         
-
+        data_Dialog = CSVReader.Read(RankFileName);
         RankImage();
         RankSetupInfo();
 
@@ -101,7 +103,7 @@ public class TopbarManager : MonoBehaviour
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
         GameObject GamePopups = GameObject.Find("GamePopups");
         GameObject GoldLack = GameObject.Find("GoldLack");
-
+        GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
 
         if (MenuUI != null)
         {
@@ -176,7 +178,7 @@ public class TopbarManager : MonoBehaviour
 
     void RankSetupInfo()
     {
-        data_Dialog = CSVReader.Read(RankFileName);
+
 
         TopBar();
     }
@@ -243,17 +245,83 @@ public class TopbarManager : MonoBehaviour
     
     public void Click_GanbareBadaStart()
     {
-        if (DataManager.Instance.nowGold >= 100)
+
+        if (DataManager.Instance.nowRank == 0)
         {
+            if (DataManager.Instance.nowGold >= 100)
+            {
             DataManager.Instance.nowGold = DataManager.Instance.nowGold -100;
             TopBar();
             Save();
             SceneManager.LoadScene("YJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 100)
+            {
+                GoldLack.SetActive(true);
+            }
         }
-       else if (DataManager.Instance.nowGold < 100)
+
+        else if (DataManager.Instance.nowRank == 1)
         {
-            GoldLack.SetActive(true);
+            if (DataManager.Instance.nowGold >= 500)
+            {
+            DataManager.Instance.nowGold = DataManager.Instance.nowGold -500;
+            TopBar();
+            Save();
+            SceneManager.LoadScene("YJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 500)
+            {
+                GoldLack.SetActive(true);
+            }
         }
+        
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            if (DataManager.Instance.nowGold >= 1000)
+            {
+            DataManager.Instance.nowGold = DataManager.Instance.nowGold -1000;
+            TopBar();
+            Save();
+            SceneManager.LoadScene("YJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1000)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            if (DataManager.Instance.nowGold >= 1500)
+            {
+            DataManager.Instance.nowGold = DataManager.Instance.nowGold -1500;
+            TopBar();
+            Save();
+            SceneManager.LoadScene("YJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1500)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+        
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            if (DataManager.Instance.nowGold >= 3000)
+            {
+            DataManager.Instance.nowGold = DataManager.Instance.nowGold -3000;
+            TopBar();
+            Save();
+            SceneManager.LoadScene("YJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 3000)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+        
     }
     public void Click_OffGoldLack()
     {

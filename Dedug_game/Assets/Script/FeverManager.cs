@@ -91,15 +91,23 @@ public class FeverManager : MonoBehaviour
         // 랭크에 따라 countdownTime 초기화
         if (NowRank == 0)
         {
-            countdownTime = 5f;
+            countdownTime = 10f;
         }
         else if (NowRank == 1)
         {
-            countdownTime = 8f;
+            countdownTime = 13f;
         }
         else if (NowRank == 2)
         {
-            countdownTime = 10f;
+            countdownTime = 16f;
+        }
+        else if (NowRank == 3)
+        {
+            countdownTime = 23f;
+        }
+        else if (NowRank == 4)
+        {
+            countdownTime = 30f;
         }
 
     }

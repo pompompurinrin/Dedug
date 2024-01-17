@@ -168,13 +168,13 @@ public class RequestManager : MonoBehaviour
 
         if (NowRank == 0)
         {
-            if (customerTypeGold == 1)
+            if (customerTypeGold == 1) //일반
             {
-                goldValue = Random.Range(10, 21);
+                goldValue = Random.Range(100, 104);
             }
-            else if (customerTypeGold == 2)
+            else if (customerTypeGold == 2) //큰손
             {
-                goldValue = Random.Range(40, 51);
+                goldValue = Random.Range(150, 189);
             }
         }
 
@@ -182,11 +182,11 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1)
             {
-                goldValue = Random.Range(20, 31);
+                goldValue = Random.Range(300, 622);
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(50, 61);
+                goldValue = Random.Range(700, 836);
             }
         }
 
@@ -194,11 +194,35 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1)
             {
-                goldValue = Random.Range(30, 41);
+                goldValue = Random.Range(450, 901);
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(60, 71);
+                goldValue = Random.Range(1000, 1251);
+            }
+        }
+
+        if (NowRank == 3)
+        {
+            if (customerTypeGold == 1)
+            {
+                goldValue = Random.Range(700, 893);
+            }
+            else if (customerTypeGold == 2)
+            {
+                goldValue = Random.Range(1200, 1334);
+            }
+        }
+
+        if (NowRank == 4)
+        {
+            if (customerTypeGold == 1)
+            {
+                goldValue = Random.Range(1200,1501 );
+            }
+            else if (customerTypeGold == 2)
+            {
+                goldValue = Random.Range(2000, 2501);
             }
         }
 
@@ -317,9 +341,11 @@ public class RequestManager : MonoBehaviour
             GameObject clickEffect = Instantiate(customer2Prefab, mousePosition, Quaternion.identity, customer2ParentObject.transform);
             Destroy(clickEffect, 1f); // 1초 후에 이펙트 제거 (원하는 시간으로 조절 가능)
 
-            if ((NowRank == 0 && DataManager.Instance.feverNum == 2) ||
-            (NowRank == 1 && DataManager.Instance.feverNum == 4) ||
-            (NowRank == 2 && DataManager.Instance.feverNum == 6))
+            if ((NowRank == 0 && DataManager.Instance.feverNum == 3) ||
+            (NowRank == 1 && DataManager.Instance.feverNum == 3) ||
+            (NowRank == 2 && DataManager.Instance.feverNum == 4) ||
+            (NowRank == 3 && DataManager.Instance.feverNum == 5) ||
+            (NowRank == 4 && DataManager.Instance.feverNum == 5))
 
             {
                 
