@@ -2715,8 +2715,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 532402882}
   m_HandleRect: {fileID: 532402881}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.79679143
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7088,6 +7088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldAmountText: {fileID: 906444818}
   NowRankName: {fileID: 2129270096}
+  GamePopuptext: {fileID: 386316467}
   NowRankImage: {fileID: 0}
   SettingPopCanvas: {fileID: 1385558356}
   MenuUI: {fileID: 1972983934}
