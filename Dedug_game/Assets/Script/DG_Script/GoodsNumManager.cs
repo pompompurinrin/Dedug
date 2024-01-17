@@ -4,6 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GoodsNumManager : MonoBehaviour
@@ -188,49 +189,7 @@ public class GoodsNumManager : MonoBehaviour
 
     private void Awake()
     {
-        DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
-        DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
-        DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");
-        DataManager.Instance.goods1022 = PlayerPrefs.GetInt("Goods1022");
-        DataManager.Instance.goods1031 = PlayerPrefs.GetInt("Goods1031");
-        DataManager.Instance.goods1032 = PlayerPrefs.GetInt("Goods1032");
-        DataManager.Instance.goods1041 = PlayerPrefs.GetInt("Goods1041");
-        DataManager.Instance.goods1042 = PlayerPrefs.GetInt("Goods1042");
-        DataManager.Instance.goods1051 = PlayerPrefs.GetInt("Goods1051");
-        DataManager.Instance.goods1052 = PlayerPrefs.GetInt("Goods1052");
-
-        DataManager.Instance.goods2011 = PlayerPrefs.GetInt("Goods2011");
-        DataManager.Instance.goods2012 = PlayerPrefs.GetInt("Goods2012");
-        DataManager.Instance.goods2021 = PlayerPrefs.GetInt("Goods2021");
-        DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
-        DataManager.Instance.goods2031 = PlayerPrefs.GetInt("Goods2031");
-        DataManager.Instance.goods2032 = PlayerPrefs.GetInt("Goods2032");
-        DataManager.Instance.goods2041 = PlayerPrefs.GetInt("Goods2041");
-        DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
-        DataManager.Instance.goods2051 = PlayerPrefs.GetInt("Goods2051");
-        DataManager.Instance.goods2052 = PlayerPrefs.GetInt("Goods2052");
-
-        DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
-        DataManager.Instance.goods3012 = PlayerPrefs.GetInt("Goods3012");
-        DataManager.Instance.goods3021 = PlayerPrefs.GetInt("Goods3021");
-        DataManager.Instance.goods3022 = PlayerPrefs.GetInt("Goods3022");
-        DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
-        DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
-        DataManager.Instance.goods3041 = PlayerPrefs.GetInt("Goods3041");
-        DataManager.Instance.goods3042 = PlayerPrefs.GetInt("Goods3042");
-        DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
-        DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
-
-        DataManager.Instance.goods4051 = PlayerPrefs.GetInt("Goods4051");
-        DataManager.Instance.goods4052 = PlayerPrefs.GetInt("Goods4052");
-        DataManager.Instance.goods4053 = PlayerPrefs.GetInt("Goods4053");
-        DataManager.Instance.goods4054 = PlayerPrefs.GetInt("Goods4054");
-        DataManager.Instance.goods4055 = PlayerPrefs.GetInt("Goods4055");
-        DataManager.Instance.goods4056 = PlayerPrefs.GetInt("Goods4056");
-        DataManager.Instance.goods4057 = PlayerPrefs.GetInt("Goods4057");
-        DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
-        DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
-        DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+        DataLoad();
 
     }
 
@@ -258,7 +217,7 @@ public class GoodsNumManager : MonoBehaviour
 
         if (DataManager.Instance.goods1012 > 0 )
         {
-            UnlockBG1011.gameObject.SetActive(false);
+            UnlockBG1012.gameObject.SetActive(false);
 
             if (goods1012Applied == false)
             {
@@ -297,7 +256,7 @@ public class GoodsNumManager : MonoBehaviour
         }
         else
         {
-            UnlockBG1021.gameObject.SetActive(true);
+            UnlockBG1022.gameObject.SetActive(true);
         }
         if (DataManager.Instance.goods1031 > 0 )
         {
@@ -355,7 +314,7 @@ public class GoodsNumManager : MonoBehaviour
         {
             UnlockBG1042.gameObject.SetActive(true);
         }
-            if (DataManager.Instance.goods1051 > 0 )
+        if (DataManager.Instance.goods1051 > 0 )
         {
             UnlockBG1051.gameObject.SetActive(false);
             if (goods1051Applied == false)
@@ -371,7 +330,7 @@ public class GoodsNumManager : MonoBehaviour
         }
         if (DataManager.Instance.goods1052 > 0 )
         {
-            UnlockBG1011.gameObject.SetActive(false);
+            UnlockBG1052.gameObject.SetActive(false);
             if (goods1052Applied == false)
             {
                 MainStoryGauge++;
@@ -906,7 +865,8 @@ public class GoodsNumManager : MonoBehaviour
         {
             UnlockBG4060.gameObject.SetActive(true);
         }
-        
+
+        SpecialGoodsSliderText.text = SpecialGoodsGauge.ToString() + "/10";
         SpecialGoodsSlider.maxValue = 10;
         SpecialGoodsSlider.value = SpecialGoodsGauge;
 
@@ -919,14 +879,14 @@ public class GoodsNumManager : MonoBehaviour
         {
             UnlockSpecial.gameObject.SetActive(true);
         }
-        SpecialGoodsSliderText.text = SpecialGoodsGauge.ToString() + "/10";
+        
         
     }
 
 
-    public void Start()
+    public void OnEnable()
     {
-        
+        UpdateSpecialGoodsGauge();
         UpdateSuaStoryGauge();
         UpdateBadaStoryGauge();
         UpdateChorongStoryGauge();
@@ -949,7 +909,12 @@ public class GoodsNumManager : MonoBehaviour
             MainStorySlider.value = 1;
         }
 
-        //GoodsNum.text = 데이터매니저에서 개수 가져오기
+        TextSet();
+
+    }
+
+    public void TextSet()
+    {
         Goods1011Num.text = "X" + DataManager.Instance.goods1011.ToString();
         Goods1012Num.text = "X" + DataManager.Instance.goods1012.ToString();
         Goods1021Num.text = "X" + DataManager.Instance.goods1021.ToString();
@@ -994,5 +959,185 @@ public class GoodsNumManager : MonoBehaviour
         Goods4059Num.text = "X" + DataManager.Instance.goods4059.ToString();
         Goods4060Num.text = "X" + DataManager.Instance.goods4060.ToString();
 
+    }
+    public void TestAll()
+    {
+        DataManager.Instance.nowRank = 4;
+        DataManager.Instance.nowGold = 0;
+        DataManager.Instance.feverNum = 0;
+        DataManager.Instance.goods1011 = 1;
+        DataManager.Instance.goods2011 = 1;
+        DataManager.Instance.goods3011 = 1;
+        DataManager.Instance.goods1012 = 1;
+        DataManager.Instance.goods2012 = 1;
+        DataManager.Instance.goods3012 = 1;
+        DataManager.Instance.goods1021 = 1;
+        DataManager.Instance.goods2021 = 1;
+        DataManager.Instance.goods3021 = 1;
+        DataManager.Instance.goods1022 = 1;
+        DataManager.Instance.goods2022 = 1;
+        DataManager.Instance.goods3022 = 1;
+        DataManager.Instance.goods1031 = 1;
+        DataManager.Instance.goods2031 = 1;
+        DataManager.Instance.goods3031 = 1;
+        DataManager.Instance.goods1032 = 1;
+        DataManager.Instance.goods2032 = 1;
+        DataManager.Instance.goods3032 = 1;
+        DataManager.Instance.goods1041 = 1;
+        DataManager.Instance.goods2041 = 1;
+        DataManager.Instance.goods3041 = 1;
+        DataManager.Instance.goods1042 = 1;
+        DataManager.Instance.goods2042 = 1;
+        DataManager.Instance.goods3042 = 1;
+        DataManager.Instance.goods1041 = 1;
+        DataManager.Instance.goods2041 = 1;
+        DataManager.Instance.goods3041 = 1;
+        DataManager.Instance.goods1051 = 1;
+        DataManager.Instance.goods2051 = 1;
+        DataManager.Instance.goods3051 = 1;
+        DataManager.Instance.goods1052 = 1;
+        DataManager.Instance.goods2052 = 1;
+        DataManager.Instance.goods3052 = 1;
+        DataManager.Instance.goods4051 = 1;
+        DataManager.Instance.goods4052 = 1;
+        DataManager.Instance.goods4053 = 1;
+        DataManager.Instance.goods4054 = 1;
+        DataManager.Instance.goods4055 = 1;
+        DataManager.Instance.goods4056 = 1;
+        DataManager.Instance.goods4057 = 1;
+        DataManager.Instance.goods4058 = 1;
+        DataManager.Instance.goods4059 = 1;
+        DataManager.Instance.goods4060 = 1;
+        Save();
+        DataLoad();
+        TextSet();
+    }
+
+    public void OntestGoods1021Click()
+    {
+        DataManager.Instance.goods1021 = DataManager.Instance.goods1021 + 3;
+
+    }
+
+    public void Clear()
+    {
+        DataManager.Instance.nowRank = 0;
+        DataManager.Instance.nowGold = 0;
+        DataManager.Instance.feverNum = 0;
+        DataManager.Instance.goods1011 = 0;
+        DataManager.Instance.goods2011 = 0;
+        DataManager.Instance.goods3011 = 0;
+        DataManager.Instance.goods1012 = 0;
+        DataManager.Instance.goods2012 = 0;
+        DataManager.Instance.goods3012 = 0;
+        DataManager.Instance.goods1021 = 0;
+        DataManager.Instance.goods2021 = 0;
+        DataManager.Instance.goods3021 = 0;
+        DataManager.Instance.goods1022 = 0;
+        DataManager.Instance.goods2022 = 0;
+        DataManager.Instance.goods3022 = 0;
+        DataManager.Instance.goods1031 = 0;
+        DataManager.Instance.goods2031 = 0;
+        DataManager.Instance.goods3031 = 0;
+        DataManager.Instance.goods1032 = 0;
+        DataManager.Instance.goods2032 = 0;
+        DataManager.Instance.goods3032 = 0;
+        DataManager.Instance.goods1041 = 0;
+        DataManager.Instance.goods2041 = 0;
+        DataManager.Instance.goods3041 = 0;
+        DataManager.Instance.goods1042 = 0;
+        DataManager.Instance.goods2042 = 0;
+        DataManager.Instance.goods3042 = 0;
+        DataManager.Instance.goods1041 = 0;
+        DataManager.Instance.goods2041 = 0;
+        DataManager.Instance.goods3041 = 0;
+        DataManager.Instance.goods1051 = 0;
+        DataManager.Instance.goods2051 = 0;
+        DataManager.Instance.goods3051 = 0;
+        DataManager.Instance.goods1052 = 0;
+        DataManager.Instance.goods2052 = 0;
+        DataManager.Instance.goods3052 = 0;
+        DataManager.Instance.goods4051 = 0;
+        DataManager.Instance.goods4052 = 0;
+        DataManager.Instance.goods4053 = 0;
+        DataManager.Instance.goods4054 = 0;
+        DataManager.Instance.goods4055 = 0;
+        DataManager.Instance.goods4056 = 0;
+        DataManager.Instance.goods4057 = 0;
+        DataManager.Instance.goods4058 = 0;
+        DataManager.Instance.goods4059 = 0;
+        DataManager.Instance.goods4060 = 0;
+        DataManager.Instance.storyID = 0;
+        Save();
+        DataLoad();
+        TextSet();
+    }
+
+    public void HomeClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
+
+    public void DataLoad()
+    {
+        DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
+        DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
+        DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");
+        DataManager.Instance.goods1022 = PlayerPrefs.GetInt("Goods1022");
+        DataManager.Instance.goods1031 = PlayerPrefs.GetInt("Goods1031");
+        DataManager.Instance.goods1032 = PlayerPrefs.GetInt("Goods1032");
+        DataManager.Instance.goods1041 = PlayerPrefs.GetInt("Goods1041");
+        DataManager.Instance.goods1042 = PlayerPrefs.GetInt("Goods1042");
+        DataManager.Instance.goods1051 = PlayerPrefs.GetInt("Goods1051");
+        DataManager.Instance.goods1052 = PlayerPrefs.GetInt("Goods1052");
+
+        DataManager.Instance.goods2011 = PlayerPrefs.GetInt("Goods2011");
+        DataManager.Instance.goods2012 = PlayerPrefs.GetInt("Goods2012");
+        DataManager.Instance.goods2021 = PlayerPrefs.GetInt("Goods2021");
+        DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
+        DataManager.Instance.goods2031 = PlayerPrefs.GetInt("Goods2031");
+        DataManager.Instance.goods2032 = PlayerPrefs.GetInt("Goods2032");
+        DataManager.Instance.goods2041 = PlayerPrefs.GetInt("Goods2041");
+        DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
+        DataManager.Instance.goods2051 = PlayerPrefs.GetInt("Goods2051");
+        DataManager.Instance.goods2052 = PlayerPrefs.GetInt("Goods2052");
+
+        DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
+        DataManager.Instance.goods3012 = PlayerPrefs.GetInt("Goods3012");
+        DataManager.Instance.goods3021 = PlayerPrefs.GetInt("Goods3021");
+        DataManager.Instance.goods3022 = PlayerPrefs.GetInt("Goods3022");
+        DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
+        DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
+        DataManager.Instance.goods3041 = PlayerPrefs.GetInt("Goods3041");
+        DataManager.Instance.goods3042 = PlayerPrefs.GetInt("Goods3042");
+        DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
+        DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
+
+        DataManager.Instance.goods4051 = PlayerPrefs.GetInt("Goods4051");
+        DataManager.Instance.goods4052 = PlayerPrefs.GetInt("Goods4052");
+        DataManager.Instance.goods4053 = PlayerPrefs.GetInt("Goods4053");
+        DataManager.Instance.goods4054 = PlayerPrefs.GetInt("Goods4054");
+        DataManager.Instance.goods4055 = PlayerPrefs.GetInt("Goods4055");
+        DataManager.Instance.goods4056 = PlayerPrefs.GetInt("Goods4056");
+        DataManager.Instance.goods4057 = PlayerPrefs.GetInt("Goods4057");
+        DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
+        DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
+        DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+        UpdateSuaStoryGauge();
+        UpdateBadaStoryGauge();
+        UpdateChorongStoryGauge();
+    }
+    public void Save()
+    {
+        PlayerPrefs.SetInt("Goods1011", DataManager.Instance.goods1011);
+        PlayerPrefs.SetInt("Goods1012", DataManager.Instance.goods1012);
+        PlayerPrefs.SetInt("Goods1021", DataManager.Instance.goods1021);
+        PlayerPrefs.SetInt("Goods1022", DataManager.Instance.goods1022);
+        PlayerPrefs.SetInt("Goods1031", DataManager.Instance.goods1031);
+        PlayerPrefs.SetInt("Goods1032", DataManager.Instance.goods1032);
+        PlayerPrefs.SetInt("Goods1041", DataManager.Instance.goods1041);
+        PlayerPrefs.SetInt("Goods1042", DataManager.Instance.goods1042);
+        PlayerPrefs.SetInt("Goods1051", DataManager.Instance.goods1051);
+        PlayerPrefs.SetInt("Goods1052", DataManager.Instance.goods1052);
     }
 }
