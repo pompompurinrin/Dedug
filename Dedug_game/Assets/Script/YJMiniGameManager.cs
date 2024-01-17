@@ -146,6 +146,53 @@ public class YJMiniGameManager : MonoBehaviour
     public List<int> gatchPerList;
     public List<int> rewards; // 줄 애들
 
+    public void Awake()
+    {
+        DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
+        DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
+        DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");
+        DataManager.Instance.goods1022 = PlayerPrefs.GetInt("Goods1022");
+        DataManager.Instance.goods1031 = PlayerPrefs.GetInt("Goods1031");
+        DataManager.Instance.goods1032 = PlayerPrefs.GetInt("Goods1032");
+        DataManager.Instance.goods1041 = PlayerPrefs.GetInt("Goods1041");
+        DataManager.Instance.goods1042 = PlayerPrefs.GetInt("Goods1042");
+        DataManager.Instance.goods1051 = PlayerPrefs.GetInt("Goods1051");
+        DataManager.Instance.goods1052 = PlayerPrefs.GetInt("Goods1052");
+
+        DataManager.Instance.goods2011 = PlayerPrefs.GetInt("Goods2011");
+        DataManager.Instance.goods2012 = PlayerPrefs.GetInt("Goods2012");
+        DataManager.Instance.goods2021 = PlayerPrefs.GetInt("Goods2021");
+        DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
+        DataManager.Instance.goods2031 = PlayerPrefs.GetInt("Goods2031");
+        DataManager.Instance.goods2032 = PlayerPrefs.GetInt("Goods2032");
+        DataManager.Instance.goods2041 = PlayerPrefs.GetInt("Goods2041");
+        DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
+        DataManager.Instance.goods2051 = PlayerPrefs.GetInt("Goods2051");
+        DataManager.Instance.goods2052 = PlayerPrefs.GetInt("Goods2052");
+
+        DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
+        DataManager.Instance.goods3012 = PlayerPrefs.GetInt("Goods3012");
+        DataManager.Instance.goods3021 = PlayerPrefs.GetInt("Goods3021");
+        DataManager.Instance.goods3022 = PlayerPrefs.GetInt("Goods3022");
+        DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
+        DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
+        DataManager.Instance.goods3041 = PlayerPrefs.GetInt("Goods3041");
+        DataManager.Instance.goods3042 = PlayerPrefs.GetInt("Goods3042");
+        DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
+        DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
+
+        DataManager.Instance.goods4051 = PlayerPrefs.GetInt("Goods4051");
+        DataManager.Instance.goods4052 = PlayerPrefs.GetInt("Goods4052");
+        DataManager.Instance.goods4053 = PlayerPrefs.GetInt("Goods4053");
+        DataManager.Instance.goods4054 = PlayerPrefs.GetInt("Goods4054");
+        DataManager.Instance.goods4055 = PlayerPrefs.GetInt("Goods4055");
+        DataManager.Instance.goods4056 = PlayerPrefs.GetInt("Goods4056");
+        DataManager.Instance.goods4057 = PlayerPrefs.GetInt("Goods4057");
+        DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
+        DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
+        DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+    }
+
     private void Start()
     {
         // 게임 시작 시 호출되는 함수
@@ -983,114 +1030,164 @@ public class YJMiniGameManager : MonoBehaviour
             {
                 case 1011:
                     DataManager.Instance.goods1011++;
+                    PlayerPrefs.SetInt("Goods1011", DataManager.Instance.goods1011);
                     break;
                 case 1012:
                     DataManager.Instance.goods1012++;
+                    PlayerPrefs.SetInt("Goods1012", DataManager.Instance.goods1012);
                     break;
                 case 1021:
                     DataManager.Instance.goods1021++;
+                    PlayerPrefs.SetInt("Goods1021", DataManager.Instance.goods1021);
                     break;
                 case 1022:
                     DataManager.Instance.goods1022++;
+                    PlayerPrefs.SetInt("Goods1022", DataManager.Instance.goods1022);
                     break;
                 case 1031:
                     DataManager.Instance.goods1031++;
+                    PlayerPrefs.SetInt("Goods1031", DataManager.Instance.goods1031);
                     break;
                 case 1032:
                     DataManager.Instance.goods1032++;
+                    PlayerPrefs.SetInt("Goods1032", DataManager.Instance.goods1032);
                     break;
                 case 1041:
                     DataManager.Instance.goods1041++;
+                    PlayerPrefs.SetInt("Goods1041", DataManager.Instance.goods1041);
                     break;
                 case 1042:
                     DataManager.Instance.goods1042++;
+                    PlayerPrefs.SetInt("Goods1042", DataManager.Instance.goods1042);
                     break;
                 case 1051:
                     DataManager.Instance.goods1051++;
+                    PlayerPrefs.SetInt("Goods1051", DataManager.Instance.goods1051);
                     break;
                 case 1052:
                     DataManager.Instance.goods1052++;
+                    PlayerPrefs.SetInt("Goods1052", DataManager.Instance.goods1052);
                     break;
                 case 2011:
                     DataManager.Instance.goods2011++;
+                    PlayerPrefs.SetInt("Goods2011", DataManager.Instance.goods2011);
                     break;
                 case 2012:
                     DataManager.Instance.goods2012++;
+                    PlayerPrefs.SetInt("Goods2012", DataManager.Instance.goods2012);
+                    break;
+                case 2021:
+                    DataManager.Instance.goods2021++;
+                    PlayerPrefs.SetInt("Goods2021", DataManager.Instance.goods2021);
                     break;
                 case 2022:
                     DataManager.Instance.goods2022++;
+                    PlayerPrefs.SetInt("Goods2022", DataManager.Instance.goods2022);
                     break;
                 case 2031:
                     DataManager.Instance.goods2031++;
+                    PlayerPrefs.SetInt("Goods2031", DataManager.Instance.goods2031);
+                    break;
+                case 2032:
+                    DataManager.Instance.goods2032++;
+                    PlayerPrefs.SetInt("Goods2032", DataManager.Instance.goods2032);
                     break;
                 case 2041:
                     DataManager.Instance.goods2041++;
+                    PlayerPrefs.SetInt("Goods2041", DataManager.Instance.goods2041);
                     break;
                 case 2042:
                     DataManager.Instance.goods2042++;
+                    PlayerPrefs.SetInt("Goods2042", DataManager.Instance.goods2042);
                     break;
                 case 2051:
                     DataManager.Instance.goods2051++;
+                    PlayerPrefs.SetInt("Goods2051", DataManager.Instance.goods2051);
                     break;
                 case 2052:
                     DataManager.Instance.goods2052++;
+                    PlayerPrefs.SetInt("Goods2052", DataManager.Instance.goods2052);
                     break;
                 case 3011:
                     DataManager.Instance.goods3011++;
+                    PlayerPrefs.SetInt("Goods3011", DataManager.Instance.goods3011);
                     break;
                 case 3012:
                     DataManager.Instance.goods3012++;
+                    PlayerPrefs.SetInt("Goods3012", DataManager.Instance.goods3012);
                     break;
                 case 3021:
                     DataManager.Instance.goods3021++;
+                    PlayerPrefs.SetInt("Goods3021", DataManager.Instance.goods3021);
                     break;
                 case 3022:
                     DataManager.Instance.goods3022++;
+                    PlayerPrefs.SetInt("Goods3022", DataManager.Instance.goods3022);
                     break;
                 case 3031:
                     DataManager.Instance.goods3031++;
+                    PlayerPrefs.SetInt("Goods3031", DataManager.Instance.goods3031);
                     break;
                 case 3032:
                     DataManager.Instance.goods3032++;
+                    PlayerPrefs.SetInt("Goods3032", DataManager.Instance.goods3032);
                     break;
                 case 3041:
                     DataManager.Instance.goods3041++;
+                    PlayerPrefs.SetInt("Goods3041", DataManager.Instance.goods3041);
                     break;
                 case 3042:
                     DataManager.Instance.goods3042++;
+                    PlayerPrefs.SetInt("Goods3042", DataManager.Instance.goods3042);
                     break;
                 case 3051:
                     DataManager.Instance.goods3051++;
+                    PlayerPrefs.SetInt("Goods3051", DataManager.Instance.goods3051);
                     break;
+                case 3052:
+                    DataManager.Instance.goods3052++;
+                    PlayerPrefs.SetInt("Goods3052", DataManager.Instance.goods3052);
+                    break;
+
                 case 4051:
                     DataManager.Instance.goods4051++;
+                    PlayerPrefs.SetInt("Goods4051", DataManager.Instance.goods4051);
                     break;
                 case 4052:
                     DataManager.Instance.goods4052++;
+                    PlayerPrefs.SetInt("Goods4052", DataManager.Instance.goods4052);
                     break;
                 case 4053:
                     DataManager.Instance.goods4053++;
+                    PlayerPrefs.SetInt("Goods4053", DataManager.Instance.goods4053);
                     break;
                 case 4054:
                     DataManager.Instance.goods4054++;
+                    PlayerPrefs.SetInt("Goods4054", DataManager.Instance.goods4054);
                     break;
                 case 4055:
                     DataManager.Instance.goods4055++;
+                    PlayerPrefs.SetInt("Goods4055", DataManager.Instance.goods4055);
                     break;
                 case 4056:
                     DataManager.Instance.goods4056++;
+                    PlayerPrefs.SetInt("Goods4056", DataManager.Instance.goods4056);
                     break;
                 case 4057:
                     DataManager.Instance.goods4057++;
+                    PlayerPrefs.SetInt("Goods4057", DataManager.Instance.goods4057);
                     break;
                 case 4058:
                     DataManager.Instance.goods4058++;
+                    PlayerPrefs.SetInt("Goods4058", DataManager.Instance.goods4058);
                     break;
                 case 4059:
                     DataManager.Instance.goods4059++;
+                    PlayerPrefs.SetInt("Goods4059", DataManager.Instance.goods4059);
                     break;
                 case 4060:
                     DataManager.Instance.goods4060++;
+                    PlayerPrefs.SetInt("Goods4060", DataManager.Instance.goods4060);
                     break;
 
                 default:
@@ -1101,49 +1198,6 @@ public class YJMiniGameManager : MonoBehaviour
 
         }
             // PlayerPrefs에 현재 값 저장
-        PlayerPrefs.SetInt("Goods1011", DataManager.Instance.goods1011);
-        PlayerPrefs.SetInt("Goods1012", DataManager.Instance.goods1012);
-        PlayerPrefs.SetInt("Goods1021", DataManager.Instance.goods1021);
-        PlayerPrefs.SetInt("Goods1022", DataManager.Instance.goods1022);
-        PlayerPrefs.SetInt("Goods1031", DataManager.Instance.goods1031);
-        PlayerPrefs.SetInt("Goods1032", DataManager.Instance.goods1032);
-        PlayerPrefs.SetInt("Goods1041", DataManager.Instance.goods1041);
-        PlayerPrefs.SetInt("Goods1042", DataManager.Instance.goods1042);
-        PlayerPrefs.SetInt("Goods1051", DataManager.Instance.goods1051);
-        PlayerPrefs.SetInt("Goods1052", DataManager.Instance.goods1052);
-
-        PlayerPrefs.SetInt("Goods2011", DataManager.Instance.goods2011);
-        PlayerPrefs.SetInt("Goods2012", DataManager.Instance.goods2012);
-        PlayerPrefs.SetInt("Goods2021", DataManager.Instance.goods2021);
-        PlayerPrefs.SetInt("Goods2022", DataManager.Instance.goods2022);
-        PlayerPrefs.SetInt("Goods2031", DataManager.Instance.goods2031);
-        PlayerPrefs.SetInt("Goods2032", DataManager.Instance.goods2032);
-        PlayerPrefs.SetInt("Goods2041", DataManager.Instance.goods2041);
-        PlayerPrefs.SetInt("Goods2042", DataManager.Instance.goods2042);
-        PlayerPrefs.SetInt("Goods2051", DataManager.Instance.goods2051);
-        PlayerPrefs.SetInt("Goods2052", DataManager.Instance.goods2052);
-
-        PlayerPrefs.SetInt("Goods3011", DataManager.Instance.goods3011);
-        PlayerPrefs.SetInt("Goods3012", DataManager.Instance.goods3012);
-        PlayerPrefs.SetInt("Goods3021", DataManager.Instance.goods3021);
-        PlayerPrefs.SetInt("Goods3022", DataManager.Instance.goods3022);
-        PlayerPrefs.SetInt("Goods3031", DataManager.Instance.goods3031);
-        PlayerPrefs.SetInt("Goods3032", DataManager.Instance.goods3032);
-        PlayerPrefs.SetInt("Goods3041", DataManager.Instance.goods3041);
-        PlayerPrefs.SetInt("Goods3042", DataManager.Instance.goods3042);
-        PlayerPrefs.SetInt("Goods3051", DataManager.Instance.goods3051);
-        PlayerPrefs.SetInt("Goods3052", DataManager.Instance.goods3052);
-
-        PlayerPrefs.SetInt("Goods4051", DataManager.Instance.goods4051);
-        PlayerPrefs.SetInt("Goods4052", DataManager.Instance.goods4052);
-        PlayerPrefs.SetInt("Goods4053", DataManager.Instance.goods4053);
-        PlayerPrefs.SetInt("Goods4054", DataManager.Instance.goods4054);
-        PlayerPrefs.SetInt("Goods4055", DataManager.Instance.goods4055);
-        PlayerPrefs.SetInt("Goods4056", DataManager.Instance.goods4056);
-        PlayerPrefs.SetInt("Goods4057", DataManager.Instance.goods4057);
-        PlayerPrefs.SetInt("Goods4058", DataManager.Instance.goods4058);
-        PlayerPrefs.SetInt("Goods4059", DataManager.Instance.goods4059);
-        PlayerPrefs.SetInt("Goods4060", DataManager.Instance.goods4060);
 
         PlayerPrefs.Save();
 
