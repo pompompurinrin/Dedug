@@ -191,6 +191,8 @@ public class YJMiniGameManager : MonoBehaviour
         DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
         DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
         DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+
+        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
 
     private void Start()
@@ -908,15 +910,83 @@ public class YJMiniGameManager : MonoBehaviour
         goodsSprites = new List<Sprite>();
         int rank = DataManager.Instance.nowRank;
 
-        for (int i = 0; i < data_Dialog.Count; i++)
+        if (rank == 0)
         {
-            if ((int)data_Dialog[i]["Nowrank"] == rank)
+            for (int i = 0; i < data_Dialog.Count; i++)
             {
-                gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
-                gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
-                goodsSprites.Add(Resources.Load<Sprite>(imageString));
+                if ((int)data_Dialog[i]["Nowrank"] == rank)
+                {
+                    gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
+                    gatchIdList.Add((int)data_Dialog[i]["Goods"]);
+                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
+                    Debug.Log("rank" + rank);
+                }
+            }
+        }
+
+        else if (rank == 1)
+        {
+            for (int i = 1; i < data_Dialog.Count; i++)
+            {
+                if ((int)data_Dialog[i]["Nowrank"] == rank)
+                {
+                    gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
+                    gatchIdList.Add((int)data_Dialog[i]["Goods"]);
+                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    goodsSprites.Add(Resources.Load<Sprite>(imageString));
+
+                    Debug.Log("rank" + rank);
+                }
+            }
+        }
+
+        else if (rank == 2)
+        {
+            for (int i = 2; i < data_Dialog.Count; i++)
+            {
+                if ((int)data_Dialog[i]["Nowrank"] == rank)
+                {
+                    gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
+                    gatchIdList.Add((int)data_Dialog[i]["Goods"]);
+                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    goodsSprites.Add(Resources.Load<Sprite>(imageString));
+
+                    Debug.Log("rank" + rank);
+                }
+            }
+        }
+
+        else if (rank == 3)
+        {
+            for (int i = 3; i < data_Dialog.Count; i++)
+            {
+                if ((int)data_Dialog[i]["Nowrank"] == rank)
+                {
+                    gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
+                    gatchIdList.Add((int)data_Dialog[i]["Goods"]);
+                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    goodsSprites.Add(Resources.Load<Sprite>(imageString));
+
+                    Debug.Log("rank" + rank);
+                }
+            }
+        }
+
+        else if (rank == 4)
+        {
+            for (int i = 4; i < data_Dialog.Count; i++)
+            {
+                if ((int)data_Dialog[i]["Nowrank"] == rank)
+                {
+                    gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
+                    gatchIdList.Add((int)data_Dialog[i]["Goods"]);
+                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    goodsSprites.Add(Resources.Load<Sprite>(imageString));
+
+                    Debug.Log("rank" + rank);
+                }
             }
         }
 
