@@ -176,7 +176,7 @@ public class FeverManager : MonoBehaviour
                     shinePinkParticle.SetActive(true);
                     resultSFX.Play();
 
-                    StartCoroutine(DeactivateParticlesAfterDelay02(2f)); // 2초 후에 파티클 비활성화
+                    StartCoroutine(DeactivateParticlesAfterDelay03(2f)); // 2초 후에 파티클 비활성화
 
 
                 }
