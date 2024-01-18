@@ -193,12 +193,42 @@ public class FeverManager : MonoBehaviour
 
         endText.text = data_Dialog[0]["ResultExplain"].ToString();
         endTitle.text = data_Dialog[0]["ResultGrade"].ToString();
-        endGold.text = data_Dialog[0]["FeverGold"].ToString();
-
         SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
 
-        DataManager.Instance.nowGold += 20;
-        Save();
+        if (NowRank == 0)
+        {
+            endGold.text = "33";
+            DataManager.Instance.nowGold += 33;
+            Save();
+        }
+
+        if (NowRank == 1)
+        {
+            endGold.text = "167";
+            DataManager.Instance.nowGold += 167;
+            Save();
+        }
+
+        if (NowRank == 2)
+        {
+            endGold.text = "333";
+            DataManager.Instance.nowGold += 333;
+            Save();
+        }
+
+        if (NowRank == 3)
+        {
+            endGold.text = "500";
+            DataManager.Instance.nowGold += 500;
+            Save();
+        }
+
+        if (NowRank == 4)
+        {
+            endGold.text = "1000";
+            DataManager.Instance.nowGold += 1000;
+            Save();
+        }
 
         endBg.SetActive(true);
 
@@ -220,12 +250,42 @@ public class FeverManager : MonoBehaviour
 
         endText.text = data_Dialog[1]["ResultExplain"].ToString();
         endTitle.text = data_Dialog[1]["ResultGrade"].ToString();
-        endGold.text = data_Dialog[1]["FeverGold"].ToString();
-
         SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
 
-        DataManager.Instance.nowGold += 50;
-        Save();
+        if (NowRank == 0)
+        {
+            endGold.text = "68";
+            DataManager.Instance.nowGold += 68;
+            Save();
+        }
+
+        if (NowRank == 1)
+        {
+            endGold.text = "338";
+            DataManager.Instance.nowGold += 338;
+            Save();
+        }
+
+        if (NowRank == 2)
+        {
+            endGold.text = "675";
+            DataManager.Instance.nowGold += 675;
+            Save();
+        }
+
+        if (NowRank == 3)
+        {
+            endGold.text = "900";
+            DataManager.Instance.nowGold += 900;
+            Save();
+        }
+
+        if (NowRank == 4)
+        {
+            endGold.text = "1800";
+            DataManager.Instance.nowGold += 1800;
+            Save();
+        }
 
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);
@@ -246,12 +306,42 @@ public class FeverManager : MonoBehaviour
 
         endText.text = data_Dialog[2]["ResultExplain"].ToString();
         endTitle.text = data_Dialog[2]["ResultGrade"].ToString();
-        endGold.text = data_Dialog[2]["FeverGold"].ToString();
-
         SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
 
-        DataManager.Instance.nowGold += 80;
-        Save();
+        if (NowRank == 0)
+        {
+            endGold.text = "102";
+            DataManager.Instance.nowGold += 102;
+            Save();
+        }
+
+        if (NowRank == 1)
+        {
+            endGold.text = "508";
+            DataManager.Instance.nowGold += 508;
+            Save();
+        }
+
+        if (NowRank == 2)
+        {
+            endGold.text = "1017";
+            DataManager.Instance.nowGold += 1017;
+            Save();
+        }
+
+        if (NowRank == 3)
+        {
+            endGold.text = "1300";
+            DataManager.Instance.nowGold += 1300;
+            Save();
+        }
+
+        if (NowRank == 4)
+        {
+            endGold.text = "2600";
+            DataManager.Instance.nowGold += 2600;
+            Save();
+        }
 
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);

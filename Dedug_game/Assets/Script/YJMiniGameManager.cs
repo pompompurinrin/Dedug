@@ -226,7 +226,7 @@ public class YJMiniGameManager : MonoBehaviour
         beforeImg.gameObject.SetActive(true);
 
         // 게임 시간, 점수 초기화
-        gameTime = 5;
+        gameTime = 60;
         score = 0;
 
         // 게임 UI 업데이트

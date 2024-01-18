@@ -337,7 +337,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 UpdateUI();
 
                 // 일치하는 아이콘 종류 확인
-                Sprite eventSprite = eventImage[eventIconIndex].GetComponent<Image>().sprite;
+                Sprite eventSprite = eventIcons[eventIconIndex].GetComponent<Image>().sprite;
 
                 Vector3 originalScale = new Vector3(1, 1, 1);
                 Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
@@ -373,7 +373,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 }
 
                 // 일치하는 아이콘에 따라 동작 수행
-                if (eventSprite.name == "fiver01")
+                if (eventSprite.name == "mon_Icon")
                 {
                     StartCoroutine(ActivateAndDeactivateScore(monScore));
                 }
@@ -433,7 +433,7 @@ public class YJ2MiniGameManager : MonoBehaviour
 
     private int CountMatchingIcons(int eventIconIndex)
     {
-        Sprite eventSprite = eventImage[eventIconIndex].GetComponent<Image>().sprite;
+        Sprite eventSprite = eventIcons[eventIconIndex].GetComponent<Image>().sprite;
 
         int matchingCount = 0;
 
