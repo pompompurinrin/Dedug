@@ -9,6 +9,7 @@ public class HomePopupManager : MonoBehaviour
     int NowGold;
     int NowRank;
     public Text GamePopuptext;
+    public Text GamePopuptext2;
 
 
 
@@ -48,6 +49,7 @@ public class HomePopupManager : MonoBehaviour
    
        
         GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
+        GamePopuptext2.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
 
         if (GamePopups != null)
         {
@@ -59,6 +61,7 @@ public class HomePopupManager : MonoBehaviour
 
         }
 
+       
         if (GoldLack != null)
         {
             if (GoldLack.activeSelf)

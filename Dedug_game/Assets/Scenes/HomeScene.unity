@@ -1604,7 +1604,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: OnButtonClick_OffGanbare
+        m_MethodName: OnButtonClick_OffGamePopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3207,7 +3207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &460293112
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4182,9 +4182,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: ClickCardGame
+      - m_Target: {fileID: 1191489701}
+        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
+        m_MethodName: OnButtonClick_OnCardGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4491,10 +4491,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 210, y: -465}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692096811
 MonoBehaviour:
@@ -6252,10 +6252,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 210, y: -135}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986511145
 MonoBehaviour:
@@ -8461,10 +8461,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePopuptext: {fileID: 386316467}
+  GamePopuptext2: {fileID: 2003163812}
   GoodsBuy: {fileID: 1135631846}
   GamePopups: {fileID: 1119631174}
   GanbareBada: {fileID: 1076843906}
-  CardGame: {fileID: 0}
+  CardGame: {fileID: 460293115}
   GoldLack: {fileID: 2043678711}
   PopupCanvas: {fileID: 1191489704}
   sfx1AudioSource: {fileID: 752190094}
@@ -8734,7 +8735,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: OnButtonClick_OnCardGame
+        m_MethodName: Click_CardGameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10894,7 +10895,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: OnButtonClick_OffGanbare
+        m_MethodName: OnButtonClick_OffGamePopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12637,10 +12638,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -465}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865293111
 MonoBehaviour:
@@ -13220,10 +13221,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -135}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972598217
 MonoBehaviour:
@@ -13495,7 +13496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1972983935
 RectTransform:
   m_ObjectHideFlags: 0
