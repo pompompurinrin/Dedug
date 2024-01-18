@@ -12630,7 +12630,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC815\uB9D0 \uAD7F\uC988 \uAD6C\uB9E4 \uD654\uBA74\uC73C\uB85C \uAC00\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\r\n\uC774\uB3D9
+  m_Text: "\uC815\uB9D0 \uD648 \uD654\uBA74\uC73C\uB85C \uAC00\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\r\n\uC774\uB3D9
     \uC2DC \uD604\uC7AC \uC9C4\uD589 \uC911\uC778 \uAC8C\uC784 \uB0B4\uC5ED\uC740
     \uC0AC\uB77C\uC9D1\uB2C8\uB2E4."
 --- !u!222 &777842226
@@ -28065,7 +28065,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Re
+  m_Text: DG
 --- !u!222 &1094913932
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34007,7 +34007,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1346723125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 706020916}
+        m_TargetAssemblyTypeName: YJMiniGameManager, Assembly-CSharp
+        m_MethodName: RealStopClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1346723125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51574,7 +51586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAD7F\uC988\uAD6C\uB9E4\uB85C\n\uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uD648\uC73C\uB85C\n\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &2069479926
 CanvasRenderer:
   m_ObjectHideFlags: 0

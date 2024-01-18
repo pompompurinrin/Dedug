@@ -903,6 +903,12 @@ public class YJMiniGameManager : MonoBehaviour
         isGamePaused = false;
     }
 
+    // 도감으로 돌아가기 처리
+    public void RealStopClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
+
     void Setting() // 씬 들어가자마자 한번 하면 됨
     {
         gatchPerList = new List<int>();
@@ -1318,7 +1324,7 @@ public class YJMiniGameManager : MonoBehaviour
 
     public void RestartClick()
     {
-        Start();
+        SceneManager.LoadScene("DG_Scene");
     }
 
     public void HomeClick()
