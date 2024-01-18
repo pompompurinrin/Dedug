@@ -7,18 +7,28 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class TimerController: MonoBehaviour
+public class TimerController2: MonoBehaviour
 {
+    public GameControllerScript2 gameController2;
+
     public Slider timerSlider; // UI 슬라이더 연결
     public float timer = 60f; // 제한 시간 30초 설정
     public Text timeText; // 시간 출력
-    public float readyCounter = 10f; //대기 시간 3초 설정
+
+    public float readyCounter = 3f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
 
-    [SerializeField] private GameControllerScript gameController;
-    
+    GameObject Player;
+
+    private void Awake()
+    {
+        this.Player = GameObject.Find("Player");
+    }
+
     public void Start()
     {
+        Debug.Log("초기화");
+
         // 슬라이더 초기화
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
@@ -27,7 +37,7 @@ public class TimerController: MonoBehaviour
         InvokeRepeating("ReadyCounter", 0f, 1f);
 
         //PercentageTable_1에서 배열을 사용할게
-        gameController.data_Dialog = CSVReader.Read("PercentageTable");
+        gameController2.data_Dialog = CSVReader.Read("PercentageTable");
     }
 
     public void Timer()
@@ -38,12 +48,11 @@ public class TimerController: MonoBehaviour
 
     public void ReadyCounter()
     {
-
-        if (gameController.isGamePaused)
+        if (gameController2.isGamePaused)
             return;
 
         readyCount.gameObject.SetActive(true);  
-        readyCount.text = readyCounter.ToString() + "초 후 이미지가 사라집니다.";
+        readyCount.text = readyCounter.ToString() + "초 후 시작합니다.";
         readyCounter -= 1f; // 타이머 감소
 
         // 슬라이더 값 갱신
@@ -51,20 +60,18 @@ public class TimerController: MonoBehaviour
 
         if (readyCounter <= -1)
         {
-
-            readyCounter = -1;
-            
+            readyCounter = -1;            
             UpdateTimer();
         }
     }
+
     public void UpdateTimer()
     {
-        if (gameController.isGamePaused)
+        if (gameController2.isGamePaused)
             return;
 
         readyCount.gameObject.SetActive(false);
-        gameController.Scoretxt.gameObject.SetActive(true);
-
+        gameController2.Scoretxt.gameObject.SetActive(true);
 
         timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
         timer -= 1f; // 타이머 감소
@@ -74,32 +81,27 @@ public class TimerController: MonoBehaviour
 
         if (timer <= -1)
         {
-
             timer = -1;
             TimeOver();
-
         }
+
     }
-
-
-  
-
-    // 시간이 다 되면 게임 오버 화면을 활성화
-    public void TimeOver()
-    {
-
-        gameController.Score();
-        gameController.ResultBG.gameObject.SetActive(true);
+    
+    public void TimeOver() // 시간이 다 되면 게임 오버 화면을 활성화
+    {     
+        // 초기화 세팅
+        this.Player.transform.position = new Vector3(0, -5, 1);
+        timer = 60f;
+        gameController2.Score();
+        gameController2.ResultBG.gameObject.SetActive(true);
         // gameController2.Main_BGM2.Stop();
+
         // 어떤 컴포넌트에 배정할거임?
-        gameController.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
-        gameController.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
-        gameController.Restart = GameObject.Find("Restart").GetComponent<Button>();
-        gameController.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-        gameController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
+        gameController2.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
+        gameController2.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
+        gameController2.Restart = GameObject.Find("Restart").GetComponent<Button>();
+        gameController2.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
+        gameController2.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
     }
-
-
-
 
 }
