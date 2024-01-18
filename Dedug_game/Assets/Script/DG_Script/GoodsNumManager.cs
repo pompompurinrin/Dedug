@@ -193,9 +193,20 @@ public class GoodsNumManager : MonoBehaviour
 
     }
 
-    
+    public void Start()
+    {
+        if (DataManager.Instance.nowRank == 4)
+        {
+            UnlockSpecial.gameObject.SetActive(false);
+
+        }
+        else
+        {
+            UnlockSpecial.gameObject.SetActive(true);
+        }
+    }
     // 이 메서드를 호출하여 MainStoryGauge를 업데이트합니다.
-   
+
 
     public void UpdateSuaStoryGauge()
     {
@@ -1092,6 +1103,8 @@ public class GoodsNumManager : MonoBehaviour
 
     public void DataLoad()
     {
+        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
         DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
         DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");

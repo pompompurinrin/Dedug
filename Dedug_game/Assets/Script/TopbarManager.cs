@@ -192,7 +192,10 @@ public class TopbarManager : MonoBehaviour
         MenuUI.SetActive(false);
     }
 
-  
+  public void HomeClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
     
     
   
