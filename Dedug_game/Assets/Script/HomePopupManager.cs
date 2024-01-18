@@ -306,7 +306,8 @@ public class HomePopupManager : MonoBehaviour
         // 간바레 바다짱 팝업 활성화
         GamePopups.gameObject.SetActive(true);
         GanbareBada.gameObject.SetActive(true);
-        
+        CardGame.gameObject.SetActive(false);
+
     }
     public void OnButtonClick_OnCardGame()
     {
