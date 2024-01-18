@@ -14,16 +14,11 @@ public class TopbarManager : MonoBehaviour
 
     public Text GoldAmountText;
     public Text NowRankName;
-    public Text GamePopuptext;
     public Image NowRankImage;
 
     public GameObject SettingPopCanvas;
     public GameObject MenuUI;
-    public GameObject GoodsBuy;
-    public GameObject GamePopups;
-    public GameObject GanbareBada;
-    public GameObject GoldLack;
- 
+
 
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
@@ -41,10 +36,7 @@ public class TopbarManager : MonoBehaviour
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string RankFileName = "RankTable";
     private char[] TRIM_CHARS = { ' ', '\"' };
-    public void ClickCardGame()
-    {
-        SceneManager.LoadScene("HNMiniGameScene");
-    }
+    
     public void TopBar()
     {
         if (GoldAmountText != null)
@@ -101,9 +93,7 @@ public class TopbarManager : MonoBehaviour
 
         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
-        GameObject GamePopups = GameObject.Find("GamePopups");
-        GameObject GoldLack = GameObject.Find("GoldLack");
-        GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
+        
 
         if (MenuUI != null)
         {
@@ -123,27 +113,6 @@ public class TopbarManager : MonoBehaviour
 
 
         }
-
-        if (GamePopups != null)
-        {
-            if (GamePopups.activeSelf)
-            {
-                GamePopups.SetActive(false);
-            }
-
-
-        }
-
-        if (GoldLack != null)
-        {
-            if (GoldLack.activeSelf)
-            {
-                GoldLack.SetActive(false);
-            }
-
-
-        }
-
 
 
     }
@@ -223,133 +192,11 @@ public class TopbarManager : MonoBehaviour
         MenuUI.SetActive(false);
     }
 
-    public void OnButtonClick_OffGoodsBuy()
-    {
-        // 굿즈 구매 팝업 비활성화
-        GoodsBuy.SetActive(false);
-    }
-
-    public void OnButtonClick_OnGanbare()
-    {
-        // 간바레 바다짱 팝업 활성화
-         GamePopups.SetActive(true);
-         GanbareBada.SetActive(true);
-    }
-
-    public void OnButtonClick_OffGanbare()
-    {
-        // 간바레 바다짱 팝업 비활성화
-        GamePopups.SetActive(false);
-        GanbareBada.SetActive(false);
-    }
+  
     
-    public void Click_GanbareBadaStart()
-    {
-
-        if (DataManager.Instance.nowRank == 0)
-        {
-            if (DataManager.Instance.nowGold >= 100)
-            {
-            DataManager.Instance.nowGold = DataManager.Instance.nowGold -100;
-            TopBar();
-            Save();
-            SceneManager.LoadScene("YJMiniGameScene");
-            }
-            else if (DataManager.Instance.nowGold < 100)
-            {
-                GoldLack.SetActive(true);
-            }
-        }
-
-        else if (DataManager.Instance.nowRank == 1)
-        {
-            if (DataManager.Instance.nowGold >= 500)
-            {
-            DataManager.Instance.nowGold = DataManager.Instance.nowGold -500;
-            TopBar();
-            Save();
-            SceneManager.LoadScene("YJMiniGameScene");
-            }
-            else if (DataManager.Instance.nowGold < 500)
-            {
-                GoldLack.SetActive(true);
-            }
-        }
-        
-        else if (DataManager.Instance.nowRank == 2)
-        {
-            if (DataManager.Instance.nowGold >= 1000)
-            {
-            DataManager.Instance.nowGold = DataManager.Instance.nowGold -1000;
-            TopBar();
-            Save();
-            SceneManager.LoadScene("YJMiniGameScene");
-            }
-            else if (DataManager.Instance.nowGold < 1000)
-            {
-                GoldLack.SetActive(true);
-            }
-        }
-
-        
-        else if (DataManager.Instance.nowRank == 3)
-        {
-            if (DataManager.Instance.nowGold >= 1500)
-            {
-            DataManager.Instance.nowGold = DataManager.Instance.nowGold -1500;
-            TopBar();
-            Save();
-            SceneManager.LoadScene("YJMiniGameScene");
-            }
-            else if (DataManager.Instance.nowGold < 1500)
-            {
-                GoldLack.SetActive(true);
-            }
-        }
-        
-        else if (DataManager.Instance.nowRank == 4)
-        {
-            if (DataManager.Instance.nowGold >= 3000)
-            {
-            DataManager.Instance.nowGold = DataManager.Instance.nowGold -3000;
-            TopBar();
-            Save();
-            SceneManager.LoadScene("YJMiniGameScene");
-            }
-            else if (DataManager.Instance.nowGold < 3000)
-            {
-                GoldLack.SetActive(true);
-            }
-        }
-        
-    }
-    public void Click_OffGoldLack()
-    {
-        GoldLack.SetActive(false);
-    }
     
-    public void Click_Commision()
-    {
-        Save();
-        SceneManager.LoadScene("RequestScene");
-    }
-    
-    public void Click_Collection()
-    {
-        Save();
-        SceneManager.LoadScene("DG_Scene");
-    }
-
-    public void Click_RankUP()
-    {
-        Save();
-        SceneManager.LoadScene("RankScene");
-    }
-    public void Click_Home()
-    {
-        Save();
-        SceneManager.LoadScene("HomeScene");
-    }
+  
+  
 
 }
 

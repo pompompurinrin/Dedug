@@ -13,7 +13,7 @@ public class HomeManager : MonoBehaviour
     public GameObject GoodsBuy;
     public Sprite[] homeImgs;
     public Image homeImg;
-
+    public Canvas PopupCanvas;
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
   
@@ -46,8 +46,9 @@ public class HomeManager : MonoBehaviour
     {
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
+        PopupCanvas = GameObject.Find("PopupCanvas").GetComponent<Canvas>();
         GameObject GoodsBuy = GameObject.Find("GoodsBuy");
-   
+
 
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);
 
@@ -114,10 +115,7 @@ public class HomeManager : MonoBehaviour
     {
         SceneManager.LoadScene("RankScene");
     }
-    public void ClickGoodsBtn()
-    {
-        SceneManager.LoadScene("GoodsSBuyScene");
-    }
+
 
     public void ClickCollectionBtn()
     {
@@ -142,12 +140,14 @@ public class HomeManager : MonoBehaviour
         ChangeCharPopup.SetActive(false);
     }
 
-    public void OnButtonClick_GoodsBuy()
+    public void OnButtonClick_OnGoodsBuy()
     {
-        GoodsBuy.SetActive(true);
+        // ±ÂÁî ±¸¸Å ÆË¾÷ È°¼ºÈ­
+        PopupCanvas.gameObject.SetActive(true);
+        GoodsBuy.gameObject.SetActive(true);
     }
 
-    
+
 
     public void OnClickChange(int ImgNumber)
     {
