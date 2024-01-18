@@ -1164,5 +1164,26 @@ public class GoodsNumManager : MonoBehaviour
         PlayerPrefs.SetInt("Goods1042", DataManager.Instance.goods1042);
         PlayerPrefs.SetInt("Goods1051", DataManager.Instance.goods1051);
         PlayerPrefs.SetInt("Goods1052", DataManager.Instance.goods1052);
+        PlayerPrefs.SetInt("Goods2011", DataManager.Instance.goods2011);
+        PlayerPrefs.SetInt("Goods2012", DataManager.Instance.goods2012);
+        PlayerPrefs.SetInt("Goods2021", DataManager.Instance.goods2021);
+        PlayerPrefs.SetInt("Goods2022", DataManager.Instance.goods2022);
+        PlayerPrefs.SetInt("Goods2031", DataManager.Instance.goods2031);
+        PlayerPrefs.SetInt("Goods2032", DataManager.Instance.goods2032);
+        PlayerPrefs.SetInt("Goods2041", DataManager.Instance.goods2041);
+        PlayerPrefs.SetInt("Goods2042", DataManager.Instance.goods2042);
+        PlayerPrefs.SetInt("Goods2051", DataManager.Instance.goods2051);
+        PlayerPrefs.SetInt("Goods2052", DataManager.Instance.goods2052);
+        PlayerPrefs.SetInt("Goods3011", DataManager.Instance.goods3011);
+        PlayerPrefs.SetInt("Goods3012", DataManager.Instance.goods3012);
+        PlayerPrefs.SetInt("Goods3021", DataManager.Instance.goods3021);
+        PlayerPrefs.SetInt("Goods3022", DataManager.Instance.goods3022);
+        PlayerPrefs.SetInt("Goods3031", DataManager.Instance.goods3031);
+        PlayerPrefs.SetInt("Goods3032", DataManager.Instance.goods3032);
+        PlayerPrefs.SetInt("Goods3041", DataManager.Instance.goods3041);
+        PlayerPrefs.SetInt("Goods3042", DataManager.Instance.goods3042);
+        PlayerPrefs.SetInt("Goods3051", DataManager.Instance.goods3051);
+        PlayerPrefs.SetInt("Goods3052", DataManager.Instance.goods3052);
+
     }
 }

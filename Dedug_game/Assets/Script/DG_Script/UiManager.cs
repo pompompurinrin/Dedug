@@ -253,6 +253,7 @@ public class UiManager : MonoBehaviour
         {
             PopUpBG_Goldplus.gameObject.SetActive(false);
         }
+        Save();
         Debug.Log(DataManager.Instance.story1_1);
         Debug.Log(DataManager.Instance.storyID);
         // CSV 파일에서 데이터 읽기

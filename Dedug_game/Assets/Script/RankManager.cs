@@ -34,11 +34,11 @@ public class RankManager : MonoBehaviour
 
     // 각종 효과 및 결과를 나타내는 텍스트들
     public Text PlusGuestState;
-    public Text PlusGoldState;
+    
     public Text PlusFeverTime;
     public Text PlusGoods;
     public Text ResultPlusGuestState;
-    public Text ResultPlusGoldState;
+    
     public Text ResultPlusFeverTime;
     public Text ResultPlusGoods;
     public Text UnlockGoods;
@@ -125,13 +125,12 @@ public class RankManager : MonoBehaviour
         {
             // 현재 랭크와 다음 랭크의 정보 설정
             NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
-            NextRankName.text = " 당신은 이미 정상입니다 ";
+            NextRankName.text = "오닥구";
 
             // 각종 효과 및 비용 텍스트 설정
             PlusGuestState.text = "축하합니다!";
-            PlusGoldState.text = "당신은 오타쿠의";
-            PlusFeverTime.text = "경지에 올랐습니다!";
-            PlusGoods.text = "이미 최고 등급에 도달했습니다!";
+            PlusFeverTime.text = "당신은 오타쿠의";
+            PlusGoods.text = "경지에 올랐습니다!";
 
             NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
             NextimageFileName = data_Dialog[nextRank]["MainImage"].ToString();
@@ -146,9 +145,8 @@ public class RankManager : MonoBehaviour
             NextRankName.text = data_Dialog[nextRank]["RankName"].ToString();
 
             // 각종 효과 및 비용 텍스트 설정
-            PlusGuestState.text = $"커미션 등장 손님 {GetIntValue("GuestPlus")}종 상승";
-            PlusGoldState.text = $"커미션 1회당 {GetIntValue("GoldPlus")}골드 상승";
-            PlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("FeverTimePlus")}초 상승";
+            PlusGuestState.text = "커미션 등장 손님 " + data_Dialog[nextRank]["GuestPlus"].ToString() + "종 상승";
+            PlusFeverTime.text = $"피버타임 제한시간 " + data_Dialog[nextRank]["GuestPlus"].ToString()+ "초 상승";
             PlusGoods.text = $"좋은 굿즈 획득 확률 상승";
 
             NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
@@ -309,7 +307,7 @@ public class RankManager : MonoBehaviour
 
 
         ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("GuestPlus")}종 상승";
-        ResultPlusGoldState.text = $"커미션 1회당 {GetIntValue("GoldPlus")}골드 상승";
+       
         ResultPlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("FeverTimePlus")}초 상승";
         ResultPlusGoods.text = $"좋은 굿즈 획득 확률 상승";
         PopUPText.text = "정말 " + data_Dialog[nextRank]["RankName"].ToString() + "(으)로 승급하시겠습니까?";
@@ -370,6 +368,7 @@ public class RankManager : MonoBehaviour
             DOVirtual.DelayedCall(2f, () =>
             {
                 ClickTouchBtn.gameObject.SetActive(false);
+                effectInstance.gameObject.SetActive(false);
             });
         });
     }
