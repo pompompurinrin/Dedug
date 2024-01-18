@@ -15,6 +15,7 @@ public class HomePopupManager : MonoBehaviour
     public GameObject GoodsBuy;
     public GameObject GamePopups;
     public Canvas GanbareBada;
+    public Canvas CardGame;
     public GameObject GoldLack;
     public Canvas PopupCanvas;
 
@@ -26,10 +27,7 @@ public class HomePopupManager : MonoBehaviour
     private char[] TRIM_CHARS = { ' ', '\"' };
 
 
-    public void ClickCardGame()
-    {
-        SceneManager.LoadScene("HNMiniGameScene");
-    }
+   
 
     public void Save()
     {
@@ -185,6 +183,87 @@ public class HomePopupManager : MonoBehaviour
 
     }
 
+    public void Click_CardGameStart()
+    {
+
+        if (DataManager.Instance.nowRank == 0)
+        {
+            if (DataManager.Instance.nowGold >= 100)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
+
+                Save();
+                SceneManager.LoadScene("HNMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 100)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            if (DataManager.Instance.nowGold >= 500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
+
+                Save();
+                SceneManager.LoadScene("HNMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 500)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            if (DataManager.Instance.nowGold >= 1000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
+
+                Save();
+                SceneManager.LoadScene("HNMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1000)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            if (DataManager.Instance.nowGold >= 1500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
+
+                Save();
+                SceneManager.LoadScene("HNMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1500)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            if (DataManager.Instance.nowGold >= 3000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
+
+                Save();
+                SceneManager.LoadScene("HNMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 3000)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+    }
+
     public void Click_OffGoodsBuy()
     {
         GoodsBuy.SetActive(false);
@@ -193,12 +272,14 @@ public class HomePopupManager : MonoBehaviour
     {
         GoldLack.SetActive(false);
     }
-    public void OnButtonClick_OffGanbare()
+    public void OnButtonClick_OffGamePopup()
     {
-        // 간바레 바다짱 팝업 비활성화
+        // 게임 팝업 비활성화
         GamePopups.gameObject.SetActive(false);
         
     }
+
+   
     public void Click_Commision()
     {
         Save();
@@ -224,8 +305,13 @@ public class HomePopupManager : MonoBehaviour
         GanbareBada.gameObject.SetActive(true);
         
     }
+    public void OnButtonClick_OnCardGame()
+    {
+        // 카드 게임 팝업 활성화
+        GamePopups.gameObject.SetActive(true);
+        CardGame.gameObject.SetActive(true);
+    }
 
-  
 
     public void OnButtonClick_OffGoodsBuy()
     {
@@ -234,4 +320,5 @@ public class HomePopupManager : MonoBehaviour
         PopupCanvas.gameObject.SetActive(false);
         GoodsBuy.SetActive(false);
     }
+
 }
