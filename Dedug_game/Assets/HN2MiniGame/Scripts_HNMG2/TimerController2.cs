@@ -7,16 +7,16 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class TimerController: MonoBehaviour
+public class TimerController2: MonoBehaviour
 {
     public Slider timerSlider; // UI 슬라이더 연결
     public float timer = 60f; // 제한 시간 30초 설정
     public Text timeText; // 시간 출력
-    public float readyCounter = 10f; //대기 시간 3초 설정
+    public float readyCounter = 3f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
 
 
-        [SerializeField] private GameControllerScript gameController2;
+    [SerializeField] private MiniGame3Controller gameController2;
     
 
 
@@ -66,7 +66,7 @@ public class TimerController: MonoBehaviour
             return;
 
         readyCount.gameObject.SetActive(false);
-        gameController2.Scoretxt.gameObject.SetActive(true);
+        gameController2.getScoretxt.gameObject.SetActive(true);
 
 
         timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
@@ -99,7 +99,7 @@ public class TimerController: MonoBehaviour
         gameController2.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         gameController2.Restart = GameObject.Find("Restart").GetComponent<Button>();
         gameController2.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-        gameController2.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
+        gameController2.getScoretxt = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
     }
 
 
