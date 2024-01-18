@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HNMiniGameScene.unity
     guid: c3114421bb911114f8bdb708552c1b6b
+  - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: 158027eae7360c443945fec0fff4eed1
   m_configObjects: {}

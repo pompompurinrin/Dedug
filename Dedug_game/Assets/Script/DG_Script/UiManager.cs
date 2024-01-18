@@ -172,6 +172,19 @@ public class UiManager : MonoBehaviour
 
         DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
 
+        DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
+        DataManager.Instance.story1_1 = PlayerPrefs.GetInt("Story1_1");
+        DataManager.Instance.story1_2 = PlayerPrefs.GetInt("Story1_2");
+        DataManager.Instance.story1_3 = PlayerPrefs.GetInt("Story1_3");
+        DataManager.Instance.story2_1 = PlayerPrefs.GetInt("Story2_1");
+        DataManager.Instance.story2_2 = PlayerPrefs.GetInt("Story2_2");
+        DataManager.Instance.story2_3 = PlayerPrefs.GetInt("Story2_3");
+        DataManager.Instance.story3_1 = PlayerPrefs.GetInt("Story3_1");
+        DataManager.Instance.story3_2 = PlayerPrefs.GetInt("Story3_2");
+        DataManager.Instance.story3_3 = PlayerPrefs.GetInt("Story3_3");
+        DataManager.Instance.story4_1 = PlayerPrefs.GetInt("Story4_1");
+        DataManager.Instance.story4_2 = PlayerPrefs.GetInt("Story4_2");
+        DataManager.Instance.story4_3 = PlayerPrefs.GetInt("Story4_3");
 
     }
 
@@ -179,7 +192,6 @@ public class UiManager : MonoBehaviour
     {
         BG_MainStory.gameObject.SetActive(false);
         PopUpBG_MainStory.gameObject.SetActive(false);
-        PopUpBG_Goldplus.gameObject.SetActive(false);
         Test.gameObject.SetActive(false);
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha3.gameObject.SetActive(false);
@@ -190,7 +202,66 @@ public class UiManager : MonoBehaviour
         BG_Cha2_Story.gameObject.SetActive(false);
         BG_SpecialGoods.gameObject.SetActive(false);
 
-
+        if (DataManager.Instance.storyID == 11 && DataManager.Instance.story1_1 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+        }
+        else if(DataManager.Instance.storyID == 12 && DataManager.Instance.story1_2 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else if (DataManager.Instance.storyID == 13 && DataManager.Instance.story1_3 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+       
+        }
+        else if (DataManager.Instance.storyID == 21 && DataManager.Instance.story2_1 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+            
+        }
+        else if (DataManager.Instance.storyID == 22 && DataManager.Instance.story2_2 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else if (DataManager.Instance.storyID == 23 && DataManager.Instance.story2_3 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else if (DataManager.Instance.storyID == 31 && DataManager.Instance.story3_1 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+                    }
+        else if (DataManager.Instance.storyID == 32 && DataManager.Instance.story3_2 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else if (DataManager.Instance.storyID == 41 && DataManager.Instance.story4_1 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else if (DataManager.Instance.storyID == 42 && DataManager.Instance.story4_2 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else if (DataManager.Instance.storyID == 43 && DataManager.Instance.story4_3 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            
+        }
+        else
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(false);
+        }
+        Debug.Log(DataManager.Instance.story1_1);
+        Debug.Log(DataManager.Instance.storyID);
         // CSV 파일에서 데이터 읽기
         data_Dialog = CSVReader.Read(GoodsFileName);
     }
@@ -257,12 +328,15 @@ public class UiManager : MonoBehaviour
     //BG_MainStory에서 누를 수 있는 버튼들, 스토리 버튼을 클릭하면 싱글톤에 각 번호를 부여해서 값을 부여해야 함
     public void MainStory_1_BtnClick()   //최초 클릭시, 그 이후 클릭시 이미지 변경 하는 방법, 대신 no버튼, 스토리체크 버튼에 반영해줘야 함
     {
-        if (isFirstMainStory1BtnClick)
+        DataManager.Instance.storyID = 41;
+        Save();
+        if (DataManager.Instance.story4_1 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstMainStory1BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story4_1 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -270,12 +344,15 @@ public class UiManager : MonoBehaviour
 
     public void MainStory_2_BtnClick()
     {
-        if (isFirstMainStory2BtnClick)
+        DataManager.Instance.storyID = 42;
+        Save();
+        if (DataManager.Instance.story4_2 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstMainStory2BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story4_2 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -283,15 +360,15 @@ public class UiManager : MonoBehaviour
 
     public void MainStory_3_BtnClick()
     {
-        if (isFirstMainStory3BtnClick)
+        DataManager.Instance.storyID = 43;
+        Save();
+        if (DataManager.Instance.story4_3 == 0)
         {
-            DataManager.Instance.nowGold += 200;
-            
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstMainStory3BtnClick = false;
 
         }
-        else
+        else if (DataManager.Instance.story4_3 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -302,9 +379,58 @@ public class UiManager : MonoBehaviour
     {
         DataManager.Instance.nowGold += 200;
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        if(DataManager.Instance.storyID == 11)
+        {
+            DataManager.Instance.story1_1 = 1;
+        }
+        else if (DataManager.Instance.storyID == 12)
+        {
+            DataManager.Instance.story1_2 = 1;
+        }
+        else if (DataManager.Instance.storyID == 13)
+        {
+            DataManager.Instance.story1_3 = 1;
+        }
+        else if (DataManager.Instance.storyID == 21)
+        {
+            DataManager.Instance.story2_1 = 1;
+        }
+        else if (DataManager.Instance.storyID == 22)
+        {
+            DataManager.Instance.story2_2 = 1;
+        }
+        else if (DataManager.Instance.storyID == 23)
+        {
+            DataManager.Instance.story2_3 = 1;
+        }
+        else if (DataManager.Instance.storyID == 31)
+        {
+            DataManager.Instance.story3_1 = 1;
+        }
+        else if (DataManager.Instance.storyID == 32)
+        {
+            DataManager.Instance.story3_2 = 1;
+        }
+        else if (DataManager.Instance.storyID == 33)
+        {
+            DataManager.Instance.story3_3 = 1;
+        }
+        else if (DataManager.Instance.storyID == 41)
+        {
+            DataManager.Instance.story4_1 = 1;
+        }
+        else if (DataManager.Instance.storyID == 42)
+        {
+            DataManager.Instance.story4_2 = 1;
+        }
+        else if (DataManager.Instance.storyID == 43)
+        {
+            DataManager.Instance.story4_3 = 1;
+        }
+        Save();
         PopUpBG_Goldplus.gameObject.SetActive(false);
-       // SceneManager.LoadScene("StoryScene");
-        Test.gameObject.SetActive(true);
+        SceneManager.LoadScene("StoryScene");
+        
     }
 
     
@@ -320,16 +446,11 @@ public class UiManager : MonoBehaviour
     {
         
         PopUpBG_Goldplus.gameObject.SetActive(false);
-        // SceneManager.LoadScene("StoryScene");
-        Test.gameObject.SetActive(true);
+        SceneManager.LoadScene("StoryScene");
+        
     }
 
-    //이거는 스토리 자리임. 테스트 용으로 만든 이미지+ 버튼 
-    public void Test_BtnClick()
-    {
-        Test.gameObject.SetActive(false);
-        PopUpBG_Goldplus.gameObject.SetActive(true);
-    }
+ 
 
     //이미 본 스토리 또 볼래? 팝업에서 뜨는 버튼들. 이때 no버튼은 처음 본 스토리 팝업과 동일하다
     public void StoryCheck_BtnClick()
@@ -346,12 +467,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_1_Story1_BtnClick()
     {
-        if (isFirstCha1_Story1BtnClick)
+        DataManager.Instance.storyID = 11;
+        Save();
+        if (DataManager.Instance.story1_1 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha1_Story1BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story1_1 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -360,12 +484,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_1_Story2_BtnClick()
     {
-        if (isFirstCha1_Story2BtnClick)
+        DataManager.Instance.storyID = 12;
+        Save();
+        if (DataManager.Instance.story1_2 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha1_Story2BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story1_2 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -373,12 +500,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_1_Story3_BtnClick()
     {
-        if (isFirstCha1_Story3BtnClick)
+        DataManager.Instance.storyID = 13;
+        Save();
+        if (DataManager.Instance.story1_3 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha1_Story3BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story1_3 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -417,12 +547,15 @@ public class UiManager : MonoBehaviour
     //캐릭터 2 스토리 화면에서 누를 수 있는 버튼
     public void OnCha_2_Story1_BtnClick()
     {
-        if (isFirstCha2_Story1BtnClick)
+        DataManager.Instance.storyID = 21;
+        Save();
+        if (DataManager.Instance.story2_1 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha2_Story1BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story2_1 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -431,12 +564,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_2_Story2_BtnClick()
     {
-        if (isFirstCha2_Story2BtnClick)
+        DataManager.Instance.storyID = 22;
+        Save();
+        if (DataManager.Instance.story2_2 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha2_Story2BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story2_2 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -444,12 +580,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_2_Story3_BtnClick()
     {
-        if (isFirstCha2_Story3BtnClick)
+        DataManager.Instance.storyID = 23;
+        Save();
+        if (DataManager.Instance.story2_3 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha2_Story3BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story2_3 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -468,12 +607,15 @@ public class UiManager : MonoBehaviour
     //캐릭터 3 스토리 화면에서 누를 수 있는 버튼
     public void OnCha_3_Story1_BtnClick()
     {
-        if (isFirstCha3_Story1BtnClick)
+        DataManager.Instance.storyID = 31;
+        Save();
+        if (DataManager.Instance.story3_1 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha3_Story1BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story3_1 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -482,12 +624,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_3_Story2_BtnClick()
     {
-        if (isFirstCha3_Story2BtnClick)
+        DataManager.Instance.storyID = 32;
+        Save();
+        if (DataManager.Instance.story3_2 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha3_Story2BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story3_2 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -495,12 +640,15 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_3_Story3_BtnClick()
     {
-        if (isFirstCha3_Story3BtnClick)
+        DataManager.Instance.storyID = 33;
+        Save();
+        if (DataManager.Instance.story3_3 == 0)
         {
+
             PopUpBG_MainStory.gameObject.SetActive(true);
-            isFirstCha3_Story3BtnClick = false;
+
         }
-        else
+        else if (DataManager.Instance.story3_3 == 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -539,18 +687,38 @@ public class UiManager : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetInt("Goods1011", DataManager.Instance.goods1011);
-        PlayerPrefs.SetInt("Goods1012", DataManager.Instance.goods1012);
-        PlayerPrefs.SetInt("Goods1021", DataManager.Instance.goods1021);
-        PlayerPrefs.SetInt("Goods1022", DataManager.Instance.goods1022);
-        PlayerPrefs.SetInt("Goods1031", DataManager.Instance.goods1031);
-        PlayerPrefs.SetInt("Goods1032", DataManager.Instance.goods1032);
-        PlayerPrefs.SetInt("Goods1041", DataManager.Instance.goods1041);
-        PlayerPrefs.SetInt("Goods1042", DataManager.Instance.goods1042);
-        PlayerPrefs.SetInt("Goods1051", DataManager.Instance.goods1051);
-        PlayerPrefs.SetInt("Goods1052", DataManager.Instance.goods1052);
+        PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
+        PlayerPrefs.SetInt("Story1_1", DataManager.Instance.story1_1);
+        PlayerPrefs.SetInt("Story1_2", DataManager.Instance.story1_2);
+        PlayerPrefs.SetInt("Story1_3", DataManager.Instance.story1_2);
+        PlayerPrefs.SetInt("Story2_1", DataManager.Instance.story2_1);
+        PlayerPrefs.SetInt("Story2_2", DataManager.Instance.story2_2);
+        PlayerPrefs.SetInt("Story2_3", DataManager.Instance.story2_2);
+        PlayerPrefs.SetInt("Story3_1", DataManager.Instance.story3_1);
+        PlayerPrefs.SetInt("Story3_2", DataManager.Instance.story3_2);
+        PlayerPrefs.SetInt("Story3_3", DataManager.Instance.story3_3);
+        PlayerPrefs.SetInt("Story4_1", DataManager.Instance.story4_1);
+        PlayerPrefs.SetInt("Story4_2", DataManager.Instance.story4_2);
+        PlayerPrefs.SetInt("Story4_3", DataManager.Instance.story4_3);
     }    
    
+    public void Clear()
+    {
+        DataManager.Instance.storyID = 0;
+        DataManager.Instance.story1_1 = 0;
+        DataManager.Instance.story1_2 = 0;
+        DataManager.Instance.story1_3 = 0;
+        DataManager.Instance.story2_1 = 0;
+        DataManager.Instance.story2_2 = 0;
+        DataManager.Instance.story2_3 = 0;
+        DataManager.Instance.story3_1 = 0;
+        DataManager.Instance.story3_2 = 0;
+        DataManager.Instance.story3_3 = 0;
+        DataManager.Instance.story4_1 = 0;
+        DataManager.Instance.story4_2 = 0;
+        DataManager.Instance.story4_3 = 0;
+        Save();
+    }
 }
 
 

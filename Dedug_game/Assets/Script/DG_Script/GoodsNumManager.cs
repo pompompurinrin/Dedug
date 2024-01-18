@@ -350,17 +350,20 @@ public class GoodsNumManager : MonoBehaviour
 
         if (SuaGoodsGauge == 10)
         {
+            SuaStoryGauge = 3;
             SuaStorySlider.value = 3;
             UnlockChr1_2.gameObject.SetActive(false);
             UnlockChr1_3.gameObject.SetActive(false);
         }
         else if (SuaGoodsGauge >= 5)
         {
+            SuaStoryGauge = 2;
             SuaStorySlider.value = 2;
             UnlockChr1_2.gameObject.SetActive(false);
         }
         else
         {
+            SuaStoryGauge = 1;
             SuaStorySlider.value = 1;
         }
 
@@ -528,17 +531,20 @@ public class GoodsNumManager : MonoBehaviour
 
         if (BadaGoodsGauge == 10)
         {
+            BadaStoryGauge = 3;
             BadaStorySlider.value = 3;
             UnlockChr2_2.gameObject.SetActive(false);
             UnlockChr2_3.gameObject.SetActive(false);
         }
         else if (BadaGoodsGauge >= 5)
         {
+            BadaStoryGauge = 2;
             BadaStorySlider.value = 2;
             UnlockChr2_2.gameObject.SetActive(false);
         }
         else
         {
+            BadaStoryGauge = 1;
             BadaStorySlider.value = 1;
         }
         BadaGoodsSliderText.text = BadaGoodsGauge.ToString() + "/10";
@@ -704,17 +710,20 @@ public class GoodsNumManager : MonoBehaviour
 
         if(ChorongGoodsGauge == 10)
         {
+            ChorongStoryGauge = 3;
             ChorongStorySlider.value = 3;
             UnlockChr3_2.gameObject.SetActive(false);
             UnlockChr3_3.gameObject.SetActive(false);
         }
         else if(ChorongGoodsGauge >= 5 )
         {
+            ChorongStoryGauge = 2;
             ChorongStorySlider.value = 2;
             UnlockChr3_2.gameObject.SetActive(false);
         }
         else
         {
+            ChorongStoryGauge = 1;
             ChorongStorySlider.value = 1;
         }
         ChorongGoodsSliderText.text = ChorongGoodsGauge.ToString() + "/10";
@@ -895,20 +904,23 @@ public class GoodsNumManager : MonoBehaviour
 
         if (MainStoryGauge == 30)
         {
+            MainStoryGauge = 3;
             MainStorySlider.value = 3;
             UnlockMain_2.gameObject.SetActive(false);
             UnlockMain_3.gameObject.SetActive(false);
         }
         else if (MainStoryGauge >= 15)
         {
+            MainStoryGauge = 2;
             MainStorySlider.value = 2;
             UnlockMain_2.gameObject.SetActive(false);
         }
         else
         {
+            MainStoryGauge = 1;
             MainStorySlider.value = 1;
         }
-
+        MainStorySliderText.text = MainStoryGauge.ToString() + "/3";
         TextSet();
 
     }
