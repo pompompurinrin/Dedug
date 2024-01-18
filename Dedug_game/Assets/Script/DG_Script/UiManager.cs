@@ -103,19 +103,6 @@ public class UiManager : MonoBehaviour
     public Button SpecialGoods_Btn;
 
 
-    //팝업창 다르게 하기 위해서, 처음 각 버튼을 눌렀는지 확인하는 작업을 위한 준비
-    private bool isFirstMainStory1BtnClick = true;
-    private bool isFirstMainStory2BtnClick = true;
-    private bool isFirstMainStory3BtnClick = true;
-    private bool isFirstCha1_Story1BtnClick = true;
-    private bool isFirstCha1_Story2BtnClick = true;
-    private bool isFirstCha1_Story3BtnClick = true;
-    private bool isFirstCha2_Story1BtnClick = true;
-    private bool isFirstCha2_Story2BtnClick = true;
-    private bool isFirstCha2_Story3BtnClick = true;
-    private bool isFirstCha3_Story1BtnClick = true;
-    private bool isFirstCha3_Story2BtnClick = true;
-    private bool isFirstCha3_Story3BtnClick = true;
 
     // CSV 파일을 읽어들일 데이터 리스트
    
@@ -205,56 +192,62 @@ public class UiManager : MonoBehaviour
         if (DataManager.Instance.storyID == 11 && DataManager.Instance.story1_1 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
+            DataManager.Instance.story1_1++;
         }
         else if(DataManager.Instance.storyID == 12 && DataManager.Instance.story1_2 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story1_2++;
         }
         else if (DataManager.Instance.storyID == 13 && DataManager.Instance.story1_3 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-       
+            DataManager.Instance.story1_3++;
         }
         else if (DataManager.Instance.storyID == 21 && DataManager.Instance.story2_1 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
-            
+            DataManager.Instance.story2_1++;
         }
         else if (DataManager.Instance.storyID == 22 && DataManager.Instance.story2_2 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story2_2++;
         }
         else if (DataManager.Instance.storyID == 23 && DataManager.Instance.story2_3 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story2_3++;
         }
         else if (DataManager.Instance.storyID == 31 && DataManager.Instance.story3_1 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-                    }
+            DataManager.Instance.story3_1++;
+        }
         else if (DataManager.Instance.storyID == 32 && DataManager.Instance.story3_2 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story3_2++;
+        }
+        else if (DataManager.Instance.storyID == 33 && DataManager.Instance.story3_3 == 1)
+        {
+            PopUpBG_Goldplus.gameObject.SetActive(true);
+            DataManager.Instance.story3_3++;
         }
         else if (DataManager.Instance.storyID == 41 && DataManager.Instance.story4_1 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story4_1++;
         }
         else if (DataManager.Instance.storyID == 42 && DataManager.Instance.story4_2 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story4_2++;
         }
         else if (DataManager.Instance.storyID == 43 && DataManager.Instance.story4_3 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
-            
+            DataManager.Instance.story4_3++;
         }
         else
         {
@@ -336,7 +329,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story4_1 == 1)
+        else if (DataManager.Instance.story4_1 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -352,7 +345,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story4_2 == 1)
+        else if (DataManager.Instance.story4_2 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -368,7 +361,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story4_3 == 1)
+        else if (DataManager.Instance.story4_3 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -475,7 +468,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story1_1 == 1)
+        else if (DataManager.Instance.story1_1 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -492,7 +485,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story1_2 == 1)
+        else if (DataManager.Instance.story1_2 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -508,7 +501,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story1_3 == 1)
+        else if (DataManager.Instance.story1_3 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -555,7 +548,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story2_1 == 1)
+        else if (DataManager.Instance.story2_1 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -572,7 +565,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story2_2 == 1)
+        else if (DataManager.Instance.story2_2 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -588,7 +581,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story2_3 == 1)
+        else if (DataManager.Instance.story2_3 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -615,7 +608,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story3_1 == 1)
+        else if (DataManager.Instance.story3_1 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -632,7 +625,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story3_2 == 1)
+        else if (DataManager.Instance.story3_2 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
@@ -648,7 +641,7 @@ public class UiManager : MonoBehaviour
             PopUpBG_MainStory.gameObject.SetActive(true);
 
         }
-        else if (DataManager.Instance.story3_3 == 1)
+        else if (DataManager.Instance.story3_3 >= 1)
         {
             PopUpBG_MainStoryCheck.gameObject.SetActive(true);
         }
