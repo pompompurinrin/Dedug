@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class YJ2MiniGameManager : MonoBehaviour
 {
@@ -10,15 +11,15 @@ public class YJ2MiniGameManager : MonoBehaviour
     public Image suaChar;
     public Image gameBg;
 
-/*    // 사건 이미지
-    public Image eventMon;
-    public Image eventHeal;
-    public Image eventFan;
+    // 사건 이미지
+    public GameObject eventMon;
+    public GameObject eventHeal;
+    public GameObject eventFan;
 
     // 사건 마법 이미지
-    public Image eventIconMon;
-    public Image eventIconHeal;
-    public Image eventIconFan;*/
+    public GameObject eventIconMon;
+    public GameObject eventIconHeal;
+    public GameObject eventIconFan;
 
     public GameObject[] eventIcons; // 이벤트 아이콘들을 배열로 관리
     public GameObject[] eventImage; // 이벤트 오브젝트들을 배열로 관리
@@ -63,12 +64,18 @@ public class YJ2MiniGameManager : MonoBehaviour
     bool slotHeal;
     bool slotFan;
     bool slotStart = false;
+    bool eventStart = false;
 
     // 게임 실행 조건
     bool isGameRunning;
 
     // 이벤트 타이머 조건
     bool isEventActive = false;
+
+    // 득실점 판정 연출
+    public GameObject monScore;
+    public GameObject healScore;
+    public GameObject fanScore;
 
 
 
@@ -131,8 +138,14 @@ public class YJ2MiniGameManager : MonoBehaviour
 
     public void StartRealTimeGame()
     {
+
+
+
         // 실제 게임 시작
         isGameRunning = true;
+
+        // 이벤트 타임 시작
+        eventStart = true;
 
         // 초기 제한시간 설정
         timerText.text = timer.ToString();
@@ -152,21 +165,33 @@ public class YJ2MiniGameManager : MonoBehaviour
             // 타이머 감소
             timer--;
 
-            // 이벤트 타이머 감소
-            eventTimer--;
+            if (eventStart == true)
+            {
+                // 이벤트 타이머 슬라이더 업데이트
+                UpdateEventSlider();
+
+                // 이벤트 타이머 감소
+                eventTimer--;
+            }
 
             // UI 업데이트
             UpdateUI();
-
-            // 이벤트 타이머 슬라이더 업데이트
-            UpdateEventSlider();
 
             // 타이머가 0이면 게임 종료
             if (timer == 0)
             {
                 EndGame();
             }
+
+            // 수아 흔들리는 애니메이션
+            ShakeSuaCharacter();
         }
+    }
+
+    private void ShakeSuaCharacter()
+    {
+        // 수아 캐릭터를 x축을 기준으로 좌우로 흔들리는 애니메이션
+        suaChar.rectTransform.DOPunchPosition(new Vector3(20f, 0f, 0f), 0.5f, 5, 1f);
     }
 
     public void UpdateEventSlider()
@@ -197,6 +222,10 @@ public class YJ2MiniGameManager : MonoBehaviour
 
         // 랜덤으로 이벤트 아이콘과 이벤트 활성화
         int randomIndex = UnityEngine.Random.Range(0, eventIcons.Length);
+
+        eventIcons = new GameObject[] { eventIconMon, eventIconHeal, eventIconFan };
+        eventImage = new GameObject[] { eventMon, eventHeal, eventFan };
+
         eventIcons[randomIndex].SetActive(true);
         eventImage[randomIndex].SetActive(true);
 
@@ -286,6 +315,10 @@ public class YJ2MiniGameManager : MonoBehaviour
         slotIcon01.sprite = slotSprites[UnityEngine.Random.Range(0, slotSprites.Length)];
         slotIcon02.sprite = slotSprites[UnityEngine.Random.Range(0, slotSprites.Length)];
         slotIcon03.sprite = slotSprites[UnityEngine.Random.Range(0, slotSprites.Length)];
+
+        slotIcon01.gameObject.SetActive(true);
+        slotIcon02.gameObject.SetActive(true);
+        slotIcon03.gameObject.SetActive(true);
     }
 
     private void CompareIconsAndScore()
@@ -303,12 +336,87 @@ public class YJ2MiniGameManager : MonoBehaviour
                 score++;
                 UpdateUI();
 
+                // 일치하는 아이콘 종류 확인
+                Sprite eventSprite = eventImage[eventIconIndex].GetComponent<Image>().sprite;
+
+                Vector3 originalScale = new Vector3(1, 1, 1);
+                Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+                eventIcons[eventIconIndex].transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                {
+                    eventIcons[eventIconIndex].transform.DOScale(originalScale, 0.2f);
+                });
+
+                // 일치하는 슬롯 아이콘 연출
+                if (slotIcon01.sprite == eventSprite)
+                {
+                    slotIcon01.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                    {
+                        slotIcon01.transform.DOScale(originalScale, 0.2f);
+                    });
+                }
+
+                if (slotIcon02.sprite == eventSprite)
+                {
+                    slotIcon02.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                    {
+                        slotIcon02.transform.DOScale(originalScale, 0.2f);
+                    });
+                }
+
+                if(slotIcon03.sprite == eventSprite)
+                {
+                    slotIcon03.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                    {
+                        slotIcon03.transform.DOScale(originalScale, 0.2f);
+                    });
+                }
+
+                // 일치하는 아이콘에 따라 동작 수행
+                if (eventSprite.name == "fiver01")
+                {
+                    StartCoroutine(ActivateAndDeactivateScore(monScore));
+                }
+                else if (eventSprite.name == "coin02")
+                {
+                    StartCoroutine(ActivateAndDeactivateScore(healScore));
+                }
+                else if (eventSprite.name == "heart3")
+                {
+                    StartCoroutine(ActivateAndDeactivateScore(fanScore));
+                }
+
                 success.gameObject.SetActive(true);
                 Invoke("DeactivateSuccessImage", 0.5f);
 
-                EventChange();
+                eventStart = false;
+                Invoke("EventRestart", 1f);
+                Invoke("EventChange", 1f);
             }
         }
+
+        Invoke("Slotfalse", 1f);
+
+    }
+
+    public void Slotfalse()
+    {
+        slotIcon01.gameObject.SetActive(false);
+        slotIcon02.gameObject.SetActive(false);
+        slotIcon03.gameObject.SetActive(false);
+    }
+
+    public void EventRestart()
+    {
+        eventStart = true;
+    }
+
+    // 코루틴을 이용하여 일정 시간 동안 GameObject를 활성화 후 비활성화
+    private IEnumerator ActivateAndDeactivateScore(GameObject scoreObject)
+    {
+        scoreObject.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        scoreObject.SetActive(false);
     }
 
     private int GetActiveEventIconIndex()
