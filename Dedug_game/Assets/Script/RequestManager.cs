@@ -170,11 +170,11 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1) //일반
             {
-                goldValue = Random.Range(100, 104);
+                goldValue = Random.Range(10, 30);
             }
             else if (customerTypeGold == 2) //큰손
             {
-                goldValue = Random.Range(150, 189);
+                goldValue = Random.Range(15, 45);
             }
         }
 
@@ -182,11 +182,11 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1)
             {
-                goldValue = Random.Range(300, 622);
+                goldValue = Random.Range(50, 150);
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(700, 836);
+                goldValue = Random.Range(75, 225);
             }
         }
 
@@ -194,11 +194,11 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1)
             {
-                goldValue = Random.Range(450, 901);
+                goldValue = Random.Range(100, 300);
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(1000, 1251);
+                goldValue = Random.Range(150, 450);
             }
         }
 
@@ -206,11 +206,11 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1)
             {
-                goldValue = Random.Range(700, 893);
+                goldValue = Random.Range(200, 400);
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(1200, 1334);
+                goldValue = Random.Range(300, 600);
             }
         }
 
@@ -218,11 +218,11 @@ public class RequestManager : MonoBehaviour
         {
             if (customerTypeGold == 1)
             {
-                goldValue = Random.Range(1200,1501 );
+                goldValue = Random.Range(400,800);
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(2000, 2501);
+                goldValue = Random.Range(600, 1200);
             }
         }
 
@@ -341,11 +341,11 @@ public class RequestManager : MonoBehaviour
             GameObject clickEffect = Instantiate(customer2Prefab, mousePosition, Quaternion.identity, customer2ParentObject.transform);
             Destroy(clickEffect, 1f); // 1초 후에 이펙트 제거 (원하는 시간으로 조절 가능)
 
-            if ((NowRank == 0 && DataManager.Instance.feverNum == 3) ||
-            (NowRank == 1 && DataManager.Instance.feverNum == 3) ||
-            (NowRank == 2 && DataManager.Instance.feverNum == 4) ||
-            (NowRank == 3 && DataManager.Instance.feverNum == 5) ||
-            (NowRank == 4 && DataManager.Instance.feverNum == 5))
+            if ((NowRank == 0 && DataManager.Instance.feverNum == 10) ||
+            (NowRank == 1 && DataManager.Instance.feverNum == 15) ||
+            (NowRank == 2 && DataManager.Instance.feverNum == 20) ||
+            (NowRank == 3 && DataManager.Instance.feverNum == 23) ||
+            (NowRank == 4 && DataManager.Instance.feverNum == 25))
 
             {
                 
