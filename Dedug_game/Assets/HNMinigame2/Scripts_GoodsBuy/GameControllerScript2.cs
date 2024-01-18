@@ -621,6 +621,7 @@ public class GameControllerScript2 : MonoBehaviour
         // 리얼스톱Bg 활성화
         pauseBG.gameObject.SetActive(true);
         realStopBg.gameObject.SetActive(true);
+        SceneManager.LoadScene("HomeScene");
     }
 
     // 게임으로 돌아가기 버튼 함수

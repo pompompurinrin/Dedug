@@ -706,7 +706,7 @@ public class GameControllerScript : MonoBehaviour
     public void RestartClick()
     {
         Debug.Log("Restart");
-        SceneManager.LoadScene("HNMiniGameScene");
+        SceneManager.LoadScene("DG_Scene");
     }
     // 게임 홈으로 가는 함수
     public void HomeClick()
@@ -778,7 +778,7 @@ public class GameControllerScript : MonoBehaviour
         // 게임 일시정지 UI 비활성화
         pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
-        Main_BGM2.Play();
+        
 
         // 리얼스톱Bg 활성화
         pauseBG.gameObject.SetActive(true);
@@ -798,6 +798,7 @@ public class GameControllerScript : MonoBehaviour
     public void stopOkClick()
     {
         pauseBG.gameObject.SetActive(false);
+        SceneManager.LoadScene("HomeScene");
     }
 
     // 게임 재개 처리
