@@ -78,6 +78,7 @@ public class RankManager : MonoBehaviour
     }
     private void Start()
     {
+        Debug.Log("승급:" + DataManager.Instance.goods1011);
         // 초기화 및 필요한 게임 데이터 로드
         nextRank = DataManager.Instance.nowRank + 1;
         NowRankImage = GameObject.Find("NowRankImage").GetComponent<Image>();
@@ -406,8 +407,6 @@ public class RankManager : MonoBehaviour
         PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
        
-
-       
         PlayerPrefs.Save();
     }
 
@@ -431,7 +430,7 @@ public class RankManager : MonoBehaviour
     {
         DataManager.Instance.nowRank = 0;
         DataManager.Instance.nowGold = 0;
-        DataManager.Instance.goods1011 = 0;
+        
 
         nextRank = 1;
         Save();

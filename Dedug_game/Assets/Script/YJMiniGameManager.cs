@@ -1277,46 +1277,8 @@ public class YJMiniGameManager : MonoBehaviour
 
         PlayerPrefs.Save();
 
-        Debug.Log(DataManager.Instance.goods1011);
-        Debug.Log(DataManager.Instance.goods1012);
-        Debug.Log(DataManager.Instance.goods2011);
-        Debug.Log(DataManager.Instance.goods2012);
-        Debug.Log(DataManager.Instance.goods3011);
-        Debug.Log(DataManager.Instance.goods3012);
-        Debug.Log(DataManager.Instance.goods1021);
-        Debug.Log(DataManager.Instance.goods1022);
-        Debug.Log(DataManager.Instance.goods2021);
-        Debug.Log(DataManager.Instance.goods2022);
-        Debug.Log(DataManager.Instance.goods3021);
-        Debug.Log(DataManager.Instance.goods3022);
-        Debug.Log(DataManager.Instance.goods1031);
-        Debug.Log(DataManager.Instance.goods1032);
-        Debug.Log(DataManager.Instance.goods2031);
-        Debug.Log(DataManager.Instance.goods2032);
-        Debug.Log(DataManager.Instance.goods3031);
-        Debug.Log(DataManager.Instance.goods3032);
-        Debug.Log(DataManager.Instance.goods1041);
-        Debug.Log(DataManager.Instance.goods1042);
-        Debug.Log(DataManager.Instance.goods2041);
-        Debug.Log(DataManager.Instance.goods2042);
-        Debug.Log(DataManager.Instance.goods3041);
-        Debug.Log(DataManager.Instance.goods3042);
-        Debug.Log(DataManager.Instance.goods1051);
-        Debug.Log(DataManager.Instance.goods1052);
-        Debug.Log(DataManager.Instance.goods2051);
-        Debug.Log(DataManager.Instance.goods2052);
-        Debug.Log(DataManager.Instance.goods3051);
-        Debug.Log(DataManager.Instance.goods3052);
-        Debug.Log(DataManager.Instance.goods4051);
-        Debug.Log(DataManager.Instance.goods4052);
-        Debug.Log(DataManager.Instance.goods4053);
-        Debug.Log(DataManager.Instance.goods4054);
-        Debug.Log(DataManager.Instance.goods4055);
-        Debug.Log(DataManager.Instance.goods4056);
-        Debug.Log(DataManager.Instance.goods4057);
-        Debug.Log(DataManager.Instance.goods4058);
-        Debug.Log(DataManager.Instance.goods4059);
-        Debug.Log(DataManager.Instance.goods4060);
+        Debug.Log("미니게임 결과:" +  DataManager.Instance.goods1011);
+       
 
 
 

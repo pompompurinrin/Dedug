@@ -44,6 +44,7 @@ public class HomeManager : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log("Ȩ:" + DataManager.Instance.goods1011);
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
         PopupCanvas = GameObject.Find("PopupCanvas").GetComponent<Canvas>();

@@ -195,6 +195,7 @@ public class GoodsNumManager : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log("Ȩ:" + DataManager.Instance.goods1011);
         if (DataManager.Instance.nowRank == 4)
         {
             UnlockSpecial.gameObject.SetActive(false);

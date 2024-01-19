@@ -98,6 +98,7 @@ public class RequestManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("리퀘스트:" + DataManager.Instance.goods1011);
         // 다른 씬에서 데이터 로드
         DataManager.Instance.nowGold = NowGold;
         DataManager.Instance.nowRank = NowRank;

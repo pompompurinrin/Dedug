@@ -37,6 +37,58 @@ public class TopbarManager : MonoBehaviour
     private const string RankFileName = "RankTable";
     private char[] TRIM_CHARS = { ' ', '\"' };
     
+    public void Awake()
+    {
+        DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
+        DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
+        DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");
+        DataManager.Instance.goods1022 = PlayerPrefs.GetInt("Goods1022");
+        DataManager.Instance.goods1031 = PlayerPrefs.GetInt("Goods1031");
+        DataManager.Instance.goods1032 = PlayerPrefs.GetInt("Goods1032");
+        DataManager.Instance.goods1041 = PlayerPrefs.GetInt("Goods1041");
+        DataManager.Instance.goods1042 = PlayerPrefs.GetInt("Goods1042");
+        DataManager.Instance.goods1051 = PlayerPrefs.GetInt("Goods1051");
+        DataManager.Instance.goods1052 = PlayerPrefs.GetInt("Goods1052");
+
+        DataManager.Instance.goods2011 = PlayerPrefs.GetInt("Goods2011");
+        DataManager.Instance.goods2012 = PlayerPrefs.GetInt("Goods2012");
+        DataManager.Instance.goods2021 = PlayerPrefs.GetInt("Goods2021");
+        DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
+        DataManager.Instance.goods2031 = PlayerPrefs.GetInt("Goods2031");
+        DataManager.Instance.goods2032 = PlayerPrefs.GetInt("Goods2032");
+        DataManager.Instance.goods2041 = PlayerPrefs.GetInt("Goods2041");
+        DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
+        DataManager.Instance.goods2051 = PlayerPrefs.GetInt("Goods2051");
+        DataManager.Instance.goods2052 = PlayerPrefs.GetInt("Goods2052");
+
+        DataManager.Instance.goods3011 = PlayerPrefs.GetInt("Goods3011");
+        DataManager.Instance.goods3012 = PlayerPrefs.GetInt("Goods3012");
+        DataManager.Instance.goods3021 = PlayerPrefs.GetInt("Goods3021");
+        DataManager.Instance.goods3022 = PlayerPrefs.GetInt("Goods3022");
+        DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
+        DataManager.Instance.goods3032 = PlayerPrefs.GetInt("Goods3032");
+        DataManager.Instance.goods3041 = PlayerPrefs.GetInt("Goods3041");
+        DataManager.Instance.goods3042 = PlayerPrefs.GetInt("Goods3042");
+        DataManager.Instance.goods3051 = PlayerPrefs.GetInt("Goods3051");
+        DataManager.Instance.goods3052 = PlayerPrefs.GetInt("Goods3052");
+
+        DataManager.Instance.goods4051 = PlayerPrefs.GetInt("Goods4051");
+        DataManager.Instance.goods4052 = PlayerPrefs.GetInt("Goods4052");
+        DataManager.Instance.goods4053 = PlayerPrefs.GetInt("Goods4053");
+        DataManager.Instance.goods4054 = PlayerPrefs.GetInt("Goods4054");
+        DataManager.Instance.goods4055 = PlayerPrefs.GetInt("Goods4055");
+        DataManager.Instance.goods4056 = PlayerPrefs.GetInt("Goods4056");
+        DataManager.Instance.goods4057 = PlayerPrefs.GetInt("Goods4057");
+        DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
+        DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
+        DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
+
+        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
+        DataManager.Instance.feverNum = PlayerPrefs.GetInt("FeverNum");
+        DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
+        NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
+    }
     public void TopBar()
     {
         if (GoldAmountText != null)
@@ -60,15 +112,7 @@ public class TopbarManager : MonoBehaviour
 
   
 
-    private void Awake()
-    {
-        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
-        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
-        NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
-        
-
-    }
-
+   
     private void Update()
     {
         GoldAmountText.text = DataManager.Instance.nowGold.ToString();
