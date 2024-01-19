@@ -6211,7 +6211,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ???
+  m_Text: Clear
 --- !u!222 &982288094
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13277,9 +13277,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: InMenuUIGoods
+      - m_Target: {fileID: 1033419278}
+        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
+        m_MethodName: Clear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13289,9 +13289,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: OnButtonClick_OffMenuUI
+      - m_Target: {fileID: 1033419278}
+        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
+        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
