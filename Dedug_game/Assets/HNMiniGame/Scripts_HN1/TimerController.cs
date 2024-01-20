@@ -10,13 +10,16 @@ using UnityEngine.SocialPlatforms.Impl;
 public class TimerController: MonoBehaviour
 {
     public Slider timerSlider; // UI 슬라이더 연결
-    public float timer = 60f; // 제한 시간 30초 설정
+    public float timer = 30f; // 제한 시간 30초 설정
     public Text timeText; // 시간 출력
-    public float readyCounter = 10f; //대기 시간 3초 설정
+    public float readyCounter = 3f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
 
     [SerializeField] private GameControllerScript gameController;
-    
+
+    // 게임 준비 상태를 나타내는 변수
+    public bool isReady = false;
+
     public void Start()
     {
         // 슬라이더 초기화
@@ -30,18 +33,12 @@ public class TimerController: MonoBehaviour
         gameController.data_Dialog = CSVReader.Read("PercentageTable");
     }
 
-    public void Timer()
-    {
-        // 1초마다 타이머 업데이트
-        InvokeRepeating("UpdateTimer", 0f, 1f);
-    }
-
     public void ReadyCounter()
-    {
-
+    {       
         if (gameController.isGamePaused)
             return;
 
+        isReady = true;
         readyCount.gameObject.SetActive(true);  
         readyCount.text = readyCounter.ToString() + "초 후 이미지가 사라집니다.";
         readyCounter -= 1f; // 타이머 감소
@@ -59,9 +56,11 @@ public class TimerController: MonoBehaviour
     }
     public void UpdateTimer()
     {
+        
         if (gameController.isGamePaused)
             return;
 
+        isReady = false;
         readyCount.gameObject.SetActive(false);
         gameController.Scoretxt.gameObject.SetActive(true);
 

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7440501202096146007}
   - component: {fileID: 3089450377816473662}
-  - component: {fileID: 7536953108282162641}
+  - component: {fileID: -3871337341039432865}
   m_Layer: 5
-  m_Name: dropGoodsPrefab
+  m_Name: dropStudentPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695616113676723401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bd15b44d56c8b8744907d0c95fd80dba, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 238c675f7d18ae8438a3c020d49abb95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7536953108282162641
+--- !u!114 &-3871337341039432865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695616113676723401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f4489db4651b3e4495948070457d576, type: 3}
+  m_Script: {fileID: 11500000, guid: c7bdd5aa264387649ad0fe8f75efbadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
