@@ -21,8 +21,14 @@ public class YJ2MiniGameManager : MonoBehaviour
     public GameObject eventIconHeal;
     public GameObject eventIconFan;
 
+    // 사건 배경 이미지
+    public GameObject MonBg;
+    public GameObject HealBg;
+    public GameObject FanBg;
+
     public GameObject[] eventIcons; // 이벤트 아이콘들을 배열로 관리
     public GameObject[] eventImage; // 이벤트 오브젝트들을 배열로 관리
+    public GameObject[] eventBg; // 이벤트 배경들을 배열로 관리
 
 
     // 마법머신 아이콘 이미지
@@ -31,8 +37,12 @@ public class YJ2MiniGameManager : MonoBehaviour
     public Image slotIcon03;
     public Sprite[] slotSprites; // slotIconMon, slotIconHeal, slotIconFan 스프라이트들을 배열로 관리
 
+    // 마법머신 슬롯 애니메이션
+    public Image slotAnimation01;
+    public Image slotAnimation02;
+    public Image slotAnimation03;
+
     // 스코어 판정 이미지
-    public Image success;
     public Image fail;
 
     // 게임 대기시간 카운트
@@ -57,14 +67,8 @@ public class YJ2MiniGameManager : MonoBehaviour
     public Button slotButton;
 
     // 조건 선언
-    bool mon;
-    bool heal;
-    bool fan;
-    bool slotMon;
-    bool slotHeal;
-    bool slotFan;
-    bool slotStart = false;
-    bool eventStart = false;
+    bool slotStart = false;    // 슬롯 스타트
+    bool eventStart = false;    // 이벤트 스타트
 
     // 게임 실행 조건
     bool isGameRunning;
@@ -77,6 +81,21 @@ public class YJ2MiniGameManager : MonoBehaviour
     public GameObject healScore;
     public GameObject fanScore;
 
+    // 슬롯 딜레이
+    public GameObject slotStop;
+
+    // 확률 추가
+    bool mon;
+    bool heal;
+    bool fan;
+
+    // 성공 연출
+    public GameObject successMon;
+
+    // 실패 연출
+    public GameObject slotFail01;
+    public GameObject slotFail02;
+    public GameObject slotFail03;
 
 
     private void Start()
@@ -225,9 +244,35 @@ public class YJ2MiniGameManager : MonoBehaviour
 
         eventIcons = new GameObject[] { eventIconMon, eventIconHeal, eventIconFan };
         eventImage = new GameObject[] { eventMon, eventHeal, eventFan };
+        eventBg = new GameObject[] { MonBg, HealBg, FanBg };
 
-        eventIcons[randomIndex].SetActive(true);
-        eventImage[randomIndex].SetActive(true);
+        // 슬라이드 애니메이션으로 활성화
+        GameObject IconToSlide = eventIcons[randomIndex];
+        IconToSlide.SetActive(true);
+        IconToSlide.transform.DOMoveX(10f, 1.0f).From().SetEase(Ease.OutQuart);
+
+        GameObject ImageToSlide = eventImage[randomIndex];
+        ImageToSlide.SetActive(true);
+        ImageToSlide.transform.DOMoveX(10f, 1.0f).From().SetEase(Ease.OutQuart);
+
+        GameObject bgToSlide = eventBg[randomIndex];
+        bgToSlide.SetActive(true);
+        bgToSlide.transform.DOMoveX(10f, 1.0f).From().SetEase(Ease.OutQuart);
+
+        if (randomIndex == 0)
+        {
+            mon = true;
+        }
+
+        if(randomIndex == 1)
+        {
+            heal = true;
+        }
+
+        if (randomIndex == 2)
+        {
+            fan = true;
+        }
 
         // 이벤트 활성화 상태로 변경
         isEventActive = true;
@@ -238,6 +283,10 @@ public class YJ2MiniGameManager : MonoBehaviour
 
     private void DeactivateAllEvents()
     {
+        mon = false;
+        heal = false;
+        fan = false;
+
         // 모든 이벤트 아이콘과 이벤트 비활성화
         foreach (var icon in eventIcons)
         {
@@ -247,6 +296,11 @@ public class YJ2MiniGameManager : MonoBehaviour
         foreach (var obj in eventImage)
         {
             obj.SetActive(false);
+        }
+
+        foreach (var Bg in eventBg)
+        {
+            Bg.SetActive(false);
         }
 
         // 이벤트 비활성화 상태로 변경
@@ -265,6 +319,9 @@ public class YJ2MiniGameManager : MonoBehaviour
         if (!slotStart)
         {
             slotTimer = 8;
+            slotAnimation01.gameObject.SetActive(true);
+            slotAnimation02.gameObject.SetActive(true);
+            slotAnimation03.gameObject.SetActive(true);
         }
 
         if (slotStart == true)
@@ -294,11 +351,18 @@ public class YJ2MiniGameManager : MonoBehaviour
         // slotTimer가 0이면 호출 중단하고 이미지 출력
         if (slotTimer == 0)
         {
+
+            slotAnimation01.gameObject.SetActive(false);
+            slotAnimation02.gameObject.SetActive(false);
+            slotAnimation03.gameObject.SetActive(false);
+
             // 호출 중단
             CancelInvoke("SlotTimerCountdown");
 
             // slotStart를 false로 설정하여 더 이상 카운트다운을 하지 않도록 함
             slotStart = false;
+
+            slotStop.gameObject.SetActive(true);
 
             // 랜덤으로 이미지 출력
             ActivateRandomSlotIcons();
@@ -311,16 +375,52 @@ public class YJ2MiniGameManager : MonoBehaviour
 
     private void ActivateRandomSlotIcons()
     {
-        // 랜덤으로 슬롯 아이콘 이미지 설정
-        slotIcon01.sprite = slotSprites[UnityEngine.Random.Range(0, slotSprites.Length)];
-        slotIcon02.sprite = slotSprites[UnityEngine.Random.Range(0, slotSprites.Length)];
-        slotIcon03.sprite = slotSprites[UnityEngine.Random.Range(0, slotSprites.Length)];
+        if (mon == true)
+        {
+            SetRandomSlotIcon(slotIcon01, 0.5f, 0.25f, 0.25f);
+            SetRandomSlotIcon(slotIcon02, 0.5f, 0.25f, 0.25f);
+            SetRandomSlotIcon(slotIcon03, 0.5f, 0.25f, 0.25f);
+        }
+        else if (heal == true)
+        {
+            SetRandomSlotIcon(slotIcon01, 0.25f, 0.5f, 0.25f);
+            SetRandomSlotIcon(slotIcon02, 0.25f, 0.5f, 0.25f);
+            SetRandomSlotIcon(slotIcon03, 0.25f, 0.5f, 0.25f);
+        }
+        else if (fan == true)
+        {
+            SetRandomSlotIcon(slotIcon01, 0.25f, 0.25f, 0.5f);
+            SetRandomSlotIcon(slotIcon02, 0.25f, 0.25f, 0.5f);
+            SetRandomSlotIcon(slotIcon03, 0.25f, 0.25f, 0.5f);
+        }
+    }
+
+    // 슬롯 아이콘 이미지를 확률에 따라 설정하는 메소드
+    private void SetRandomSlotIcon(Image slotIcon, float probability1, float probability2, float probability3)
+    {
+        
+        float randomProbability = UnityEngine.Random.Range(0f, 1f);
+
+        if (randomProbability < probability1)
+        {
+            slotIcon.sprite = slotSprites[0];
+        }
+        else if (randomProbability < probability1 + probability2)
+        {
+            slotIcon.sprite = slotSprites[1];
+        }
+        else
+        {
+            slotIcon.sprite = slotSprites[2];
+        }
 
         slotIcon01.gameObject.SetActive(true);
         slotIcon02.gameObject.SetActive(true);
         slotIcon03.gameObject.SetActive(true);
     }
 
+
+    // 스코어 처리
     private void CompareIconsAndScore()
     {
         int eventIconIndex = GetActiveEventIconIndex();
@@ -329,6 +429,16 @@ public class YJ2MiniGameManager : MonoBehaviour
         if (eventIconIndex != -1)
         {
             int matchingCount = CountMatchingIcons(eventIconIndex);
+
+            if (matchingCount >= 0 && matchingCount < 2)
+            {
+
+                slotFail01.gameObject.SetActive(true);
+                slotFail02.gameObject.SetActive(true);
+                slotFail03.gameObject.SetActive(true);
+
+                Invoke("FailSet", 1f);
+            }
 
             if (matchingCount >= 2)
             {
@@ -377,18 +487,15 @@ public class YJ2MiniGameManager : MonoBehaviour
                 {
                     StartCoroutine(ActivateAndDeactivateScore(monScore));
                 }
-                else if (eventSprite.name == "coin02")
+                else if (eventSprite.name == "heal_Icon")
                 {
                     StartCoroutine(ActivateAndDeactivateScore(healScore));
                 }
-                else if (eventSprite.name == "heart3")
+                else if (eventSprite.name == "fan_Icon")
                 {
                     StartCoroutine(ActivateAndDeactivateScore(fanScore));
                 }
-
-                success.gameObject.SetActive(true);
-                Invoke("DeactivateSuccessImage", 0.5f);
-
+                
                 eventStart = false;
                 Invoke("EventRestart", 1f);
                 Invoke("EventChange", 1f);
@@ -396,14 +503,25 @@ public class YJ2MiniGameManager : MonoBehaviour
         }
 
         Invoke("Slotfalse", 1f);
-
     }
 
+
+    // 실패 연출 끄기
+    public void FailSet()
+    {
+        slotFail01.gameObject.SetActive(false);
+        slotFail02.gameObject.SetActive(false);
+        slotFail03.gameObject.SetActive(false);
+    }
+
+    // 슬롯 아이콘 끄기
     public void Slotfalse()
     {
         slotIcon01.gameObject.SetActive(false);
         slotIcon02.gameObject.SetActive(false);
         slotIcon03.gameObject.SetActive(false);
+
+        slotStop.gameObject.SetActive(false);
     }
 
     public void EventRestart()
@@ -457,13 +575,6 @@ public class YJ2MiniGameManager : MonoBehaviour
 
 
     }
-
-    private void DeactivateSuccessImage()
-    {
-        // 정답 이미지 비활성화
-        success.gameObject.SetActive(false);
-    }
-
     private void DeactivateFailImage()
     {
         // 오답 이미지 비활성화
