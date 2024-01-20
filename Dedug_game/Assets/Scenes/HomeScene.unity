@@ -9868,22 +9868,22 @@ MonoBehaviour:
   sfx1AudioSource: {fileID: 752190094}
   GanbareHowToText: {fileID: 1655736982}
   GanbareHowToImage: {fileID: 2012447556}
-  GanbareHowToImage1: {fileID: 0}
-  GanbareHowToImage2: {fileID: 0}
-  GanbareHowToImage3: {fileID: 0}
-  GanbareHowToImage4: {fileID: 0}
-  GanbareHowToImage5: {fileID: 0}
-  GanbareHowToImage6: {fileID: 0}
-  GanbareHowToImage7: {fileID: 0}
+  GanbareHowToImage1: {fileID: 21300000, guid: d3b7db16cee8e124888985b66b87bc95, type: 3}
+  GanbareHowToImage2: {fileID: 21300000, guid: 0804391a90a827642b1dd061c01eed0c, type: 3}
+  GanbareHowToImage3: {fileID: 21300000, guid: 75b0ff10cb3a1bb419b6b282f71613f2, type: 3}
+  GanbareHowToImage4: {fileID: 21300000, guid: 1757864bd24cb854baf3f02b06db9f05, type: 3}
+  GanbareHowToImage5: {fileID: 21300000, guid: 59d22c4f51ca9f24bad27ff503109706, type: 3}
+  GanbareHowToImage6: {fileID: 21300000, guid: 17bc2f2bd7b505b45b75c682e1ea4ccd, type: 3}
+  GanbareHowToImage7: {fileID: 21300000, guid: ae3e2deb1fecad44e9f9b5fd09898dad, type: 3}
   CardHowToText: {fileID: 80608411}
   CardHowToImage: {fileID: 1562874172}
-  CardHowToImage1: {fileID: 0}
-  CardHowToImage2: {fileID: 0}
-  CardHowToImage3: {fileID: 0}
-  CardHowToImage4: {fileID: 0}
-  CardHowToImage5: {fileID: 0}
-  CardHowToImage6: {fileID: 0}
-  CardHowToImage7: {fileID: 0}
+  CardHowToImage1: {fileID: 21300000, guid: 859cc93acd75c2248933bf227a659510, type: 3}
+  CardHowToImage2: {fileID: 21300000, guid: 6b413692c9a3a484eb804c9249ba8304, type: 3}
+  CardHowToImage3: {fileID: 21300000, guid: b29a17620ef83aa41a9b79c612f605fc, type: 3}
+  CardHowToImage4: {fileID: 21300000, guid: 92937595ae8bfdb428f52c72fb907e65, type: 3}
+  CardHowToImage5: {fileID: 21300000, guid: f974b65834608374aa907e8130dbcaad, type: 3}
+  CardHowToImage6: {fileID: 21300000, guid: ed88b634f49b59241be590deb9871482, type: 3}
+  CardHowToImage7: {fileID: 21300000, guid: ce86cc94b69ec6047a835141235dfb4e, type: 3}
 --- !u!114 &1191489702
 MonoBehaviour:
   m_ObjectHideFlags: 0
