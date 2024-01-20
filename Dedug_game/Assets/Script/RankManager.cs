@@ -12,6 +12,7 @@ public class RankManager : MonoBehaviour
     // UI 요소들
     public Image NowRankImage;
     public Text NowRankName;
+    public Text NowRankName2;
     public Button RankUPBtn;
 
     public Image PopUPBG;
@@ -305,7 +306,7 @@ public class RankManager : MonoBehaviour
         // 프리팹 크기 설정
         // Vector3 desiredScale = new Vector3(0.9f, 0.9f, 0.9f);  
         //effectInstance.transform.localScale = desiredScale;
-
+        NowRankName2.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
 
         ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("GuestPlus")}종 상승";
        
