@@ -893,7 +893,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: be5f09d8e56c21548a94fec63aa815dd, type: 3}
   - {fileID: 21300000, guid: fbb3be75e29699b4d8d28ffe4f969795, type: 3}
   homeImg: {fileID: 2064516310}
-  PopupCanvas: {fileID: 1191489700}
+  PopupCanvas: {fileID: 1191489704}
   bgm1AudioSource: {fileID: 452054918}
   sfx1AudioSource: {fileID: 752190094}
   charDialogue: {fileID: 798125656}

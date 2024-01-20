@@ -40,7 +40,7 @@ public class ObstacleController : MonoBehaviour
         if (d < r1 + r2)
         {
 
-            if (director != null) { director.GetComponent<GameControllerScript2>().GoodsCountUP(); }
+            if (director != null) { director.GetComponent<MainController2>().GoodsCountUP(); }
 
             Destroy(gameObject);  // 현재 오브젝트를 지운다
         }

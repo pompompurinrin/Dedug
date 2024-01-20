@@ -44,7 +44,7 @@ public class StudentController : MonoBehaviour
         GameObject director = GameObject.Find("MainBG");
         if (d < r1 + r2)
         {
-            if (director != null) { director.GetComponent<GameControllerScript2>().GoodsCountDown(); }
+            if (director != null) { director.GetComponent<MainController2>().GoodsCountDown(); }
 
             Destroy(gameObject);  // 현재 오브젝트를 지운다
         }
