@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEditor;
 
 
 
@@ -752,6 +753,7 @@ public class MainController : MonoBehaviour
         else if (isGamePaused)
         {
             // 게임 재개
+            Time.timeScale = 1;
             pauseBG.gameObject.SetActive(false);
             stopBg.gameObject.SetActive(false);
             realStopBg.gameObject.SetActive(false);
@@ -759,18 +761,19 @@ public class MainController : MonoBehaviour
             Main_BGM2.Play();
         }
     }
-
+    public float timeScale;
     // 게임 일시정지 처리
     private void PauseGame()
     {
         isGamePaused = true;
+        Time.timeScale = 0;
         // 게임 일시정지 UI 활성화
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
         Main_BGM2.Pause();
 
     }
-
+  
     // 게임으로 돌아가기 버튼 함수
     public void keepGoingClick()
     {

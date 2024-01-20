@@ -581,6 +581,7 @@ public class MainController2 : MonoBehaviour
         {
 
             // 게임 재개
+            Time.timeScale = 1;
             pauseBG.gameObject.SetActive(false);
             stopBg.gameObject.SetActive(false);
             realStopBg.gameObject.SetActive(false);
@@ -593,6 +594,7 @@ public class MainController2 : MonoBehaviour
     private void PauseGame()
     {
         isGamePaused = true;
+        Time.timeScale = 0;
         // 게임 일시정지 UI 활성화
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
