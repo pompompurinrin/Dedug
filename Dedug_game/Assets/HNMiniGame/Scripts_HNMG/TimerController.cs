@@ -10,9 +10,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public class TimerController: MonoBehaviour
 {
     public Slider timerSlider; // UI 슬라이더 연결
-    public float timer = 60f; // 제한 시간 30초 설정
+    public float timer = 30f; // 제한 시간 30초 설정
     public Text timeText; // 시간 출력
-    public float readyCounter = 10f; //대기 시간 3초 설정
+    public float readyCounter = 3f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
 
     [SerializeField] private MainController mainController;
@@ -23,17 +23,12 @@ public class TimerController: MonoBehaviour
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
 
-        //Invoke("Timer", 4);
         InvokeRepeating("ReadyCounter", 0f, 1f);
+        
+        //ReadyCounter();
 
         //PercentageTable_1에서 배열을 사용할게
-        mainController.data_Dialog = CSVReader.Read("PercentageTable");
-    }
-
-    public void Timer()
-    {
-        // 1초마다 타이머 업데이트
-        InvokeRepeating("UpdateTimer", 0f, 1f);
+       
     }
 
     public void ReadyCounter()
@@ -41,7 +36,7 @@ public class TimerController: MonoBehaviour
 
         if (mainController.isGamePaused)
             return;
-
+        
         readyCount.gameObject.SetActive(true);  
         readyCount.text = readyCounter.ToString() + "초 후 이미지가 사라집니다.";
         readyCounter -= 1f; // 타이머 감소
@@ -96,7 +91,7 @@ public class TimerController: MonoBehaviour
         mainController.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         mainController.Restart = GameObject.Find("Restart").GetComponent<Button>();
         mainController.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-        mainController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  //왜안되는거지ㅠㅠ
+        mainController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>(); 
     }
 
 

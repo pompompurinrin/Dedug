@@ -30,8 +30,12 @@ public class MainController : MonoBehaviour
     public AudioSource Main_BGM2;
 
     // 게임 시작 이미지 및 사용될 스프라이트 배열
-    public MainImageScript startObject;
+    public MainImageScript mainImageScript;
     public Sprite[] images;
+
+
+    public Button Card_Front;
+    
 
     // UI 요소들
     public Image ResultBG;
@@ -144,16 +148,21 @@ public class MainController : MonoBehaviour
     private void StartGame()
     {
         if (isGamePaused)
+        {
+            Debug.Log("일시정지로 게임 중단");
             return;
+        }
+
 
         else
         {
+            Debug.Log("게임 시작");
             // 이미지 위치를 무작위로 섞음
             int[] locations = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
 
             locations = Randomiser(locations);
 
-            Vector3 startPosition = startObject.transform.position;
+            Vector3 startPosition = mainImageScript.transform.position;
 
             // 게임 보드에 이미지 배치
             for (int i = 0; i < columns; i++)
@@ -164,12 +173,12 @@ public class MainController : MonoBehaviour
                     if (i == 0 && j == 0)
                     {
                         // 시작 이미지는 따로 처리
-                        gameImage = startObject;
+                        gameImage = mainImageScript;
                     }
                     else
                     {
                         // 나머지 이미지는 복제하여 사용
-                        gameImage = Instantiate(startObject) as MainImageScript;
+                        gameImage = Instantiate(mainImageScript) as MainImageScript;
                     }
 
                     int index = j * columns + i;
@@ -200,17 +209,17 @@ public class MainController : MonoBehaviour
     }
 
     // 이미지가 열렸을 때 호출되는 함수
-    public void imageOpened(MainImageScript startObject)
+    public void imageOpened(MainImageScript mainImageScript)
     {
         if (firstOpen == null)
         {
             // 첫 번째 이미지 열림
-            firstOpen = startObject;
+            firstOpen = mainImageScript;
         }
         else
         {
             // 두 번째 이미지 열림 후 일치 여부 확인
-            secondOpen = startObject;
+            secondOpen = mainImageScript;
             StartCoroutine(CheckGuessed());
         }
     }
@@ -738,10 +747,10 @@ public class MainController : MonoBehaviour
         {
             // 게임 일시정지
             PauseGame();
+            Debug.Log("일시정지로 게임 중단");
         }
         else if (isGamePaused)
         {
-
             // 게임 재개
             pauseBG.gameObject.SetActive(false);
             stopBg.gameObject.SetActive(false);
@@ -759,7 +768,6 @@ public class MainController : MonoBehaviour
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
         Main_BGM2.Pause();
-
 
     }
 
