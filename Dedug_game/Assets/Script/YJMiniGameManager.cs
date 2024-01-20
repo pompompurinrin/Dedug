@@ -154,6 +154,9 @@ public class YJMiniGameManager : MonoBehaviour
 
     public Image hardStartMessage;
 
+    // 일시정지 수정
+    public bool isPuse = false;
+
 
     public void Awake()
     {
@@ -293,10 +296,6 @@ public class YJMiniGameManager : MonoBehaviour
 
     private void UpdateGame()
     {
-        // 일시정지 상태에서는 게임 업데이트를 건너뛰기
-        if (isGamePaused)
-            return;
-
         // 0. 제한시간이 종료된 경우
         if (gameTime <= 0 && isGameRunning)
         {
@@ -908,33 +907,26 @@ public class YJMiniGameManager : MonoBehaviour
     // 게임 일시정지 버튼 클릭 시 호출되는 함수
     public void StopButtonClick()
     {
-        if (isGameRunning && !isGamePaused)
+        if (!isPuse)
         {
-            // 게임 일시정지
-            PauseGame();
+            isPuse = true;
+            Time.timeScale = 0;
+            // 게임 일시정지 UI 활성화
+            stopBg.gameObject.SetActive(true);
         }
-        else if (isGameRunning && isGamePaused)
-        {
-            // 게임 재개
-            ResumeGame();
-        }
-    }
-
-    // 게임 일시정지 처리
-    private void PauseGame()
-    {
-        isGamePaused = true;
-
-        // 게임 일시정지 UI 활성화
-        stopBg.gameObject.SetActive(true);
     }
 
     // 게임으로 돌아가기 버튼 함수
     public void keepGoingClick()
     {
+        if(isPuse)
+        {
+            isPuse = false;
+            Time.timeScale = 1;
+        }
+
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
-        ResumeGame();
     }
 
     // 굿즈구매로 돌아가기 버튼 함수
@@ -950,15 +942,14 @@ public class YJMiniGameManager : MonoBehaviour
     // 게임으로 돌아가기 버튼 함수
     public void stopNoClick()
     {
+        if (isPuse)
+        {
+            isPuse = false;
+            Time.timeScale = 1;
+        }
+
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);
-        ResumeGame();
-    }
-
-    // 게임 재개 처리
-    private void ResumeGame()
-    {
-        isGamePaused = false;
     }
 
     // 도감으로 돌아가기 처리

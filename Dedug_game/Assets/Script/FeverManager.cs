@@ -46,18 +46,12 @@ public class FeverManager : MonoBehaviour
     private int clicksInSecond = 0;
     private float clickTimer = 0f;
 
-    // 파티클 관련
-    public Image result;
-    public GameObject shinePinkParticle;
-
     // 엔드 화면 파티클
     public GameObject basic;
-    public GameObject happy;
 
     public AudioSource EndSFX01;
     public AudioSource EndSFX02;
     public AudioSource EndSFX03;
-    public AudioSource resultSFX;
 
     public AudioSource comitionBGM;
 
@@ -88,27 +82,7 @@ public class FeverManager : MonoBehaviour
         UpdateFeverTimeText();
         data_Dialog = CSVReader.Read("FeverCSV");
 
-        // 랭크에 따라 countdownTime 초기화
-        if (NowRank == 0)
-        {
-            countdownTime = 10f;
-        }
-        else if (NowRank == 1)
-        {
-            countdownTime = 13f;
-        }
-        else if (NowRank == 2)
-        {
-            countdownTime = 16f;
-        }
-        else if (NowRank == 3)
-        {
-            countdownTime = 23f;
-        }
-        else if (NowRank == 4)
-        {
-            countdownTime = 30f;
-        }
+        countdownTime = 5f;
 
     }
 
@@ -133,100 +107,94 @@ public class FeverManager : MonoBehaviour
             // 애니메이션 업데이트
             UpdateAnimation();
 
-            if (countdownTime <= 0)
+            if (countdownTime <= 0 || feverGauge >= 50)
             {
                 
                 // 카운트 다운이 0이 되면 feverBg를 비활성화하고 endBg를 활성화한다.
                 feverBg.SetActive(false);
 
                 // feverGauge 검사
-                if (feverGauge >= 1 && feverGauge <= 10)
+                if (feverGauge >= 0)
                 {
                     feverBGM.Stop();
-                    // result와 Shine_pink 파티클 오브젝트를 활성화
-                    result.gameObject.SetActive(true);
-                    shinePinkParticle.SetActive(true);
-                    resultSFX.Play();
 
-                    StartCoroutine(DeactivateParticlesAfterDelay(2f)); // 2초 후에 파티클 비활성화
-
-
+                    ResultFever01();
+                
+                        
                 }
 
-                if (feverGauge >= 11 && feverGauge <= 25)
+                if (feverGauge >= 25 && feverGauge < 50)
                 {
                     feverBGM.Stop();
-                    // result와 Shine_pink 파티클 오브젝트를 활성화
-                    result.gameObject.SetActive(true);
-                    shinePinkParticle.SetActive(true);
-                    resultSFX.Play();
 
-                    StartCoroutine(DeactivateParticlesAfterDelay02(2f)); // 2초 후에 파티클 비활성화
-
-
-
-
+                    ResultFever02();
                 }
 
-                if (feverGauge >= 26)
+                if (feverGauge >= 50)
                 {
                     feverBGM.Stop();
-                    // result와 Shine_pink 파티클 오브젝트를 활성화
-                    result.gameObject.SetActive(true);
-                    shinePinkParticle.SetActive(true);
-                    resultSFX.Play();
 
-                    StartCoroutine(DeactivateParticlesAfterDelay03(2f)); // 2초 후에 파티클 비활성화
-
-
+                    ResultFever03();
                 }
             }
         }
 
     }
 
-    IEnumerator DeactivateParticlesAfterDelay(float delay)
+    public void ResultFever01()
     {
-        yield return new WaitForSeconds(delay);
-
-        shinePinkParticle.SetActive(false);
-
-        endText.text = data_Dialog[0]["ResultExplain"].ToString();
-        endTitle.text = data_Dialog[0]["ResultGrade"].ToString();
-        SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
-
-        if (NowRank == 0)
+        if(NowRank == 0)
         {
-            endGold.text = "33";
-            DataManager.Instance.nowGold += 33;
+            endText.text = data_Dialog[0]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[0]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
+            endGold.text = data_Dialog[0]["FeverGold"].ToString();
+            int i = (int)data_Dialog[0]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 1)
         {
-            endGold.text = "167";
-            DataManager.Instance.nowGold += 167;
+            endText.text = data_Dialog[3]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[3]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[3]["ResultImg"].ToString());
+            endGold.text = data_Dialog[3]["FeverGold"].ToString();
+            int i = (int)data_Dialog[3]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 2)
         {
-            endGold.text = "333";
-            DataManager.Instance.nowGold += 333;
+            endText.text = data_Dialog[6]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[6]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[6]["ResultImg"].ToString());
+            endGold.text = data_Dialog[6]["FeverGold"].ToString();
+            int i = (int)data_Dialog[6]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 3)
         {
-            endGold.text = "500";
-            DataManager.Instance.nowGold += 500;
+            endText.text = data_Dialog[9]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[9]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[9]["ResultImg"].ToString());
+            endGold.text = data_Dialog[9]["FeverGold"].ToString();
+            int i = (int)data_Dialog[9]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 4)
         {
-            endGold.text = "1000";
-            DataManager.Instance.nowGold += 1000;
+            endText.text = data_Dialog[12]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[12]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[12]["ResultImg"].ToString());
+            endGold.text = data_Dialog[12]["FeverGold"].ToString();
+            int i = (int)data_Dialog[12]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
@@ -242,50 +210,64 @@ public class FeverManager : MonoBehaviour
 
     }
 
-    IEnumerator DeactivateParticlesAfterDelay02(float delay)
+    public void ResultFever02()
     {
-        yield return new WaitForSeconds(delay);
-
-        shinePinkParticle.SetActive(false);
-
-        endText.text = data_Dialog[1]["ResultExplain"].ToString();
-        endTitle.text = data_Dialog[1]["ResultGrade"].ToString();
-        SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
 
         if (NowRank == 0)
         {
-            endGold.text = "68";
-            DataManager.Instance.nowGold += 68;
+            endText.text = data_Dialog[1]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[1]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
+            endGold.text = data_Dialog[1]["FeverGold"].ToString();
+            int i = (int)data_Dialog[1]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 1)
         {
-            endGold.text = "338";
-            DataManager.Instance.nowGold += 338;
+            endText.text = data_Dialog[4]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[4]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[4]["ResultImg"].ToString());
+            endGold.text = data_Dialog[4]["FeverGold"].ToString();
+            int i = (int)data_Dialog[4]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 2)
         {
-            endGold.text = "675";
-            DataManager.Instance.nowGold += 675;
+            endText.text = data_Dialog[7]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[7]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[7]["ResultImg"].ToString());
+            endGold.text = data_Dialog[7]["FeverGold"].ToString();
+            int i = (int)data_Dialog[7]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 3)
         {
-            endGold.text = "900";
-            DataManager.Instance.nowGold += 900;
+            endText.text = data_Dialog[10]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[10]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[10]["ResultImg"].ToString());
+            endGold.text = data_Dialog[10]["FeverGold"].ToString();
+            int i = (int)data_Dialog[10]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 4)
         {
-            endGold.text = "1800";
-            DataManager.Instance.nowGold += 1800;
+            endText.text = data_Dialog[13]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[13]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[13]["ResultImg"].ToString());
+            endGold.text = data_Dialog[13]["FeverGold"].ToString();
+            int i = (int)data_Dialog[13]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
+        basic.gameObject.SetActive(true);
 
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);
@@ -298,50 +280,64 @@ public class FeverManager : MonoBehaviour
 
     }
 
-    IEnumerator DeactivateParticlesAfterDelay03(float delay)
+    public void ResultFever03()
     {
-        yield return new WaitForSeconds(delay);
-
-        shinePinkParticle.SetActive(false);
-
-        endText.text = data_Dialog[2]["ResultExplain"].ToString();
-        endTitle.text = data_Dialog[2]["ResultGrade"].ToString();
-        SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
-
         if (NowRank == 0)
         {
-            endGold.text = "102";
-            DataManager.Instance.nowGold += 102;
+            endText.text = data_Dialog[2]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[2]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
+            endGold.text = data_Dialog[2]["FeverGold"].ToString();
+            int i = (int)data_Dialog[2]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 1)
         {
-            endGold.text = "508";
-            DataManager.Instance.nowGold += 508;
+            endText.text = data_Dialog[5]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[5]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[5]["ResultImg"].ToString());
+            endGold.text = data_Dialog[5]["FeverGold"].ToString();
+            int i = (int)data_Dialog[5]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 2)
         {
-            endGold.text = "1017";
-            DataManager.Instance.nowGold += 1017;
+            endText.text = data_Dialog[8]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[8]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[8]["ResultImg"].ToString());
+            endGold.text = data_Dialog[8]["FeverGold"].ToString();
+            int i = (int)data_Dialog[8]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 3)
         {
-            endGold.text = "1300";
-            DataManager.Instance.nowGold += 1300;
+            endText.text = data_Dialog[11]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[11]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[11]["ResultImg"].ToString());
+            endGold.text = data_Dialog[11]["FeverGold"].ToString();
+            int i = (int)data_Dialog[11]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
 
         if (NowRank == 4)
         {
-            endGold.text = "2600";
-            DataManager.Instance.nowGold += 2600;
+            endText.text = data_Dialog[14]["ResultExplain"].ToString();
+            endTitle.text = data_Dialog[14]["ResultGrade"].ToString();
+            SetImageFromResultImg(data_Dialog[14]["ResultImg"].ToString());
+            endGold.text = data_Dialog[14]["FeverGold"].ToString();
+            int i = (int)data_Dialog[14]["FeverGold"];
+            DataManager.Instance.nowGold += i;
             Save();
         }
+
+        basic.gameObject.SetActive(true);
 
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);
@@ -349,7 +345,6 @@ public class FeverManager : MonoBehaviour
 
         // DOTween을 사용하여 페이드인 애니메이션 적용
         endBg.transform.DOScale(Vector3.one, 1.5f).SetEase(Ease.OutBounce); // 원래 크기로 1.5초 동안 페이드인
-        happy.gameObject.SetActive(true);
         EndSFX03.Play();
 
     }
@@ -398,8 +393,33 @@ public class FeverManager : MonoBehaviour
             // 클릭 이펙트 함수 호출
             CreateClickEffect();
             feverClickSFX.Play();
+
+            if (NowRank == 0)
+            {
+                feverGauge++;
+            }
+
+            else if (NowRank == 1)
+            {
+                feverGauge += 2;
+            }
+
+            else if (NowRank == 2)
+            {
+                feverGauge += 3;
+            }
+
+            else if (NowRank == 3)
+            {
+                feverGauge += 4;
+            }
+
+            else if (NowRank == 4)
+            {
+                feverGauge += 5;
+            }
+
             // feverButton 클릭 시 feverGauge 증가 및 feverSlider 이동
-            feverGauge++;
             feverSlider.value = feverGauge;
 
             // 클릭 횟수 증가
@@ -443,7 +463,6 @@ public class FeverManager : MonoBehaviour
         goldText.text = DataManager.Instance.nowGold.ToString();
 
         // result와 Shine_pink 파티클 오브젝트를 비활성화
-        result.gameObject.SetActive(false);
         endBg.SetActive(false);
         basic.gameObject.SetActive(false);
         feverStart.gameObject.SetActive(false);

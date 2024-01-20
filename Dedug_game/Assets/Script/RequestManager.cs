@@ -301,7 +301,12 @@ public class RequestManager : MonoBehaviour
     // 버튼 클릭 호출 함수
     public void OnRequestButtonClick(GameObject clickedButton, int goldValue)
     {
-        
+
+        if (requestPrefabCount == 0)
+        {
+            GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(true);
+        }
+
         // 골드 획득 애니메이션 재생
         StartCoroutine(PlayGetGoldAnimationAndSwitchToIdle());
         getGoldText.gameObject.SetActive(true);
@@ -362,6 +367,11 @@ public class RequestManager : MonoBehaviour
 
                 DataManager.Instance.feverNum = 0;
                 Save();
+            }
+
+            if (requestPrefabCount > 0)
+            {
+                GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(false);
             }
         }
 
