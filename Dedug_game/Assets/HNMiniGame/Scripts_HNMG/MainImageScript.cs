@@ -15,7 +15,7 @@ public class MainImageScript : MonoBehaviour
     [SerializeField] public GameObject error_fx;      // 매칭 에러 효과
     [SerializeField] public GameObject correct_fx;    // 매칭 성공 효과
 
-    [SerializeField] private GameControllerScript gameController;
+    [SerializeField] private MainController mainController;
 
 
     public void Start()
@@ -35,7 +35,7 @@ public class MainImageScript : MonoBehaviour
         
 
         // 이미지가 활성화되어 있고, 게임 컨트롤러가 이미지를 열 수 있는 상태일 때 실행
-        if (card_Back.activeSelf && gameController.canOpen)
+        if (card_Back.activeSelf && mainController.canOpen)
         {
             //vector3 는 x, y, z로 구성된 3차원 좌표값. (Vector2는 2d)
             Vector3 originalScale = transform.localScale;
@@ -49,7 +49,7 @@ public class MainImageScript : MonoBehaviour
                 image_frame.SetActive(true);
 
 
-                gameController.imageOpened(this);
+                mainController.imageOpened(this);
                 transform.DOScale(originalScale, 0.1f);
 
             }
