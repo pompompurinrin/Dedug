@@ -741,6 +741,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if (isGamePaused)
         {
+
             // 게임 재개
             pauseBG.gameObject.SetActive(false);
             stopBg.gameObject.SetActive(false);
@@ -758,6 +759,8 @@ public class GameControllerScript : MonoBehaviour
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
         Main_BGM2.Pause();
+
+
     }
 
     // 게임으로 돌아가기 버튼 함수
