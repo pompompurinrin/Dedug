@@ -146,6 +146,15 @@ public class YJMiniGameManager : MonoBehaviour
     public List<int> gatchPerList;
     public List<int> rewards; // 줄 애들
 
+
+    // 클릭 타이밍 개선
+    public Image bongNomal01;
+    public Image bongNomal02;
+    public Image bongNomal03;
+
+    public Image hardStartMessage;
+
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -314,6 +323,12 @@ public class YJMiniGameManager : MonoBehaviour
             Invoke("HandleButtonClick", bongTime);
         }
 
+        if (gameTime == 45)
+        {
+            // Coroutine을 시작
+            StartCoroutine(ActivatehardStartMessage());
+        }
+
         // (5) countDown < 60일 경우
         if (gameTime > 27 && gameTime < 49 && gameTime % 7 == 0)
         {
@@ -380,7 +395,51 @@ public class YJMiniGameManager : MonoBehaviour
         {
             ShakeObject(badaChar, shakeRange, shakeSpeed);
         }
+
+
+        // 클릭 타이밍 개선
+        if(isBongTimeActive == false || isHardBongTimeActive == false)
+        {
+            bongNomal01.gameObject.SetActive(true);
+            bongNomal02.gameObject.SetActive(true);
+            bongNomal03.gameObject.SetActive(true);
+        }
+
+        if (isBongTimeActive == true)
+        {
+            bongNomal01.gameObject.SetActive(false);
+            bongNomal02.gameObject.SetActive(false);
+            bongNomal03.gameObject.SetActive(false);
+        }
+
+        if(isHardBongTimeActive == true)
+        {
+            bongNomal01.gameObject.SetActive(false);
+            bongNomal02.gameObject.SetActive(false);
+            bongNomal03.gameObject.SetActive(false);
+            hardStart.gameObject.SetActive(true);
+        }
+
+        if (score == 8)
+        {
+            EndGame();
+            score = 0;
+        }
+
     }
+
+    IEnumerator ActivatehardStartMessage()
+    {
+        // 이미지 활성화
+        hardStartMessage.gameObject.SetActive(true);
+
+        // 2초 기다림
+        yield return new WaitForSeconds(2f);
+
+        // 이미지 비활성화
+        hardStartMessage.gameObject.SetActive(false);
+    }
+
 
     // 바다쨩 흔들 함수
     private void ShakeObject(Image obj, float range, float speed)
@@ -421,7 +480,7 @@ public class YJMiniGameManager : MonoBehaviour
         // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
         isHardBongTimeActive = true;
         isHardBongTimeButtonClick = true;
-        hardStart.gameObject.SetActive(true); // hardStart를 활성화
+        // hardStart.gameObject.SetActive(true); // hardStart를 활성화
         Invoke("DeactivateHardBongTime", hardBongTimeNext);
 
         yield return new WaitForSeconds(hardBongTimeNext);
@@ -463,7 +522,7 @@ public class YJMiniGameManager : MonoBehaviour
         // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
         isHardBongTimeActive = true;
         isHardBongTimeButtonClick = true;
-        hardStart.gameObject.SetActive(true); // hardStart를 활성화
+        // hardStart.gameObject.SetActive(true); // hardStart를 활성화
         Invoke("DeactivateHardBongTime", hardBongTimeNext);
 
         yield return new WaitForSeconds(hardBongTimeNext);
@@ -846,7 +905,6 @@ public class YJMiniGameManager : MonoBehaviour
         loveEffect.gameObject.SetActive(false);
     }
 
-
     // 게임 일시정지 버튼 클릭 시 호출되는 함수
     public void StopButtonClick()
     {
@@ -1075,12 +1133,12 @@ public class YJMiniGameManager : MonoBehaviour
         Scoretxt.text = score.ToString();
 
         //굿즈 지급
-        if (score >= 10) // 바꿔
+        if (score >= 8) // 바꿔
         {
             _count = 3;
 
         }
-        else if (score < 10 && score >= 5)
+        else if (score < 8 && score >= 4)
         {
             _count = 2;
         }
