@@ -87,9 +87,6 @@ public class YJMiniGameManager : MonoBehaviour
     public Button stopOk;
     public Button stopNo;
 
-    // 게임 일시정지 상태를 나타내는 변수
-    private bool isGamePaused = false;
-
     // 관중 흔들림
     private float shakeRange = 0.2f;
     private float shakeSpeed = 2f;
@@ -153,6 +150,11 @@ public class YJMiniGameManager : MonoBehaviour
     public Image bongNomal03;
 
     public Image hardStartMessage;
+
+    public Image NomalMessage;
+
+    // 클릭 타이밍 일반 응원봉 타임 변수
+    public bool nomalStart;
 
     // 일시정지 수정
     public bool isPuse = false;
@@ -315,11 +317,8 @@ public class YJMiniGameManager : MonoBehaviour
         // 2. bongTime 동안 랜덤한 colorEffect 활성화
         if (gameTime >= 49 && gameTime % 5 == 0)
         {
-            ActivateRandomColorEffect();
-            isBongTimeActive = true;
-
-            // bongTime 초 후에 아무 버튼도 클릭하지 않았을 때 처리를 위해 Invoke 호출
-            Invoke("HandleButtonClick", bongTime);
+            // Coroutine을 시작
+            StartCoroutine(ActivateNomalColorEffects());
         }
 
         if (gameTime == 45)
@@ -397,18 +396,11 @@ public class YJMiniGameManager : MonoBehaviour
 
 
         // 클릭 타이밍 개선
-        if(isBongTimeActive == false || isHardBongTimeActive == false)
+        if(isHardBongTimeActive == false || nomalStart == false)
         {
             bongNomal01.gameObject.SetActive(true);
             bongNomal02.gameObject.SetActive(true);
             bongNomal03.gameObject.SetActive(true);
-        }
-
-        if (isBongTimeActive == true)
-        {
-            bongNomal01.gameObject.SetActive(false);
-            bongNomal02.gameObject.SetActive(false);
-            bongNomal03.gameObject.SetActive(false);
         }
 
         if(isHardBongTimeActive == true)
@@ -417,6 +409,14 @@ public class YJMiniGameManager : MonoBehaviour
             bongNomal02.gameObject.SetActive(false);
             bongNomal03.gameObject.SetActive(false);
             hardStart.gameObject.SetActive(true);
+        }
+
+        if (nomalStart == true)
+        {
+            bongNomal01.gameObject.SetActive(false);
+            bongNomal02.gameObject.SetActive(false);
+            bongNomal03.gameObject.SetActive(false);
+            NomalMessage.gameObject.SetActive(true);
         }
 
         if (score == 8)
@@ -438,7 +438,6 @@ public class YJMiniGameManager : MonoBehaviour
         // 이미지 비활성화
         hardStartMessage.gameObject.SetActive(false);
     }
-
 
     // 바다쨩 흔들 함수
     private void ShakeObject(Image obj, float range, float speed)
@@ -479,7 +478,6 @@ public class YJMiniGameManager : MonoBehaviour
         // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
         isHardBongTimeActive = true;
         isHardBongTimeButtonClick = true;
-        // hardStart.gameObject.SetActive(true); // hardStart를 활성화
         Invoke("DeactivateHardBongTime", hardBongTimeNext);
 
         yield return new WaitForSeconds(hardBongTimeNext);
@@ -521,7 +519,6 @@ public class YJMiniGameManager : MonoBehaviour
         // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
         isHardBongTimeActive = true;
         isHardBongTimeButtonClick = true;
-        // hardStart.gameObject.SetActive(true); // hardStart를 활성화
         Invoke("DeactivateHardBongTime", hardBongTimeNext);
 
         yield return new WaitForSeconds(hardBongTimeNext);
@@ -529,6 +526,47 @@ public class YJMiniGameManager : MonoBehaviour
         // hardBongTimeNext가 끝날 때 isHardBongTimeActive = false로 하고 동시에 hardStart를 비활성화
         isHardBongTimeActive = false;
         hardStart.gameObject.SetActive(false);
+
+        // hardBongTime이 종료되면 다시 activeColorEffects를 비움
+        activeColorEffects.Clear();
+    }
+
+    // 하드 봉타임 진행
+    private IEnumerator ActivateNomalColorEffects()
+    {
+        expectedBongButtons.Clear(); // 기존에 저장된 버튼 초기화
+
+        for (int i = 0; i < 1; i++)
+        {
+            // 랜덤한 colorEffect를 가져와서 큐에 추가
+            Image randomColorEffect = GetRandomColorEffect();
+            activeColorEffects.Enqueue(randomColorEffect);
+
+            // 1.5초 동안 활성화
+            randomColorEffect.gameObject.SetActive(true);
+
+            // 효과음 재생
+            PlayColorEffectSound(randomColorEffect);
+
+            yield return new WaitForSeconds(1.5f);
+
+            // 대응하는 bong 버튼을 expectedBongButtons에 저장
+            expectedBongButtons.Enqueue(GetMatchingBongButton(randomColorEffect));
+
+            // 비활성화
+            randomColorEffect.gameObject.SetActive(false);
+        }
+
+        // (5)번에 설명한 대로 3초 동안만 hardBongTimeNext이 진행됨
+        nomalStart = true;
+        isHardBongTimeButtonClick = true;
+        Invoke("DeactivateHardBongTime", hardBongTimeNext);
+
+        yield return new WaitForSeconds(hardBongTimeNext);
+
+        // hardBongTimeNext가 끝날 때 isHardBongTimeActive = false로 하고 동시에 hardStart를 비활성화
+        nomalStart = false;
+        NomalMessage.gameObject.SetActive(false);
 
         // hardBongTime이 종료되면 다시 activeColorEffects를 비움
         activeColorEffects.Clear();
@@ -557,8 +595,9 @@ public class YJMiniGameManager : MonoBehaviour
     private void DeactivateHardBongTime()
     {
         isHardBongTimeActive = false;
+        nomalStart = false;
         // 하드 봉 타임 동안 버튼이 클릭되지 않았을 경우 score를 -1 감소
-        if (isHardBongTimeButtonClick == true)
+        if (isHardBongTimeButtonClick == true || nomalStart == true)
         {
             score--;
             costText.text = score.ToString();
@@ -591,21 +630,7 @@ public class YJMiniGameManager : MonoBehaviour
         return null;
     }
 
-    // 일반 봉타임 컬러 이펙트 랜덤 활성화
-    private void ActivateRandomColorEffect()
-    {
-
-        // 랜덤한 colorEffect 활성화 및 일정 시간 후에 비활성화
-        Image randomColorEffect = GetRandomColorEffect();
-        randomColorEffect.gameObject.SetActive(true);
-
-        // 효과음 재생
-        PlayColorEffectSound(randomColorEffect);
-
-        Invoke("DeactivateColorEffect", bongTime);
-    }
-
-    // 일반 봉타임 컬러 이펙트 랜덤 뽑기
+    // 컬러 이펙트 랜덤 뽑기
     private Image GetRandomColorEffect()
     {
         // 랜덤한 colorEffect 반환
@@ -641,6 +666,12 @@ public class YJMiniGameManager : MonoBehaviour
             // 유저가 버튼을 클릭했을 때 조건 검사
             CheckUserInput();
 
+        }
+
+        if (nomalStart == true)
+        {
+            // 유저가 버튼을 클릭했을 때 조건 검사
+            CheckUserInput();
         }
 
         // bongTime이 끝났을 때 추가된 부분
@@ -722,48 +753,6 @@ public class YJMiniGameManager : MonoBehaviour
         }
     }
 
-    // 일반 봉타임 대응 봉 클릭 검사
-    public void OnBongButtonClick(Button bongButton)
-    {
-
-        // bongTime이 진행 중일 때만 처리
-        if (isGameRunning && isBongTimeActive == true)
-        {
-            // 활성화된 colorEffect와 대응되는 bong 버튼인지 확인
-            if (IsMatchingBongButton(bongButton))
-            {
-                // 정답인 경우
-                score++;
-                costText.text = score.ToString();
-
-                // 정답 이미지 활성화
-                success.gameObject.SetActive(true);
-                badasucces_SFX.Play();
-                Invoke("DeactivateSuccessImage", 2.0f);
-            }
-            else
-            {
-                // 오답인 경우
-                score--;
-                costText.text = score.ToString();
-
-                // 오답 이미지 활성화
-                fail.gameObject.SetActive(true);
-                badafail_SFX.Play();
-                Invoke("DeactivateFailImage", 2.0f);
-            }
-
-            // UI 업데이트
-            UpdateUI();
-
-            // colorEffect 비활성화
-            DeactivateColorEffect();
-
-            // bongTime 동안 클릭 여부 추적 변수 초기화
-            isBongTimeActive = false;
-        }
-    }
-
     private void DeactivateSuccessImage()
     {
         // 정답 이미지 비활성화
@@ -774,53 +763,6 @@ public class YJMiniGameManager : MonoBehaviour
     {
         // 오답 이미지 비활성화
         fail.gameObject.SetActive(false);
-    }
-
-    private bool IsBongTimeActive()
-    {
-        // bongTime이 진행 중인지 여부 반환
-        return isGameRunning;
-    }
-
-    // 일반 봉타임 대응 봉 클릭 대응 검사
-    private bool IsMatchingBongButton(Button bongButton)
-    {
-        // 활성화된 colorEffect와 대응되는 bong 버튼인지 확인
-        Image activeColorEffect = GetActiveColorEffect();
-
-        if (bongButton == bong01 && activeColorEffect == colorEffect01)
-        {
-            return true;
-        }
-        else if (bongButton == bong02 && activeColorEffect == colorEffect02)
-        {
-            return true;
-        }
-        else if (bongButton == bong03 && activeColorEffect == colorEffect03)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    private Image GetActiveColorEffect()
-    {
-        // 활성화된 colorEffect 반환
-        if (colorEffect01.gameObject.activeSelf)
-        {
-            return colorEffect01;
-        }
-        else if (colorEffect02.gameObject.activeSelf)
-        {
-            return colorEffect02;
-        }
-        else if (colorEffect03.gameObject.activeSelf)
-        {
-            return colorEffect03;
-        }
-
-        return null;
     }
 
     private void UpdateUI()
