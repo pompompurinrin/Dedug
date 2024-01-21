@@ -648,14 +648,21 @@ public class MainController2 : MonoBehaviour
     }
 
     // 굿즈 개수 증가 메서드
-    public void GoodsCountUP()
+    public void CountUP()
     {
         score++;
         Scoretxt.text = score.ToString();
 
     }
 
-    public void GoodsCountDown()
+    public void DoubleCountUP()
+    {
+        score += 2;
+        Scoretxt.text = score.ToString();
+
+    }
+
+    public void CountDown()
     {
         score--;
         Scoretxt.text = score.ToString();

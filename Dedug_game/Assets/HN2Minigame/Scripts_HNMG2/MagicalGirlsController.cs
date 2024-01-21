@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StudentController : MonoBehaviour
+public class MagicalGirlsController : MonoBehaviour
 {
     GameObject Player;  // 플레이어 오브젝트를 참조하기 위한 변수
 
@@ -44,7 +44,7 @@ public class StudentController : MonoBehaviour
         GameObject director = GameObject.Find("MainBG");
         if (d < r1 + r2)
         {
-            if (director != null) { director.GetComponent<MainController2>().CountUP(); }
+            if (director != null) { director.GetComponent<MainController2>().DoubleCountUP(); }
 
             Destroy(gameObject);  // 현재 오브젝트를 지운다
         }
