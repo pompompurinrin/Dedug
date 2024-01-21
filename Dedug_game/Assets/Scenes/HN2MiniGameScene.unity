@@ -788,9 +788,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bd15b44d56c8b8744907d0c95fd80dba, type: 3}
   - {fileID: 21300000, guid: 50c1192ccb2358e4f9b1eb599ab95386, type: 3}
   goodsSprites:
-  - {fileID: 21300000, guid: 238c675f7d18ae8438a3c020d49abb95, type: 3}
-  - {fileID: 21300000, guid: 67aae413b3652ed4fb6bdaca1598b487, type: 3}
-  - {fileID: 21300000, guid: 7baf3c19cda2acf4faed579ad1f916e7, type: 3}
+  - {fileID: 21300000, guid: d8fe69984ccc58a4e81d42d0a452405d, type: 3}
+  - {fileID: 21300000, guid: 199df9715c7f80d41beb38f49140ea61, type: 3}
+  - {fileID: 21300000, guid: 1cd15782fac09d04f9f274b9aef8c167, type: 3}
 --- !u!1 &1791562853993780376
 GameObject:
   m_ObjectHideFlags: 0
@@ -46828,7 +46828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee606a707d21ba44c990b7b7294456aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController2: {fileID: 6800431344585444924}
+  mainController2: {fileID: 6800431344585444924}
   timerSlider: {fileID: 6800431344306646571}
   timer: 60
   timeText: {fileID: 329128465}
@@ -47035,7 +47035,7 @@ MonoBehaviour:
   realStopBg: {fileID: 7094475472126412576}
   stopOk: {fileID: 7094475473180754290}
   stopNo: {fileID: 7094475473813855062}
-  timerController2: {fileID: 6800431344306646572}
+  timeController2: {fileID: 6800431344306646572}
   isGamePaused: 0
 --- !u!224 &6800431344619749312
 RectTransform:

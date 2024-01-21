@@ -23,11 +23,7 @@ public class TimerController: MonoBehaviour
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
 
-        InvokeRepeating("ReadyCounter", 0f, 1f);
-        
-        //ReadyCounter();
-
-        //PercentageTable_1에서 배열을 사용할게
+        InvokeRepeating("ReadyCounter", 0f, 1f);                
        
     }
 
@@ -57,24 +53,29 @@ public class TimerController: MonoBehaviour
         if (mainController.isGamePaused)
             return;
 
-        readyCount.gameObject.SetActive(false);
-        mainController.Scoretxt.gameObject.SetActive(true);
-
-
-        timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
-        timer -= 1f; // 타이머 감소
-
-        // 슬라이더 값 갱신
-        timerSlider.value = timer;
-
-        if (timer <= -1)
+        if(mainController.isGameRunnig == true)
         {
+            readyCount.gameObject.SetActive(false);
+            mainController.Scoretxt.gameObject.SetActive(true);
 
-            timer = -1;
-            TimeOver();
-            timer = 30;
 
+            timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
+            timer -= 1f; // 타이머 감소
+
+            // 슬라이더 값 갱신
+            timerSlider.value = timer;
+
+            if (timer <= -1)
+            {
+
+                timer = -1;
+                TimeOver();
+                mainController.isGameRunnig = false;
+                
+
+            }
         }
+       
     }
 
 
@@ -83,17 +84,18 @@ public class TimerController: MonoBehaviour
     // 시간이 다 되면 게임 오버 화면을 활성화
     public void TimeOver()
     {
-
         mainController.Score();
+        mainController.isGameRunnig = false;
+        timer = 30;
         mainController.ResultBG.gameObject.SetActive(true);
-        // mainController2.Main_BGM2.Stop();
+
         // 어떤 컴포넌트에 배정할거임?
         mainController.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
         mainController.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         mainController.Restart = GameObject.Find("Restart").GetComponent<Button>();
         mainController.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
         mainController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
-        mainController.Main_BGM2.Pause();
+        mainController.Main_BGM2.Stop();
     }
 
 

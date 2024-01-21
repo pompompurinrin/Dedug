@@ -148,6 +148,7 @@ public class MainController : MonoBehaviour
     // 게임이 시작될 때 호출되는 함수
     private void StartGame()
     {
+
         if (isGamePaused)
         {
             Debug.Log("일시정지로 게임 중단");
@@ -157,6 +158,8 @@ public class MainController : MonoBehaviour
 
         else
         {
+            isGameRunnig = true;
+
             Debug.Log("게임 시작");
             // 이미지 위치를 무작위로 섞음
             int[] locations = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
@@ -272,18 +275,19 @@ public class MainController : MonoBehaviour
              
         if (score == 10) 
             {
-                Main_BGM2.Stop();
+                
                 Score();
+                isGameRunnig = false;
                 score = 0;
                 ResultBG.gameObject.SetActive(true);             
-
+                
                 //어떤 컴포넌트에 배정할거임?
                 ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
                 ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
                 Restart = GameObject.Find("Restart").GetComponent<Button>();
                 HomeBtn = GameObject.Find("Home").GetComponent<Button>();
                 UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
-                Main_BGM2.Pause();
+                Main_BGM2.Stop();
 
             }
         }
@@ -470,7 +474,7 @@ public class MainController : MonoBehaviour
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
         UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
-      
+        
 
         //굿즈 지급
         if (score >= 10) // 바꿔
@@ -746,6 +750,10 @@ public class MainController : MonoBehaviour
 
     // 게임 일시정지 상태를 나타내는 변수
     public bool isGamePaused = false;
+
+
+    // 게임 일시정지 상태를 나타내는 변수
+    public bool isGameRunnig = false;
 
     // 게임 일시정지 버튼 클릭 시 호출되는 함수
     public void StopButtonClick()
