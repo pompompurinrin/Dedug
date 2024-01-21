@@ -9,8 +9,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class MainImageScript : MonoBehaviour
 {
     [SerializeField] private GameObject card_Back;
-    [SerializeField] private GameObject image_show;
     [SerializeField] private GameObject image_frame;
+    [SerializeField] private GameObject Image_BG;
     [SerializeField] private GameObject real_Image;
     [SerializeField] public GameObject error_fx;      // 매칭 에러 효과
     [SerializeField] public GameObject correct_fx;    // 매칭 성공 효과
@@ -25,9 +25,10 @@ public class MainImageScript : MonoBehaviour
     }
     public void DisableShowImage()
     {
-        image_show.SetActive(false);
         card_Back.SetActive(true);
+        real_Image.SetActive(false);
         image_frame.SetActive(false);
+        Image_BG.SetActive(false);
     }
     // 이미지를 클릭했을 때 호출되는 함수
     public void OnClick()
@@ -47,6 +48,8 @@ public class MainImageScript : MonoBehaviour
             {
                 card_Back.SetActive(false);
                 image_frame.SetActive(true);
+                real_Image.SetActive(true);
+                Image_BG.SetActive(true);
 
 
                 mainController.imageOpened(this);
@@ -74,7 +77,7 @@ public class MainImageScript : MonoBehaviour
     {
         _spriteId = id;
         real_Image.GetComponent<Image>().sprite = image; // 스프라이트를 변경하기 위해 Image 컴포넌트를 가져와 사용
-        image_show.GetComponent<Image>().sprite = image;
+     
 
     }
 
@@ -92,6 +95,8 @@ public class MainImageScript : MonoBehaviour
                 {
                 card_Back.SetActive(true);
                 image_frame.SetActive(false);
+                    real_Image.SetActive(false);
+                Image_BG.SetActive(false);
 
                 transform.DOScale(originalScale, 0.2f);
                 error_fx.gameObject.SetActive(false);

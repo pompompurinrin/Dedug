@@ -244,27 +244,33 @@ public class MainController : MonoBehaviour
             
             correct_sfx.Play();                              // correct_sfx 재생
 
+            MainImageScript card1 = firstOpen;
+            MainImageScript card2 = secondOpen;
+
             Vector3 originalScale = new Vector3(1, 1, 1);
             Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
 
-            MainImageScript card1 = firstOpen;
-            
-            card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
-            {
-                card1.transform.DOScale(originalScale, 0.2f);
-                card1.correct_fx.gameObject.SetActive(true);
-            });
-            
-            MainImageScript card2 = secondOpen;
-            
-            card2.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
-            {
-                card2.transform.DOScale(originalScale, 0.2f);
-                card2.correct_fx.gameObject.SetActive(true);
-                secondOpen = null;  // 변수 초기화 추가
-            });
+           
+                    
 
-            if (score == 10) 
+                card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                {
+                    card1.transform.DOScale(originalScale, 0.2f);
+                    card1.correct_fx.gameObject.SetActive(true);
+                                           
+                });
+
+
+                card2.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                {
+                    card2.transform.DOScale(originalScale, 0.2f);
+                    card2.correct_fx.gameObject.SetActive(true);
+                    secondOpen = null;  // 변수 초기화 추가
+                });
+
+            
+             
+        if (score == 10) 
             {
                 Main_BGM2.Stop();
                 Score();
@@ -753,7 +759,7 @@ public class MainController : MonoBehaviour
         else if (isGamePaused)
         {
             // 게임 재개
-            Time.timeScale = 1;
+           
             pauseBG.gameObject.SetActive(false);
             stopBg.gameObject.SetActive(false);
             realStopBg.gameObject.SetActive(false);
@@ -766,11 +772,12 @@ public class MainController : MonoBehaviour
     private void PauseGame()
     {
         isGamePaused = true;
-        Time.timeScale = 0;
+        
         // 게임 일시정지 UI 활성화
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
         Main_BGM2.Pause();
+       
 
     }
   
