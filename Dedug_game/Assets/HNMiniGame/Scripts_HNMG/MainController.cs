@@ -274,6 +274,7 @@ public class MainController : MonoBehaviour
             {
                 Main_BGM2.Stop();
                 Score();
+                score = 0;
                 ResultBG.gameObject.SetActive(true);             
 
                 //어떤 컴포넌트에 배정할거임?
@@ -281,7 +282,8 @@ public class MainController : MonoBehaviour
                 ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
                 Restart = GameObject.Find("Restart").GetComponent<Button>();
                 HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-                UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();  
+                UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
+                Main_BGM2.Pause();
 
             }
         }
@@ -468,9 +470,7 @@ public class MainController : MonoBehaviour
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
         UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
-
-        PauseGame();
-        stopBg.gameObject.SetActive(false);
+      
 
         //굿즈 지급
         if (score >= 10) // 바꿔
@@ -759,7 +759,7 @@ public class MainController : MonoBehaviour
         else if (isGamePaused)
         {
             // 게임 재개
-           
+            Time.timeScale = 1;
             pauseBG.gameObject.SetActive(false);
             stopBg.gameObject.SetActive(false);
             realStopBg.gameObject.SetActive(false);
@@ -772,6 +772,7 @@ public class MainController : MonoBehaviour
     private void PauseGame()
     {
         isGamePaused = true;
+        Time.timeScale = 0;
         
         // 게임 일시정지 UI 활성화
         pauseBG.gameObject.SetActive(true);

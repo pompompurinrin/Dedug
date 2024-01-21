@@ -291,8 +291,7 @@ public class MainController2 : MonoBehaviour
     {
         UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
 
-        PauseGame();
-        stopBg.gameObject.SetActive(false);
+        
 
         //굿즈 지급
         if (score >= 10) // 바꿔

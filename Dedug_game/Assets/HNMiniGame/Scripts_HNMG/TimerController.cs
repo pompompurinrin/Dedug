@@ -72,6 +72,7 @@ public class TimerController: MonoBehaviour
 
             timer = -1;
             TimeOver();
+            timer = 30;
 
         }
     }
@@ -91,7 +92,8 @@ public class TimerController: MonoBehaviour
         mainController.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         mainController.Restart = GameObject.Find("Restart").GetComponent<Button>();
         mainController.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-        mainController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>(); 
+        mainController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
+        mainController.Main_BGM2.Pause();
     }
 
 
