@@ -59,6 +59,13 @@ public class FeverManager : MonoBehaviour
 
     public AudioSource feverClickSFX;
 
+    // 랭크 별 클릭 밸류
+    public bool nowRank00;
+    public bool nowRank01;
+    public bool nowRank02;
+    public bool nowRank03;
+    public bool nowRank04;
+
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
@@ -78,12 +85,45 @@ public class FeverManager : MonoBehaviour
 
     public void OnEnable()
     {
+        feverButton.onClick.RemoveAllListeners();  // 기존 이벤트 제거
         feverButton.onClick.AddListener(OnClickFeverButton);
         UpdateFeverTimeText();
         data_Dialog = CSVReader.Read("FeverCSV");
 
-        countdownTime = 5f;
+        nowRank00 = false;
+        nowRank01 = false;
+        nowRank02 = false;
+        nowRank03 = false;
+        nowRank04 = false;
 
+        countdownTime = 5f;
+        feverSlider.value = 0;
+        feverGauge = 0;
+
+        if (NowRank == 0)
+        {
+            nowRank00 = true;
+        }
+
+        if (NowRank == 1)
+        {
+            nowRank01 = true;
+        }
+
+        if (NowRank == 2)
+        {
+            nowRank02 = true;
+        }
+
+        if (NowRank == 3)
+        {
+            nowRank03 = true;
+        }
+
+        if (NowRank == 4)
+        {
+            nowRank04 = true;
+        }
     }
 
 
@@ -394,30 +434,32 @@ public class FeverManager : MonoBehaviour
             CreateClickEffect();
             feverClickSFX.Play();
 
-            if (NowRank == 0)
+            if (nowRank00 == true)
             {
                 feverGauge++;
             }
 
-            else if (NowRank == 1)
+            else if (nowRank01 == true)
             {
                 feverGauge += 2;
             }
 
-            else if (NowRank == 2)
+            else if (nowRank02 == true)
             {
                 feverGauge += 3;
             }
 
-            else if (NowRank == 3)
+            else if (nowRank03 == true)
             {
                 feverGauge += 4;
             }
 
-            else if (NowRank == 4)
+            else if (nowRank04 == true)
             {
                 feverGauge += 5;
             }
+
+            Debug.Log(feverGauge);
 
             // feverButton 클릭 시 feverGauge 증가 및 feverSlider 이동
             feverSlider.value = feverGauge;
@@ -457,10 +499,17 @@ public class FeverManager : MonoBehaviour
 
     public void EndFiver()
     {
-        countdownTime = 10;
-        feverSlider.value = 0;
-        feverGauge = 0;
         goldText.text = DataManager.Instance.nowGold.ToString();
+
+        EndSFX01.Stop();
+        EndSFX02.Stop();
+        EndSFX03.Stop();
+
+        nowRank00 = false;
+        nowRank01 = false;
+        nowRank02 = false;
+        nowRank03 = false;
+        nowRank04 = false;
 
         // result와 Shine_pink 파티클 오브젝트를 비활성화
         endBg.SetActive(false);
