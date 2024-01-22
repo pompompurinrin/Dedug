@@ -543,7 +543,7 @@ public class MainController2 : MonoBehaviour
     public void RestartClick()
     {
         Debug.Log("Restart");
-        SceneManager.LoadScene("HNMiniGameScene2");
+        SceneManager.LoadScene("HN2MiniGameScene");
     }
     // 게임 홈으로 가는 함수
     public void HomeClick()
