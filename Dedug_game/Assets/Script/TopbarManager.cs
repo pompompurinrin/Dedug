@@ -18,6 +18,13 @@ public class TopbarManager : MonoBehaviour
 
     public GameObject SettingPopCanvas;
     public GameObject MenuUI;
+    public GameObject HelpUI;
+    public GameObject HelpPopup;
+    public GameObject HelpHomePopup;
+    public GameObject HelpCollectionPopup;
+    public GameObject HelpCommisionPopup;
+    public GameObject HelpOtakuPopup;
+    public GameObject HelpRankUPPopup;
 
 
     public AudioSource bgm1AudioSource;
@@ -134,7 +141,15 @@ public class TopbarManager : MonoBehaviour
 
         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
-        
+        GameObject HelpUI = GameObject.Find("HelpUI");
+        GameObject HelpPopup = GameObject.Find("HelpPopup");
+        GameObject HelpHomePopup = GameObject.Find("HelpHomePopup");
+        GameObject HelpCollectionPopup = GameObject.Find("HelpCollectionPopup");
+        GameObject HelpCommisionPopup = GameObject.Find("HelpCommisionPopup");
+        GameObject HelpOtakuPopup = GameObject.Find("HelpOtakuPopup");
+        GameObject HelpRankUPPopup = GameObject.Find("HelpRankUPPopup");
+
+
 
         if (MenuUI != null)
         {
@@ -150,6 +165,16 @@ public class TopbarManager : MonoBehaviour
             if (SettingPopupCanvas.activeSelf)
             {
                 SettingPopupCanvas.SetActive(false);
+            }
+
+
+        }
+
+        if (HelpUI != null)
+        {
+            if (HelpUI.activeSelf)
+            {
+                HelpUI.SetActive(false);
             }
 
 
@@ -233,7 +258,83 @@ public class TopbarManager : MonoBehaviour
         MenuUI.SetActive(false);
     }
 
-  public void HomeClick()
+    public void OnButtonClick_OnHelpUI()
+    {
+        // ÇïÇÁ ÆË¾÷ È°¼ºÈ­
+        HelpUI.SetActive(true);
+    }
+    public void OnButtonClick_OffHelpUI()
+    {
+        // ÇïÇÁ ÆË¾÷ ºñÈ°¼ºÈ­
+        HelpUI.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpHomePopup()
+    {
+        // ÇïÇÁ È¨ ÆË¾÷ È°¼ºÈ­
+        HelpPopup.SetActive(true);
+        HelpHomePopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpHomePopup()
+    {
+        // ÇïÇÁ È¨ ÆË¾÷ ºñÈ°¼ºÈ­
+        HelpHomePopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpCollectionPopup()
+    {
+        // ÇïÇÁ ÄÝ·º¼Ç ÆË¾÷ È°¼ºÈ­
+        HelpPopup.SetActive(true);
+        HelpCollectionPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpCollectionPopup()
+    {
+        // ÇïÇÁ ÄÝ·º¼Ç ÆË¾÷ ºñÈ°¼ºÈ­
+        HelpCollectionPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpCommisionPopup()
+    {
+        // ÇïÇÁ Ä¿¹Ì¼Ç ÆË¾÷ È°¼ºÈ­
+        HelpPopup.SetActive(true);
+        HelpCommisionPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpCommisionPopup()
+    {
+        // ÇïÇÁ Ä¿¹Ì¼Ç ÆË¾÷ ºñÈ°¼ºÈ­
+        HelpCommisionPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpOtakuPopup()
+    {
+        // ÇïÇÁ ¿ÀÅ¸Äí ÆË¾÷ È°¼ºÈ­
+        HelpPopup.SetActive(true);
+        HelpOtakuPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpCOtakuPopup()
+    {
+        // ÇïÇÁ ¿ÀÅ¸Äí ÆË¾÷ ºñÈ°¼ºÈ­
+        HelpOtakuPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpRankUPPopup()
+    {
+        // ÇïÇÁ ·©Å© ¾÷ ÆË¾÷ È°¼ºÈ­
+        HelpPopup.SetActive(true);
+        HelpRankUPPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpRankUPPopup()
+    {
+        // ÇïÇÁ ·©Å© ¾÷ ÆË¾÷ ºñÈ°¼ºÈ­
+        HelpRankUPPopup.SetActive(false);
+    }
+
+    public void HomeClick()
     {
         SceneManager.LoadScene("HomeScene");
     }
