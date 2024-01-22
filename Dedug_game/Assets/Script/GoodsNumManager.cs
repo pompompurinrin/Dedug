@@ -882,15 +882,7 @@ public class GoodsNumManager : MonoBehaviour
         SpecialGoodsSlider.maxValue = 10;
         SpecialGoodsSlider.value = SpecialGoodsGauge;
 
-        if (DataManager.Instance.nowRank == 4)
-        {
-            UnlockSpecial.gameObject.SetActive(false);
-            
-        }
-        else
-        {
-            UnlockSpecial.gameObject.SetActive(true);
-        }
+        
         
         
     }
