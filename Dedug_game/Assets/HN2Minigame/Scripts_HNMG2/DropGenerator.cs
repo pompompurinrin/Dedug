@@ -33,7 +33,7 @@ public class DropGenerator : MonoBehaviour
 
                 if ( randPrefab == 0 )
                 {
-                    span = 5f;
+                    span = 2f;
                     randomStudentImage = Random.Range(0, StudentSprites.Length);
                     GameObject go = Instantiate(StudentPrefab);
                     go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
@@ -42,7 +42,7 @@ public class DropGenerator : MonoBehaviour
                 }
                 else if ( randPrefab == 1 )
                 {
-                    span = 3f;
+                    span = 1f;
                     randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
                     GameObject go = Instantiate(ObstaclePrefab);
                     go.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
