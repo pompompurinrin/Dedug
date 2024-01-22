@@ -55,55 +55,55 @@ public class StoryManager : MonoBehaviour
         data_Dialog = CSVReader.Read(StoryFileName);
         if (DataManager.Instance.storyID == 0)
         {
-            ClickNum = 514;
+            ClickNum = 516;
             DataManager.Instance.first = 1;
             PlayerPrefs.SetInt("First", DataManager.Instance.first);
         }
         else if (DataManager.Instance.storyID ==11)
         {
-            ClickNum = 86;
+            ClickNum = 92;
             
             //이건 클릭한 스토리의 시작을 어디서부터 하는지 정해주는 작업, 추후 완성 테이블 기반으로 ClickNum에 해당 열로 수정
         }
         else if (DataManager.Instance.storyID == 12)
         {
-            ClickNum = 130;
+            ClickNum = 136;
             
         }
         else if (DataManager.Instance.storyID == 13)
         {
-            ClickNum = 189;
+            ClickNum = 195;
            
 
         }
         else if (DataManager.Instance.storyID == 21)
         {
-            ClickNum = 242;
+            ClickNum = 249;
             
         }
         else if (DataManager.Instance.storyID == 22)
         {
-            ClickNum = 286;
+            ClickNum = 292;
             
         }
         else if (DataManager.Instance.storyID == 23)
         {
-            ClickNum = 337;
+            ClickNum = 343;
             
         }
         else if (DataManager.Instance.storyID == 31)
         {
-            ClickNum = 386;
+            ClickNum = 392;
             
         }
         else if (DataManager.Instance.storyID == 32)
         {
-            ClickNum = 425;
+            ClickNum = 431;
             
         }
         else if (DataManager.Instance.storyID == 33)
         {
-            ClickNum = 476;
+            ClickNum = 482;
             
         }
         else if (DataManager.Instance.storyID == 41)
@@ -113,7 +113,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 42)
         {
-            ClickNum = 31;
+            ClickNum = 32;
             
         }
         else if (DataManager.Instance.storyID == 43)
@@ -123,7 +123,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 99)
         {
-            ClickNum = 561;
+            ClickNum = 567;
 
             
         }

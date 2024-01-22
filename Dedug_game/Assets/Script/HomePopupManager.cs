@@ -22,6 +22,8 @@ public class HomePopupManager : MonoBehaviour
 
     public Canvas GanbareHowTo;
     public Canvas CardHowTo;
+    public Canvas TutorialCanvas;
+    public Button TutorialBtn;
 
     public AudioSource sfx1AudioSource;
 
@@ -36,6 +38,7 @@ public class HomePopupManager : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
         PlayerPrefs.Save();
     }
 
@@ -43,13 +46,24 @@ public class HomePopupManager : MonoBehaviour
     {
         DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
+        DataManager.Instance.firstHome = PlayerPrefs.GetInt("FirstHome");
     }
 
     void Start()
     {
         data_Dialog = CSVReader.Read(RankFileName);
-        
-   
+        if(DataManager.Instance.firstHome == 0)
+        {
+            TutorialCanvas.gameObject.SetActive(true);
+            DataManager.Instance.firstHome = 1;
+            Save();
+            ClickTutorial();
+        }
+        else
+        {
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+
        
         GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
         GamePopuptext2.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
@@ -76,6 +90,39 @@ public class HomePopupManager : MonoBehaviour
         }
 
 
+    }
+    int TutorialClickNum = 0;
+
+    public Image TutorialImg;
+
+    public Sprite TutorialImage1;
+    public Sprite TutorialImage2;
+    public Sprite TutorialImage3;
+    public Sprite TutorialImage4;
+    public Sprite TutorialImage5;
+    public Sprite TutorialImage6;
+    public Sprite TutorialImage7;
+
+    public void ClickTutorial()
+    {
+        if (TutorialClickNum == 0)
+        {
+            TutorialImg.sprite = TutorialImage1;
+        }
+        else if (TutorialClickNum == 1)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum == 2)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum > 2)
+        {
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+
+        TutorialClickNum++;
     }
 
     public void PlaySFX1()
