@@ -18,6 +18,11 @@ public class FeverManager : MonoBehaviour
 
     public Text goldText;
 
+    // ÅÍÄ¡ È½¼ö ÅØ½ºÆ®
+    public Text feverComboText;
+    // ÅÍÄ¡ È½¼ö Ä«¿îÆ®
+    private int clickCount = 0;
+
     int NowGold;
 
     // ÇÇ¹öÅ¸ÀÓ ³¡³»´Â ¹öÆ°
@@ -81,7 +86,22 @@ public class FeverManager : MonoBehaviour
         // °ø¿ë º¯¼ö ¼³Á¤
         DataManager.Instance.nowGold = NowGold;
         DataManager.Instance.nowRank = NowRank;
+        UpdatefeverComboText();
     }
+    public void OnButtonClick()
+    {
+        //¹öÆ° Å¬¸¯½Ã Ä«¿îÆ® Áõ°¡
+        clickCount++;
+        UpdatefeverComboText();
+    }
+
+    void UpdatefeverComboText()
+    {
+        //ÅØ½ºÆ® ¾÷µ¥ÀÌÆ®
+        feverComboText.text = "Combo\n" + clickCount.ToString();
+        
+    }
+
 
     public void OnEnable()
     {
@@ -188,7 +208,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[0]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[0]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[0]["ResultImg"].ToString());
-            endGold.text = data_Dialog[0]["FeverGold"].ToString();
+            endGold.text = data_Dialog[0]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[0]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -199,7 +219,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[3]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[3]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[3]["ResultImg"].ToString());
-            endGold.text = data_Dialog[3]["FeverGold"].ToString();
+            endGold.text = data_Dialog[3]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[3]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -210,7 +230,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[6]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[6]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[6]["ResultImg"].ToString());
-            endGold.text = data_Dialog[6]["FeverGold"].ToString();
+            endGold.text = data_Dialog[6]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[6]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -221,7 +241,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[9]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[9]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[9]["ResultImg"].ToString());
-            endGold.text = data_Dialog[9]["FeverGold"].ToString();
+            endGold.text = data_Dialog[9]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[9]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -232,7 +252,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[12]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[12]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[12]["ResultImg"].ToString());
-            endGold.text = data_Dialog[12]["FeverGold"].ToString();
+            endGold.text = data_Dialog[12]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[12]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -258,7 +278,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[1]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[1]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[1]["ResultImg"].ToString());
-            endGold.text = data_Dialog[1]["FeverGold"].ToString();
+            endGold.text = data_Dialog[1]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[1]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -269,7 +289,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[4]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[4]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[4]["ResultImg"].ToString());
-            endGold.text = data_Dialog[4]["FeverGold"].ToString();
+            endGold.text = data_Dialog[4]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[4]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -280,7 +300,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[7]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[7]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[7]["ResultImg"].ToString());
-            endGold.text = data_Dialog[7]["FeverGold"].ToString();
+            endGold.text = data_Dialog[7]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[7]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -291,7 +311,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[10]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[10]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[10]["ResultImg"].ToString());
-            endGold.text = data_Dialog[10]["FeverGold"].ToString();
+            endGold.text = data_Dialog[10]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[10]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -302,7 +322,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[13]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[13]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[13]["ResultImg"].ToString());
-            endGold.text = data_Dialog[13]["FeverGold"].ToString();
+            endGold.text = data_Dialog[13]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[13]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -327,7 +347,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[2]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[2]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[2]["ResultImg"].ToString());
-            endGold.text = data_Dialog[2]["FeverGold"].ToString();
+            endGold.text = data_Dialog[2]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[2]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -338,7 +358,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[5]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[5]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[5]["ResultImg"].ToString());
-            endGold.text = data_Dialog[5]["FeverGold"].ToString();
+            endGold.text = data_Dialog[5]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[5]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -349,7 +369,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[8]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[8]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[8]["ResultImg"].ToString());
-            endGold.text = data_Dialog[8]["FeverGold"].ToString();
+            endGold.text = data_Dialog[8]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[8]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -360,7 +380,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[11]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[11]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[11]["ResultImg"].ToString());
-            endGold.text = data_Dialog[11]["FeverGold"].ToString();
+            endGold.text = data_Dialog[11]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[11]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -371,7 +391,7 @@ public class FeverManager : MonoBehaviour
             endText.text = data_Dialog[14]["ResultExplain"].ToString();
             endTitle.text = data_Dialog[14]["ResultGrade"].ToString();
             SetImageFromResultImg(data_Dialog[14]["ResultImg"].ToString());
-            endGold.text = data_Dialog[14]["FeverGold"].ToString();
+            endGold.text = data_Dialog[14]["FeverGold"].ToString() + "°ñµå È¹µæ!";
             int i = (int)data_Dialog[14]["FeverGold"];
             DataManager.Instance.nowGold += i;
             Save();
@@ -510,6 +530,10 @@ public class FeverManager : MonoBehaviour
         nowRank02 = false;
         nowRank03 = false;
         nowRank04 = false;
+
+        //ÄÞº¸ È½¼ö ÃÊ±âÈ­
+        clickCount = 0;
+        UpdatefeverComboText();
 
         // result¿Í Shine_pink ÆÄÆ¼Å¬ ¿ÀºêÁ§Æ®¸¦ ºñÈ°¼ºÈ­
         endBg.SetActive(false);

@@ -319,7 +319,7 @@ public class RequestManager : MonoBehaviour
         Invoke("GetGoldTextfalse", 2f);
 
         int goldValueType = clickedButton.GetComponent<RequestPrefabScript>().GetgoldValuetype();
-        getGoldText.text = goldValueType.ToString() + "+";
+        getGoldText.text = "+" + goldValueType.ToString();
 
         // 애니메이션이 끝났을 때 DrawIdle 애니메이션으로 전환
         StartCoroutine(PlayDAnimationAndSwitchToI());
