@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,6 +114,7 @@ public class RequestManager : MonoBehaviour
         goldText.text = DataManager.Instance.nowGold.ToString();
 
         comitionBGM.Play();
+
     }
 
     void Update()
@@ -126,6 +128,8 @@ public class RequestManager : MonoBehaviour
         }
 
     }
+    
+
 
     void CreateRequestPrefab()
     {
@@ -244,8 +248,10 @@ public class RequestManager : MonoBehaviour
 
         if(customerType == 2)
         {
-            rareImage.sprite = Resources.Load<Sprite>("customerType2");
-            cosBtn.sprite = Resources.Load<Sprite>("customerType2Btn");
+            rareImage.sprite = Resources.Load<Sprite>("RequestBackBg2");
+            //cosBtn.sprite = Resources.Load<Sprite>("requestBtn");
+            nameText.GetComponent<Text>().color = Color.red;
+                
 
         }
 
@@ -256,7 +262,7 @@ public class RequestManager : MonoBehaviour
             Color color = (customerType == 1) ? Color.white : Color.magenta;
             newRequest.GetComponent<Image>().color = color;*/
 
-
+    
 
 
     // RequestPrefabScript 컴포넌트를 찾고, 없으면 추가
@@ -313,7 +319,7 @@ public class RequestManager : MonoBehaviour
         Invoke("GetGoldTextfalse", 2f);
 
         int goldValueType = clickedButton.GetComponent<RequestPrefabScript>().GetgoldValuetype();
-        getGoldText.text = goldValueType.ToString();
+        getGoldText.text = goldValueType.ToString() + "+";
 
         // 애니메이션이 끝났을 때 DrawIdle 애니메이션으로 전환
         StartCoroutine(PlayDAnimationAndSwitchToI());
@@ -473,7 +479,6 @@ public class RequestManager : MonoBehaviour
             yOffset -= requestTransform.rect.height + requestListSpacing;
         }
     }
-
 
 
     private IEnumerator ActivateFeverBgAfterDelay(float delay)
