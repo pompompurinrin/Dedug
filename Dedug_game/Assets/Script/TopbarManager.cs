@@ -87,6 +87,7 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.feverNum = PlayerPrefs.GetInt("FeverNum");
         DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
+        DataManager.Instance.first = PlayerPrefs.GetInt("First");
         NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
     }
     public void TopBar()
@@ -298,6 +299,7 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.story4_2 = 0;
         DataManager.Instance.story4_3 = 0;
         DataManager.Instance.storyID = 0;
+        DataManager.Instance.first = 0;
         Save();
     }
 
@@ -349,6 +351,7 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("Goods3042", DataManager.Instance.goods3042);
         PlayerPrefs.SetInt("Goods3051", DataManager.Instance.goods3051);
         PlayerPrefs.SetInt("Goods3052", DataManager.Instance.goods3052);
+        PlayerPrefs.SetInt("First", DataManager.Instance.first);
         PlayerPrefs.Save();
     }
 

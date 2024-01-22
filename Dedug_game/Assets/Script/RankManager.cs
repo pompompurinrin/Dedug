@@ -75,7 +75,7 @@ public class RankManager : MonoBehaviour
         DataManager.Instance.goods2022 = PlayerPrefs.GetInt("Goods2022");
         DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
         DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
-
+        DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
     }
     private void Start()
     {
@@ -381,6 +381,13 @@ public class RankManager : MonoBehaviour
         // 랭크 팝업 종료 클릭 시 호출되는 메서드
         anim.SetTrigger("DoHide");
         RankPopUPBG.gameObject.SetActive(false);
+        if(DataManager.Instance.nowRank == 4)
+        {
+            DataManager.Instance.storyID = 99;
+            SceneManager.LoadScene("StoryScene");
+        }
+        
+        
     }
 
     public void ResultExitClick()
@@ -407,7 +414,7 @@ public class RankManager : MonoBehaviour
         // PlayerPrefs에 현재 값 저장
         PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
-       
+        PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
         PlayerPrefs.Save();
     }
 

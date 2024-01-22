@@ -13,6 +13,11 @@ public class StartManager : MonoBehaviour
     public AudioSource sfx1AudioSource;
     public AudioSource bgm1AudioSource;
 
+    private void Awake()
+    {
+        DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
+        DataManager.Instance.first = PlayerPrefs.GetInt("First");
+    }
     void Start()
     {
         StartCoroutine(BlinkImage());
@@ -50,9 +55,19 @@ public class StartManager : MonoBehaviour
 
     public void TouchToStart()
     {
+
         sfx1AudioSource.Play();
-        SceneManager.LoadScene("HomeScene");
-        
+        if (DataManager.Instance.first == 0)
+        {
+            DataManager.Instance.storyID = 0;
+            PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
+            SceneManager.LoadScene("StoryScene");
+
+        }
+        else
+        {
+            SceneManager.LoadScene("HomeScene");
+        }
     }
 
 }
