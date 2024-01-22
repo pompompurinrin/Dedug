@@ -9,8 +9,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class MainImageScript : MonoBehaviour
 {
     [SerializeField] private GameObject card_Back;
-    [SerializeField] private GameObject card_Frame;
-    [SerializeField] private GameObject card_BG;
+    //[SerializeField] private GameObject card_Frame;
+    //[SerializeField] private GameObject card_BG;
     [SerializeField] private GameObject real_Image;
     [SerializeField] public GameObject error_fx;      // 매칭 에러 효과
     [SerializeField] public GameObject correct_fx;    // 매칭 성공 효과
@@ -27,8 +27,8 @@ public class MainImageScript : MonoBehaviour
     {
         card_Back.SetActive(true);
         real_Image.SetActive(false);
-        card_Frame.SetActive(false);
-        card_BG.SetActive(false);
+        //card_Frame.SetActive(false);
+        //card_BG.SetActive(false);
     }
     // 이미지를 클릭했을 때 호출되는 함수
     public void OnClick()
@@ -47,9 +47,9 @@ public class MainImageScript : MonoBehaviour
 
             {
                 card_Back.SetActive(false);
-                card_Frame.SetActive(true);
+                //card_Frame.SetActive(true);
                 real_Image.SetActive(true);
-                card_BG.SetActive(true);
+                //card_BG.SetActive(true);
 
 
                 mainController.imageOpened(this);
@@ -94,9 +94,9 @@ public class MainImageScript : MonoBehaviour
             { transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
                 {
                 card_Back.SetActive(true);
-                card_Frame.SetActive(false);
+                //card_Frame.SetActive(false);
                     real_Image.SetActive(false);
-                card_BG.SetActive(false);
+                //card_BG.SetActive(false);
 
                 transform.DOScale(originalScale, 0.2f);
                 error_fx.gameObject.SetActive(false);
