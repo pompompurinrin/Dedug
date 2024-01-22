@@ -17,9 +17,13 @@ public class MainController2 : MonoBehaviour
     public int score = 0;
 
     // 메인 BGM
-   // public AudioSource Main_BGM2;
+    public AudioSource Main_BGM;
+    public AudioSource heal_sfx;     // 매칭 성공 사운드
+    public AudioSource hit_sfx;       // 매칭 에러 사운드
 
-   
+    public GameObject heal_fx;    // 힐 효과
+    public GameObject hit_fx;     // 피격 효과
+
 
     // UI 요소들
     public Image ResultBG;
@@ -99,9 +103,9 @@ public class MainController2 : MonoBehaviour
     {
         StartGame(); // 게임 시작
 
-        // Main_BGM2.Play();    // 메인 BGM 재생
-        // correct_sfx.Stop();  // correct_sfx 정지
-        // error_sfx.Stop();    // correct_sfx 정지
+        Main_BGM.Play();    // 메인 BGM 재생
+        heal_sfx.Stop();  // correct_sfx 정지
+        hit_sfx.Stop();    // correct_sfx 정지
 
         //PercentageTable_1에서 배열을 사용할게
         data_Dialog = CSVReader.Read("PercentageTable");
@@ -300,15 +304,15 @@ public class MainController2 : MonoBehaviour
         
 
         //굿즈 지급
-        if (score >= 10) // 바꿔
+        if (score >= 20) // 바꿔
         {
             _count = 3;
         }
-        else if (score < 10 && score >= 3)
+        else if (score < 20 && score >= 10)
         {
             _count = 2;
         }
-        else if (score < 3 && score >= 0)
+        else if (score < 10 && score >= 0)
         {
             _count = 1;
         }
@@ -591,7 +595,7 @@ public class MainController2 : MonoBehaviour
             stopBg.gameObject.SetActive(false);
             realStopBg.gameObject.SetActive(false);
             isGamePaused = false;
-            // Main_BGM2.Play();
+            Main_BGM.Play();
         }
     }
 
@@ -603,7 +607,7 @@ public class MainController2 : MonoBehaviour
         // 게임 일시정지 UI 활성화
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
-        // Main_BGM2.Pause();
+        Main_BGM.Pause();
 
 
     }
@@ -623,7 +627,7 @@ public class MainController2 : MonoBehaviour
         // 게임 일시정지 UI 비활성화
         pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
-        // Main_BGM2.Play();
+        Main_BGM.Play();
 
         // 리얼스톱Bg 활성화
         pauseBG.gameObject.SetActive(true);
@@ -650,7 +654,7 @@ public class MainController2 : MonoBehaviour
     private void ResumeGame()
     {
         isGamePaused = false;
-        // Main_BGM2.Play();
+        Main_BGM.Play();
     }
 
     // 굿즈 개수 증가 메서드
@@ -658,6 +662,10 @@ public class MainController2 : MonoBehaviour
     {
         score++;
         Scoretxt.text = score.ToString();
+        heal_sfx.Play();
+        heal_fx.gameObject.SetActive(true);
+        hit_fx.gameObject.SetActive(false);
+
 
     }
 
@@ -665,13 +673,18 @@ public class MainController2 : MonoBehaviour
     {
         score += 2;
         Scoretxt.text = score.ToString();
-
+        heal_sfx.Play();
+        heal_fx.gameObject.SetActive(true);
+        hit_fx.gameObject.SetActive(false);
     }
 
     public void CountDown()
     {
         score--;
         Scoretxt.text = score.ToString();
+        hit_sfx.Play();
+        hit_fx.gameObject.SetActive(true);
+        heal_fx.gameObject.SetActive(false);
     }
 
 }

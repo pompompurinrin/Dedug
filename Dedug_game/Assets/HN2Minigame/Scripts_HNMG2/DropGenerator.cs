@@ -5,6 +5,9 @@ using UnityEngine.UI; // UI를 사용하므로 잊지 않고 추가
 
 public class DropGenerator : MonoBehaviour
 {
+    [SerializeField] public GameObject heal_fx;    // 힐 효과
+    [SerializeField] public GameObject hit_fx;     // 피격 효과
+
     public MainController2 mainController2;
 
     public GameObject MagicalGirlsPrefab;  // 생성할 떨어지는 굿즈 프리팹
@@ -31,7 +34,7 @@ public class DropGenerator : MonoBehaviour
                 this.delta = 0;
                 randPrefab = Random.Range(0, 3);
 
-                if ( randPrefab == 0 )
+                if (randPrefab == 0)
                 {
                     span = 2f;
                     randomStudentImage = Random.Range(0, StudentSprites.Length);
@@ -39,29 +42,44 @@ public class DropGenerator : MonoBehaviour
                     go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
                     int px = Random.Range(-1, 1);
                     go.transform.position = new Vector3(px, 4, 1);
+                    Transform healFxTransform = go.transform.Find("heal_fx");
+                    if (healFxTransform != null)
+                    {
+                        healFxTransform.gameObject.SetActive(true);
+                    }
                 }
-                else if ( randPrefab == 1 )
+                else if (randPrefab == 1)
                 {
                     span = 1f;
                     randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
-                    GameObject go = Instantiate(ObstaclePrefab);
-                    go.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
+                    GameObject go2 = Instantiate(ObstaclePrefab);
+                    go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
                     int px = Random.Range(-1, 1);
-                    go.transform.position = new Vector3(px, 4, 1);
+                    go2.transform.position = new Vector3(px, 4, 1);
+                    Transform hitfxTransform = go2.transform.Find("hit_fx");
+                    if (hitfxTransform != null)
+                    {
+                        hitfxTransform.gameObject.SetActive(true);
+                    }
                 }
 
                 else
                 {
-                    span = 10f;
+                    span = 5f;
                     randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
-                    GameObject go = Instantiate(MagicalGirlsPrefab);
-                    go.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
+                    GameObject go3 = Instantiate(MagicalGirlsPrefab);
+                    go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
                     int px = Random.Range(-1, 1);
-                    go.transform.position = new Vector3(px, 4, 1);
+                    go3.transform.position = new Vector3(px, 4, 1);
+                    Transform healFxTransform = go3.transform.Find("heal_fx");
+                    if (healFxTransform != null)
+                    {
+                        healFxTransform.gameObject.SetActive(true);
+                    }
                 }
 
-            
-            
+
+
             }
        
         }

@@ -97,7 +97,7 @@ public class TimeController2 : MonoBehaviour
         mainController2.isGameRunnig = false;
         mainController2.Score();
         mainController2.ResultBG.gameObject.SetActive(true);
-        // mainController2.Main_BGM2.Stop();
+        mainController2.Main_BGM.Stop();
 
         // 어떤 컴포넌트에 배정할거임?
         mainController2.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();

@@ -9,8 +9,6 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class MainImageScript : MonoBehaviour
 {
     [SerializeField] private GameObject card_Back;
-    //[SerializeField] private GameObject card_Frame;
-    //[SerializeField] private GameObject card_BG;
     [SerializeField] private GameObject real_Image;
     [SerializeField] public GameObject error_fx;      // 매칭 에러 효과
     [SerializeField] public GameObject correct_fx;    // 매칭 성공 효과
@@ -27,14 +25,11 @@ public class MainImageScript : MonoBehaviour
     {
         card_Back.SetActive(true);
         real_Image.SetActive(false);
-        //card_Frame.SetActive(false);
-        //card_BG.SetActive(false);
     }
+
     // 이미지를 클릭했을 때 호출되는 함수
     public void OnClick()
-    {
-        
-
+    {        
         // 이미지가 활성화되어 있고, 게임 컨트롤러가 이미지를 열 수 있는 상태일 때 실행
         if (card_Back.activeSelf && mainController.canOpen)
         {
@@ -42,24 +37,15 @@ public class MainImageScript : MonoBehaviour
             Vector3 originalScale = transform.localScale;
             Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
 
-
             transform.DOScale(targetScale, 0.1f).OnComplete(() => // 람다식
 
             {
                 card_Back.SetActive(false);
-                //card_Frame.SetActive(true);
                 real_Image.SetActive(true);
-                //card_BG.SetActive(true);
-
 
                 mainController.imageOpened(this);
                 transform.DOScale(originalScale, 0.1f);
-
-            }
-            
-            );
-            // 이미지를 비활성화하고, 게임 컨트롤러의 imageOpened 함수 호출
-          
+            });          
         }
     }
 
@@ -76,9 +62,8 @@ public class MainImageScript : MonoBehaviour
     public void ChangeSprite(int id, Sprite image)
     {
         _spriteId = id;
-        real_Image.GetComponent<Image>().sprite = image; // 스프라이트를 변경하기 위해 Image 컴포넌트를 가져와 사용
-     
-
+        // 스프라이트를 변경하기 위해 Image 컴포넌트를 가져와 사용    
+        real_Image.GetComponent<Image>().sprite = image; 
     }
 
     // 이미지를 닫는 함수
@@ -94,9 +79,7 @@ public class MainImageScript : MonoBehaviour
             { transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
                 {
                 card_Back.SetActive(true);
-                //card_Frame.SetActive(false);
-                    real_Image.SetActive(false);
-                //card_BG.SetActive(false);
+                real_Image.SetActive(false);
 
                 transform.DOScale(originalScale, 0.2f);
                 error_fx.gameObject.SetActive(false);
