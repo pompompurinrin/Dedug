@@ -69,22 +69,24 @@ public class TimeController2 : MonoBehaviour
     {
         if (mainController2.isGamePaused)
             return;
-
-        readyCount.gameObject.SetActive(false);
-        mainController2.Scoretxt.gameObject.SetActive(true);
-
-        timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
-        timer -= 1f; // 타이머 감소
-
-        // 슬라이더 값 갱신
-        timerSlider.value = timer;
-
-        if (timer <= -1)
+        if (mainController2.isGameRunnig == true)
         {
-            timer = -1;
-            TimeOver();
-        }
+            readyCount.gameObject.SetActive(false);
+            mainController2.Scoretxt.gameObject.SetActive(true);
 
+            timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
+            timer -= 1f; // 타이머 감소
+
+            // 슬라이더 값 갱신
+            timerSlider.value = timer;
+
+            if (timer <= -1)
+            {
+                timer = -1;
+                TimeOver();
+                mainController2.isGameRunnig = false;
+            }
+        }
     }
     
     public void TimeOver() // 시간이 다 되면 게임 오버 화면을 활성화
@@ -92,6 +94,7 @@ public class TimeController2 : MonoBehaviour
         // 초기화 세팅
         this.Player.transform.position = new Vector3(0, -5, 1);
         timer = 60f;
+        mainController2.isGameRunnig = false;
         mainController2.Score();
         mainController2.ResultBG.gameObject.SetActive(true);
         // mainController2.Main_BGM2.Stop();

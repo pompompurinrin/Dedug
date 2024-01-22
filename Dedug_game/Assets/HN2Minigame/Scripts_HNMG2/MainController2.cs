@@ -43,6 +43,7 @@ public class MainController2 : MonoBehaviour
     public List<Image> RewardsImage = new List<Image>();
     public List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
+    public bool isGameRunnig = false;
 
 
     public void Awake()
@@ -119,6 +120,11 @@ public class MainController2 : MonoBehaviour
     {
         if (isGamePaused)
             return;
+
+        else
+        {
+            isGameRunnig = true;
+        }
 
     }
 
