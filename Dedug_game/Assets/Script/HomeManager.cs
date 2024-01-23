@@ -209,9 +209,12 @@ public class HomeManager : MonoBehaviour
 
         TutorialClickNum++;
     }
+
+    
     public void PlaySFX1()
     {
         sfx1AudioSource.Play();
+        
     }
     public void StopBGM1()
     {

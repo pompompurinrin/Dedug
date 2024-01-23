@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TopbarManager : MonoBehaviour
 {
+    
 
     int NowGold;
     int NowRank;
@@ -18,6 +19,7 @@ public class TopbarManager : MonoBehaviour
     public Image NowRankImage;
 
     public GameObject SettingPopCanvas;
+    public GameObject Credit;
     public GameObject MenuUI;
     public GameObject HelpUI;
     public GameObject HelpPopup;
@@ -209,13 +211,42 @@ public class TopbarManager : MonoBehaviour
 
     }
 
+    public GameObject soundOff;
+    public GameObject BGMOff;
+
+    public bool isSoundPlaying = false;
     public void PlaySFX1()
     {
-        sfx1AudioSource.Play();
+        
+        if (isSoundPlaying == true)
+        { 
+            sfx1AudioSource.Pause(); // 소리를 일시 정지
+            soundOff.gameObject.SetActive(true);
+        }
+        else
+        { 
+            sfx1AudioSource.UnPause(); // 일시 정지된 소리를 다시 재생
+            soundOff.gameObject.SetActive(false);
+        } 
+
     }
     public void StopBGM1()
     {
-        bgm1AudioSource.Stop();
+        
+
+        if (bgm1AudioSource.isPlaying)
+        { 
+            bgm1AudioSource.Pause(); // 소리를 일시 정지
+            BGMOff.gameObject.SetActive(true);
+        } 
+
+        else
+        {
+            bgm1AudioSource.UnPause(); // 일시 정지된 소리를 다시 재생
+            BGMOff.gameObject.SetActive(false);
+
+        }
+
     }
     private int GetIntValue(string key)
     {
@@ -294,8 +325,18 @@ public class TopbarManager : MonoBehaviour
         // 도움말 UI 비활성화
         HelpUI.SetActive(false);
     }
+    public void OnButtonClick_OnCredit()
+    {
+        // 도움말 UI 활성화
+        Credit.SetActive(true);
+    }
+    public void OnButtonClick_OffCredit()
+    {
+        // 도움말 UI 비활성화
+        Credit.SetActive(false);
+    }
 
-   
+
     // 도움말 세부 팝업
 
     public void OnButtonClick_OnHomePopup()
