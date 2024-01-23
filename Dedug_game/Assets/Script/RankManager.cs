@@ -92,7 +92,7 @@ public class RankManager : MonoBehaviour
         anim = GameObject.Find("RankPopUPGroup").GetComponent<Animator>();
         ResultChr = Result.transform.Find("ResultCharacter").GetComponent<Image>();
 
-        /*if (DataManager.Instance.firstRank == 0)
+        if (DataManager.Instance.firstRank == 0)
         {
             TutorialCanvas.gameObject.SetActive(true);
 
@@ -103,7 +103,7 @@ public class RankManager : MonoBehaviour
         else
         {
             TutorialCanvas.gameObject.SetActive(false);
-        }*/
+        }
 
         RankPopUPBG.gameObject.SetActive(false);
         Unlock.gameObject.SetActive(false);
@@ -454,6 +454,7 @@ public class RankManager : MonoBehaviour
         PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
+        PlayerPrefs.SetInt("FirstRank", DataManager.Instance.firstRank);
         PlayerPrefs.Save();
     }
 

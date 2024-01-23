@@ -10299,9 +10299,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldAmountText: {fileID: 1478355184}
   NowRankName: {fileID: 914242186}
+  NowRankNum: {fileID: 365464828}
   NowRankImage: {fileID: 0}
   SettingPopCanvas: {fileID: 788746964}
   MenuUI: {fileID: 458445835}
+  HelpUI: {fileID: 0}
+  HelpPopup: {fileID: 0}
+  HomePopup: {fileID: 0}
+  CollectionPopup: {fileID: 0}
+  CommisionPopup: {fileID: 0}
+  OtakuPopup: {fileID: 0}
+  RankupPopup: {fileID: 0}
+  SpecificPopup: {fileID: 0}
+  HelpTopbarPopup: {fileID: 0}
+  HelpMenuPopup: {fileID: 0}
+  HelpCharacterPopup: {fileID: 0}
+  HelpGoodsPopup: {fileID: 0}
+  HelpStoryPopup: {fileID: 0}
+  HelpUserImgPopup: {fileID: 0}
+  HelpCustomerPopup: {fileID: 0}
+  HelpFevertimePopup: {fileID: 0}
+  HelpHelpPopup: {fileID: 0}
+  HelpMinigamePopup: {fileID: 0}
+  HelpGradeinfoPopup: {fileID: 0}
+  HelpGradeconditonPopup: {fileID: 0}
   bgm1AudioSource: {fileID: 10096384}
   sfx1AudioSource: {fileID: 742585703}
   NowimageFileName: 

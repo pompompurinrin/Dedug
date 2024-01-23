@@ -16,7 +16,8 @@ public class HomeManager : MonoBehaviour
     public Canvas PopupCanvas;
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
-  
+    public Text PurposeBtnText;
+    public Text PurposeBtnCompleteText;
 
     public Text charDialogue;
     public Text charName;
@@ -49,6 +50,67 @@ public class HomeManager : MonoBehaviour
         GameObject MenuUI = GameObject.Find("MenuUI");
         PopupCanvas = GameObject.Find("PopupCanvas").GetComponent<Canvas>();
         GameObject GoodsBuy = GameObject.Find("GoodsBuy");
+
+        if(DataManager.Instance.nowRank == 0)
+        {
+            PurposeBtnText.text = "¼ö¾Æ ÄÅÈ¦´õ È¹µæÇÏ±â";
+            if(DataManager.Instance.goods1011 > 0)
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(true);
+            }
+            else
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(false);
+            }
+        }
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            PurposeBtnText.text = "¹Ù´Ù L È¦´õ È¹µæÇÏ±â";
+            if (DataManager.Instance.goods2022 > 0)
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(true);
+            }
+            else
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(false);
+            }
+        }
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            PurposeBtnText.text = "ÃÊ·Õ ¾ÆÅ©¸±½ºÅÄµå È¹µæÇÏ±â";
+            if (DataManager.Instance.goods3031 > 0)
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(true);
+            }
+            else
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(false);
+            }
+        }
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            PurposeBtnText.text = "¹Ù´Ù ÅÂÇÇ½ºÆ®¸® È¹µæÇÏ±â";
+            if (DataManager.Instance.goods2042 > 0)
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(true);
+            }
+            else
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(false);
+            }
+        }
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            PurposeBtnText.text = "¸ðµç ±ÂÁî È¹µæÇÏ±â";
+            if (GoodsNumManager.SpecialGoodsGauge == 40)
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(true);
+            }
+            else
+            {
+                PurposeBtnCompleteText.gameObject.SetActive(false);
+            }
+        }
 
 
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);

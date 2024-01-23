@@ -14,6 +14,7 @@ public class TopbarManager : MonoBehaviour
 
     public Text GoldAmountText;
     public Text NowRankName;
+    public Text NowRankNum;
     public Image NowRankImage;
 
     public GameObject SettingPopCanvas;
@@ -44,6 +45,7 @@ public class TopbarManager : MonoBehaviour
     public GameObject HelpGradeinfoPopup;
     public GameObject HelpGradeconditonPopup;
 
+    
 
 
     public AudioSource bgm1AudioSource;
@@ -137,17 +139,18 @@ public class TopbarManager : MonoBehaviour
 
     }
 
-  
 
-   
+
+
     private void Update()
     {
         GoldAmountText.text = DataManager.Instance.nowGold.ToString();
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
         NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
         NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
-       
         
+
+
     }
 
     void Start()
@@ -157,7 +160,7 @@ public class TopbarManager : MonoBehaviour
         data_Dialog = CSVReader.Read(RankFileName);
         RankImage();
         RankSetupInfo();
-
+        NowRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["CSVNum"].ToString();
         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
         GameObject HelpUI = GameObject.Find("HelpUI");

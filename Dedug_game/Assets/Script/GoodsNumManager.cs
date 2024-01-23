@@ -125,7 +125,7 @@ public class GoodsNumManager : MonoBehaviour
     public int SuaGoodsGauge;
     public int BadaGoodsGauge;
     public int ChorongGoodsGauge;
-    public int SpecialGoodsGauge;
+    public static int SpecialGoodsGauge;
 
     private bool goods1011Applied = false;
     private bool goods1012Applied = false;

@@ -1658,6 +1658,8 @@ MonoBehaviour:
   PopupCanvas: {fileID: 1191489704}
   bgm1AudioSource: {fileID: 452054918}
   sfx1AudioSource: {fileID: 752190094}
+  PurposeBtnText: {fileID: 188862347}
+  PurposeBtnCompleteText: {fileID: 947021018}
   charDialogue: {fileID: 798125656}
   charName: {fileID: 782978725}
 --- !u!114 &91685926
@@ -21136,6 +21138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldAmountText: {fileID: 906444818}
   NowRankName: {fileID: 2129270096}
+  NowRankNum: {fileID: 1944891113}
   NowRankImage: {fileID: 0}
   SettingPopCanvas: {fileID: 1385558356}
   MenuUI: {fileID: 1972983934}
