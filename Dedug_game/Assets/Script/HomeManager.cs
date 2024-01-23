@@ -30,21 +30,36 @@ public class HomeManager : MonoBehaviour
     // CSV 파일을 읽어들일 데이터 리스트
     private List<Dictionary<string, object>> homeDiaSample = new List<Dictionary<string, object>>();
     private const string homeDiaSampleFileName = "HomeDiaSample";
-    
+
+    public Canvas TutorialCanvas;
 
 
-    
     List<string> suaList = new List<string>();
     List<string> badaList = new List<string>();
     List<string> cholongList = new List<string>();
 
     List<string> nameList = new List<string>();
 
-    
+    public void Awake()
+    {
+        DataManager.Instance.firstHome = PlayerPrefs.GetInt("FirstHome");
+    }
 
 
     public void Start()
     {
+        if (DataManager.Instance.firstHome == 0)
+        {
+            TutorialCanvas.gameObject.SetActive(true);
+
+            Debug.Log("퍼홈" + DataManager.Instance.firstHome.ToString());
+
+            ClickTutorial();
+        }
+        else
+        {
+            TutorialCanvas.gameObject.SetActive(false);
+        }
         Debug.Log("홈:" + DataManager.Instance.goods1011);
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
@@ -160,7 +175,40 @@ public class HomeManager : MonoBehaviour
 
         
     }
-    
+    int TutorialClickNum = 0;
+
+    public Image TutorialImg;
+
+    public Sprite TutorialImage1;
+    public Sprite TutorialImage2;
+    public Sprite TutorialImage3;
+    public Sprite TutorialImage4;
+    public Sprite TutorialImage5;
+    public Sprite TutorialImage6;
+    public Sprite TutorialImage7;
+    public void ClickTutorial()
+    {
+        if (TutorialClickNum == 0)
+        {
+            TutorialImg.sprite = TutorialImage1;
+        }
+        else if (TutorialClickNum == 1)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum == 2)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum == 3)
+        {
+            DataManager.Instance.firstHome = 1;
+            PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+
+        TutorialClickNum++;
+    }
     public void PlaySFX1()
     {
         sfx1AudioSource.Play();
