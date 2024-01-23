@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,15 +13,24 @@ public class HJYJMinigameManager : MonoBehaviour
     public Image suaChar;
     public Slider magicTimerSlider;
     public Slider timerSlider;
+
     public GameObject magicBookImg01;
     public GameObject magicBookImg02;
     public GameObject magicBookImg03;
     public GameObject magicBookImg04;
+
     public GameObject[] magicBook;
+
+    public GameObject SouceImage01;
+    public GameObject SouceImage02;
+    public GameObject SouceImage03;
+    public GameObject SouceImage04;
+
     public Button recipe01;
     public Button recipe02;
     public Button recipe03;
     public Button recipe04;
+
     public GameObject clickImg01;
     public GameObject clickImg02;
     public GameObject clickImg03;
@@ -33,31 +43,100 @@ public class HJYJMinigameManager : MonoBehaviour
     public int score;
     public int timer;
     public int magicTimer;
+
+    // 게임 대기시간 카운트
+    public Text beforeCountText;
+    public Image beforeImg;
+
+    // 타이머 및 점수
     public int beforeCount;
+
+    // 성공 실패 판정
+    public Image successImg;
+    public Image failImg;
 
     void Start()
     {
-        // 매직북 선언
-        magicBook = new GameObject[] { magicBookImg01, magicBookImg02, magicBookImg03, magicBookImg04 };
 
         // 게임 시작 시 호출
-        GameStart();
+        StartGame();
+
     }
 
-    void Update()
+    public void StartGame()
     {
-        // 주기적으로 UI 업데이트
-        UpdateUI();
+        recipe01.GetComponent<Image>().sprite = SouceImage01.GetComponent<Image>().sprite;
+        recipe02.GetComponent<Image>().sprite = SouceImage02.GetComponent<Image>().sprite;
+        recipe03.GetComponent<Image>().sprite = SouceImage03.GetComponent<Image>().sprite;
+        recipe04.GetComponent<Image>().sprite = SouceImage04.GetComponent<Image>().sprite;
+
+        // 게임 대기시간 초기화 및 대기시간 UI 활성화
+        beforeCount = 3;
+        beforeCountText.gameObject.SetActive(true);
+        beforeImg.gameObject.SetActive(true);
+
+        // 게임 시간, 점수 초기화
+        timer = 60;
+        magicTimer = 10;
+        score = 0;
+
+        // 1초마다 CountDownBeforeGame 메소드 호출
+        InvokeRepeating("CountDownBeforeGame", 1.0f, 1.0f);
     }
 
-    void UpdateUI()
+    // 게임 대기시간 관련
+    private void CountDownBeforeGame()
     {
-        // 레시피 타이머 카운트다운
+
+        // 게임 대기시간 카운트 다운
+        beforeCount--;
+
+        if (beforeCount == 0)
+        {
+            // 게임 대기시간 종료 후 숨김
+            beforeCountText.gameObject.SetActive(false);
+            beforeImg.gameObject.SetActive(false);
+            // CountDownBeforeGame 호출 중단
+            CancelInvoke("CountDownBeforeGame");
+
+            // 실제 게임 시작
+            StartRealTimeGame();
+
+            // 게임 스타트 함수
+            GameStart();
+        }
+        else
+        {
+            // 대기시간 텍스트 갱신
+            beforeCountText.text = beforeCount.ToString();
+        }
+    }
+
+    public void StartRealTimeGame()
+    {
+
+        // 1초마다 UpdateUITimer 메소드 호출
+        InvokeRepeating("UpdateUITimer", 1.0f, 1.0f);
+
+    }
+
+    void UpdateUITimer()
+    {
+        // 타이머 카운트다운
         timer -= 1;
         timerSlider.value = timer;
 
+        if (timer == 0)
+        {
+            Endgame();
+        }
+
+        // 레시피 타이머 카운트다운
+        magicTimer -= 1;
+        magicTimerSlider.value = magicTimer;
+
         // 레시피 타이머가 0이 되면 실패 처리
-        if (timer <= 0)
+        if (magicTimer == 0)
         {
             Fail();
         }
@@ -65,8 +144,19 @@ public class HJYJMinigameManager : MonoBehaviour
 
     void GameStart()
     {
+        successImg.gameObject.SetActive(false);
+        failImg.gameObject.SetActive(false);
+
+        clickImg01.gameObject.SetActive(false);
+        clickImg02.gameObject.SetActive(false);
+        clickImg03.gameObject.SetActive(false);
+        clickImg04.gameObject.SetActive(false);
+
         // 게임 시작 시 호출
         clickList.Clear(); // 리스트 초기화
+
+        // 매직북 선언
+        magicBook = new GameObject[] { SouceImage01, SouceImage02, SouceImage03, SouceImage04 };
 
         // magicBook 배열을 랜덤으로 섞음
         ShuffleArray(magicBook);
@@ -78,61 +168,76 @@ public class HJYJMinigameManager : MonoBehaviour
         magicBookImg04.GetComponent<Image>().sprite = magicBook[3].GetComponent<Image>().sprite;
 
         // 레시피 타이머 초기화
-        timer = 10;
-        timerSlider.maxValue = timer;
-        timerSlider.value = timer;
+        magicTimer = 10;
+        magicTimerSlider.value = magicTimer;
     }
 
     void ListUpdate()
     {
         // clickList의 길이에 따라 동작 수행
         int clickListLength = clickList.Count;
+        GameObject currentClickImg = clickList[clickListLength - 1];
 
-        if (clickListLength >= 1 && clickListLength <= 4)
+        if (clickListLength == 1)
         {
-            GameObject currentClickImg = null;
-
-            switch (clickListLength)
+            if (currentClickImg.GetComponent<Image>().sprite == magicBook[0].GetComponent<Image>().sprite)
             {
-                case 1:
-                    currentClickImg = clickImg01;
-                    break;
-                case 2:
-                    currentClickImg = clickImg02;
-                    break;
-                case 3:
-                    currentClickImg = clickImg03;
-                    break;
-                case 4:
-                    currentClickImg = clickImg04;
-                    break;
+                clickImg01.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
+                clickImg01.gameObject.SetActive(true);
             }
 
-            // 해당 순서의 이미지 출력 및 동작 수행
-            currentClickImg.SetActive(true);
-
-            // 4번째 재료를 클릭했을 때 성공 또는 실패 처리
-            if (clickListLength == 4)
+            if (currentClickImg.GetComponent<Image>().sprite != magicBook[0].GetComponent<Image>().sprite)
             {
-                if (clickList[3] == magicBook[3])
-                {
-                    Success();
-                }
-                else
-                {
-                    Fail();
-                }
+                Fail();
             }
-            else
+        }
+
+        if (clickListLength == 2)
+        {
+            if (currentClickImg.GetComponent<Image>().sprite == magicBook[1].GetComponent<Image>().sprite)
             {
-                // 1~3번째 재료를 클릭했을 때 실패 처리
-                if (clickList[clickListLength - 1] != magicBook[clickListLength - 1])
-                {
-                    Fail();
-                }
+                clickImg02.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
+                clickImg02.gameObject.SetActive(true);
+            }
+
+            if (currentClickImg.GetComponent<Image>().sprite != magicBook[1].GetComponent<Image>().sprite)
+            {
+                Fail();
+            }
+        }
+
+        if (clickListLength == 3)
+        {
+            if (currentClickImg.GetComponent<Image>().sprite == magicBook[2].GetComponent<Image>().sprite)
+            {
+                clickImg03.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
+                clickImg03.gameObject.SetActive(true);
+            }
+
+            if (currentClickImg.GetComponent<Image>().sprite != magicBook[2].GetComponent<Image>().sprite)
+            {
+                Fail();
+            }
+        }
+
+        // 4번째 재료를 클릭했을 때 성공 또는 실패 처리
+        if (clickListLength == 4)
+        {
+            if (clickList[3].GetComponent<Image>().sprite == magicBook[3].GetComponent<Image>().sprite)
+            {
+                clickImg04.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
+                clickImg04.gameObject.SetActive(true);
+
+                Success();
+            }
+
+            if (currentClickImg.GetComponent<Image>().sprite != magicBook[3].GetComponent<Image>().sprite)
+            {
+                Fail();
             }
         }
     }
+
 
     void ShuffleArray(GameObject[] array)
     {
@@ -149,27 +254,61 @@ public class HJYJMinigameManager : MonoBehaviour
     public void ButtonClick01()
     {
         // 버튼 클릭 시 호출
-        clickList.Add(magicBookImg01);
+        clickList.Add(SouceImage01);
         ListUpdate();
     }
 
     public void ButtonClick02()
     {
         // 버튼 클릭 시 호출
-        clickList.Add(magicBookImg02);
+        clickList.Add(SouceImage02);
         ListUpdate();
     }
 
-    // ButtonClick03, ButtonClick04도 유사하게 작성 가능
+    public void ButtonClick03()
+    {
+        // 버튼 클릭 시 호출
+        clickList.Add(SouceImage03);
+        ListUpdate();
+    }
+
+    public void ButtonClick04()
+    {
+        // 버튼 클릭 시 호출
+        clickList.Add(SouceImage04);
+        ListUpdate();
+    }
 
     public void Success()
     {
+        score++;
+        scoreText.text = score.ToString();
+        successImg.gameObject.SetActive(true);
+        if(score == 8)
+        {
+            Endgame();
+        }
 
+        Invoke("GameStart", 1f);
     }
 
     public void Fail()
     {
+        score--;
+        scoreText.text = score.ToString();
+        failImg.gameObject.SetActive(true);
 
+        if (score < 0)
+        {
+            scoreText.text = "0";
+        }
+
+        Invoke("GameStart", 1f);
+    }
+
+    public void Endgame()
+    {
+        // 게임 종료 처리
     }
 
 }
