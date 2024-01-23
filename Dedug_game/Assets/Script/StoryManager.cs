@@ -55,7 +55,7 @@ public class StoryManager : MonoBehaviour
         data_Dialog = CSVReader.Read(StoryFileName);
         if (DataManager.Instance.storyID == 0)
         {
-            ClickNum = 516;
+            ClickNum = 520;
             DataManager.Instance.first = 1;
             PlayerPrefs.SetInt("First", DataManager.Instance.first);
         }

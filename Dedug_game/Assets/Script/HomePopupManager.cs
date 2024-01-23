@@ -56,6 +56,7 @@ public class HomePopupManager : MonoBehaviour
         {
             TutorialCanvas.gameObject.SetActive(true);
             DataManager.Instance.firstHome = 1;
+            Debug.Log("퍼홈" + DataManager.Instance.firstHome.ToString());
             Save();
             ClickTutorial();
         }
@@ -63,8 +64,8 @@ public class HomePopupManager : MonoBehaviour
         {
             TutorialCanvas.gameObject.SetActive(false);
         }
+        Debug.Log("퍼홈" + DataManager.Instance.firstHome.ToString());
 
-       
         GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
         GamePopuptext2.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
 

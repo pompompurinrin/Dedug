@@ -401,6 +401,10 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.story4_3 = 0;
         DataManager.Instance.storyID = 0;
         DataManager.Instance.first = 0;
+        DataManager.Instance.firstHome = 0;
+        DataManager.Instance.firstDG = 0;
+        DataManager.Instance.firstGoodsBuy = 0;
+        DataManager.Instance.firstRequest = 0;
         Save();
     }
 
@@ -453,6 +457,10 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("Goods3051", DataManager.Instance.goods3051);
         PlayerPrefs.SetInt("Goods3052", DataManager.Instance.goods3052);
         PlayerPrefs.SetInt("First", DataManager.Instance.first);
+        PlayerPrefs.SetInt("FirstDG", DataManager.Instance.firstDG);
+        PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
+        PlayerPrefs.SetInt("FirstGoodsBuy", DataManager.Instance.firstGoodsBuy);
+        PlayerPrefs.SetInt("FirstRequest", DataManager.Instance.firstRequest);
         PlayerPrefs.Save();
     }
 
