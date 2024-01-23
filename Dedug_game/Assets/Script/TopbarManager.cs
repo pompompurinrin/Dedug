@@ -20,11 +20,30 @@ public class TopbarManager : MonoBehaviour
     public GameObject MenuUI;
     public GameObject HelpUI;
     public GameObject HelpPopup;
-    public GameObject HelpHomePopup;
-    public GameObject HelpCollectionPopup;
-    public GameObject HelpCommisionPopup;
-    public GameObject HelpOtakuPopup;
-    public GameObject HelpRankUPPopup;
+    
+    //도움말 세부 팝업
+    public GameObject HomePopup;
+    public GameObject CollectionPopup;
+    public GameObject CommisionPopup;
+    public GameObject OtakuPopup;
+    public GameObject RankupPopup;
+
+    //설명 팝업
+    public GameObject SpecificPopup;
+
+    public GameObject HelpTopbarPopup;
+    public GameObject HelpMenuPopup;
+    public GameObject HelpCharacterPopup;
+    public GameObject HelpGoodsPopup;
+    public GameObject HelpStoryPopup;
+    public GameObject HelpUserImgPopup;
+    public GameObject HelpCustomerPopup;
+    public GameObject HelpFevertimePopup;
+    public GameObject HelpHelpPopup;
+    public GameObject HelpMinigamePopup;
+    public GameObject HelpGradeinfoPopup;
+    public GameObject HelpGradeconditonPopup;
+
 
 
     public AudioSource bgm1AudioSource;
@@ -142,12 +161,7 @@ public class TopbarManager : MonoBehaviour
         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
         GameObject HelpUI = GameObject.Find("HelpUI");
-        GameObject HelpPopup = GameObject.Find("HelpPopup");
-        GameObject HelpHomePopup = GameObject.Find("HelpHomePopup");
-        GameObject HelpCollectionPopup = GameObject.Find("HelpCollectionPopup");
-        GameObject HelpCommisionPopup = GameObject.Find("HelpCommisionPopup");
-        GameObject HelpOtakuPopup = GameObject.Find("HelpOtakuPopup");
-        GameObject HelpRankUPPopup = GameObject.Find("HelpRankUPPopup");
+        GameObject PopupCanvas = GameObject.Find("PopupCanvas");
 
 
 
@@ -180,6 +194,15 @@ public class TopbarManager : MonoBehaviour
 
         }
 
+        if (PopupCanvas != null)
+        {
+            if (PopupCanvas.activeSelf)
+            {
+                PopupCanvas.SetActive(false);
+            }
+
+
+        }
 
     }
 
@@ -260,16 +283,260 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpUI()
     {
-        // 헬프 팝업 활성화
+        // 도움말 UI 활성화
         HelpUI.SetActive(true);
     }
     public void OnButtonClick_OffHelpUI()
     {
-        // 헬프 팝업 비활성화
+        // 도움말 UI 비활성화
         HelpUI.SetActive(false);
     }
 
-    public void OnButtonClick_OnHelpHomePopup()
+   
+    // 도움말 세부 팝업
+
+    public void OnButtonClick_OnHomePopup()
+    {
+        // 홈 팝업 활성화
+        HomePopup.SetActive(true);    
+    }
+
+    public void OnButtonClick_OffHomePopup()
+    {
+        // 홈 팝업 비활성화
+        HomePopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnCollectionPopup()
+    {
+        // 도감 팝업 활성화
+        CollectionPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffCollectionPopup()
+    {
+        // 도감 팝업 비활성화
+        CollectionPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnCommisionPopup()
+    {
+        // 커미션 팝업 활성화
+        CommisionPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffCommisionPopup()
+    {
+        // 커미션 팝업 비활성화
+        CommisionPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnOtakuPopup()
+    {
+        // 덕질 팝업 활성화
+        OtakuPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffOtakuPopup()
+    {
+        // 덕질 팝업 비활성화
+        OtakuPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnRankupPopup()
+    {
+        // 덕질 팝업 활성화
+        RankupPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffRankupPopup()
+    {
+        // 덕질 팝업 비활성화
+        RankupPopup.SetActive(false);
+    }
+
+    
+
+    public void OnButtonClick_OffAllMenuPopup()
+    {
+        HelpUI.SetActive(false);
+        HomePopup.SetActive(false);
+        CollectionPopup.SetActive(false);
+        CommisionPopup.SetActive(false);
+        OtakuPopup.SetActive(false);
+        RankupPopup.SetActive(false);
+    }
+
+    //설명 팝업
+    public void OnButtonClick_OnHelpTopbarPopup()
+    {
+        // 탑바 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpTopbarPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpTopbarPopup()
+    {
+        // 탑바 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpTopbarPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpMenuPopup()
+    {
+        // 메뉴 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpMenuPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpMenuPopup()
+    {
+        // 메뉴 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpMenuPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpCharacterPopup()
+    {
+        // 캐릭터 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpCharacterPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpCharacterPopup()
+    {
+        // 캐릭터 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpCharacterPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpGoodsPopup()
+    {
+        // 굿즈 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpGoodsPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpGoodsPopup()
+    {
+        // 굿즈 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpGoodsPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpStoryPopup()
+    {
+        // 스토리 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpStoryPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpStoryPopup()
+    {
+        // 스토리 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpStoryPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpUserImgPopup()
+    {
+        // 유저 이미지 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpUserImgPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpUserImgPopup()
+    {
+        // 유저 이미지 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpUserImgPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpCustomerPopup()
+    {
+        // 손님 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpCustomerPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpCustomerPopup()
+    {
+        // 손님 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpCustomerPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpFevertimePopup()
+    {
+        // 피버 타임 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpFevertimePopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpFevertimePopup()
+    {
+        // 피버 타임 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpFevertimePopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpHelpPopup()
+    {
+        // 도움말 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpHelpPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpHelpPopup()
+    {
+        // 도움말 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpHelpPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpMinigamePopup()
+    {
+        // 미니게임 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpMinigamePopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpMinigamePopup()
+    {
+        // 미니게임 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpMinigamePopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpGradeinfoPopup()
+    {
+        // 등급 안내 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpGradeinfoPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpGradeinfoPopup()
+    {
+        // 등급 안내 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpGradeinfoPopup.SetActive(false);
+    }
+
+    public void OnButtonClick_OnHelpGradeconditonPopup()
+    {
+        // 승급 조건 설명 팝업 활성화
+        SpecificPopup.SetActive(true);
+        HelpGradeconditonPopup.SetActive(true);
+    }
+
+    public void OnButtonClick_OffHelpGradeconditonPopup()
+    {
+        // 승급 조건 설명 팝업 비활성화
+        SpecificPopup.SetActive(false);
+        HelpGradeconditonPopup.SetActive(false);
+    }
+
+    /*public void OnButtonClick_OnHelpHomePopup()
     {
         // 헬프 홈 팝업 활성화
         HelpPopup.SetActive(true);
@@ -281,6 +548,7 @@ public class TopbarManager : MonoBehaviour
         // 헬프 홈 팝업 비활성화
         HelpHomePopup.SetActive(false);
     }
+    
 
     public void OnButtonClick_OnHelpCollectionPopup()
     {
@@ -333,6 +601,7 @@ public class TopbarManager : MonoBehaviour
         // 헬프 랭크 업 팝업 비활성화
         HelpRankUPPopup.SetActive(false);
     }
+    */
 
     public void HomeClick()
     {
