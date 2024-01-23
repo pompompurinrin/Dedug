@@ -49,6 +49,19 @@ public class MainController2 : MonoBehaviour
 
     public bool isGameRunnig = false;
 
+    public GameObject MagicalGirlsPrefab;  // 생성할 떨어지는 굿즈 프리팹
+    public GameObject ObstaclePrefab;
+    public GameObject StudentPrefab;
+    public Sprite[] MagicalGirlsSprites;
+    public Sprite[] ObstacleSprites;
+    public Sprite[] StudentSprites;
+    int randomMagicalGirlsImage;
+    int randomObstacleImage;
+    int randomStudentImage;
+
+    public float span = 4;  // 굿즈가 생성되는 주기
+    public float delta = 0;
+    int randPrefab = 0;
 
     public void Awake()
     {
@@ -107,6 +120,8 @@ public class MainController2 : MonoBehaviour
         heal_sfx.Stop();  // correct_sfx 정지
         hit_sfx.Stop();    // correct_sfx 정지
 
+        span = 4;
+
         //PercentageTable_1에서 배열을 사용할게
         data_Dialog = CSVReader.Read("PercentageTable");
 
@@ -125,12 +140,85 @@ public class MainController2 : MonoBehaviour
         if (isGamePaused)
             return;
 
+       
+
         else
         {
             isGameRunnig = true;
         }
 
     }
+
+    void Update()
+    {
+        if (isGamePaused || !isGameRunnig)
+            return;
+
+        this.delta += Time.deltaTime;
+        
+
+        if (this.delta > this.span)
+        {
+            this.delta = 0;
+            randPrefab = Random.Range(0, 3);
+            if (this.delta == 3)
+            {
+                span = 0.1f;
+            }
+
+            if (randPrefab == 0)
+            {
+                span = 0.5f;
+                randomStudentImage = Random.Range(0, StudentSprites.Length);
+                GameObject go = Instantiate(StudentPrefab);
+                go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
+                int px = Random.Range(-2, 2);
+                go.transform.position = new Vector3(px, 4, 1);
+                Transform healFxTransform = go.transform.Find("heal_fx");
+                if (healFxTransform != null)
+                {
+                    healFxTransform.gameObject.SetActive(true);
+                }
+            }
+            else if (randPrefab == 1)
+            {
+                span = 0.2f;
+                randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
+                GameObject go2 = Instantiate(ObstaclePrefab);
+                go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
+                int px = Random.Range(-2, 2);
+                go2.transform.position = new Vector3(px, 4, 1);
+                Transform hitfxTransform = go2.transform.Find("hit_fx");
+                if (hitfxTransform != null)
+                {
+                    hitfxTransform.gameObject.SetActive(true);
+                }
+            }
+
+            else
+            {
+                span = 0.3f;
+                randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
+                GameObject go3 = Instantiate(MagicalGirlsPrefab);
+                go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
+                int px = Random.Range(-2, 2);
+                go3.transform.position = new Vector3(px, 4, 1);
+                Transform healFxTransform = go3.transform.Find("heal_fx");
+                if (healFxTransform != null)
+                {
+                    healFxTransform.gameObject.SetActive(true);
+                }
+            }
+
+
+        }
+
+        else if (this.delta >= 3)
+        {
+            span = 1;
+        }
+    }
+
 
     public List<Sprite> goodsSprites = new List<Sprite>();
 
@@ -297,6 +385,8 @@ public class MainController2 : MonoBehaviour
     public List<Sprite> rewardGoods = new List<Sprite>();
 
     public int _count = 0;// 몇개 줄 지 설정하는 변수
+    public Text goodsCount;// 몇개 줄 지 설정하는 변수
+    
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
         UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
@@ -304,17 +394,22 @@ public class MainController2 : MonoBehaviour
         
 
         //굿즈 지급
-        if (score >= 20) // 바꿔
+        if (score >= 60) // 바꿔
         {
             _count = 3;
+            //goodsCount.text = "Goods : " + _count.ToString() +"개 !!";
+
+
         }
-        else if (score < 20 && score >= 10)
+        else if (score < 60 && score >= 20)
         {
             _count = 2;
+            //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
         }
-        else if (score < 10 && score >= 0)
+        else if (score < 20 && score >= 0)
         {
             _count = 1;
+            //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
         }
 
         else
@@ -630,6 +725,7 @@ public class MainController2 : MonoBehaviour
         Main_BGM.Play();
 
         // 리얼스톱Bg 활성화
+        isGameRunnig = false;
         pauseBG.gameObject.SetActive(true);
         realStopBg.gameObject.SetActive(true);
         SceneManager.LoadScene("HomeScene");
@@ -661,7 +757,7 @@ public class MainController2 : MonoBehaviour
     public void CountUP()
     {
         score++;
-        Scoretxt.text = score.ToString();
+        Scoretxt.text = "Score : " + score.ToString();
         heal_sfx.Play();
         heal_fx.gameObject.SetActive(true);
         hit_fx.gameObject.SetActive(false);
@@ -672,7 +768,7 @@ public class MainController2 : MonoBehaviour
     public void DoubleCountUP()
     {
         score += 2;
-        Scoretxt.text = score.ToString();
+        Scoretxt.text = "Score : " + score.ToString();
         heal_sfx.Play();
         heal_fx.gameObject.SetActive(true);
         hit_fx.gameObject.SetActive(false);

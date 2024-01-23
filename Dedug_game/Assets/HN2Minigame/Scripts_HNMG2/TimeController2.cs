@@ -73,6 +73,8 @@ public class TimeController2 : MonoBehaviour
         {
             readyCount.gameObject.SetActive(false);
             mainController2.Scoretxt.gameObject.SetActive(true);
+            
+           //mainController2.goodsCount.gameObject.SetActive(true);
 
             timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
             timer -= 1f; // 타이머 감소
@@ -97,6 +99,9 @@ public class TimeController2 : MonoBehaviour
         mainController2.isGameRunnig = false;
         mainController2.Score();
         mainController2.ResultBG.gameObject.SetActive(true);
+        mainController2.pauseBG.gameObject.SetActive(true);
+        mainController2.heal_fx.gameObject.SetActive(false);
+        mainController2.hit_fx.gameObject.SetActive(false);
         mainController2.Main_BGM.Stop();
 
         // 어떤 컴포넌트에 배정할거임?
