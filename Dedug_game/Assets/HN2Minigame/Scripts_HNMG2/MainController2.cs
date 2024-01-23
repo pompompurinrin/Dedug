@@ -161,6 +161,7 @@ public class MainController2 : MonoBehaviour
         {
             this.delta = 0;
             randPrefab = Random.Range(0, 3);
+
             if (this.delta == 3)
             {
                 span = 0.1f;
@@ -394,22 +395,30 @@ public class MainController2 : MonoBehaviour
         
 
         //굿즈 지급
-        if (score >= 60) // 바꿔
+        if (score >= 100) // 바꿔
         {
             _count = 3;
             //goodsCount.text = "Goods : " + _count.ToString() +"개 !!";
 
 
         }
-        else if (score < 60 && score >= 20)
+        else if (score < 100 && score >= 90)
         {
             _count = 2;
             //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
         }
-        else if (score < 20 && score >= 0)
+        else if (score < 90 && score >= 0)
         {
             _count = 1;
             //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
+        }
+
+        else if (score < 0)
+        {
+            _count = 1;
+            score = 0;
+            
+            Debug.Log("스코어가 0점 아래면 score = 0;");
         }
 
         else

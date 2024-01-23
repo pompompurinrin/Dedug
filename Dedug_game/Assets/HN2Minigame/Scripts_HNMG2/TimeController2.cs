@@ -92,17 +92,26 @@ public class TimeController2 : MonoBehaviour
     }
     
     public void TimeOver() // 시간이 다 되면 게임 오버 화면을 활성화
-    {     
+    {
         // 초기화 세팅
-        this.Player.transform.position = new Vector3(0, -5, 1);
         timer = 60f;
-        mainController2.isGameRunnig = false;
+        Debug.Log("TimeOver  timer = 60f;");
+        this.Player.transform.position = new Vector3(0, -5, 1);
+        Debug.Log("TimeOver this.Player.transform.position = new Vector3(0, -5, 1);");
         mainController2.Score();
+        Debug.Log("TimeOver Score 호출");
         mainController2.ResultBG.gameObject.SetActive(true);
+        Debug.Log("TimeOver ResultBG = true");
         mainController2.pauseBG.gameObject.SetActive(true);
+        Debug.Log("TimeOver pauseBG = true");
         mainController2.heal_fx.gameObject.SetActive(false);
+        Debug.Log("TimeOver heal_fx = false");
         mainController2.hit_fx.gameObject.SetActive(false);
+        Debug.Log("TimeOver hit_fx = false");
         mainController2.Main_BGM.Stop();
+        Debug.Log("TimeOver Main_BGM = Stop");
+        mainController2.isGameRunnig = false;
+        Debug.Log("TimeOver isGameRunnig = false");
 
         // 어떤 컴포넌트에 배정할거임?
         mainController2.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
