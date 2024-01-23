@@ -27,10 +27,10 @@ public class HJYJMinigameManager : MonoBehaviour
     public GameObject SouceImage03;
     public GameObject SouceImage04;
 
-    public Button recipe01;
-    public Button recipe02;
-    public Button recipe03;
-    public Button recipe04;
+    public Image recipe01;
+    public Image recipe02;
+    public Image recipe03;
+    public Image recipe04;
 
     public GameObject clickImg01;
     public GameObject clickImg02;
