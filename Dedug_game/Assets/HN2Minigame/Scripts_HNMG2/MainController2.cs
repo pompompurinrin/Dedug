@@ -145,6 +145,7 @@ public class MainController2 : MonoBehaviour
         else
         {
             isGameRunnig = true;
+
         }
 
     }
@@ -390,7 +391,7 @@ public class MainController2 : MonoBehaviour
     
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
+        UserScoretxt.text = score.ToString();      // 최종 유저 스코어 텍스트로 출력
 
         
 
@@ -407,18 +408,9 @@ public class MainController2 : MonoBehaviour
             _count = 2;
             //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
         }
-        else if (score < 90 && score >= 0)
+        else if (score < 90 )
         {
-            _count = 1;
-            //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
-        }
-
-        else if (score < 0)
-        {
-            _count = 1;
-            score = 0;
-            
-            Debug.Log("스코어가 0점 아래면 score = 0;");
+            _count = 1;        
         }
 
         else
@@ -668,6 +660,7 @@ public class MainController2 : MonoBehaviour
     
     // 게임 일시정지 관련 변수   
     public Image pauseBG;
+    public Image pauseBG1;
     public Image stopBg;
     public Button stop;
     public Button keepGoing;
@@ -719,10 +712,13 @@ public class MainController2 : MonoBehaviour
     // 게임으로 돌아가기 버튼 함수
     public void keepGoingClick()
     {
-        // 게임 일시정지 UI 비활성화
+        // 게임 재개
+        Time.timeScale = 1;
         pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
-        ResumeGame();
+        realStopBg.gameObject.SetActive(false);
+        isGamePaused = false;
+        Main_BGM.Play();
     }
 
     // 굿즈구매로 돌아가기 버튼 함수
@@ -731,28 +727,32 @@ public class MainController2 : MonoBehaviour
         // 게임 일시정지 UI 비활성화
         pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
-        Main_BGM.Play();
+        
 
         // 리얼스톱Bg 활성화
-        isGameRunnig = false;
         pauseBG.gameObject.SetActive(true);
         realStopBg.gameObject.SetActive(true);
-        SceneManager.LoadScene("HomeScene");
+        
     }
 
     // 게임으로 돌아가기 버튼 함수
     public void stopNoClick()
     {
-        // 리얼스톱Bg 활성화
+        // 게임 재개
+        Time.timeScale = 1;
         pauseBG.gameObject.SetActive(false);
+        stopBg.gameObject.SetActive(false);
         realStopBg.gameObject.SetActive(false);
-        ResumeGame();
+        isGamePaused = false;
+        Main_BGM.Play();
     }
-
-    // 홈으로 버튼 함수
+    public HomeManager homeManager;
+    // 굿즈구매로 버튼 함수
     public void stopOkClick()
     {
         pauseBG.gameObject.SetActive(false);
+        SceneManager.LoadScene("HomeScene");
+        //homeManager.OnButtonClick_OnGoodsBuy();
     }
 
     // 게임 재개 처리
@@ -766,18 +766,16 @@ public class MainController2 : MonoBehaviour
     public void CountUP()
     {
         score++;
-        Scoretxt.text = "Score : " + score.ToString();
+        Scoretxt.text = "Score : " + score.ToString();        
         heal_sfx.Play();
         heal_fx.gameObject.SetActive(true);
         hit_fx.gameObject.SetActive(false);
-
-
     }
 
     public void DoubleCountUP()
     {
         score += 2;
-        Scoretxt.text = "Score : " + score.ToString();
+        Scoretxt.text = "Score : " + score.ToString();     
         heal_sfx.Play();
         heal_fx.gameObject.SetActive(true);
         hit_fx.gameObject.SetActive(false);
@@ -789,7 +787,7 @@ public class MainController2 : MonoBehaviour
         Scoretxt.text = score.ToString();
         hit_sfx.Play();
         hit_fx.gameObject.SetActive(true);
-        heal_fx.gameObject.SetActive(false);
+        heal_fx.gameObject.SetActive(false);        
     }
 
 }

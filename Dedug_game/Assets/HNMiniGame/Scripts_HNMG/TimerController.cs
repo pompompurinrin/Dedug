@@ -88,6 +88,10 @@ public class TimerController: MonoBehaviour
         mainController.isGameRunnig = false;
         timer = 30;
         mainController.ResultBG.gameObject.SetActive(true);
+        mainController.pauseBG.gameObject.SetActive(true);
+        mainController.pauseBG1.gameObject.SetActive(true);
+        mainController.Main_BGM2.Stop();
+        mainController.isGameRunnig = false;
 
         // 어떤 컴포넌트에 배정할거임?
         mainController.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();

@@ -279,15 +279,19 @@ public class MainController : MonoBehaviour
                 Score();
                 isGameRunnig = false;
                 score = 0;
-                ResultBG.gameObject.SetActive(true);             
-                
+                ResultBG.gameObject.SetActive(true);
+                pauseBG.gameObject.SetActive(true);
+                pauseBG1.gameObject.SetActive(true);
+                Main_BGM2.Stop();
+                isGameRunnig = false;
+
                 //어떤 컴포넌트에 배정할거임?
                 ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
                 ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
                 Restart = GameObject.Find("Restart").GetComponent<Button>();
                 HomeBtn = GameObject.Find("Home").GetComponent<Button>();
                 UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
-                Main_BGM2.Stop();
+               
 
             }
         }
@@ -726,7 +730,7 @@ public class MainController : MonoBehaviour
     public void RestartClick()
     {
         Debug.Log("Restart");
-        SceneManager.LoadScene("DG_Scene");
+        SceneManager.LoadScene("HNMiniGameScene");
     }
     // 게임 홈으로 가는 함수
     public void HomeClick()
@@ -737,6 +741,7 @@ public class MainController : MonoBehaviour
     
     // 게임 일시정지 관련 변수   
     public Image pauseBG;
+    public Image pauseBG1;
     public Image stopBg;
     public Button stop;
     public Button keepGoing;
@@ -793,10 +798,13 @@ public class MainController : MonoBehaviour
     // 게임으로 돌아가기 버튼 함수
     public void keepGoingClick()
     {
-        // 게임 일시정지 UI 비활성화
+        // 게임 재개
+        Time.timeScale = 1;
         pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
-        ResumeGame();
+        realStopBg.gameObject.SetActive(false);
+        isGamePaused = false;
+        Main_BGM2.Play();
     }
 
     // 굿즈구매로 돌아가기 버튼 함수
@@ -815,17 +823,20 @@ public class MainController : MonoBehaviour
     // 게임으로 돌아가기 버튼 함수
     public void stopNoClick()
     {
-        // 리얼스톱Bg 활성화
+        // 게임 재개
+        Time.timeScale = 1;
         pauseBG.gameObject.SetActive(false);
+        stopBg.gameObject.SetActive(false);
         realStopBg.gameObject.SetActive(false);
-        ResumeGame();
+        isGamePaused = false;
+        Main_BGM2.Play();
     }
-
-    // 홈으로 버튼 함수
+    public HomeManager homeManager;
+    // 굿즈구매로 버튼 함수
     public void stopOkClick()
     {
         pauseBG.gameObject.SetActive(false);
-        SceneManager.LoadScene("HomeScene");
+        homeManager.OnButtonClick_OnGoodsBuy();
     }
 
     // 게임 재개 처리
