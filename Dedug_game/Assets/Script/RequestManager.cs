@@ -77,6 +77,10 @@ public class RequestManager : MonoBehaviour
     public Transform effectSpawnPoint;    // 이펙트 생성 위치
     public Transform customer2ParentObject; // 이펙트 생성 부모 객체
 
+    public Slider FeverSlider;
+    private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
+    private const string RankFileName = "RankTable";
+    private char[] TRIM_CHARS = { ' ', '\"' };
 
     // 애니메이션 트리거, bool의 상태를 나타내는 열거형
     private enum DrawAnimationState
@@ -94,16 +98,16 @@ public class RequestManager : MonoBehaviour
         // 혜린: 공용 변수 설정 및 데이터 로드
         NowGold = PlayerPrefs.GetInt("NowGold");
         NowRank = PlayerPrefs.GetInt("NowRank");
-        feverNum = PlayerPrefs.GetInt("FeverNum");
+        DataManager. Instance.feverNum = PlayerPrefs.GetInt("FeverNum");
     }
 
     private void Start()
     {
+        data_Dialog = CSVReader.Read(RankFileName);
         Debug.Log("리퀘스트:" + DataManager.Instance.goods1011);
         // 다른 씬에서 데이터 로드
         DataManager.Instance.nowGold = NowGold;
         DataManager.Instance.nowRank = NowRank;
-        DataManager.Instance.feverNum = feverNum;
 
         // 랭크 데이터 업데이트
         rankText.text = DataManager.Instance.nowRank.ToString();
@@ -114,7 +118,27 @@ public class RequestManager : MonoBehaviour
         goldText.text = DataManager.Instance.nowGold.ToString();
 
         comitionBGM.Play();
-
+        
+        if(DataManager.Instance.nowRank == 0)
+        {
+            FeverSlider.maxValue = 10;
+        }
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            FeverSlider.maxValue = 13;
+        }
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            FeverSlider.maxValue = 16;
+        }
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            FeverSlider.maxValue = 23;
+        }
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            FeverSlider.maxValue = 30;
+        }
     }
 
     void Update()
@@ -126,7 +150,8 @@ public class RequestManager : MonoBehaviour
             CreateRequestPrefab();
             requestTimer = 0f;
         }
-
+        
+        FeverSlider.value = DataManager.Instance.feverNum;
     }
     
 

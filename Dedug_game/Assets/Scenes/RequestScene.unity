@@ -11325,6 +11325,7 @@ MonoBehaviour:
   customer2Prefab: {fileID: 8680598818964007281, guid: eeec4fcc57f63e74e9a4781eb4e05071, type: 3}
   effectSpawnPoint: {fileID: 8798375089150162959, guid: f66c1596ef8a41845a3eabf1804ad136, type: 3}
   customer2ParentObject: {fileID: 2139513740}
+  FeverSlider: {fileID: 26684581}
 --- !u!1 &2099618973
 GameObject:
   m_ObjectHideFlags: 0
