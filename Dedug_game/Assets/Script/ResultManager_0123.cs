@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class ResultManager : MonoBehaviour
+public class ResultManager_0123 : MonoBehaviour
 {
 
     /*
