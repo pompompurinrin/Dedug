@@ -56,8 +56,7 @@ public class StoryManager : MonoBehaviour
         if (DataManager.Instance.storyID == 0)
         {
             ClickNum = 520;
-            DataManager.Instance.first = 1;
-            PlayerPrefs.SetInt("First", DataManager.Instance.first);
+            
         }
         else if (DataManager.Instance.storyID ==11)
         {
@@ -78,7 +77,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 21)
         {
-            ClickNum = 249;
+            ClickNum = 248;
             
         }
         else if (DataManager.Instance.storyID == 22)
@@ -88,7 +87,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 23)
         {
-            ClickNum = 343;
+            ClickNum = 345;
             
         }
         else if (DataManager.Instance.storyID == 31)
@@ -98,12 +97,12 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 32)
         {
-            ClickNum = 431;
+            ClickNum = 433;
             
         }
         else if (DataManager.Instance.storyID == 33)
         {
-            ClickNum = 482;
+            ClickNum = 485;
             
         }
         else if (DataManager.Instance.storyID == 41)
@@ -113,7 +112,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 42)
         {
-            ClickNum = 32;
+            ClickNum = 31;
             
         }
         else if (DataManager.Instance.storyID == 43)
@@ -206,10 +205,13 @@ public class StoryManager : MonoBehaviour
         bool hasEndID = data_Dialog[ClickNum].TryGetValue("End", out EndID);
         if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()) && DataManager.Instance.storyID == 0)
         {
+            DataManager.Instance.first = 1;
+            PlayerPrefs.SetInt("First", DataManager.Instance.first);
             SceneManager.LoadScene("HomeScene");
         }
         else if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()) && DataManager.Instance.storyID == 99)
         {
+            
             SceneManager.LoadScene("StartScene");
         }
         else if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()))
@@ -232,6 +234,12 @@ public class StoryManager : MonoBehaviour
         if (DataManager.Instance.storyID == 99)
         {
             SceneManager.LoadScene("StartScene");
+        }
+        else if (DataManager.Instance.storyID == 0)
+        {
+            DataManager.Instance.first = 1;
+            PlayerPrefs.SetInt("First", DataManager.Instance.first);
+            SceneManager.LoadScene("HomeScene");
         }
         else
         {

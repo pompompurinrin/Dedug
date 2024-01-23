@@ -179,7 +179,7 @@ public class UiManager : MonoBehaviour
     {
         BG_MainStory.gameObject.SetActive(false);
         PopUpBG_MainStory.gameObject.SetActive(false);
-        Test.gameObject.SetActive(false);
+        
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha3.gameObject.SetActive(false);
         BG_Cha2.gameObject.SetActive(false);
@@ -452,7 +452,7 @@ public class UiManager : MonoBehaviour
 
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_Goldplus.gameObject.SetActive(false);
-        Test.gameObject.SetActive(false);
+        
         PopUpBG_MainStoryCheck.gameObject.SetActive(false);
 
     }

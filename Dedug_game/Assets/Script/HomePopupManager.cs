@@ -55,9 +55,9 @@ public class HomePopupManager : MonoBehaviour
         if(DataManager.Instance.firstHome == 0)
         {
             TutorialCanvas.gameObject.SetActive(true);
-            DataManager.Instance.firstHome = 1;
+            
             Debug.Log("ÆÛÈ¨" + DataManager.Instance.firstHome.ToString());
-            Save();
+            
             ClickTutorial();
         }
         else
@@ -120,6 +120,8 @@ public class HomePopupManager : MonoBehaviour
         }
         else if (TutorialClickNum > 2)
         {
+            DataManager.Instance.firstHome = 1;
+            Save();
             TutorialCanvas.gameObject.SetActive(false);
         }
 

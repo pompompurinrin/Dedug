@@ -76,6 +76,7 @@ public class RankManager : MonoBehaviour
         DataManager.Instance.goods3031 = PlayerPrefs.GetInt("Goods3031");
         DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
         DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
+        DataManager.Instance.firstRank = PlayerPrefs.GetInt("FirstRank");
     }
     private void Start()
     {
@@ -90,7 +91,19 @@ public class RankManager : MonoBehaviour
         RankUPBtn = GameObject.Find("RankUPBtn").GetComponent<Button>();
         anim = GameObject.Find("RankPopUPGroup").GetComponent<Animator>();
         ResultChr = Result.transform.Find("ResultCharacter").GetComponent<Image>();
-        
+
+        if (DataManager.Instance.firstRank == 0)
+        {
+            TutorialCanvas.gameObject.SetActive(true);
+
+            Debug.Log("퍼랭" + DataManager.Instance.firstRank.ToString());
+
+            ClickTutorial();
+        }
+        else
+        {
+            TutorialCanvas.gameObject.SetActive(false);
+        }
 
         RankPopUPBG.gameObject.SetActive(false);
         Unlock.gameObject.SetActive(false);
@@ -114,6 +127,43 @@ public class RankManager : MonoBehaviour
         UnlockCheck();
 
     }
+
+    int TutorialClickNum = 0;
+    public Canvas TutorialCanvas;
+    public Image TutorialImg;
+
+    public Sprite TutorialImage1;
+    public Sprite TutorialImage2;
+    public Sprite TutorialImage3;
+    public Sprite TutorialImage4;
+    public Sprite TutorialImage5;
+    public Sprite TutorialImage6;
+    public Sprite TutorialImage7;
+
+    public void ClickTutorial()
+    {
+        if (TutorialClickNum == 0)
+        {
+            TutorialImg.sprite = TutorialImage1;
+        }
+        else if (TutorialClickNum == 1)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum == 2)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum > 2)
+        {
+            DataManager.Instance.firstRank = 1;
+            Save();
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+
+        TutorialClickNum++;
+    }
+
     public void PlaySFX1()
     {
         sfx1AudioSource.Play();
@@ -131,7 +181,7 @@ public class RankManager : MonoBehaviour
 
             // 각종 효과 및 비용 텍스트 설정
             PlusGuestState.text = "축하합니다!";
-            PlusFeverTime.text = "당신은 오타쿠의";
+            PlusFeverTime.text = "당신은 오닥구의";
             PlusGoods.text = "경지에 올랐습니다!";
 
             NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
@@ -147,9 +197,9 @@ public class RankManager : MonoBehaviour
             NextRankName.text = data_Dialog[nextRank]["RankName"].ToString();
 
             // 각종 효과 및 비용 텍스트 설정
-            PlusGuestState.text = "커미션 등장 손님 " + data_Dialog[nextRank]["GuestPlus"].ToString() + "종 상승";
-            PlusFeverTime.text = $"피버타임 제한시간 " + data_Dialog[nextRank]["GuestPlus"].ToString()+ "초 상승";
-            PlusGoods.text = $"좋은 굿즈 획득 확률 상승";
+            PlusGuestState.text = "커미션 등장 손님 2종 상승";
+            PlusFeverTime.text = $"피버타임 파워 수치 10 상승";
+            PlusGoods.text = $"비싼 굿즈 획득 확률 상승";
 
             NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
             NextimageFileName = data_Dialog[nextRank]["MainImage"].ToString();
@@ -296,21 +346,10 @@ public class RankManager : MonoBehaviour
         NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
         ResultChr.sprite = Resources.Load<Sprite>(NowimageFileName);
 
-
-        //GameObject effectInstance = Instantiate(effectPrefab, ResultChr.transform.position, Quaternion.identity);
-
-        // Vector3 newPosition = effectPrefab.transform.position;
-        //  newPosition.z = 2f;
-        //effectPrefab.transform.position = newPosition;
-
-        // 프리팹 크기 설정
-        // Vector3 desiredScale = new Vector3(0.9f, 0.9f, 0.9f);  
-        //effectInstance.transform.localScale = desiredScale;
         NowRankName2.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
 
-        ResultPlusGuestState.text = $"커미션 등장 손님 {GetIntValue("GuestPlus")}종 상승";
-       
-        ResultPlusFeverTime.text = $"피버타임 제한시간 {GetIntValue("FeverTimePlus")}초 상승";
+        ResultPlusGuestState.text = $"커미션 등장 손님 2종 상승";
+        ResultPlusFeverTime.text = $"피버타임 파워 수치 10 상승";
         ResultPlusGoods.text = $"좋은 굿즈 획득 확률 상승";
         PopUPText.text = "정말 " + data_Dialog[nextRank]["RankName"].ToString() + "(으)로 승급하시겠습니까?";
         PopUPNotice.text = "승급시" + data_Dialog[nextRank]["RankGold"].ToString() + "골드가 소모됩니다.";

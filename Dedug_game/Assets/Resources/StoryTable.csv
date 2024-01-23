@@ -1,4 +1,4 @@
-CSVNum,StoryID,ChaName,TalkText,ChrL,ChrR,ChrM,TalkBG,Bgm,Etc,End
+﻿CSVNum,StoryID,ChaName,TalkText,ChrL,ChrR,ChrM,TalkBG,Bgm,Etc,End
 0,4101,,(퇴근길 지하철을 기다리는 콩게.)  ▼,Chr6_idle,Chr4_sad,Chr6_idle,1,1,상황설명,
 1,4102,콩게,휴…오늘 본 면접도 떨어졌겠지..?  ▼,Chr6_idle,Chr4_sad,Chr6_idle,1,,,
 2,4103,콩게,갑자기 그런 질문을 할 줄은 몰랐어..  ▼,Chr6_idle,Chr4_sad,Chr6_idle,1,,,
@@ -190,8 +190,7 @@ CSVNum,StoryID,ChaName,TalkText,ChrL,ChrR,ChrM,TalkBG,Bgm,Etc,End
 188,1253,홍수아,이게….마물들을 물리칠 수 있는 힘이구나…. ▼,Chr7_happy,Chr6_idle,Chr6_idle,9,,,
 189,1254,홍수아,이걸로 바다 너랑 같이 다른 사람들을 도와줄 수 있겠어… ▼,Chr7_happy,Chr6_idle,Chr6_idle,9,,,
 190,1255,홍수아,정말 다행이다!! ▼,Chr7_happy,Chr6_idle,Chr6_idle,9,,,
-191,1256,홍수아,"하하!! ▼
-",Chr7_happy,Chr6_idle,Chr6_idle,9,,,
+191,1256,홍수아,하하!! ▼,Chr7_happy,Chr6_idle,Chr6_idle,9,,,
 192,1257,이바다,다행이긴 이 바보야! ▼,Chr6_idle,Chr6_idle,Chr2_angry,9,,,
 193,1258,이바다,넌 정말 바보 같아.. ▼,Chr6_idle,Chr6_idle,Chr2_angry,9,,,
 194,1259,,End ▼,Chr6_idle,Chr6_idle,Chr2_angry,9,,,1
