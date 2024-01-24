@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class TopbarManager : MonoBehaviour
 {
-
     
+
     int NowGold;
     int NowRank;
     string Goods3;
@@ -146,12 +146,11 @@ public class TopbarManager : MonoBehaviour
 
     private void Update()
     {
-        int NowRanknum = DataManager.Instance.nowRank + 1;
         GoldAmountText.text = DataManager.Instance.nowGold.ToString();
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
         NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
         NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
-        NowRankNum.text = "Rank. " + NowRanknum.ToString();
+        
 
 
     }
@@ -163,7 +162,7 @@ public class TopbarManager : MonoBehaviour
         data_Dialog = CSVReader.Read(RankFileName);
         RankImage();
         RankSetupInfo();
-       
+        NowRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["CSVNum"].ToString();
         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
         GameObject HelpUI = GameObject.Find("HelpUI");

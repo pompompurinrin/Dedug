@@ -897,6 +897,9 @@ public class YJMiniGameManager : MonoBehaviour
     // 도감으로 돌아가기 처리
     public void RealStopClick()
     {
+        isPuse = false;
+        Time.timeScale = 1;
+
         SceneManager.LoadScene("HomeScene");
     }
 
