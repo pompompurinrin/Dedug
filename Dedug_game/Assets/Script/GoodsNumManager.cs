@@ -743,6 +743,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4051Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4051Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -757,6 +758,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4052Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4052Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -771,6 +773,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4053Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4053Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -785,6 +788,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4054Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4054Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -800,6 +804,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4055Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4055Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -814,6 +819,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4056Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4056Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -828,6 +834,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4057Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4057Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -842,6 +849,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4058Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4058Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -856,6 +864,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4059Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4059Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -870,6 +879,7 @@ public class GoodsNumManager : MonoBehaviour
             if (goods4060Applied == false)
             {
                 SpecialGoodsGauge++;
+                MainStoryGauge++;
                 goods4060Applied = true; // 1이 더해진 상태로 플래그 업데이트
             }
         }
@@ -897,16 +907,16 @@ public class GoodsNumManager : MonoBehaviour
 
         MainStorySlider.maxValue = 3;
 
-        if (MainStoryGauge == 30)
+        if (MainStoryGauge >= 40)
         {
             MainStoryGauge = 3;
             MainStorySlider.value = 3;
             UnlockMain_2.gameObject.SetActive(false);
             UnlockMain_3.gameObject.SetActive(false);
         }
-        else if (MainStoryGauge >= 15)
+        else if (MainStoryGauge >= 20)
         {
-            MainStoryGauge = 2;
+           MainStoryGauge = 2;
             MainStorySlider.value = 2;
             UnlockMain_2.gameObject.SetActive(false);
         }
@@ -915,7 +925,7 @@ public class GoodsNumManager : MonoBehaviour
             MainStoryGauge = 1;
             MainStorySlider.value = 1;
         }
-        MainStorySliderText.text = MainStoryGauge.ToString() + "/3";
+        MainStorySliderText.text = MainStorySlider.value.ToString() + "/3";
         TextSet();
 
     }
