@@ -117,7 +117,7 @@ public class HomeManager : MonoBehaviour
         else if (DataManager.Instance.nowRank == 4)
         {
             PurposeBtnText.text = "¸ðµç ±ÂÁî È¹µæÇÏ±â";
-            if (GoodsNumManager.SpecialGoodsGauge == 40)
+            if (GoodsNumManager.MainGoodsGauge == 40)
             {
                 PurposeBtnCompleteText.gameObject.SetActive(true);
             }
