@@ -174,7 +174,7 @@ public class FeverManager : MonoBehaviour
                 feverBg.SetActive(false);
 
                 // feverGauge °Ë»ç
-                if (feverGauge >= 0)
+                if (feverGauge < 50)
                 {
                     feverBGM.Stop();
 
@@ -183,14 +183,14 @@ public class FeverManager : MonoBehaviour
                         
                 }
 
-                if (feverGauge >= 25 && feverGauge < 50)
+                if (feverGauge >= 50 && feverGauge < 100)
                 {
                     feverBGM.Stop();
 
                     ResultFever02();
                 }
 
-                if (feverGauge >= 50)
+                if (feverGauge >= 100)
                 {
                     feverBGM.Stop();
 

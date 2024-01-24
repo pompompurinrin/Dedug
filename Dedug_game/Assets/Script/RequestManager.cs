@@ -204,7 +204,7 @@ public class RequestManager : MonoBehaviour
             }
             else if (customerTypeGold == 2) //ХЋМе
             {
-                goldValue = Random.Range(15, 45);
+                goldValue = Random.Range(32, 45);
             }
         }
 
@@ -216,7 +216,7 @@ public class RequestManager : MonoBehaviour
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(75, 225);
+                goldValue = Random.Range(159, 225);
             }
         }
 
@@ -228,7 +228,7 @@ public class RequestManager : MonoBehaviour
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(150, 450);
+                goldValue = Random.Range(318, 450);
             }
         }
 
@@ -240,7 +240,7 @@ public class RequestManager : MonoBehaviour
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(300, 600);
+                goldValue = Random.Range(424, 600);
             }
         }
 
@@ -252,7 +252,7 @@ public class RequestManager : MonoBehaviour
             }
             else if (customerTypeGold == 2)
             {
-                goldValue = Random.Range(600, 1200);
+                goldValue = Random.Range(848, 1200);
             }
         }
 
