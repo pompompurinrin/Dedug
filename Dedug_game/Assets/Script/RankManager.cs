@@ -96,9 +96,9 @@ public class RankManager : MonoBehaviour
         {
             TutorialCanvas.gameObject.SetActive(true);
 
-            Debug.Log("ÆÛ·©" + DataManager.Instance.firstRank.ToString());
-
             ClickTutorial();
+            TutorialImg.sprite = TutorialImage1;
+            TutorialClickNum++;
         }
         else
         {
@@ -137,24 +137,27 @@ public class RankManager : MonoBehaviour
     public Sprite TutorialImage3;
     public Sprite TutorialImage4;
     public Sprite TutorialImage5;
-    public Sprite TutorialImage6;
-    public Sprite TutorialImage7;
+    
 
     public void ClickTutorial()
     {
-        if (TutorialClickNum == 0)
-        {
-            TutorialImg.sprite = TutorialImage1;
-        }
-        else if (TutorialClickNum == 1)
+        if (TutorialClickNum == 1)
         {
             TutorialImg.sprite = TutorialImage2;
         }
         else if (TutorialClickNum == 2)
         {
-            TutorialImg.sprite = TutorialImage2;
+            TutorialImg.sprite = TutorialImage3;
         }
-        else if (TutorialClickNum > 2)
+        else if (TutorialClickNum == 3)
+        {
+            TutorialImg.sprite = TutorialImage4;
+        }
+        else if (TutorialClickNum == 4)
+        {
+            TutorialImg.sprite = TutorialImage5;
+        }
+        else if (TutorialClickNum == 5)
         {
             DataManager.Instance.firstRank = 1;
             Save();

@@ -98,6 +98,7 @@ public class RequestManager : MonoBehaviour
         // 혜린: 공용 변수 설정 및 데이터 로드
         NowGold = PlayerPrefs.GetInt("NowGold");
         NowRank = PlayerPrefs.GetInt("NowRank");
+        DataManager.Instance.firstRequest = PlayerPrefs.GetInt("FirstRequest");
         DataManager. Instance.feverNum = PlayerPrefs.GetInt("FeverNum");
     }
 
@@ -108,7 +109,18 @@ public class RequestManager : MonoBehaviour
         // 다른 씬에서 데이터 로드
         DataManager.Instance.nowGold = NowGold;
         DataManager.Instance.nowRank = NowRank;
+        if (DataManager.Instance.firstRequest == 0)
+        {
+            TutorialCanvas.gameObject.SetActive(true);
 
+            ClickTutorial();
+            TutorialImg.sprite = TutorialImage1;
+            TutorialClickNum++;
+        }
+        else
+        {
+            TutorialCanvas.gameObject.SetActive(false);
+        }
         // 랭크 데이터 업데이트
         rankText.text = DataManager.Instance.nowRank.ToString();
 
@@ -153,7 +165,63 @@ public class RequestManager : MonoBehaviour
         
         FeverSlider.value = DataManager.Instance.feverNum;
     }
-    
+    int TutorialClickNum = 0;
+    public Canvas TutorialCanvas;
+    public Image TutorialImg;
+
+    public Sprite TutorialImage1;
+    public Sprite TutorialImage2;
+    public Sprite TutorialImage3;
+    public Sprite TutorialImage4;
+    public Sprite TutorialImage5;
+    public Sprite TutorialImage6;
+    public Sprite TutorialImage7;
+    public Sprite TutorialImage8;
+    public Sprite TutorialImage9;
+
+    public void ClickTutorial()
+    {
+        if (TutorialClickNum == 1)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum == 2)
+        {
+            TutorialImg.sprite = TutorialImage3;
+        }
+        else if (TutorialClickNum == 3)
+        {
+            TutorialImg.sprite = TutorialImage4;
+        }
+        else if (TutorialClickNum == 4)
+        {
+            TutorialImg.sprite = TutorialImage5;
+        }
+        else if (TutorialClickNum == 5)
+        {
+            TutorialImg.sprite = TutorialImage6;
+        }
+        else if (TutorialClickNum == 6)
+        {
+            TutorialImg.sprite = TutorialImage7;
+        }
+        else if (TutorialClickNum == 7)
+        {
+            TutorialImg.sprite = TutorialImage8;
+        }
+        else if (TutorialClickNum == 8)
+        {
+            TutorialImg.sprite = TutorialImage9;
+        }
+        else if (TutorialClickNum == 9)
+        {
+            DataManager.Instance.firstRequest = 1;
+            Save();
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+
+        TutorialClickNum++;
+    }
 
 
     void CreateRequestPrefab()
@@ -326,6 +394,7 @@ public class RequestManager : MonoBehaviour
         PlayerPrefs.SetInt("NowRank", DataManager.Instance.nowRank);
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PlayerPrefs.SetInt("FeverNum", DataManager.Instance.feverNum);
+        PlayerPrefs.SetInt("FirstRequest", DataManager.Instance.firstRequest);
         PlayerPrefs.Save();
     }
 

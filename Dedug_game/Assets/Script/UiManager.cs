@@ -173,6 +173,7 @@ public class UiManager : MonoBehaviour
         DataManager.Instance.story4_2 = PlayerPrefs.GetInt("Story4_2");
         DataManager.Instance.story4_3 = PlayerPrefs.GetInt("Story4_3");
 
+        DataManager.Instance.firstDG = PlayerPrefs.GetInt("FirstDG");
     }
 
     void Start()
@@ -189,6 +190,18 @@ public class UiManager : MonoBehaviour
         BG_Cha3_Story.gameObject.SetActive(false);
         BG_SpecialGoods.gameObject.SetActive(false);
 
+        if (DataManager.Instance.firstDG == 0)
+        {
+            TutorialCanvas.gameObject.SetActive(true);
+
+            ClickTutorial();
+            TutorialImg.sprite = TutorialImage1;
+            TutorialClickNum++;
+        }
+        else
+        {
+            TutorialCanvas.gameObject.SetActive(false);
+        }
         if (DataManager.Instance.storyID == 11 && DataManager.Instance.story1_1 == 1)
         {
             PopUpBG_Goldplus.gameObject.SetActive(true);
@@ -678,6 +691,53 @@ public class UiManager : MonoBehaviour
         
 
     }
+    int TutorialClickNum = 0;
+
+    public Image TutorialImg;
+
+    public Sprite TutorialImage1;
+    public Sprite TutorialImage2;
+    public Sprite TutorialImage3;
+    public Sprite TutorialImage4;
+    public Sprite TutorialImage5;
+    public Sprite TutorialImage6;
+    public Sprite TutorialImage7;
+    public Canvas TutorialCanvas;
+    public void ClickTutorial()
+    {
+       if (TutorialClickNum == 1)
+        {
+            TutorialImg.sprite = TutorialImage2;
+        }
+        else if (TutorialClickNum == 2)
+        {
+            TutorialImg.sprite = TutorialImage3;
+        }
+        else if (TutorialClickNum == 3)
+        {
+            TutorialImg.sprite = TutorialImage4;
+        }
+        else if (TutorialClickNum == 4)
+        {
+            TutorialImg.sprite = TutorialImage5;
+        }
+        else if (TutorialClickNum == 5)
+        {
+            TutorialImg.sprite = TutorialImage6;
+        }
+        else if (TutorialClickNum == 6)
+        {
+            TutorialImg.sprite = TutorialImage7;
+        }
+        else if (TutorialClickNum == 7)
+        {
+            DataManager.Instance.firstDG = 1;
+            Save();
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+
+        TutorialClickNum++;
+    }
 
     public void Save()
     {
@@ -695,6 +755,7 @@ public class UiManager : MonoBehaviour
         PlayerPrefs.SetInt("Story4_1", DataManager.Instance.story4_1);
         PlayerPrefs.SetInt("Story4_2", DataManager.Instance.story4_2);
         PlayerPrefs.SetInt("Story4_3", DataManager.Instance.story4_3);
+        PlayerPrefs.SetInt("FirstDG", DataManager.Instance.firstDG);
     }    
    
     public void Clear()

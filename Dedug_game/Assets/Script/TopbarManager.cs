@@ -718,6 +718,7 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.firstDG = 0;
         DataManager.Instance.firstGoodsBuy = 0;
         DataManager.Instance.firstRequest = 0;
+        DataManager.Instance.firstRank = 0;
         Save();
     }
 
@@ -786,6 +787,7 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
         PlayerPrefs.SetInt("FirstGoodsBuy", DataManager.Instance.firstGoodsBuy);
         PlayerPrefs.SetInt("FirstRequest", DataManager.Instance.firstRequest);
+        PlayerPrefs.SetInt("FirstRank", DataManager.Instance.firstRank);
         PlayerPrefs.Save();
     }
 

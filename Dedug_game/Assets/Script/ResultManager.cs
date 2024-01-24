@@ -139,7 +139,7 @@ public class ResultManager : MonoBehaviour
         DataManager.Instance.goods4058 = PlayerPrefs.GetInt("Goods4058");
         DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
         DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
-
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
 
@@ -522,7 +522,7 @@ public class ResultManager : MonoBehaviour
             }
 
         }
-        
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         // PlayerPrefs에 현재 값 저장
         PlayerPrefs.Save();
 

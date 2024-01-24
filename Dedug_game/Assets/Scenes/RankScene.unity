@@ -7062,13 +7062,11 @@ MonoBehaviour:
   anim: {fileID: 562116179}
   TutorialCanvas: {fileID: 194641685}
   TutorialImg: {fileID: 83494489}
-  TutorialImage1: {fileID: 21300000, guid: 32ed15fdee932f54d9d85f35dbbeebfb, type: 3}
-  TutorialImage2: {fileID: 21300000, guid: 2a9a7cc5cd2c97a4c9fffc7bb4f50aa5, type: 3}
-  TutorialImage3: {fileID: 21300000, guid: 0bd21ce0cb7855c43ad567101929a4d1, type: 3}
-  TutorialImage4: {fileID: 0}
-  TutorialImage5: {fileID: 0}
-  TutorialImage6: {fileID: 0}
-  TutorialImage7: {fileID: 0}
+  TutorialImage1: {fileID: 21300000, guid: c2c2015333159e2479655181689777e3, type: 3}
+  TutorialImage2: {fileID: 21300000, guid: d2a5de85bf47d4e4e93f7c383ec04ffe, type: 3}
+  TutorialImage3: {fileID: 21300000, guid: cb56397c9804c2e4ab3526da7e69a36d, type: 3}
+  TutorialImage4: {fileID: 21300000, guid: d6418a786d2abe646baccd6983db74ed, type: 3}
+  TutorialImage5: {fileID: 21300000, guid: d09e2042c9af5ec41856e4509f0f393e, type: 3}
   ClickTouchBtn: {fileID: 968835226}
 --- !u!114 &452754264
 MonoBehaviour:
@@ -12931,6 +12929,7 @@ MonoBehaviour:
   NowRankNum: {fileID: 1958945907}
   NowRankImage: {fileID: 0}
   SettingPopCanvas: {fileID: 359998140}
+  Credit: {fileID: 0}
   MenuUI: {fileID: 1881695029}
   HelpUI: {fileID: 0}
   HelpPopup: {fileID: 0}
@@ -12959,6 +12958,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d026caee56a43ac4790af87b4199de9e, type: 3}
   - {fileID: 21300000, guid: 2edfbaf3abb949e4283caf2f3a0a536d, type: 3}
   - {fileID: 21300000, guid: bb179ff740249ad47a99a40d793f7b20, type: 3}
+  soundOff: {fileID: 0}
+  BGMOff: {fileID: 0}
+  isSoundPlaying: 0
 --- !u!114 &1572313952
 MonoBehaviour:
   m_ObjectHideFlags: 0

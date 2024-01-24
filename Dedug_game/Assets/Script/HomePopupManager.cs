@@ -61,6 +61,8 @@ public class HomePopupManager : MonoBehaviour
             Debug.Log("∆€»®" + DataManager.Instance.firstHome.ToString());
             
             ClickTutorial();
+            TutorialImg.sprite = TutorialImage1;
+            TutorialClickNum++;
         }
         else
         {
@@ -105,22 +107,41 @@ public class HomePopupManager : MonoBehaviour
     public Sprite TutorialImage5;
     public Sprite TutorialImage6;
     public Sprite TutorialImage7;
+    public Sprite TutorialImage8;
+    public Sprite TutorialImage9;
 
     public void ClickTutorial()
     {
-        if (TutorialClickNum == 0)
-        {
-            TutorialImg.sprite = TutorialImage1;
-        }
-        else if (TutorialClickNum == 1)
+        
+        if (TutorialClickNum == 1)
         {
             TutorialImg.sprite = TutorialImage2;
         }
         else if (TutorialClickNum == 2)
         {
-            TutorialImg.sprite = TutorialImage2;
+            TutorialImg.sprite = TutorialImage3;
         }
         else if (TutorialClickNum == 3)
+        {
+            TutorialImg.sprite = TutorialImage4;
+        }
+        else if (TutorialClickNum == 4)
+        {
+            TutorialImg.sprite = TutorialImage5;
+        }
+        else if (TutorialClickNum == 5)
+        {
+            TutorialImg.sprite = TutorialImage6;
+        }
+        else if (TutorialClickNum == 6)
+        {
+            TutorialImg.sprite = TutorialImage7;
+        }
+        else if (TutorialClickNum == 7)
+        {
+            TutorialImg.sprite = TutorialImage8;
+        }
+        else if (TutorialClickNum == 8)
         {
             DataManager.Instance.firstGoodsBuy = 1;
             Save();

@@ -1936,13 +1936,16 @@ MonoBehaviour:
   charName: {fileID: 782978725}
   TutorialCanvas: {fileID: 1295231997}
   TutorialImg: {fileID: 605431579}
-  TutorialImage1: {fileID: 21300000, guid: 859cc93acd75c2248933bf227a659510, type: 3}
-  TutorialImage2: {fileID: 21300000, guid: 6b413692c9a3a484eb804c9249ba8304, type: 3}
-  TutorialImage3: {fileID: 21300000, guid: b29a17620ef83aa41a9b79c612f605fc, type: 3}
-  TutorialImage4: {fileID: 21300000, guid: 92937595ae8bfdb428f52c72fb907e65, type: 3}
-  TutorialImage5: {fileID: 0}
-  TutorialImage6: {fileID: 0}
-  TutorialImage7: {fileID: 0}
+  TutorialImage1: {fileID: 21300000, guid: 69a9e429afd81874a95cf61f162c229b, type: 3}
+  TutorialImage2: {fileID: 21300000, guid: d0456d3faacd55b41a16ec6185592c89, type: 3}
+  TutorialImage3: {fileID: 21300000, guid: 63ef1af75d0fef848821b648d1deb5b3, type: 3}
+  TutorialImage4: {fileID: 21300000, guid: 520737ffcba6f044bab93c124618a2d9, type: 3}
+  TutorialImage5: {fileID: 21300000, guid: 93c31ba42d18b314bab35dd1de9e59a6, type: 3}
+  TutorialImage6: {fileID: 21300000, guid: 0821de48dedd3ef41a826cd7e81228b1, type: 3}
+  TutorialImage7: {fileID: 21300000, guid: 1ab9ba7cc90e35e47b4e567d66bdfc41, type: 3}
+  TutorialImage8: {fileID: 21300000, guid: c14d39bcab000e44e9f9c46d9344bec4, type: 3}
+  TutorialImage9: {fileID: 21300000, guid: b12df82f75cfb614e9101c6230e32698, type: 3}
+  TutorialImage10: {fileID: 21300000, guid: 46c1f77ddf3283d44adafdd786b8fcb1, type: 3}
 --- !u!114 &91685926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21836,8 +21839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff4977caa139f343bb1f93ec676bd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditGo: {fileID: 967109395}
-  creditBtn: {fileID: 692096811}
 --- !u!114 &967109398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28645,13 +28646,15 @@ MonoBehaviour:
   TutorialBtn: {fileID: 991811762}
   sfx1AudioSource: {fileID: 752190094}
   TutorialImg: {fileID: 1080337443}
-  TutorialImage1: {fileID: 21300000, guid: d3b7db16cee8e124888985b66b87bc95, type: 3}
-  TutorialImage2: {fileID: 21300000, guid: 0804391a90a827642b1dd061c01eed0c, type: 3}
-  TutorialImage3: {fileID: 21300000, guid: 75b0ff10cb3a1bb419b6b282f71613f2, type: 3}
-  TutorialImage4: {fileID: 21300000, guid: 1757864bd24cb854baf3f02b06db9f05, type: 3}
-  TutorialImage5: {fileID: 21300000, guid: 59d22c4f51ca9f24bad27ff503109706, type: 3}
-  TutorialImage6: {fileID: 21300000, guid: 17bc2f2bd7b505b45b75c682e1ea4ccd, type: 3}
-  TutorialImage7: {fileID: 21300000, guid: ae3e2deb1fecad44e9f9b5fd09898dad, type: 3}
+  TutorialImage1: {fileID: 21300000, guid: 7988bba7d036a7543b3b94f2629b6f26, type: 3}
+  TutorialImage2: {fileID: 21300000, guid: c8f50cc7fa2fd1341965448f09840b28, type: 3}
+  TutorialImage3: {fileID: 21300000, guid: 8630b03ad5d9b1e418c12af7ae80bf47, type: 3}
+  TutorialImage4: {fileID: 21300000, guid: 24829c49f79505947a8b55a92edd2b27, type: 3}
+  TutorialImage5: {fileID: 21300000, guid: 3ad719b9cc836c04baed346c6d596d53, type: 3}
+  TutorialImage6: {fileID: 21300000, guid: 8b81dc2dbceff244fb49c197dfd6dac5, type: 3}
+  TutorialImage7: {fileID: 21300000, guid: cd81bc96befe2854a956a22535b6d281, type: 3}
+  TutorialImage8: {fileID: 21300000, guid: b2f7ed382a81b4a4680924b13b043b32, type: 3}
+  TutorialImage9: {fileID: 21300000, guid: 7ef4bafb2de981e429180b8173eafd48, type: 3}
   GanbareHowToText: {fileID: 1655736982}
   GanbareHowToImage: {fileID: 2012447556}
   GanbareHowToImage1: {fileID: 21300000, guid: d3b7db16cee8e124888985b66b87bc95, type: 3}
