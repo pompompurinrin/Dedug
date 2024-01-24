@@ -681,6 +681,7 @@ public class UiManager : MonoBehaviour
 
     public void Save()
     {
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
         PlayerPrefs.SetInt("Story1_1", DataManager.Instance.story1_1);
         PlayerPrefs.SetInt("Story1_2", DataManager.Instance.story1_2);
