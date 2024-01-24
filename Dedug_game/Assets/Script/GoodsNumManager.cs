@@ -118,14 +118,14 @@ public class GoodsNumManager : MonoBehaviour
     public Text SpecialGoodsSliderText;
 
     public int MainStoryGauge;
-    public int MainGoodsGauge;
+    public static int MainGoodsGauge;
     public int SuaStoryGauge;
     public int BadaStoryGauge;
     public int ChorongStoryGauge;
     public int SuaGoodsGauge;
     public int BadaGoodsGauge;
     public int ChorongGoodsGauge;
-    public static int SpecialGoodsGauge;
+    public int SpecialGoodsGauge;
 
     private bool goods1011Applied = false;
     private bool goods1012Applied = false;
@@ -195,7 +195,7 @@ public class GoodsNumManager : MonoBehaviour
 
     public void Start()
     {
-        
+        Debug.Log(SpecialGoodsGauge);
     }
     // 이 메서드를 호출하여 MainStoryGauge를 업데이트합니다.
 

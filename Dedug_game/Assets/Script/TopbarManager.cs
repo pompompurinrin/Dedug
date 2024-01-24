@@ -770,16 +770,16 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("Goods3051", DataManager.Instance.goods3051);
         PlayerPrefs.SetInt("Goods3052", DataManager.Instance.goods3052);
 
-        PlayerPrefs.SetInt("Goods4051", DataManager.Instance.goods3011);
-        PlayerPrefs.SetInt("Goods4052", DataManager.Instance.goods3012);
-        PlayerPrefs.SetInt("Goods4053", DataManager.Instance.goods3021);
-        PlayerPrefs.SetInt("Goods4054", DataManager.Instance.goods3022);
-        PlayerPrefs.SetInt("Goods4055", DataManager.Instance.goods3031);
-        PlayerPrefs.SetInt("Goods4056", DataManager.Instance.goods3032);
-        PlayerPrefs.SetInt("Goods4057", DataManager.Instance.goods3041);
-        PlayerPrefs.SetInt("Goods4058", DataManager.Instance.goods3042);
-        PlayerPrefs.SetInt("Goods4059", DataManager.Instance.goods3051);
-        PlayerPrefs.SetInt("Goods4060", DataManager.Instance.goods3052);
+        PlayerPrefs.SetInt("Goods4051", DataManager.Instance.goods4051);
+        PlayerPrefs.SetInt("Goods4052", DataManager.Instance.goods4052);
+        PlayerPrefs.SetInt("Goods4053", DataManager.Instance.goods4053);
+        PlayerPrefs.SetInt("Goods4054", DataManager.Instance.goods4054);
+        PlayerPrefs.SetInt("Goods4055", DataManager.Instance.goods4055);
+        PlayerPrefs.SetInt("Goods4056", DataManager.Instance.goods4056);
+        PlayerPrefs.SetInt("Goods4057", DataManager.Instance.goods4057);
+        PlayerPrefs.SetInt("Goods4058", DataManager.Instance.goods4058);
+        PlayerPrefs.SetInt("Goods4059", DataManager.Instance.goods4059);
+        PlayerPrefs.SetInt("Goods4060", DataManager.Instance.goods4060);
 
         PlayerPrefs.SetInt("First", DataManager.Instance.first);
         PlayerPrefs.SetInt("FirstDG", DataManager.Instance.firstDG);
