@@ -71,6 +71,9 @@ public class FeverManager : MonoBehaviour
     public bool nowRank03;
     public bool nowRank04;
 
+    // 피버타임 클릭 방지
+    public Image EndImgBg;
+
 
     List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
@@ -167,7 +170,7 @@ public class FeverManager : MonoBehaviour
             // 애니메이션 업데이트
             UpdateAnimation();
 
-            if (countdownTime <= 0 || feverGauge >= 50)
+            if (countdownTime <= 0 || feverGauge >= 100)
             {
                 
                 // 카운트 다운이 0이 되면 feverBg를 비활성화하고 endBg를 활성화한다.
@@ -260,6 +263,9 @@ public class FeverManager : MonoBehaviour
 
         endBg.SetActive(true);
 
+        EndImgBg.gameObject.SetActive(true);
+        Invoke("EndImgBgFalse", 1f);
+
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);
         endBg.transform.localScale = Vector3.zero; // 초기 크기를 0으로 설정
@@ -328,6 +334,9 @@ public class FeverManager : MonoBehaviour
             Save();
         }
         basic.gameObject.SetActive(true);
+
+        EndImgBg.gameObject.SetActive(true);
+        Invoke("EndImgBgFalse", 1f);
 
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);
@@ -399,6 +408,9 @@ public class FeverManager : MonoBehaviour
 
         basic.gameObject.SetActive(true);
 
+        EndImgBg.gameObject.SetActive(true);
+        Invoke("EndImgBgFalse", 1f);
+
         // endBg를 작게 가운데서부터 페이드인
         endBg.SetActive(true);
         endBg.transform.localScale = Vector3.zero; // 초기 크기를 0으로 설정
@@ -409,6 +421,10 @@ public class FeverManager : MonoBehaviour
 
     }
 
+    public void EndImgBgFalse()
+    {
+        EndImgBg.gameObject.SetActive(false);
+    }
 
     public void Save()
     {

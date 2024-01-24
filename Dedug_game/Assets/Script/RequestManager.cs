@@ -13,7 +13,7 @@ public class RequestManager : MonoBehaviour
     // 커미션 프리팹
     public GameObject requestPrefab;
     private float requestTimer = 0f;
-    public float requestTimeLimit = 2f;
+    public float requestTimeLimit = 1f;
 
     // 커미션 프리팹 부모 객체
     public Transform requestParentObject;
@@ -483,11 +483,11 @@ public class RequestManager : MonoBehaviour
             GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(true);
         }
 
-        // 삭제 후 다시 생성 (현재 시간을 기준으로 다시 생성)
+/*        // 삭제 후 다시 생성 (현재 시간을 기준으로 다시 생성)
         if (requestPrefabCount < maxRequestPrefabCount)
         {
             requestTimer = Mathf.Max(requestTimeLimit - requestTimer, 0f);
-        }
+        }*/
     }
 
     void GetGoldTextfalse()
@@ -544,8 +544,9 @@ public class RequestManager : MonoBehaviour
 
         while (elapsedTime < slideDuration)
         {
-            float newX = Mathf.Lerp(originalPosition.x, -Screen.width, elapsedTime / slideDuration);
-            rectTransform.anchoredPosition = new Vector2(newX, 0f);
+            // 현재 위치에서 왼쪽으로 슬라이드 애니메이션 적용
+            float newX = Mathf.Lerp(originalPosition.x, originalPosition.x - Screen.width, elapsedTime / slideDuration);
+            rectTransform.anchoredPosition = new Vector2(newX, originalPosition.y); // Y축 기준으로 변하지 않도록 수정
 
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -559,7 +560,6 @@ public class RequestManager : MonoBehaviour
 
         RearrangeRequest();
     }
-
 
     // 커미션 재정렬 함수
     void RearrangeRequest()
