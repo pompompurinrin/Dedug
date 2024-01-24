@@ -371,7 +371,7 @@ public class UiManager : MonoBehaviour
     //모든 스토리버튼을 처음 눌렀을 때 확인 버튼
     public void FirstStoryYes_BtnClick()
     {
-        DataManager.Instance.nowGold += 200;
+        DataManager.Instance.nowGold += 1000;
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         if(DataManager.Instance.storyID == 11)
         {

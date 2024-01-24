@@ -109,6 +109,19 @@ public class HJYJMinigameManager : MonoBehaviour
     public GameObject ResultCanvas;
 
 
+
+    // 연출
+
+    float time;
+
+    public GameObject successEffect;
+
+    public AudioSource success;
+    public AudioSource fail;
+    public AudioSource clickSuccess;
+    public AudioSource sua_BGM;
+
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -227,6 +240,8 @@ public class HJYJMinigameManager : MonoBehaviour
 
     public void StartRealTimeGame()
     {
+        sua_BGM.Play();
+
         // 실제 게임 시작
         isGameRunning = true;
 
@@ -269,6 +284,9 @@ public class HJYJMinigameManager : MonoBehaviour
 
     void GameStart()
     {
+        // 게임 시작 시 호출
+        clickList.Clear(); // 리스트 초기화
+
         successImg.gameObject.SetActive(false);
         failImg.gameObject.SetActive(false);
 
@@ -276,9 +294,6 @@ public class HJYJMinigameManager : MonoBehaviour
         clickImg02.gameObject.SetActive(false);
         clickImg03.gameObject.SetActive(false);
         clickImg04.gameObject.SetActive(false);
-
-        // 게임 시작 시 호출
-        clickList.Clear(); // 리스트 초기화
 
         // 매직북 선언
         magicBook = new GameObject[] { SouceImage01, SouceImage02, SouceImage03, SouceImage04 };
@@ -309,11 +324,18 @@ public class HJYJMinigameManager : MonoBehaviour
             {
                 clickImg01.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
                 clickImg01.gameObject.SetActive(true);
+
+                clickSuccess.Play();
+
+                successEffect.gameObject.SetActive(true);
+                Invoke("SetSuccessEffect", 1f);
             }
 
             if (currentClickImg.GetComponent<Image>().sprite != magicBook[0].GetComponent<Image>().sprite)
             {
                 Fail();
+
+                clickList.Clear(); // 리스트 초기화
             }
         }
 
@@ -323,11 +345,18 @@ public class HJYJMinigameManager : MonoBehaviour
             {
                 clickImg02.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
                 clickImg02.gameObject.SetActive(true);
+
+                clickSuccess.Play();
+
+                successEffect.gameObject.SetActive(true);
+                Invoke("SetSuccessEffect", 1f);
             }
 
             if (currentClickImg.GetComponent<Image>().sprite != magicBook[1].GetComponent<Image>().sprite)
             {
                 Fail();
+
+                clickList.Clear(); // 리스트 초기화
             }
         }
 
@@ -337,11 +366,18 @@ public class HJYJMinigameManager : MonoBehaviour
             {
                 clickImg03.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
                 clickImg03.gameObject.SetActive(true);
+
+                clickSuccess.Play();
+
+                successEffect.gameObject.SetActive(true);
+                Invoke("SetSuccessEffect", 1f);
             }
 
             if (currentClickImg.GetComponent<Image>().sprite != magicBook[2].GetComponent<Image>().sprite)
             {
                 Fail();
+
+                clickList.Clear(); // 리스트 초기화
             }
         }
 
@@ -353,16 +389,25 @@ public class HJYJMinigameManager : MonoBehaviour
                 clickImg04.GetComponent<Image>().sprite = currentClickImg.GetComponent<Image>().sprite;
                 clickImg04.gameObject.SetActive(true);
 
+                successEffect.gameObject.SetActive(true);
+                Invoke("SetSuccessEffect", 1f);
+
                 Success();
             }
 
             if (currentClickImg.GetComponent<Image>().sprite != magicBook[3].GetComponent<Image>().sprite)
             {
                 Fail();
+
+                clickList.Clear(); // 리스트 초기화
             }
         }
     }
 
+    public void SetSuccessEffect()
+    {
+        successEffect.gameObject.SetActive(false);
+    }
 
     void ShuffleArray(GameObject[] array)
     {
@@ -406,6 +451,12 @@ public class HJYJMinigameManager : MonoBehaviour
 
     public void Success()
     {
+        success.Play();
+
+        magicTimer = 10;
+        magicTimerSlider.value = magicTimer;
+        magicTimer++;
+
         score++;
         scoreText.text = score.ToString();
         successImg.gameObject.SetActive(true);
@@ -415,6 +466,8 @@ public class HJYJMinigameManager : MonoBehaviour
 
     public void Fail()
     {
+        fail.Play();
+
         score--;
 
         if (score < 0)
