@@ -51,10 +51,15 @@ public class MainController : MonoBehaviour
     public Text UserScoretxt; //얘는 게임에서 저장 된 유저 점수를 불러올 것임!! 
     public string imageFileName; // 얘는 CSV에서 Goods열의 숫자를 가져와서 이미지로 뽑아낼거임!!
 
-    // 게임 오브젝트 및 캔버스 관련 변수
+    // 리워드 변수
     public Image Reward1;
     public Image Reward2;
     public Image Reward3;
+
+    // 리워드 배경 변수
+    public Image Reward1BG;
+    public Image Reward2BG;
+    public Image Reward3BG;
 
     // 리워드 리스트 선언을 여기서 시킴
     public List<Image> RewardsImage = new List<Image>();
@@ -310,6 +315,130 @@ public class MainController : MonoBehaviour
         secondOpen = null;
     }
 
+
+    // 게임 재시작 함수
+    public void RestartClick()
+    {
+        Debug.Log("Restart");
+        SceneManager.LoadScene("HNMiniGameScene");
+    }
+    // 게임 홈으로 가는 함수
+    public void HomeClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
+
+
+    // 게임 일시정지 관련 변수   
+    public Image pauseBG;
+    public Image pauseBG1;
+    public Image stopBg;
+    public Button stop;
+    public Button keepGoing;
+    public Button goTitle;
+
+    public Image realStopBg;
+    public Button stopOk;
+    public Button stopNo;
+
+    [SerializeField] private TimerController timerController;
+
+    // 게임 일시정지 상태를 나타내는 변수
+    public bool isGamePaused = false;
+
+
+    // 게임 일시정지 상태를 나타내는 변수
+    public bool isGameRunnig = false;
+
+    // 게임 일시정지 버튼 클릭 시 호출되는 함수
+    public void StopButtonClick()
+    {
+        if (!isGamePaused)
+        {
+            // 게임 일시정지
+            PauseGame();
+            Debug.Log("일시정지로 게임 중단");
+        }
+        else if (isGamePaused)
+        {
+            // 게임 재개
+            Time.timeScale = 1;
+            pauseBG.gameObject.SetActive(false);
+            stopBg.gameObject.SetActive(false);
+            realStopBg.gameObject.SetActive(false);
+            isGamePaused = false;
+            Main_BGM2.Play();
+        }
+    }
+    public float timeScale;
+    // 게임 일시정지 처리
+    private void PauseGame()
+    {
+        isGamePaused = true;
+        Time.timeScale = 0;
+
+        // 게임 일시정지 UI 활성화
+        pauseBG.gameObject.SetActive(true);
+        stopBg.gameObject.SetActive(true);
+        Main_BGM2.Pause();
+
+
+    }
+
+    // 게임으로 돌아가기 버튼 함수
+    public void keepGoingClick()
+    {
+        // 게임 재개
+        Time.timeScale = 1;
+        pauseBG.gameObject.SetActive(false);
+        stopBg.gameObject.SetActive(false);
+        realStopBg.gameObject.SetActive(false);
+        isGamePaused = false;
+        Main_BGM2.Play();
+    }
+
+    // 굿즈구매로 돌아가기 버튼 함수
+    public void goTitleClick()
+    {
+        // 게임 일시정지 UI 비활성화
+        pauseBG.gameObject.SetActive(false);
+        stopBg.gameObject.SetActive(false);
+
+
+        // 리얼스톱Bg 활성화
+        pauseBG.gameObject.SetActive(true);
+        realStopBg.gameObject.SetActive(true);
+    }
+
+    // 게임으로 돌아가기 버튼 함수
+    public void stopNoClick()
+    {
+        // 게임 재개
+        Time.timeScale = 1;
+        pauseBG.gameObject.SetActive(false);
+        stopBg.gameObject.SetActive(false);
+        realStopBg.gameObject.SetActive(false);
+        isGamePaused = false;
+        Main_BGM2.Play();
+    }
+    public HomeManager homeManager;
+    // 굿즈구매로 버튼 함수
+    public void stopOkClick()
+    {
+        Time.timeScale = 1;
+        isGamePaused = false;
+
+        SceneManager.LoadScene("HomeScene");
+        //homeManager.OnButtonClick_OnGoodsBuy();
+    }
+
+    // 게임 재개 처리
+    private void ResumeGame()
+    {
+        isGamePaused = false;
+        Main_BGM2.Play();
+    }
+
     public List<Sprite> goodsSprites = new List<Sprite>();
 
     public List<int> gatchIdList;
@@ -484,14 +613,23 @@ public class MainController : MonoBehaviour
         if (score >= 10) // 바꿔
         {
             _count = 3;
+            Reward1BG.gameObject.SetActive(true);
+            Reward2BG.gameObject.SetActive(true);
+            Reward3BG.gameObject.SetActive(true);
         }
         else if (score < 10 && score >= 3)
         {
             _count = 2;
+            Reward1BG.gameObject.SetActive(true);
+            Reward2BG.gameObject.SetActive(true);
+            Reward3BG.gameObject.SetActive(false);
         }
         else if (score < 3 && score >= 0)
         {
             _count = 1;
+            Reward1BG.gameObject.SetActive(true);
+            Reward2BG.gameObject.SetActive(false);
+            Reward3BG.gameObject.SetActive(false);
         }
 
         else
@@ -725,125 +863,6 @@ public class MainController : MonoBehaviour
         Debug.Log(DataManager.Instance.goods4059);
         Debug.Log(DataManager.Instance.goods4060);
 
-    }
-    // 게임 재시작 함수
-    public void RestartClick()
-    {
-        Debug.Log("Restart");
-        SceneManager.LoadScene("HNMiniGameScene");
-    }
-    // 게임 홈으로 가는 함수
-    public void HomeClick()
-    {
-        SceneManager.LoadScene("HomeScene");
-    }
-
-    
-    // 게임 일시정지 관련 변수   
-    public Image pauseBG;
-    public Image pauseBG1;
-    public Image stopBg;
-    public Button stop;
-    public Button keepGoing;
-    public Button goTitle;
-
-    public Image realStopBg;
-    public Button stopOk;
-    public Button stopNo;
-
-    [SerializeField] private TimerController timerController;
-
-    // 게임 일시정지 상태를 나타내는 변수
-    public bool isGamePaused = false;
-
-
-    // 게임 일시정지 상태를 나타내는 변수
-    public bool isGameRunnig = false;
-
-    // 게임 일시정지 버튼 클릭 시 호출되는 함수
-    public void StopButtonClick()
-    {
-        if (!isGamePaused)
-        {
-            // 게임 일시정지
-            PauseGame();
-            Debug.Log("일시정지로 게임 중단");
-        }
-        else if (isGamePaused)
-        {
-            // 게임 재개
-            Time.timeScale = 1;
-            pauseBG.gameObject.SetActive(false);
-            stopBg.gameObject.SetActive(false);
-            realStopBg.gameObject.SetActive(false);
-            isGamePaused = false;
-            Main_BGM2.Play();
-        }
-    }
-    public float timeScale;
-    // 게임 일시정지 처리
-    private void PauseGame()
-    {
-        isGamePaused = true;
-        Time.timeScale = 0;
-        
-        // 게임 일시정지 UI 활성화
-        pauseBG.gameObject.SetActive(true);
-        stopBg.gameObject.SetActive(true);
-        Main_BGM2.Pause();
-       
-
-    }
-  
-    // 게임으로 돌아가기 버튼 함수
-    public void keepGoingClick()
-    {
-        // 게임 재개
-        Time.timeScale = 1;
-        pauseBG.gameObject.SetActive(false);
-        stopBg.gameObject.SetActive(false);
-        realStopBg.gameObject.SetActive(false);
-        isGamePaused = false;
-        Main_BGM2.Play();
-    }
-
-    // 굿즈구매로 돌아가기 버튼 함수
-    public void goTitleClick()
-    {
-        // 게임 일시정지 UI 비활성화
-        pauseBG.gameObject.SetActive(false);
-        stopBg.gameObject.SetActive(false);
-        
-
-        // 리얼스톱Bg 활성화
-        pauseBG.gameObject.SetActive(true);
-        realStopBg.gameObject.SetActive(true);
-    }
-
-    // 게임으로 돌아가기 버튼 함수
-    public void stopNoClick()
-    {
-        // 게임 재개
-        Time.timeScale = 1;
-        pauseBG.gameObject.SetActive(false);
-        stopBg.gameObject.SetActive(false);
-        realStopBg.gameObject.SetActive(false);
-        isGamePaused = false;
-        Main_BGM2.Play();
-    }
-    public HomeManager homeManager;
-    // 굿즈구매로 버튼 함수
-    public void stopOkClick()
-    {
-        pauseBG.gameObject.SetActive(false);
-        homeManager.OnButtonClick_OnGoodsBuy();
-    }
-
-    // 게임 재개 처리
-    private void ResumeGame()
-    {
-        isGamePaused = false;
-        Main_BGM2.Play();
     }
 
 
