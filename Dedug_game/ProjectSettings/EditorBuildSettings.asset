@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YJ2MiniGameScene.unity
     guid: e88868d301833f040a5b2913763cef43
+  - enabled: 1
+    path: Assets/Scenes/HJYJMiniGameScene.unity
+    guid: a9555c1d13cb63440b77bbe3cc50302e
   m_configObjects: {}

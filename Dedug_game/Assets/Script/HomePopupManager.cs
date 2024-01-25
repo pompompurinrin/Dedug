@@ -19,6 +19,7 @@ public class HomePopupManager : MonoBehaviour
     public Canvas CardGame;
     public Canvas BestSua;
     public Canvas HelpChorong;
+    public Canvas MagicPortion;
     public GameObject GoldLack;
     public Canvas PopupCanvas;
 
@@ -358,6 +359,13 @@ public class HomePopupManager : MonoBehaviour
     {
         // 게임 팝업 비활성화
         PlaySFX1();
+
+        MagicPortion.gameObject.SetActive(false);
+        GanbareBada.gameObject.SetActive(false);
+        CardGame.gameObject.SetActive(false);
+        BestSua.gameObject.SetActive(false);
+        HelpChorong.gameObject.SetActive(false);
+
         GamePopups.gameObject.SetActive(false);
         
     }
@@ -522,6 +530,89 @@ public class HomePopupManager : MonoBehaviour
         }
 
     }
+
+    public void Click_MagicPortionStart()
+    {
+
+        PlaySFX1();
+        if (DataManager.Instance.nowRank == 0)
+        {
+            if (DataManager.Instance.nowGold >= 100)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
+
+                Save();
+                SceneManager.LoadScene("HJYJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 100)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            if (DataManager.Instance.nowGold >= 500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
+
+                Save();
+                SceneManager.LoadScene("HJYJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 500)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            if (DataManager.Instance.nowGold >= 1000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
+
+                Save();
+                SceneManager.LoadScene("HJYJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1000)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            if (DataManager.Instance.nowGold >= 1500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
+
+                Save();
+                SceneManager.LoadScene("HJYJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1500)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            if (DataManager.Instance.nowGold >= 3000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
+
+                Save();
+                SceneManager.LoadScene("HJYJMiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 3000)
+            {
+                GoldLack.SetActive(true);
+            }
+        }
+
+    }
+
     public void Click_Commision()
     {
         PlaySFX1();
@@ -572,6 +663,13 @@ public class HomePopupManager : MonoBehaviour
         // 카드 게임 팝업 활성화
         GamePopups.gameObject.SetActive(true);
         HelpChorong.gameObject.SetActive(true);
+    }
+    public void OnButtonClick_OnMagicPortion()
+    {
+        PlaySFX1();
+        // 카드 게임 팝업 활성화
+        GamePopups.gameObject.SetActive(true);
+        MagicPortion.gameObject.SetActive(true);
     }
 
     public void OnButtonClick_OffGoodsBuy()
