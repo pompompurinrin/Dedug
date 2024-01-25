@@ -230,18 +230,6 @@ public class MainController2 : MonoBehaviour
         }
     }
 
-    // 게임 재시작 함수
-    public void RestartClick()
-    {
-        Debug.Log("Restart");
-        SceneManager.LoadScene("HN2MiniGameScene");
-    }
-    // 게임 홈으로 가는 함수
-    public void HomeClick()
-    {
-        SceneManager.LoadScene("HomeScene");
-    }
-
 
     // 게임 일시정지 관련 변수   
     public Image pauseBG;

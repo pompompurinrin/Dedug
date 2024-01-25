@@ -1,0 +1,10 @@
+diff a/Dedug_game/Assets/HNMiniGame/Scripts_HNMG/MainController.cs b/Dedug_game/Assets/HNMiniGame/Scripts_HNMG/MainController.cs	(rejected hunks)
+@@ -28,7 +28,7 @@
+     public int score = 0;
+ 
+     // ���� BGM
+-    public AudioSource Main_BGM2;
++    //public AudioSource Main_BGM2;
+ 
+     // ���� ���� �̹��� �� ���� ��������Ʈ �迭
+     public MainImageScript mainImageScript;

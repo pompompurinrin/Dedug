@@ -102,14 +102,10 @@ public class UiManager : MonoBehaviour
     public Button Special_4060_Btn;
     public Button SpecialGoods_Btn;
 
-    public AudioSource bgm1AudioSource;
-    
-    public AudioSource sfx1AudioSource;
-    
 
 
     // CSV 파일을 읽어들일 데이터 리스트
-
+   
 
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string GoodsFileName = "GoodsCSV";
@@ -300,13 +296,11 @@ public class UiManager : MonoBehaviour
     // 홈화면에서 누를 수 있는 버튼들
     public void MainStory_BtnClick()
     {
-        sfx1AudioSource.Play();
         BG_MainStory.gameObject.SetActive(true);
     }
 
     public void Cha_1_BtnClick()
     {
-        sfx1AudioSource.Play();
         BG_Cha1.gameObject.SetActive(true);
 
             }
@@ -314,26 +308,22 @@ public class UiManager : MonoBehaviour
 
     public void Cha_2_BtnClick()
     {
-        sfx1AudioSource.Play();
         BG_Cha2.gameObject.SetActive(true);
     }
 
     public void Cha_3_BtnClick()
     {
-        sfx1AudioSource.Play();
         BG_Cha3.gameObject.SetActive(true);
     }
 
     public void SpecialGoods_BtnClick()
     {
-        sfx1AudioSource.Play();
         BG_SpecialGoods.gameObject.SetActive(true);
     }
 
     //홈 화면으로 가는 버튼
     public void Back2Home_btnClick()
     {
-        sfx1AudioSource.Play();
         BG_MainStory.gameObject.SetActive(false);
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha2.gameObject.SetActive(false);
@@ -345,7 +335,6 @@ public class UiManager : MonoBehaviour
     //BG_MainStory에서 누를 수 있는 버튼들, 스토리 버튼을 클릭하면 싱글톤에 각 번호를 부여해서 값을 부여해야 함
     public void MainStory_1_BtnClick()   //최초 클릭시, 그 이후 클릭시 이미지 변경 하는 방법, 대신 no버튼, 스토리체크 버튼에 반영해줘야 함
     {
-        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 41;
         Save();
         if (DataManager.Instance.story4_1 == 0)
