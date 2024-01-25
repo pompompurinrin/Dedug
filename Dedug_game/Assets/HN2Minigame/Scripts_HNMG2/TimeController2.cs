@@ -14,9 +14,10 @@ public class TimeController2 : MonoBehaviour
     public Slider timerSlider; // UI 슬라이더 연결
     public float timer = 60f; // 제한 시간 30초 설정
     public Text timeText; // 시간 출력
-
+    public Image readyCountBG; // 대기 시간 BG
     public float readyCounter = 3f; //대기 시간 3초 설정
     public Text readyCount; // 대기 시간 출력
+    AudioSource readyCount_SFX; // 대기 시간 출력
 
     GameObject Player;
 
@@ -61,8 +62,9 @@ public class TimeController2 : MonoBehaviour
     {
         if (mainController2.isGamePaused)
             return;
-
-        readyCount.gameObject.SetActive(true);  
+        readyCountBG.gameObject.SetActive(true);
+        readyCount.gameObject.SetActive(true);
+        readyCount_SFX.Play();
         readyCount.text = readyCounter.ToString() + "초 후 시작합니다.";
         readyCounter -= 1f; // 타이머 감소
 
@@ -74,6 +76,11 @@ public class TimeController2 : MonoBehaviour
             readyCounter = -1;            
             UpdateTimer();
         }
+        else
+        {
+            readyCount_SFX.Play();
+        }
+
     }
 
     public void UpdateTimer()
@@ -82,6 +89,7 @@ public class TimeController2 : MonoBehaviour
             return;
         if (mainController2.isGameRunnig == true)
         {
+            readyCountBG.gameObject.SetActive(false);
             readyCount.gameObject.SetActive(false);
             mainController2.Scoretxt.gameObject.SetActive(true);
             

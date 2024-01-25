@@ -9,43 +9,69 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class TimerController: MonoBehaviour
 {
-    public Slider timerSlider; // UI 슬라이더 연결
-    public float timer = 30f; // 제한 시간 30초 설정
-    public Text timeText; // 시간 출력
-    public float readyCounter = 3f; //대기 시간 3초 설정
-    public Text readyCount; // 대기 시간 출력
-
     [SerializeField] private MainController mainController;
+
+    public Slider timerSlider;           // 게임 시간 UI 슬라이더 연결
+    public float timer = 30f;            // 게임 시간 30초 설정
+    public float readyCounter = 3f;      // 대기 시간 3초 설정
+    public float showCounter = 3f;      // 대기 시간 3초 설정
+    public Text timerText;                // 게임 시간 출력
+    public Text readyCount;              // 대기 시간 출력
+    public Text showMessage;            // 대기 시간 출력
+    public Image readyCountBG;           // 대기 시간 BG
+    public AudioSource readyCount_SFX;   // 대기 시간 효과음
+
     
     public void Start()
     {
-        // 슬라이더 초기화
+        // 초기화
+        timer = 30f;
+        readyCounter = 3f;
+        showCounter = 4f;
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
 
-        InvokeRepeating("ReadyCounter", 0f, 1f);                
+        readyCount_SFX.Stop();
+
+        // 레디 카운트를 1초 뒤에 1초마다 실행
+        InvokeRepeating("ReadyCounter", 0, 1f);                
        
     }
 
     public void ReadyCounter()
     {
-
+        // 게임이 일시 정지 중일 경우 반환
         if (mainController.isGamePaused)
             return;
-        
-        readyCount.gameObject.SetActive(true);  
-        readyCount.text = readyCounter.ToString() + "초 후 이미지가 사라집니다.";
+       
+        readyCountBG.gameObject.SetActive(true);              
+        readyCount.text = readyCounter.ToString();
         readyCounter -= 1f; // 타이머 감소
+        readyCount_SFX.Play();
 
         // 슬라이더 값 갱신
         timerSlider.value = timer;
 
-        if (readyCounter <= -1)
+        if (readyCounter < 0)
         {
+            readyCount_SFX.Stop();
+            ShowCounter();
+        }
+    }
 
-            readyCounter = -1;
-            
+    public void ShowCounter()
+    {
+        showCounter -= 1f;
+        showMessage.gameObject.SetActive(true);
+        showMessage.text = showCounter.ToString() + "초 후 이미지가 사라집니다.";
+        readyCountBG.gameObject.SetActive(false);
+
+        if (showCounter <= 0)
+        {
+            showMessage.gameObject.SetActive(false);
+            showCounter = 0;
             UpdateTimer();
+
         }
     }
     public void UpdateTimer()
@@ -55,11 +81,10 @@ public class TimerController: MonoBehaviour
 
         if(mainController.isGameRunnig == true)
         {
-            readyCount.gameObject.SetActive(false);
-            mainController.Scoretxt.gameObject.SetActive(true);
 
-
-            timeText.text = timer.ToString("F0");  // 1의 자리부터 표현
+           
+            showCounter = 0f;
+            timerText.text = timer.ToString("F0");  // 1의 자리부터 표현
             timer -= 1f; // 타이머 감소
 
             // 슬라이더 값 갱신
