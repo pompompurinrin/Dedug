@@ -46,6 +46,9 @@ public class MainController : MonoBehaviour
     public Text Rewardtxt;
     public Button Restart;
     public Button HomeBtn;
+    public GameObject RestartPopup;
+    public GameObject GoldlackPopup;
+    public Text RestartGoldText;
 
     // 각종 효과 및 결과를 나타내는 텍스트들
     public Text UserScoretxt; //얘는 게임에서 저장 된 유저 점수를 불러올 것임!! 
@@ -61,7 +64,7 @@ public class MainController : MonoBehaviour
     public Image Reward2BG;
     public Image Reward3BG;
 
-    public GameObject GoldlackPopup;
+
 
     // 리워드 리스트 선언을 여기서 시킴
     public List<Image> RewardsImage = new List<Image>();
@@ -115,6 +118,7 @@ public class MainController : MonoBehaviour
         DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
         DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
 
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
 
@@ -134,7 +138,7 @@ public class MainController : MonoBehaviour
    
     private void Start()
     {
-        StartGame(); // 게임 시작
+        StartGame();
 
         Main_BGM2.Play();    // 메인 BGM 재생
         correct_sfx.Stop();  // correct_sfx 정지
@@ -317,7 +321,21 @@ public class MainController : MonoBehaviour
         secondOpen = null;
     }
 
+    public void Click_OnRestartPopup() //리스타트 팝업 활성화
+    {
+        GoldText();
+        RestartPopup.gameObject.SetActive(true);
+    }
 
+    public void Click_OffRestartPopup() //리스타트 팝업 비활성화
+    {
+        RestartPopup.gameObject.SetActive(false);
+    }
+
+    public void Click_OffGoldlack() //골드 부족 팝업 비활성화
+    {
+        GoldlackPopup.gameObject.SetActive(false);
+    }
     public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
     {
 
@@ -328,7 +346,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
 
                 Save();
-                StartGame();
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 100)
             {
@@ -344,7 +362,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
 
                 Save();
-                StartGame();
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 500)
             {
@@ -359,7 +377,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
 
                 Save();
-                StartGame();
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1000)
             {
@@ -375,7 +393,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
 
                 Save();
-                StartGame();
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1500)
             {
@@ -390,7 +408,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
 
                 Save();
-                StartGame();
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 3000)
             {
@@ -398,6 +416,50 @@ public class MainController : MonoBehaviour
             }
         }
 
+    }
+
+    public void GoldText() //다시 시작 팝업에서 필요한 골드량을 나타내는 스크립트
+    {
+        if (DataManager.Instance.nowRank == 0)
+        {
+            RestartGoldText.text = "다시 시도할 경우 100골드가 소모됩니다.";
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            RestartGoldText.text = "다시 시도할 경우 500골드가 소모됩니다.";
+        }
+
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            RestartGoldText.text = "다시 시도할 경우 1000골드가 소모됩니다.";
+        }
+
+
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            RestartGoldText.text = "다시 시도할 경우 1500골드가 소모됩니다.";
+        }
+
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            RestartGoldText.text = "다시 시도할 경우 3000골드가 소모됩니다.";
+        }
+    }
+
+    /*public void RestartClick() 
+    {
+        SceneManager.LoadScene("DG_Scene"); //일단은 도감으로 연결해뒀던거라 다시 시작할 거면 이 부분 바꿔주어야 함
+    }*/
+
+    public void HomeClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
+
+    public void RequestClick()
+    {
+        SceneManager.LoadScene("RequestScene");
     }
 
 
@@ -892,7 +954,12 @@ public class MainController : MonoBehaviour
 
         }
 
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
+        // PlayerPrefs에 현재 값 저장
         PlayerPrefs.Save();
+
+        //Debug.Log("미니게임 결과:" +  DataManager.Instance.goods1011); //특정 굿즈 오류 체크용
+   
 
         Debug.Log(DataManager.Instance.goods1011);
         Debug.Log(DataManager.Instance.goods1012);

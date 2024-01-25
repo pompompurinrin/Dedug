@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 4979352}
-  timer: 30
+  timer: 3
   timeText: {fileID: 1726401061}
   readyCounter: 3
   readyCount: {fileID: 333605749}
@@ -589,6 +589,9 @@ MonoBehaviour:
   Rewardtxt: {fileID: 4540239031205081435}
   Restart: {fileID: 4540239029309130610}
   HomeBtn: {fileID: 4540239030742846352}
+  RestartPopup: {fileID: 1422518353}
+  GoldlackPopup: {fileID: 722912880}
+  RestartGoldText: {fileID: 1088471354}
   UserScoretxt: {fileID: 4540239030772629720}
   imageFileName: 
   Reward1: {fileID: 4540239030034172767}
@@ -1298,6 +1301,11 @@ Transform:
   m_Father: {fileID: 218399453}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &722912880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8946456435915468732, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+  m_PrefabInstance: {fileID: 4839709259161604626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &727166934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1768,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1088471354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8946456436223156572, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+  m_PrefabInstance: {fileID: 4839709259161604626}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1142738299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2243,6 +2262,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419049491}
   m_CullTransparentMesh: 1
+--- !u!1 &1422518353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8946456434603343560, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+  m_PrefabInstance: {fileID: 4839709259161604626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1430661198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1449242181322416601, guid: eefae4b6f121a6e4caa95ee7b0d52bcb, type: 3}
@@ -4006,6 +4030,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 882615448}
     m_Modifications:
+    - target: {fileID: 8946456434729608341, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 300751498}
+    - target: {fileID: 8946456434785569329, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 300751498}
+    - target: {fileID: 8946456435637601143, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 300751498}
+    - target: {fileID: 8946456435791344281, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 300751498}
+    - target: {fileID: 8946456435846993248, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 300751498}
+    - target: {fileID: 8946456435846993248, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click_OnRestartPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946456435846993248, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8946456436135063733, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4093,6 +4145,10 @@ PrefabInstance:
     - target: {fileID: 8946456436135063734, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
       propertyPath: m_Name
       value: ResultPop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946456436261269317, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601fce77e9f253f4baeb4d7a31dc41aa, type: 3}
