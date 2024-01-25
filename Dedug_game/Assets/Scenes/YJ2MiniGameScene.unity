@@ -3045,11 +3045,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1419793395}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -477, y: -6}
+  m_AnchoredPosition: {x: -485.82, y: -0.00004196167}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625385623
@@ -3611,6 +3611,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871301434}
+  m_CullTransparentMesh: 1
+--- !u!1 &925622923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925622924}
+  - component: {fileID: 925622926}
+  - component: {fileID: 925622925}
+  m_Layer: 0
+  m_Name: textBg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &925622924
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925622923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1419793395}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -485.82, y: -0.000030517578}
+  m_SizeDelta: {x: 117.66, y: 73.22}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &925622925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925622923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.94117653, g: 0.7058824, b: 0.78823537, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &925622926
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925622923}
   m_CullTransparentMesh: 1
 --- !u!4 &934154309 stripped
 Transform:
@@ -5063,13 +5139,14 @@ RectTransform:
   m_Children:
   - {fileID: 189730246}
   - {fileID: 2146007073}
+  - {fileID: 925622924}
   - {fileID: 625385622}
   m_Father: {fileID: 1227749597}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 36.600006, y: 1669}
+  m_AnchoredPosition: {x: 36.600006, y: 1659}
   m_SizeDelta: {x: -237.19, y: 73.22}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1419793396
@@ -6413,6 +6490,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810365886}
   m_CullTransparentMesh: 1
+--- !u!114 &1828778004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4631098677582627209, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+  m_PrefabInstance: {fileID: 2016409091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1828778005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4631098677894647657, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+  m_PrefabInstance: {fileID: 2016409091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1828778006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4631098675979132445, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+  m_PrefabInstance: {fileID: 2016409091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1856753498
 GameObject:
   m_ObjectHideFlags: 0
@@ -7428,6 +7526,9 @@ MonoBehaviour:
   reward3BG: {fileID: 2016409092}
   PauseBG: {fileID: 22994007}
   timerSlider: {fileID: 1419793396}
+  RestartPopup: {fileID: 1828778006}
+  GoldlackPopup: {fileID: 1828778005}
+  RestartGoldText: {fileID: 1828778004}
   rewardGoods: []
   _count: 0
 --- !u!1001 &2002496722
@@ -7584,6 +7685,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 4631098675821429824, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098675821429824, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098675821429824, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098675821429824, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RequestClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098675821429824, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098675821429824, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4631098675981745955, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -7616,6 +7741,66 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: HomeClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676494416215, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676749036260, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676749036260, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098676749036260, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098676749036260, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RestartClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676749036260, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676749036260, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4631098676906221583, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_SizeDelta.x
       value: 940
@@ -7640,6 +7825,42 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Click_OffGoldlack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098676949226060, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4631098677051702637, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_SizeDelta.x
       value: 940
@@ -7647,6 +7868,38 @@ PrefabInstance:
     - target: {fileID: 4631098677051702637, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_SizeDelta.y
       value: 630
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click_OffRestartPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ResultManager_0123, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677063148450, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4631098677248210409, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7680,6 +7933,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 4631098677418692496, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4631098677418692521, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7694,7 +7951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4631098677511376992, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4631098677511376992, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7775,6 +8032,46 @@ PrefabInstance:
     - target: {fileID: 4631098677511376995, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1992540716}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click_OnRestartPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Click_OffRestartPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: YJ2MiniGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631098677826713013, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e49f448bab209d4f9dbc95b44f7c664, type: 3}

@@ -169,6 +169,11 @@ public class YJ2MiniGameManager : MonoBehaviour
     // 일시정지 슬라이더
     public Slider timerSlider;
 
+    // 결과창 추가
+    public GameObject RestartPopup;
+    public GameObject GoldlackPopup;
+    public Text RestartGoldText;
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -215,6 +220,7 @@ public class YJ2MiniGameManager : MonoBehaviour
         DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
         DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
 
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
 
@@ -808,7 +814,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -824,7 +830,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -840,7 +846,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -856,7 +862,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -872,7 +878,7 @@ public class YJ2MiniGameManager : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -1168,6 +1174,7 @@ public class YJ2MiniGameManager : MonoBehaviour
         }
         // PlayerPrefs에 현재 값 저장
 
+        PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PlayerPrefs.Save();
 
         Debug.Log("미니게임 결과:" + DataManager.Instance.goods1011);
@@ -1177,9 +1184,137 @@ public class YJ2MiniGameManager : MonoBehaviour
 
     }
 
-    public void RestartClick()
+    public void Click_OnRestartPopup() //리스타트 팝업 활성화
     {
-        SceneManager.LoadScene("DG_Scene");
+        GoldText();
+        RestartPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffRestartPopup() //리스타트 팝업 비활성화
+    {
+        RestartPopup.gameObject.SetActive(false);
+    }
+
+    public void Click_OffGoldlack() //골드 부족 팝업 비활성화
+    {
+        GoldlackPopup.gameObject.SetActive(false);
+    }
+
+    public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
+    {
+
+        if (DataManager.Instance.nowRank == 0)
+        {
+            if (DataManager.Instance.nowGold >= 100)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
+
+                Save();
+                SceneManager.LoadScene("YJ2MiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 100)
+            {
+
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            if (DataManager.Instance.nowGold >= 500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
+
+                Save();
+                SceneManager.LoadScene("YJ2MiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 500)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            if (DataManager.Instance.nowGold >= 1000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
+
+                Save();
+                SceneManager.LoadScene("YJ2MiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1000)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            if (DataManager.Instance.nowGold >= 1500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
+
+                Save();
+                SceneManager.LoadScene("YJ2MiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 1500)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            if (DataManager.Instance.nowGold >= 3000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
+
+                Save();
+                SceneManager.LoadScene("YJ2MiniGameScene");
+            }
+            else if (DataManager.Instance.nowGold < 3000)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+    }
+
+    public void GoldText() //다시 시작 팝업에서 필요한 골드량을 나타내는 스크립트
+    {
+        if (DataManager.Instance.nowRank == 0)
+        {
+            RestartGoldText.text = "다시 시도할 경우 100골드가 소모됩니다.";
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            RestartGoldText.text = "다시 시도할 경우 500골드가 소모됩니다.";
+        }
+
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            RestartGoldText.text = "다시 시도할 경우 1000골드가 소모됩니다.";
+        }
+
+
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            RestartGoldText.text = "다시 시도할 경우 1500골드가 소모됩니다.";
+        }
+
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            RestartGoldText.text = "다시 시도할 경우 3000골드가 소모됩니다.";
+        }
+    }
+
+
+    public void RequestClick()
+    {
+        SceneManager.LoadScene("RequestScene");
     }
 
     public void HomeClick()
