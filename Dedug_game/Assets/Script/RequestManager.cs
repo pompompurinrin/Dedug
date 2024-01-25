@@ -122,7 +122,7 @@ public class RequestManager : MonoBehaviour
             TutorialCanvas.gameObject.SetActive(false);
         }
         // 랭크 데이터 업데이트
-        rankText.text = DataManager.Instance.nowRank.ToString();
+        // rankText.text = DataManager.Instance.nowRank.ToString();
 
         // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
