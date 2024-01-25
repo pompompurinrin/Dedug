@@ -117,6 +117,8 @@ public class GoodsNumManager : MonoBehaviour
     public Text ChorongGoodsSliderText;
     public Text SpecialGoodsSliderText;
 
+    public AudioSource sfx1AudioSource;
+
     public int MainStoryGauge;
     public static int MainGoodsGauge;
     public int SuaStoryGauge;
@@ -1032,6 +1034,7 @@ public class GoodsNumManager : MonoBehaviour
 
     public void OntestGoods1021Click()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.goods1021 = DataManager.Instance.goods1021 + 3;
 
     }
@@ -1092,6 +1095,7 @@ public class GoodsNumManager : MonoBehaviour
 
     public void HomeClick()
     {
+        sfx1AudioSource.Play();
         SceneManager.LoadScene("HomeScene");
     }
 

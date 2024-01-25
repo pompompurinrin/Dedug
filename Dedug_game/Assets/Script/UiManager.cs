@@ -102,10 +102,14 @@ public class UiManager : MonoBehaviour
     public Button Special_4060_Btn;
     public Button SpecialGoods_Btn;
 
+    public AudioSource bgm1AudioSource;
+    
+    public AudioSource sfx1AudioSource;
+    
 
 
     // CSV 파일을 읽어들일 데이터 리스트
-   
+
 
     private List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
     private const string GoodsFileName = "GoodsCSV";
@@ -296,11 +300,13 @@ public class UiManager : MonoBehaviour
     // 홈화면에서 누를 수 있는 버튼들
     public void MainStory_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_MainStory.gameObject.SetActive(true);
     }
 
     public void Cha_1_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha1.gameObject.SetActive(true);
 
             }
@@ -308,22 +314,26 @@ public class UiManager : MonoBehaviour
 
     public void Cha_2_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha2.gameObject.SetActive(true);
     }
 
     public void Cha_3_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha3.gameObject.SetActive(true);
     }
 
     public void SpecialGoods_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_SpecialGoods.gameObject.SetActive(true);
     }
 
     //홈 화면으로 가는 버튼
     public void Back2Home_btnClick()
     {
+        sfx1AudioSource.Play();
         BG_MainStory.gameObject.SetActive(false);
         BG_Cha1.gameObject.SetActive(false);
         BG_Cha2.gameObject.SetActive(false);
@@ -335,6 +345,7 @@ public class UiManager : MonoBehaviour
     //BG_MainStory에서 누를 수 있는 버튼들, 스토리 버튼을 클릭하면 싱글톤에 각 번호를 부여해서 값을 부여해야 함
     public void MainStory_1_BtnClick()   //최초 클릭시, 그 이후 클릭시 이미지 변경 하는 방법, 대신 no버튼, 스토리체크 버튼에 반영해줘야 함
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 41;
         Save();
         if (DataManager.Instance.story4_1 == 0)
@@ -351,6 +362,7 @@ public class UiManager : MonoBehaviour
 
     public void MainStory_2_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 42;
         Save();
         if (DataManager.Instance.story4_2 == 0)
@@ -367,6 +379,7 @@ public class UiManager : MonoBehaviour
 
     public void MainStory_3_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 43;
         Save();
         if (DataManager.Instance.story4_3 == 0)
@@ -384,6 +397,7 @@ public class UiManager : MonoBehaviour
     //모든 스토리버튼을 처음 눌렀을 때 확인 버튼
     public void FirstStoryYes_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.nowGold += 1000;
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         if(DataManager.Instance.storyID == 11)
@@ -443,7 +457,7 @@ public class UiManager : MonoBehaviour
     
     public void OnMainStoryNo_BtnClick()
     {
-
+        sfx1AudioSource.Play();
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_MainStoryCheck.gameObject.SetActive(false);
     }
@@ -451,7 +465,7 @@ public class UiManager : MonoBehaviour
     //이미 본 스토리는 이 버튼 할당
     public void AlreadyStoryYes_BtnClick()
     {
-        
+        sfx1AudioSource.Play();
         PopUpBG_Goldplus.gameObject.SetActive(false);
         SceneManager.LoadScene("StoryScene");
         
@@ -462,7 +476,7 @@ public class UiManager : MonoBehaviour
     //이미 본 스토리 또 볼래? 팝업에서 뜨는 버튼들. 이때 no버튼은 처음 본 스토리 팝업과 동일하다
     public void StoryCheck_BtnClick()
     {
-
+        sfx1AudioSource.Play();
         PopUpBG_MainStory.gameObject.SetActive(false);
         PopUpBG_Goldplus.gameObject.SetActive(false);
         
@@ -474,6 +488,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_1_Story1_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 11;
         Save();
         if (DataManager.Instance.story1_1 == 0)
@@ -491,6 +506,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_1_Story2_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 12;
         Save();
         if (DataManager.Instance.story1_2 == 0)
@@ -507,6 +523,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_1_Story3_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 13;
         Save();
         if (DataManager.Instance.story1_3 == 0)
@@ -526,11 +543,13 @@ public class UiManager : MonoBehaviour
     //캐릭터 1창에서 누를 수 있는 버튼들
     public void OnCha_1_Story_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha1_Story.gameObject.SetActive(true);
     }
     
     public void OnCha_goods_BtnClick()
     {
+        sfx1AudioSource.Play();
         GameObject selectGoods = EventSystem.current.currentSelectedGameObject;
         for (int i = 0; i < Goods.Length; i++)
         {
@@ -554,6 +573,7 @@ public class UiManager : MonoBehaviour
     //캐릭터 2 스토리 화면에서 누를 수 있는 버튼
     public void OnCha_2_Story1_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 21;
         Save();
         if (DataManager.Instance.story2_1 == 0)
@@ -571,6 +591,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_2_Story2_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 22;
         Save();
         if (DataManager.Instance.story2_2 == 0)
@@ -587,6 +608,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_2_Story3_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 23;
         Save();
         if (DataManager.Instance.story2_3 == 0)
@@ -605,6 +627,7 @@ public class UiManager : MonoBehaviour
     //캐릭터 창 2에서 누를 수 있는 버튼들
     public void OnCha_2_Story_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha2_Story.gameObject.SetActive(true);
     }
 
@@ -614,6 +637,7 @@ public class UiManager : MonoBehaviour
     //캐릭터 3 스토리 화면에서 누를 수 있는 버튼
     public void OnCha_3_Story1_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 31;
         Save();
         if (DataManager.Instance.story3_1 == 0)
@@ -631,6 +655,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_3_Story2_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 32;
         Save();
         if (DataManager.Instance.story3_2 == 0)
@@ -647,6 +672,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCha_3_Story3_BtnClick()
     {
+        sfx1AudioSource.Play();
         DataManager.Instance.storyID = 33;
         Save();
         if (DataManager.Instance.story3_3 == 0)
@@ -664,6 +690,7 @@ public class UiManager : MonoBehaviour
     //캐릭터 3 화면에서 누를 수 있는 버튼들
     public void OnCha_3_Story_BtnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha3_Story.gameObject.SetActive(true);
     }
 
@@ -672,21 +699,25 @@ public class UiManager : MonoBehaviour
     //캐릭터 1창으로 돌아가는 버튼
     public void OnBack2Cha_1_btnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha1_Story.gameObject.SetActive(false);
     }
 
     public void OnBack2Cha_2_btnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha2_Story.gameObject.SetActive(false);
     }
 
     public void OnBack2Cha_3_btnClick()
     {
+        sfx1AudioSource.Play();
         BG_Cha3_Story.gameObject.SetActive(false);
     }
     //PopUpBG_GoodsInfo 나가는 버튼
     public void OnPopUpExit_BtnClick()
     {
+        sfx1AudioSource.Play();
         PopUpBG_GoodsInfo.gameObject.SetActive(false);
         
 
@@ -705,7 +736,8 @@ public class UiManager : MonoBehaviour
     public Canvas TutorialCanvas;
     public void ClickTutorial()
     {
-       if (TutorialClickNum == 1)
+        sfx1AudioSource.Play();
+        if (TutorialClickNum == 1)
         {
             TutorialImg.sprite = TutorialImage2;
         }
