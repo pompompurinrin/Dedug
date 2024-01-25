@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 4979352}
-  timer: 3
+  timer: 30
   timeText: {fileID: 1726401061}
   readyCounter: 3
   readyCount: {fileID: 333605749}
