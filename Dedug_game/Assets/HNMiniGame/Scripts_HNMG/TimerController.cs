@@ -44,9 +44,9 @@ public class TimerController: MonoBehaviour
         if (mainController.isGamePaused)
             return;
        
+        readyCounter -= 1f; // 타이머 감소
         readyCountBG.gameObject.SetActive(true);              
         readyCount.text = readyCounter.ToString();
-        readyCounter -= 1f; // 타이머 감소
         readyCount_SFX.Play();
 
         // 슬라이더 값 갱신
@@ -54,7 +54,10 @@ public class TimerController: MonoBehaviour
 
         if (readyCounter < 0)
         {
+            readyCounter = 0;
             readyCount_SFX.Stop();
+            readyCountBG.gameObject.SetActive(false);
+
             ShowCounter();
         }
     }
@@ -64,7 +67,7 @@ public class TimerController: MonoBehaviour
         showCounter -= 1f;
         showMessage.gameObject.SetActive(true);
         showMessage.text = showCounter.ToString() + "초 후 이미지가 사라집니다.";
-        readyCountBG.gameObject.SetActive(false);
+
 
         if (showCounter <= 0)
         {
@@ -83,7 +86,6 @@ public class TimerController: MonoBehaviour
         // 게임이 진행중일 경우
         if (mainController.isGameRunnig == true)
         {
-            showCounter = 0f;
             timerText.text = timer.ToString("F0");  // 1의 자리부터 표현
             timer -= 1f; // 타이머 감소
 
@@ -104,21 +106,17 @@ public class TimerController: MonoBehaviour
     public void TimeOver()
     {
         mainController.Score();
-        mainController.isGameRunnig = false;
-        timer = 30;
-        mainController.ResultBG.gameObject.SetActive(true);
-        mainController.pauseBG.gameObject.SetActive(true);
-        mainController.pauseBG1.gameObject.SetActive(true);
         mainController.Main_BGM2.Stop();
         mainController.isGameRunnig = false;
+        mainController.ResultBGBG.gameObject.SetActive(true);
+        mainController.pauseBG.gameObject.SetActive(true);
 
         // 어떤 컴포넌트에 배정할거임?
-        mainController.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
+        mainController.ResultBGBG = GameObject.Find("ResultBGBG").GetComponent<Image>();
         mainController.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         mainController.Restart = GameObject.Find("Restart").GetComponent<Button>();
         mainController.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
         mainController.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
-        mainController.Main_BGM2.Stop();
     }
 
 

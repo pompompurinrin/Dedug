@@ -11,8 +11,19 @@ using UnityEditor;
 
 
 public class MainController : MonoBehaviour
-{
-    
+{   
+    // 스코어 초기값
+    public int score = 0;
+
+    // 사운드
+    public AudioSource Main_BGM2;       // 메인 BGM
+    public AudioSource correct_sfx;     // 매칭 성공 사운드
+    public AudioSource error_sfx;       // 매칭 에러 사운드
+
+    // 이펙트
+    public GameObject correct_fx;    // 매칭 성공 효과
+    public GameObject error_fx;      // 매칭 에러 효과
+
     // 게임 보드의 열과 행의 수
     public const int columns = 4;
     public const int rows = 5;
@@ -24,22 +35,14 @@ public class MainController : MonoBehaviour
     public const float Xspace = 260f;
     public const float Yspace = -310f;
     
-    // 스코어 초기값
-    public int score = 0;
-
-    // 메인 BGM
-    public AudioSource Main_BGM2;
-
     // 게임 시작 이미지 및 사용될 스프라이트 배열
     public MainImageScript mainImageScript;
     public Sprite[] images;
 
-
     public Button Card_Front;
     
-
     // UI 요소들
-    public Image ResultBG;
+    public Image ResultBGBG;
     public Image ScoreBG;
     public Text Scoretxt;
     public Text UserScore;
@@ -71,6 +74,19 @@ public class MainController : MonoBehaviour
     public List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
 
 
+    // 위치를 무작위로 섞는 함수
+    private int[] Randomiser(int[] locations)
+    {
+        int[] array = locations.Clone() as int[];
+        for (int i = 0; i < array.Length; i++)
+        {
+            int newArray = array[i];
+            int j = Random.Range(i, array.Length);
+            array[i] = array[j];
+            array[j] = newArray;
+        }
+        return array;
+    }
 
     public void Awake()
     {
@@ -122,19 +138,6 @@ public class MainController : MonoBehaviour
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
 
-    // 위치를 무작위로 섞는 함수
-    private int[] Randomiser(int[] locations)
-    {
-        int[] array = locations.Clone() as int[];
-        for (int i = 0; i < array.Length; i++)
-        {
-            int newArray = array[i];
-            int j = Random.Range(i, array.Length);
-            array[i] = array[j];
-            array[j] = newArray;
-        }
-        return array;
-    }
    
     private void Start()
     {
@@ -159,19 +162,18 @@ public class MainController : MonoBehaviour
     // 게임이 시작될 때 호출되는 함수
     private void StartGame()
     {
-
+        // 게임이 일시 정지 중일 경우 반환
         if (isGamePaused)
         {
-            Debug.Log("일시정지로 게임 중단");
             return;
         }
-
 
         else
         {
             isGameRunnig = true;
 
-            Debug.Log("게임 시작");
+            Debug.Log("시크릿 카드걸즈 게임 진짜 시작");
+
             // 이미지 위치를 무작위로 섞음
             int[] locations = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
 
@@ -238,14 +240,6 @@ public class MainController : MonoBehaviour
             StartCoroutine(CheckGuessed());
         }
     }
-
-    // -------------------------------------------------------------------
-
-    public AudioSource correct_sfx;     // 매칭 성공 사운드
-    public AudioSource error_sfx;       // 매칭 에러 사운드
-
-    public GameObject correct_fx;    // 매칭 성공 효과
-    public GameObject error_fx;      // 매칭 에러 효과
   
     // 이미지 일치 여부를 확인하고 처리하는 코루틴
     private IEnumerator CheckGuessed()
@@ -290,14 +284,13 @@ public class MainController : MonoBehaviour
                 Score();
                 isGameRunnig = false;
                 score = 0;
-                ResultBG.gameObject.SetActive(true);
+                ResultBGBG.gameObject.SetActive(true);
                 pauseBG.gameObject.SetActive(true);
-                pauseBG1.gameObject.SetActive(true);
                 Main_BGM2.Stop();
                 isGameRunnig = false;
 
                 //어떤 컴포넌트에 배정할거임?
-                ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
+                ResultBGBG = GameObject.Find("ResultBG").GetComponent<Image>();
                 ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
                 Restart = GameObject.Find("Restart").GetComponent<Button>();
                 HomeBtn = GameObject.Find("Home").GetComponent<Button>();
@@ -447,11 +440,6 @@ public class MainController : MonoBehaviour
         }
     }
 
-    /*public void RestartClick() 
-    {
-        SceneManager.LoadScene("DG_Scene"); //일단은 도감으로 연결해뒀던거라 다시 시작할 거면 이 부분 바꿔주어야 함
-    }*/
-
     public void HomeClick()
     {
         SceneManager.LoadScene("HomeScene");
@@ -465,7 +453,6 @@ public class MainController : MonoBehaviour
 
     // 게임 일시정지 관련 변수   
     public Image pauseBG;
-    public Image pauseBG1;
     public Image stopBg;
     public Button stop;
     public Button keepGoing;
@@ -959,8 +946,6 @@ public class MainController : MonoBehaviour
         PlayerPrefs.Save();
 
         //Debug.Log("미니게임 결과:" +  DataManager.Instance.goods1011); //특정 굿즈 오류 체크용
-   
-
         Debug.Log(DataManager.Instance.goods1011);
         Debug.Log(DataManager.Instance.goods1012);
         Debug.Log(DataManager.Instance.goods2011);

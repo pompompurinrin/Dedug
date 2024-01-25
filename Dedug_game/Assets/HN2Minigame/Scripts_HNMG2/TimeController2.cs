@@ -28,26 +28,26 @@ public class TimeController2 : MonoBehaviour
 
     public void Start()
     {
-        // 초기화
         Debug.Log("초기화");
+
+        // 초기화
         timer = 60f;
         readyCounter = 3f;
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
-        //this.Player.transform.position = new Vector3(0, -5, 1);
 
         readyCount_SFX.Stop();
 
         // 레디 카운트를 1초 뒤에 1초마다 실행
-        InvokeRepeating("ReadyCounter", 0f, 1f);
+        InvokeRepeating("ReadyCounter", 0, 1f);
 
-        // 오브젝트 활성화 ( 이건 왜 추가 되었는지 확인 필요 )
         mainController2.MagicalGirlsPrefab.gameObject.SetActive(true);
-        Debug.Log("첫 시작시 마법 소녀 소환");
+        Debug.Log("MagicalGirlsPrefab.gameObject.SetActive(true);");
         mainController2.ObstaclePrefab.gameObject.SetActive(true);
-        Debug.Log("첫 시작시 장애물 소환");
+        Debug.Log("ObstaclePrefab.gameObject.SetActive(true);");
         mainController2.StudentPrefab.gameObject.SetActive(true);
-        Debug.Log("첫 시작시 일반 학생 소환");
+        Debug.Log("StudentPrefab.gameObject.SetActive(true);");
+      
     }
 
     public void ReadyCounter()
@@ -56,9 +56,9 @@ public class TimeController2 : MonoBehaviour
         if (mainController2.isGamePaused)
             return;
 
+        readyCounter -= 1f; // 타이머 감소
         readyCountBG.gameObject.SetActive(true);
         readyCount.text = readyCounter.ToString();
-        readyCounter -= 1f; // 타이머 감소
         readyCount_SFX.Play();
 
         // 슬라이더 값 갱신
@@ -66,11 +66,12 @@ public class TimeController2 : MonoBehaviour
 
         if (readyCounter < 0)
         {
-            readyCountBG.gameObject.SetActive(false);
+            readyCounter = 0;
             readyCount_SFX.Stop();
+            readyCountBG.gameObject.SetActive(false);
+
             UpdateTimer();
         }
-
     }
 
     public void UpdateTimer()
@@ -80,8 +81,7 @@ public class TimeController2 : MonoBehaviour
             return;
 
         if (mainController2.isGameRunnig == true)
-        {
-            readyCounter = 0;
+        {            
             timerText.text = timer.ToString("F0");  // 1의 자리부터 표현
             timer -= 1f; // 타이머 감소
 
@@ -97,34 +97,29 @@ public class TimeController2 : MonoBehaviour
             }
         }
     }
-
     // 시간이 다 되면 게임 오버 화면을 활성화
     public void TimeOver() 
     {
-        
-        //Player.gameObject.SetActive(false);
-        //mainController2.MagicalGirlsPrefab.gameObject.SetActive(false);
-        //mainController2.ObstaclePrefab.gameObject.SetActive(false);
-        //mainController2.StudentPrefab.gameObject.SetActive(false);
+        Debug.Log("타임 오버");
 
-        // 게임이 끝나면 파티클 이펙트 날리기 >> 다른 방법 강구 중
         mainController2.heal_fx.transform.position = new Vector3(0, -5000, 1);
-        Debug.Log("mainController2.heal_fx.transform.position = new Vector3(0, -5000, 1);");
+        Debug.Log("힐 효과 날리기");
         mainController2.hit_fx.transform.position = new Vector3(0, -5000, 1);
-        Debug.Log("mainController2.hit_fx.transform.position = new Vector3(0, -5000, 1);");
+        Debug.Log("피격 효과 날리기");
 
         mainController2.Score();
-        mainController2.ResultBG.gameObject.SetActive(true);
-        mainController2.pauseBG.gameObject.SetActive(true);
-        mainController2.pauseBG1.gameObject.SetActive(true);
         mainController2.Main_BGM.Stop();
+
         mainController2.isGameRunnig = false;
+        mainController2.ResultBGBG.gameObject.SetActive(true);
+        mainController2.pauseBG.gameObject.SetActive(true);
 
         // 어떤 컴포넌트에 배정할거임?
-        mainController2.ResultBG = GameObject.Find("ResultBG").GetComponent<Image>();
+        mainController2.ResultBGBG = GameObject.Find("ResultBGBG").GetComponent<Image>();
         mainController2.ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
         mainController2.Restart = GameObject.Find("Restart").GetComponent<Button>();
         mainController2.HomeBtn = GameObject.Find("Home").GetComponent<Button>();
-        mainController2.UserScoretxt = GameObject.Find("UserScoretxt").GetComponent<Text>();
+        mainController2.UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
     }
+
 }

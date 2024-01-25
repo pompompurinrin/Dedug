@@ -10,26 +10,24 @@ using UnityEngine.SocialPlatforms.Impl;
 
 
 public class MainController2 : MonoBehaviour
-{
-    
-    
+{        
     // 스코어 초기값
     public int score = 0;
 
     // 사운드
-    public AudioSource Main_BGM;     // 메인 BGM
-    public AudioSource heal_sfx;     // 매칭 성공 사운드
-    public AudioSource hit_sfx;      // 매칭 에러 사운드
+    public AudioSource Main_BGM;    // 메인 BGM
+    public AudioSource heal_sfx;    // 매칭 성공 사운드
+    public AudioSource hit_sfx;     // 매칭 에러 사운드
 
     // 이펙트
-    public GameObject heal_fx;       // 힐 효과
-    public GameObject hit_fx;        // 피격 효과
-
+    public GameObject heal_fx;      // 힐 효과
+    public GameObject hit_fx;       // 피격 효과
 
     // UI 요소들
-    public Image ResultBG;
+    public Image ResultBGBG;
     public Image ScoreBG;
     public Text Scoretxt;
+    public Text UserScore;
     public Text Rewardtxt;
     public Button Restart;
     public Button HomeBtn;
@@ -67,10 +65,9 @@ public class MainController2 : MonoBehaviour
     int randomObstacleImage;
     int randomStudentImage;
 
-    public float span = 4;  // 굿즈가 생성되는 주기
+    public float span = 4;  // 오브젝트 생성되는 주기
     public float delta = 0;
     int randPrefab = 0;
-
 
     public void Awake()
     {
@@ -118,20 +115,19 @@ public class MainController2 : MonoBehaviour
         DataManager.Instance.goods4059 = PlayerPrefs.GetInt("Goods4059");
         DataManager.Instance.goods4060 = PlayerPrefs.GetInt("Goods4060");
 
-        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowGold");
-        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowRank");
+        DataManager.Instance.nowGold = PlayerPrefs.GetInt("NowGold");
+        DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
    
     private void Start()
-    {          
+    {           
         StartGame(); // 게임 시작
-        Debug.Log("초롱아 도와줘 게임 시작");
 
         Main_BGM.Play();    // 메인 BGM 재생
-        heal_sfx.Stop();    // correct_sfx 정지
-        hit_sfx.Stop();     // correct_sfx 정지
+        heal_sfx.Stop();  // correct_sfx 정지
+        hit_sfx.Stop();    // correct_sfx 정지
 
-        // 학생 생성 주기를 4초로 지정
+        // 오브젝트 생성 주기
         span = 4;
 
         //PercentageTable_1에서 배열을 사용할게
@@ -149,23 +145,20 @@ public class MainController2 : MonoBehaviour
     // 게임이 시작될 때 호출되는 함수
     private void StartGame()
     {
+        // 게임이 일시 정지 중일 경우 반환
         if (isGamePaused)
             return;
-
-       
 
         else
         {
             Debug.Log("초롱아 도와줘 게임 진짜 시작");
             isGameRunnig = true;
-
         }
-
     }
 
+    // 오브젝트 생성소
     void Update()
     {
-        // 게임이 일시 정지 중이거나, 게임 중이 아닐 때 둘 중 한가지라도 해당하면 반환
         if (isGamePaused || !isGameRunnig)
             return;
 
@@ -179,7 +172,7 @@ public class MainController2 : MonoBehaviour
 
             if (this.delta == 3)
             {
-                span = 0.1f;
+                span = 0.5f;
             }
 
             if (randPrefab == 0)
@@ -213,7 +206,7 @@ public class MainController2 : MonoBehaviour
 
             else
             {
-                span = 0.3f;
+                span = 1f;
                 randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
                 GameObject go3 = Instantiate(MagicalGirlsPrefab);
                 go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
@@ -232,6 +225,7 @@ public class MainController2 : MonoBehaviour
             span = 1;
         }
     }
+
     public void Click_OnRestartPopup() //리스타트 팝업 활성화
     {
         GoldText();
@@ -247,7 +241,6 @@ public class MainController2 : MonoBehaviour
     {
         GoldlackPopup.gameObject.SetActive(false);
     }
-
     public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
     {
 
@@ -258,7 +251,7 @@ public class MainController2 : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
 
                 Save();
-                StartGame();
+                SceneManager.LoadScene("HN2MiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 100)
             {
@@ -274,9 +267,7 @@ public class MainController2 : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
 
                 Save();
-                StartGame();
-
-
+                SceneManager.LoadScene("HN2MiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 500)
             {
@@ -291,7 +282,7 @@ public class MainController2 : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
 
                 Save();
-                StartGame();
+                SceneManager.LoadScene("HN2MiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1000)
             {
@@ -307,7 +298,7 @@ public class MainController2 : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
 
                 Save();
-                StartGame();
+                SceneManager.LoadScene("HN2MiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1500)
             {
@@ -322,7 +313,7 @@ public class MainController2 : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
 
                 Save();
-                StartGame();
+                SceneManager.LoadScene("HN2MiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 3000)
             {
@@ -361,6 +352,7 @@ public class MainController2 : MonoBehaviour
         }
     }
 
+
     public void HomeClick()
     {
         SceneManager.LoadScene("HomeScene");
@@ -374,7 +366,6 @@ public class MainController2 : MonoBehaviour
 
     // 게임 일시정지 관련 변수   
     public Image pauseBG;
-    public Image pauseBG1;
     public Image stopBg;
     public Button stop;
     public Button keepGoing;
@@ -384,7 +375,7 @@ public class MainController2 : MonoBehaviour
     public Button stopOk;
     public Button stopNo;
 
-    public TimeController2 timeController2;
+    [SerializeField] private TimeController2 timeController2;
 
     // 게임 일시정지 상태를 나타내는 변수
     public bool isGamePaused = false;
@@ -504,6 +495,8 @@ public class MainController2 : MonoBehaviour
         hit_fx.gameObject.SetActive(true);
         heal_fx.gameObject.SetActive(false);
     }
+
+
 
 
     public List<Sprite> goodsSprites = new List<Sprite>();
@@ -671,34 +664,27 @@ public class MainController2 : MonoBehaviour
     public List<Sprite> rewardGoods = new List<Sprite>();
 
     public int _count = 0;// 몇개 줄 지 설정하는 변수
-    public Text goodsCount;// 몇개 줄 지 설정하는 변수
-    
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        UserScoretxt.text = score.ToString();      // 최종 유저 스코어 텍스트로 출력
+        UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
 
-        
 
         //굿즈 지급
-        if (score >= 100) // 바꿔
+        if (score >= 10) // 바꿔
         {
             _count = 3;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(true);
-            //goodsCount.text = "Goods : " + _count.ToString() +"개 !!";
-
-
         }
-        else if (score < 100 && score >= 90)
+        else if (score < 10 && score >= 3)
         {
             _count = 2;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(false);
-            //goodsCount.text = "Goods : " + _count.ToString() + "개 !!";
         }
-        else if (score < 90 )
+        else if (score < 3 && score >= 0)
         {
             _count = 1;
             Reward1BG.gameObject.SetActive(true);
@@ -708,11 +694,10 @@ public class MainController2 : MonoBehaviour
 
         else
         {
-            
         }
-       
+
         GetGoods(_count);
-       
+
     }
 
     public void Save()
@@ -721,7 +706,7 @@ public class MainController2 : MonoBehaviour
         {
             int rewardId = rewards[i];
             Debug.Log("리워드 아이디 " + rewardId);
-            
+
             // 보상을 ID에 따라 DataManager.Instance에 매핑
             switch (rewardId)
             {
@@ -894,12 +879,12 @@ public class MainController2 : MonoBehaviour
             }
 
         }
+
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         // PlayerPrefs에 현재 값 저장
-       
-
         PlayerPrefs.Save();
 
+        //Debug.Log("미니게임 결과:" +  DataManager.Instance.goods1011); //특정 굿즈 오류 체크용
         Debug.Log(DataManager.Instance.goods1011);
         Debug.Log(DataManager.Instance.goods1012);
         Debug.Log(DataManager.Instance.goods2011);
@@ -942,5 +927,6 @@ public class MainController2 : MonoBehaviour
         Debug.Log(DataManager.Instance.goods4060);
 
     }
-    
+
+
 }
