@@ -513,7 +513,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
   PopUPSkipBtn: {fileID: 789048725}
   SkipImg: {fileID: 428033386}
   ClickNum: 0
-  BGM: {fileID: 0}
+  BGM: {fileID: 456987988}
   Bgm1: {fileID: 8300000, guid: da95b990eeed1da479423f069003e54e, type: 3}
   Bgm2: {fileID: 8300000, guid: 1e21aa3e5c63b8e41b1e5d0a2a4c20d5, type: 3}
   Bgm3: {fileID: 8300000, guid: 81288d2fc4a903a44ac9455978717ef3, type: 3}
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   listenForWindowChanges: 1
   createCameraForLetterBoxRendering: 1
   findCamerasAutomatically: 1
-  letterBoxCameraColor: {r: 0.8980392, g: 0.7137255, b: 1, a: 1}
+  letterBoxCameraColor: {r: 0, g: 0, b: 0, a: 1}
   cameras: []
   letterBoxCamera: {fileID: 0}
 --- !u!4 &850588915

@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,23 +55,23 @@ public class StoryManager : MonoBehaviour
         data_Dialog = CSVReader.Read(StoryFileName);
         if (DataManager.Instance.storyID == 0)
         {
-            ClickNum = 520;
+            ClickNum = 517;
             
         }
         else if (DataManager.Instance.storyID ==11)
         {
-            ClickNum = 92;
+            ClickNum = 93;
             
             //이건 클릭한 스토리의 시작을 어디서부터 하는지 정해주는 작업, 추후 완성 테이블 기반으로 ClickNum에 해당 열로 수정
         }
         else if (DataManager.Instance.storyID == 12)
         {
-            ClickNum = 136;
+            ClickNum = 137;
             
         }
         else if (DataManager.Instance.storyID == 13)
         {
-            ClickNum = 195;
+            ClickNum = 196;
            
 
         }
@@ -87,22 +87,22 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 23)
         {
-            ClickNum = 345;
+            ClickNum = 343;
             
         }
         else if (DataManager.Instance.storyID == 31)
         {
-            ClickNum = 392;
+            ClickNum = 389;
             
         }
         else if (DataManager.Instance.storyID == 32)
         {
-            ClickNum = 433;
+            ClickNum = 432;
             
         }
         else if (DataManager.Instance.storyID == 33)
         {
-            ClickNum = 485;
+            ClickNum = 483;
             
         }
         else if (DataManager.Instance.storyID == 41)
@@ -122,7 +122,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 99)
         {
-            ClickNum = 567;
+            ClickNum = 568;
 
             
         }
