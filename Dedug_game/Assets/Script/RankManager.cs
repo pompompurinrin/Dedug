@@ -256,7 +256,7 @@ public class RankManager : MonoBehaviour
         {
             if (DataManager.Instance.goods2022 == 0)
             {
-                UnlockGoods.text = "±ÂÁî '¹Ù´Ù LÈ¦´õ'¸¦ È¹µæÇÏ¸é ÇØ±ÝµË´Ï´Ù.";
+                UnlockGoods.text = "±ÂÁî '¹Ù´Ù LÀÚ È¦´õ'¸¦ È¹µæÇÏ¸é ÇØ±ÝµË´Ï´Ù.";
                 Unlock.gameObject.SetActive(true);
             }
             else if (DataManager.Instance.goods2022 >= 1)
