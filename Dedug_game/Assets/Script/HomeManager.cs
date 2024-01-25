@@ -252,17 +252,20 @@ public class HomeManager : MonoBehaviour
     }
     public void ClickRequestBtn()
     {
+        PlaySFX1();
         SceneManager.LoadScene("RequestScene");
     }
 
     public void ClickRankBtn()
     {
+        PlaySFX1();
         SceneManager.LoadScene("RankScene");
     }
 
 
     public void ClickCollectionBtn()
     {
+        PlaySFX1();
         SceneManager.LoadScene("DG_Scene");
     }
 
@@ -270,20 +273,21 @@ public class HomeManager : MonoBehaviour
     public void OnButtonClick_ChangeCharPopup()
     {
         // 캐릭터 교체 팝업을 활성화
-
+        PlaySFX1();
         ChangeCharPopup.SetActive(true);
     }
 
     public void OnButtonClick_OffChangeCharPopup()
     {
         // 캐릭터 교체 팝업을 비활성화
-
+        PlaySFX1();
         ChangeCharPopup.SetActive(false);
     }
 
     public void OnButtonClick_OnGoodsBuy()
     {
         // 굿즈 구매 팝업 활성화
+        PlaySFX1();
         PopupCanvas.gameObject.SetActive(true);
         GoodsBuy.gameObject.SetActive(true);
     }
@@ -292,6 +296,7 @@ public class HomeManager : MonoBehaviour
 
     public void OnClickChange(int ImgNumber)
     {
+        PlaySFX1();
         homeImg.sprite = homeImgs[ImgNumber];
         diaIndex = ImgNumber;
         nextDia = 0;
@@ -336,7 +341,7 @@ public class HomeManager : MonoBehaviour
     public void OnClickCharDialogue()
     {
 
-
+        PlaySFX1();
         if (diaIndex == 0)
         {
            

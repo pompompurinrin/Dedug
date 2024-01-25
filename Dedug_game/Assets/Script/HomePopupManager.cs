@@ -184,6 +184,7 @@ public class HomePopupManager : MonoBehaviour
     public void Click_GanbareBadaStart()
     {
 
+        PlaySFX1();
         if (DataManager.Instance.nowRank == 0)
         {
             if (DataManager.Instance.nowGold >= 100)
@@ -264,7 +265,7 @@ public class HomePopupManager : MonoBehaviour
 
     public void Click_CardGameStart()
     {
-
+        PlaySFX1();
         if (DataManager.Instance.nowRank == 0)
         {
             if (DataManager.Instance.nowGold >= 100)
@@ -345,21 +346,24 @@ public class HomePopupManager : MonoBehaviour
 
     public void Click_OffGoodsBuy()
     {
+        PlaySFX1();
         GoodsBuy.SetActive(false);
     }
     public void Click_OffGoldLack()
     {
+        PlaySFX1();
         GoldLack.SetActive(false);
     }
     public void OnButtonClick_OffGamePopup()
     {
         // 게임 팝업 비활성화
+        PlaySFX1();
         GamePopups.gameObject.SetActive(false);
         
     }
     public void Click_BestSuaStart()
     {
-
+        PlaySFX1();
         if (DataManager.Instance.nowRank == 0)
         {
             if (DataManager.Instance.nowGold >= 100)
@@ -440,6 +444,7 @@ public class HomePopupManager : MonoBehaviour
     public void Click_HelpChorongStart()
     {
 
+        PlaySFX1();
         if (DataManager.Instance.nowRank == 0)
         {
             if (DataManager.Instance.nowGold >= 100)
@@ -519,24 +524,28 @@ public class HomePopupManager : MonoBehaviour
     }
     public void Click_Commision()
     {
+        PlaySFX1();
         Save();
         SceneManager.LoadScene("RequestScene");
     }
 
     public void Click_Collection()
     {
+        PlaySFX1();
         Save();
         SceneManager.LoadScene("DG_Scene");
     }
 
     public void Click_RankUP()
     {
+        PlaySFX1();
         Save();
         SceneManager.LoadScene("RankScene");
     }
 
     public void OnButtonClick_OnGanbare()
     {
+        PlaySFX1();
         // 간바레 바다짱 팝업 활성화
         GamePopups.gameObject.SetActive(true);
         GanbareBada.gameObject.SetActive(true);
@@ -545,18 +554,21 @@ public class HomePopupManager : MonoBehaviour
     }
     public void OnButtonClick_OnCardGame()
     {
+        PlaySFX1();
         // 카드 게임 팝업 활성화
         GamePopups.gameObject.SetActive(true);
         CardGame.gameObject.SetActive(true);
     }
     public void OnButtonClick_OnBestSua()
     {
+        PlaySFX1();
         // 카드 게임 팝업 활성화
         GamePopups.gameObject.SetActive(true);
         BestSua.gameObject.SetActive(true);
     }
     public void OnButtonClick_OnHelpChorong()
     {
+        PlaySFX1();
         // 카드 게임 팝업 활성화
         GamePopups.gameObject.SetActive(true);
         HelpChorong.gameObject.SetActive(true);
@@ -564,8 +576,8 @@ public class HomePopupManager : MonoBehaviour
 
     public void OnButtonClick_OffGoodsBuy()
     {
+        PlaySFX1();
         // 굿즈 구매 팝업 비활성화
-
         PopupCanvas.gameObject.SetActive(false);
         GoodsBuy.SetActive(false);
     }
@@ -624,6 +636,7 @@ public class HomePopupManager : MonoBehaviour
 
     public void GanbareHowToClick()
     {
+        PlaySFX1();
         GanbareClickNum = 0;
         GanbareHowToExplain();
         GanbareHowTo.gameObject.SetActive(true);
@@ -631,10 +644,12 @@ public class HomePopupManager : MonoBehaviour
     }
     public void GanbareHowToExit()
     {
+        PlaySFX1();
         GanbareHowTo.gameObject.SetActive(false);
     }
     public void GanbareHowToLclick()
     {
+        PlaySFX1();
         GanbareClickNum--;
         if(GanbareClickNum < 0)
         {
@@ -644,6 +659,7 @@ public class HomePopupManager : MonoBehaviour
     }
     public void GanbareHowToRclick()
     {
+        PlaySFX1();
         GanbareClickNum++;
         if (GanbareClickNum > 6)
         {
@@ -704,6 +720,7 @@ public class HomePopupManager : MonoBehaviour
     
     public void CardHowToClick()
     {
+        PlaySFX1();
         CardClickNum = 0;
         CardHowToExplain();
         CardHowTo.gameObject.SetActive(true);
@@ -711,6 +728,7 @@ public class HomePopupManager : MonoBehaviour
     }
     public void CardHowToExit()
     {
+        PlaySFX1();
         CardHowTo.gameObject.SetActive(false);
     }
     public void CardHowToLclick()

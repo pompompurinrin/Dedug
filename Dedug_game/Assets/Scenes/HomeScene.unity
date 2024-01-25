@@ -256,18 +256,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &13768420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,18 +538,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnHelpChorong
@@ -1942,8 +1918,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 1750}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &89028101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3044,18 +3020,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &129205623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3476,18 +3440,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffMenuUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4389,18 +4341,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &176195879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4525,18 +4465,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffGamePopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5506,18 +5434,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnHelpUserImgPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9383,18 +9299,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &401079979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9637,9 +9541,9 @@ RectTransform:
   m_Father: {fileID: 1015650147}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 440, y: -800}
   m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415945302
@@ -9992,18 +9896,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnHelpGradeconditonPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11825,18 +11717,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &501686251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12273,18 +12153,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffGamePopup
@@ -14639,18 +14507,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &609602337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14776,18 +14632,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnCardGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16427,10 +16271,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210, y: -465}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692096811
 MonoBehaviour:
@@ -16479,18 +16323,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnCredit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: OnButtonClick_OffMenuUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16603,7 +16435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &707094846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17350,9 +17182,9 @@ RectTransform:
   m_Father: {fileID: 1015650147}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 440, y: -1110}
   m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742016381
@@ -18444,18 +18276,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: CardHowToRclick
         m_Mode: 1
         m_Arguments:
@@ -18591,18 +18411,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffAllMenuPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22765,9 +22573,9 @@ RectTransform:
   m_Father: {fileID: 1015650147}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 440, y: -1420}
   m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966609164
@@ -23521,10 +23329,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210, y: -135}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986511145
 MonoBehaviour:
@@ -23573,18 +23381,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnHelpUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23951,18 +23747,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &991811763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24247,18 +24031,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnBestSua
         m_Mode: 1
         m_Arguments:
@@ -24350,7 +24122,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -310}
-  m_SizeDelta: {x: -60, y: 0}
+  m_SizeDelta: {x: -60, y: 620}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1015650148
 MonoBehaviour:
@@ -24609,18 +24381,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffRankupPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24928,18 +24688,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1037178879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25065,18 +24813,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffCollectionPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26254,18 +25990,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1060796721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27343,18 +27067,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1077892748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27949,18 +27661,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1111579437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28295,18 +27995,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnGanbare
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29122,18 +28810,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1149777104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29329,7 +29005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.000061, y: 0}
+  m_AnchoredPosition: {x: -5.000122, y: 0}
   m_SizeDelta: {x: -5, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1173377213
@@ -29784,18 +29460,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1190123518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29938,10 +29602,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -30423,18 +30087,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1204399894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30888,9 +30540,9 @@ RectTransform:
   m_Father: {fileID: 1015650147}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 440, y: -490}
   m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1236889618
@@ -31378,18 +31030,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1251712212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31591,19 +31231,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1260041672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1260041672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32474,10 +32102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -33072,10 +32700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -33484,18 +33112,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffGamePopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35673,18 +35289,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1433789098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36404,18 +36008,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1449315137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36951,18 +36543,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: CardHowToExit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38129,18 +37709,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1520843429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38306,9 +37874,9 @@ RectTransform:
   m_Father: {fileID: 1015650147}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 440, y: -180}
   m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537782832
@@ -39296,18 +38864,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1569361581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39782,18 +39338,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffHomePopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41679,18 +41223,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: CardHowToExit
         m_Mode: 1
         m_Arguments:
@@ -42229,18 +41761,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1191489701}
         m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
         m_MethodName: CardHowToLclick
@@ -44599,18 +44119,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1808915104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45996,18 +45504,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1855553160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46173,10 +45669,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -465}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865293111
 MonoBehaviour:
@@ -46225,18 +45721,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_SettingPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -46350,18 +45834,6 @@ MonoBehaviour:
       - m_Target: {fileID: 91685925}
         m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
         m_MethodName: OnButtonClick_ChangeCharPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -47420,18 +46892,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1921702705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48454,10 +47914,10 @@ RectTransform:
   m_Father: {fileID: 672017659}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -135}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972598217
 MonoBehaviour:
@@ -48506,18 +47966,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: Clear
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48729,7 +48177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1972983935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49435,18 +48883,6 @@ MonoBehaviour:
       - m_Target: {fileID: 91685925}
         m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
         m_MethodName: ClickTutorial
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51118,18 +50554,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1191489701}
-        m_TargetAssemblyTypeName: HomePopupManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2050963067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51359,18 +50783,6 @@ MonoBehaviour:
       - m_Target: {fileID: 91685925}
         m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OffChangeCharPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 91685925}
-        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -52091,18 +51503,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
         m_MethodName: OnButtonClick_OnHelpMinigamePopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033419278}
-        m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
