@@ -33094,7 +33094,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5375482510662817296}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ResultManager_0123, Assembly-CSharp
         m_MethodName: RequestClick
         m_Mode: 1
@@ -48561,9 +48561,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5375482510662817296}
+      - m_Target: {fileID: 6800431344585444917}
         m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
-        m_MethodName: HomeClick
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48773,7 +48773,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5375482510662817296}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ResultManager_0123, Assembly-CSharp
         m_MethodName: RestartClick
         m_Mode: 1
@@ -53960,7 +53960,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5375482510662817296}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ResultManager_0123, Assembly-CSharp
         m_MethodName: Click_OffRestartPopup
         m_Mode: 1
@@ -54290,7 +54290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5375482510662817296}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ResultManager_0123, Assembly-CSharp
         m_MethodName: Click_OffGoldlack
         m_Mode: 1
@@ -65084,39 +65084,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5375482510642726720}
   m_CullTransparentMesh: 1
---- !u!114 &5375482510662817296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5375482510662817321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570b1b4b2ba96eb4abce2f66686d6975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResultBG: {fileID: 5375482509109471174}
-  ScoreBG: {fileID: 5375482508957875626}
-  Scoretxt: {fileID: 5375482509654709909}
-  Rewardtxt: {fileID: 5375482508971694620}
-  Restart: {fileID: 5375482510800530485}
-  HomeBtn: {fileID: 5375482509566435543}
-  RestartPopup: {fileID: 5375482509024282525}
-  GoldlackPopup: {fileID: 5375482510866274025}
-  RestartGoldText: {fileID: 5375482510224333658}
-  UserScoretxt: {fileID: 5375482509336505247}
-  imageFileName: 
-  Reward1: {fileID: 5375482510208655384}
-  Reward2: {fileID: 5375482509078661978}
-  Reward3: {fileID: 5375482510698000658}
-  gatchIdList: 
-  gatchPerList: 
-  rewards: 
-  RewardsImage: []
-  goodsSprites: []
-  rewardGoods: []
-  _count: 0
 --- !u!95 &5375482510662817299
 Animator:
   serializedVersion: 5
@@ -65151,7 +65118,6 @@ GameObject:
   - component: {fileID: 5375482510662817327}
   - component: {fileID: 5375482510662817326}
   - component: {fileID: 5375482510662817299}
-  - component: {fileID: 5375482510662817296}
   m_Layer: 5
   m_Name: Result
   m_TagString: Untagged
@@ -65481,9 +65447,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5375482510662817296}
-        m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
-        m_MethodName: RestartClick
+      - m_Target: {fileID: 6800431344585444924}
+        m_TargetAssemblyTypeName: MainController2, Assembly-CSharp
+        m_MethodName: Click_OnRestartPopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -75766,6 +75732,9 @@ MonoBehaviour:
   Rewardtxt: {fileID: 5375482508971694620}
   Restart: {fileID: 5375482510800530485}
   HomeBtn: {fileID: 5375482509566435543}
+  RestartPopup: {fileID: 5375482509024282525}
+  GoldlackPopup: {fileID: 5375482510866274025}
+  RestartGoldText: {fileID: 5375482510224333658}
   UserScoretxt: {fileID: 5375482509336505247}
   imageFileName: 
   Reward1: {fileID: 5375482510208655384}

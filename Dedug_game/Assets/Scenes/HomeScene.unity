@@ -25579,15 +25579,16 @@ MonoBehaviour:
   HelpMinigamePopup: {fileID: 2124740902}
   HelpGradeinfoPopup: {fileID: 387791145}
   HelpGradeconditonPopup: {fileID: 892836713}
-  bgm1AudioSource: {fileID: 452054918}
   sfx1AudioSource: {fileID: 752190094}
+  bgm1AudioSource: {fileID: 452054918}
   NowimageFileName: 
   rankImg:
   - {fileID: 21300000, guid: d026caee56a43ac4790af87b4199de9e, type: 3}
   - {fileID: 21300000, guid: 2edfbaf3abb949e4283caf2f3a0a536d, type: 3}
   - {fileID: 21300000, guid: bb179ff740249ad47a99a40d793f7b20, type: 3}
-  soundOff: {fileID: 569887241}
-  BGMOff: {fileID: 311062284}
+  sfxOff: {fileID: 569887241}
+  bgmOff: {fileID: 311062284}
+  audioManager: {fileID: 1243757944}
   isSoundPlaying: 0
 --- !u!114 &1033419279
 MonoBehaviour:
@@ -28505,6 +28506,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080824121}
   m_CullTransparentMesh: 1
+--- !u!1001 &1081215963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.38898516
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2865747
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.065319985
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298324649385060194, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: BGM1
+      value: 
+      objectReference: {fileID: 452054918}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: BGM2
+      value: 
+      objectReference: {fileID: 452054918}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX1
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX2
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX3
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX4
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX5
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX6
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX7
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: SFX8
+      value: 
+      objectReference: {fileID: 752190094}
+    - target: {fileID: 3810624526880350707, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
 --- !u!1 &1097786491
 GameObject:
   m_ObjectHideFlags: 0
@@ -31989,6 +32087,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243664958}
   m_CullTransparentMesh: 1
+--- !u!114 &1243757944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
+  m_PrefabInstance: {fileID: 1081215963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b371407abd3cfb4a805bea9b892899d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1251212517
 GameObject:
   m_ObjectHideFlags: 0
@@ -35304,7 +35413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1385558357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44785,7 +44894,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: StopBGM1
+        m_MethodName: PlayBGM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48494,7 +48603,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1033419278}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: PlaySFX1
+        m_MethodName: PlaySFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
