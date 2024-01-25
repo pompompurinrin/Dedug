@@ -13,7 +13,7 @@ public class RequestManager : MonoBehaviour
     // 커미션 프리팹
     public GameObject requestPrefab;
     private float requestTimer = 0f;
-    public float requestTimeLimit = 1f;
+    public float requestTimeLimit = 2f;
 
     // 커미션 프리팹 부모 객체
     public Transform requestParentObject;
@@ -483,11 +483,11 @@ public class RequestManager : MonoBehaviour
             GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(true);
         }
 
-/*        // 삭제 후 다시 생성 (현재 시간을 기준으로 다시 생성)
+        // 삭제 후 다시 생성 (현재 시간을 기준으로 다시 생성)
         if (requestPrefabCount < maxRequestPrefabCount)
         {
             requestTimer = Mathf.Max(requestTimeLimit - requestTimer, 0f);
-        }*/
+        }
     }
 
     void GetGoldTextfalse()
