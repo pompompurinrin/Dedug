@@ -45,7 +45,7 @@ public class MainImageScript : MonoBehaviour
             Vector3 originalScale = transform.localScale;
             Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
 
-            if (Input.touchCount > 3)
+            if (Input.touchCount > 2)
                 return;
 
             transform.DOScale(targetScale, 0.1f).OnComplete(() => // ¶÷´Ù½Ä

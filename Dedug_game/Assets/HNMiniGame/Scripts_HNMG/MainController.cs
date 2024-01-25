@@ -22,7 +22,7 @@ public class MainController : MonoBehaviour
 
     // 이미지 사이의 간격 설정
     public const float Xspace = 260f;
-    public const float Yspace = -300f;
+    public const float Yspace = -310f;
     
     // 스코어 초기값
     public int score = 0;

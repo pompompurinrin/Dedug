@@ -16,20 +16,20 @@ public class MainController2 : MonoBehaviour
     // 스코어 초기값
     public int score = 0;
 
-    // 메인 BGM
-    public AudioSource Main_BGM;
+    // 사운드
+    public AudioSource Main_BGM;     // 메인 BGM
     public AudioSource heal_sfx;     // 매칭 성공 사운드
-    public AudioSource hit_sfx;       // 매칭 에러 사운드
+    public AudioSource hit_sfx;      // 매칭 에러 사운드
 
-    public GameObject heal_fx;    // 힐 효과
-    public GameObject hit_fx;     // 피격 효과
+    // 이펙트
+    public GameObject heal_fx;       // 힐 효과
+    public GameObject hit_fx;        // 피격 효과
 
 
     // UI 요소들
     public Image ResultBG;
     public Image ScoreBG;
     public Text Scoretxt;
-    public Text UserScore;
     public Text Rewardtxt;
     public Button Restart;
     public Button HomeBtn;
@@ -123,16 +123,15 @@ public class MainController2 : MonoBehaviour
     }
    
     private void Start()
-    {
-        Debug.Log("초롱아 도와줘 게임 시작");
-        
-        
+    {          
         StartGame(); // 게임 시작
+        Debug.Log("초롱아 도와줘 게임 시작");
 
         Main_BGM.Play();    // 메인 BGM 재생
-        heal_sfx.Stop();  // correct_sfx 정지
-        hit_sfx.Stop();    // correct_sfx 정지
+        heal_sfx.Stop();    // correct_sfx 정지
+        hit_sfx.Stop();     // correct_sfx 정지
 
+        // 학생 생성 주기를 4초로 지정
         span = 4;
 
         //PercentageTable_1에서 배열을 사용할게
@@ -166,6 +165,7 @@ public class MainController2 : MonoBehaviour
 
     void Update()
     {
+        // 게임이 일시 정지 중이거나, 게임 중이 아닐 때 둘 중 한가지라도 해당하면 반환
         if (isGamePaused || !isGameRunnig)
             return;
 
@@ -225,8 +225,6 @@ public class MainController2 : MonoBehaviour
                     healFxTransform.gameObject.SetActive(true);
                 }
             }
-
-
         }
 
         else if (this.delta >= 3)
@@ -249,6 +247,7 @@ public class MainController2 : MonoBehaviour
     {
         GoldlackPopup.gameObject.SetActive(false);
     }
+
     public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
     {
 
@@ -362,11 +361,6 @@ public class MainController2 : MonoBehaviour
         }
     }
 
-    /*public void RestartClick() 
-    {
-        SceneManager.LoadScene("DG_Scene"); //일단은 도감으로 연결해뒀던거라 다시 시작할 거면 이 부분 바꿔주어야 함
-    }*/
-
     public void HomeClick()
     {
         SceneManager.LoadScene("HomeScene");
@@ -390,7 +384,7 @@ public class MainController2 : MonoBehaviour
     public Button stopOk;
     public Button stopNo;
 
-    [SerializeField] private TimeController2 timeController2;
+    public TimeController2 timeController2;
 
     // 게임 일시정지 상태를 나타내는 변수
     public bool isGamePaused = false;
@@ -505,13 +499,11 @@ public class MainController2 : MonoBehaviour
     public void CountDown()
     {
         score--;
-        Scoretxt.text = score.ToString();
+        Scoretxt.text = "Score : " + score.ToString();
         hit_sfx.Play();
         hit_fx.gameObject.SetActive(true);
         heal_fx.gameObject.SetActive(false);
     }
-
-
 
 
     public List<Sprite> goodsSprites = new List<Sprite>();
