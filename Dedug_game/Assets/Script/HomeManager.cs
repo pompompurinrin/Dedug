@@ -43,6 +43,7 @@ public class HomeManager : MonoBehaviour
     public void Awake()
     {
         DataManager.Instance.firstHome = PlayerPrefs.GetInt("FirstHome");
+        DataManager.Instance.ending = PlayerPrefs.GetInt("Ending");
     }
 
 
@@ -68,7 +69,17 @@ public class HomeManager : MonoBehaviour
         PopupCanvas = GameObject.Find("PopupCanvas").GetComponent<Canvas>();
         GameObject GoodsBuy = GameObject.Find("GoodsBuy");
 
-        if(DataManager.Instance.nowRank == 0)
+        if (DataManager.Instance.ending <= 0 && DataManager.Instance.nowRank == 4)
+        {
+            DataManager.Instance.storyID = 99;
+            DataManager.Instance.ending = 1;
+            PlayerPrefs.SetInt("Ending", DataManager.Instance.ending);
+            PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("StoryScene");
+        }
+
+        if (DataManager.Instance.nowRank == 0)
         {
             PurposeBtnText.text = "¼ö¾Æ ÄÅÈ¦´õ È¹µæÇÏ±â";
             if(DataManager.Instance.goods1011 > 0)

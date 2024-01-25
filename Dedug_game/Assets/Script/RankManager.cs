@@ -77,6 +77,7 @@ public class RankManager : MonoBehaviour
         DataManager.Instance.goods2042 = PlayerPrefs.GetInt("Goods2042");
         DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
         DataManager.Instance.firstRank = PlayerPrefs.GetInt("FirstRank");
+        
     }
     private void Start()
     {
@@ -416,20 +417,21 @@ public class RankManager : MonoBehaviour
             });
         });
     }
-
+    public void Gold()
+    {
+        DataManager.Instance.nowGold = 999999999;
+        Save();
+    }    
 
     public void RankPopUPExitClick()
     {
         // 랭크 팝업 종료 클릭 시 호출되는 메서드
         anim.SetTrigger("DoHide");
         RankPopUPBG.gameObject.SetActive(false);
-        if(DataManager.Instance.nowRank == 4)
-        {
-            DataManager.Instance.storyID = 99;
-            SceneManager.LoadScene("StoryScene");
-        }
+
         
-        
+
+
     }
 
     public void ResultExitClick()
@@ -458,7 +460,7 @@ public class RankManager : MonoBehaviour
         PlayerPrefs.SetInt("NowGold", DataManager.Instance.nowGold);
         PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
         PlayerPrefs.SetInt("FirstRank", DataManager.Instance.firstRank);
-        PlayerPrefs.Save();
+        
     }
 
     public void HomeClick()
