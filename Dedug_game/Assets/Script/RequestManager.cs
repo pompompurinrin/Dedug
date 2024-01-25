@@ -24,7 +24,7 @@ public class RequestManager : MonoBehaviour
 
     // 골드 획득 변수
     int NowGold;
-    public Text goldText;
+    //public Text goldText;
 
     // 골드 획득 연출 텍스트
     public Text getGoldText;
@@ -127,7 +127,7 @@ public class RequestManager : MonoBehaviour
         // charictorImg 오브젝트에 있는 Animator 컴포넌트 가져오기
         GoldAnimator = GameObject.Find("getGold").GetComponent<Animator>();
         DrawAnimator = GameObject.Find("charictorImg").GetComponent<Animator>();
-        goldText.text = DataManager.Instance.nowGold.ToString();
+        //goldText.text = DataManager.Instance.nowGold.ToString();
 
         comitionBGM.Play();
         
@@ -420,7 +420,7 @@ public class RequestManager : MonoBehaviour
 
         // GoldNum 업데이트
         DataManager.Instance.nowGold += int.Parse(clickedButton.GetComponentInChildren<Button>().GetComponentInChildren<Text>().text);
-        goldText.text = DataManager.Instance.nowGold.ToString();
+        //goldText.text = DataManager.Instance.nowGold.ToString();
         Save();
 
         // 프리팹에 저장된 customerType 값 가져오기
@@ -436,6 +436,7 @@ public class RequestManager : MonoBehaviour
         if (customerType == 2)
         {
             DataManager.Instance.feverNum++;
+            Debug.Log(DataManager.Instance.feverNum);
             Save();
             coin02.Play();
 

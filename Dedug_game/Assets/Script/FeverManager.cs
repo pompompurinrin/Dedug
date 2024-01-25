@@ -535,7 +535,7 @@ public class FeverManager : MonoBehaviour
 
     public void EndFiver()
     {
-        goldText.text = DataManager.Instance.nowGold.ToString();
+        //goldText.text = DataManager.Instance.nowGold.ToString();
 
         EndSFX01.Stop();
         EndSFX02.Stop();

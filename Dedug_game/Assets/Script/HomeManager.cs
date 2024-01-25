@@ -22,8 +22,6 @@ public class HomeManager : MonoBehaviour
     public Text charDialogue;
     public Text charName;
     int nextDia;
-
-    private int diaIndex;
     // CSV 파일을 읽어들일 데이터 리스트
 
     
@@ -37,7 +35,7 @@ public class HomeManager : MonoBehaviour
     List<string> suaList = new List<string>();
     List<string> badaList = new List<string>();
     List<string> cholongList = new List<string>();
-
+    List<string> konggeList = new List<string>();
     List<string> nameList = new List<string>();
 
     public void Awake()
@@ -49,6 +47,8 @@ public class HomeManager : MonoBehaviour
 
     public void Start()
     {
+        
+
         if (DataManager.Instance.firstHome == 0)
         {
             TutorialCanvas.gameObject.SetActive(true);
@@ -66,7 +66,6 @@ public class HomeManager : MonoBehaviour
         Debug.Log("홈:" + DataManager.Instance.goods1011);
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
-        PopupCanvas = GameObject.Find("PopupCanvas").GetComponent<Canvas>();
         GameObject GoodsBuy = GameObject.Find("GoodsBuy");
 
         if (DataManager.Instance.ending <= 0 && DataManager.Instance.nowRank == 4)
@@ -148,16 +147,10 @@ public class HomeManager : MonoBehaviour
 
         CharHomeList();
         CharNameList();
+        SpriteChange();
 
-        charDialogue.text = suaList[nextDia];
-        nextDia++;
-        if (nextDia == suaList.Count)
-        {
-            nextDia = 0;
-        }
-        homeImg.sprite = homeImgs[0];
-        charName.text = nameList[0];
-        
+
+
         //시작 시 팝업을 비활성화
 
         if (ChangeCharPopup != null)
@@ -304,16 +297,29 @@ public class HomeManager : MonoBehaviour
     }
 
 
+    public void SpriteChange()
+    {
+        
+        DataManager.Instance.homeChr = PlayerPrefs.GetInt("HomeChr");
+        homeImg.sprite = homeImgs[DataManager.Instance.homeChr];
+        charName.text = nameList[DataManager.Instance.homeChr];
+        TextChange();
+    }
 
+    public void TextChange()
+    {
+        OnClickCharDialogue(DataManager.Instance.homeChr);
+    }
     public void OnClickChange(int ImgNumber)
     {
         PlaySFX1();
-        homeImg.sprite = homeImgs[ImgNumber];
-        diaIndex = ImgNumber;
-        nextDia = 0;
+        PlayerPrefs.SetInt("HomeChr", ImgNumber);
 
-        charName.text = nameList[ImgNumber];
-        OnClickCharDialogue();
+        SpriteChange();
+        nextDia = 0;
+        
+        OnClickCharDialogue(ImgNumber);
+        PlayerPrefs.Save();
     }
     
     private void CharHomeList()
@@ -335,7 +341,12 @@ public class HomeManager : MonoBehaviour
                     cholongList.Add(homeDiaSample[i]["Dialogue"].ToString());
                 }
 
-            }
+                else if ((int)homeDiaSample[i]["Index"] == 4)
+                {
+                    konggeList.Add(homeDiaSample[i]["Dialogue"].ToString());
+                }
+
+        }
      }
 
     private void CharNameList()
@@ -349,7 +360,7 @@ public class HomeManager : MonoBehaviour
         }
 
     }
-    public void OnClickCharDialogue()
+    public void OnClickCharDialogue(int diaIndex)
     {
 
         PlaySFX1();
@@ -382,6 +393,16 @@ public class HomeManager : MonoBehaviour
             charDialogue.text = cholongList[nextDia];
             nextDia++;
             if (nextDia == cholongList.Count)
+            {
+                nextDia = 0;
+            }
+
+        }
+        else if (diaIndex == 3)
+        {
+            charDialogue.text = konggeList[nextDia];
+            nextDia++;
+            if (nextDia == konggeList.Count)
             {
                 nextDia = 0;
             }

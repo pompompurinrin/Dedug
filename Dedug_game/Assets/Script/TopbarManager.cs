@@ -18,11 +18,17 @@ public class TopbarManager : MonoBehaviour
     public Text NowRankNum;
     public Image NowRankImage;
 
+    public Text PopupRankName;
+    public Text PopupRankNum;
+    public Image PopupRankImage;
+
+
     public GameObject SettingPopCanvas;
     public GameObject Credit;
     public GameObject MenuUI;
     public GameObject HelpUI;
     public GameObject HelpPopup;
+    public GameObject ProfilePopup;
     
     //도움말 세부 팝업
     public GameObject HomePopup;
@@ -142,6 +148,16 @@ public class TopbarManager : MonoBehaviour
             NowRankImage.sprite = rankDic[NowRank];
         }
 
+        if (PopupRankName != null)
+        {
+            PopupRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
+        }
+
+        if (PopupRankImage != null)
+        {
+            PopupRankImage.sprite = rankDic[NowRank];
+        }
+
     }
 
 
@@ -154,8 +170,10 @@ public class TopbarManager : MonoBehaviour
         NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
         NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
         NowRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["RankNum"].ToString();
-
-
+        
+        PopupRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
+        PopupRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
+        PopupRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["RankNum"].ToString();
     }
 
     void Start()
@@ -350,7 +368,20 @@ public class TopbarManager : MonoBehaviour
         Credit.SetActive(false);
     }
 
+    public void OnButtonClick_OnProfilePopup()
+    {
+        ClickSFX();
+        //프로필 팝업 활성화
+        ProfilePopup.SetActive(true);
+    }
 
+
+    public void OnButtonClick_OffProfilePopup()
+    {
+        ClickSFX();
+        //프로필 팝업 비활성화
+        ProfilePopup.SetActive(false);
+    }
     // 도움말 세부 팝업
 
     public void OnButtonClick_OnHomePopup()
