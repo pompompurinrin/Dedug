@@ -594,7 +594,7 @@ public class MainController : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -610,7 +610,7 @@ public class MainController : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -626,7 +626,7 @@ public class MainController : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -642,7 +642,7 @@ public class MainController : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -658,7 +658,7 @@ public class MainController : MonoBehaviour
                 {
                     gatchPerList.Add((int)data_Dialog[i]["Percentage"]);
                     gatchIdList.Add((int)data_Dialog[i]["Goods"]);
-                    string imageString = "Goods" + data_Dialog[i]["Goods"].ToString();
+                    string imageString = "reward_Goods" + data_Dialog[i]["Goods"].ToString();
                     goodsSprites.Add(Resources.Load<Sprite>(imageString));
 
                     Debug.Log("rank" + rank);
@@ -673,7 +673,7 @@ public class MainController : MonoBehaviour
 
         if (data_Dialog.Count == 0)
         {
-            data_Dialog = CSVReader.Read("PercentageTable_real");
+            data_Dialog = CSVReader.Read("PercentageTable");
         }
 
         for (int i = 0; i < RewardsImage.Count; i++)

@@ -153,7 +153,7 @@ public class TopbarManager : MonoBehaviour
         NowRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
         NowimageFileName = data_Dialog[DataManager.Instance.nowRank]["MainImage"].ToString();
         NowRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
-        NowRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["CSVNum"].ToString();
+        NowRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["RankNum"].ToString();
 
 
     }

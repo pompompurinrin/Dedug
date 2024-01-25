@@ -1,7 +1,7 @@
-﻿CSVNum,RankName,GuestPlus,Guest,GoldPlus,Gold,FeverTimePlus,FeverGauge,FeverTimeGuestPlus,FeverTimeGuest,RankGoldPlus,RankGold,TicketGoldPlus,TicketGold,Ranktest,RanktestName,MainImage
-0,민간인,0,2,0,135,0,10,0,20,0,0,0,100,0,0,Rank1_NoBG
-1,입덕 부정기,2,4,479,614,3,13,0,20,1500,1500,400,500,Goods1011,수아 컵홀더,Rank2_NoBG
-2,일반인 포기 선언,2,6,286,900,3,16,0,20,1500,3000,500,1000,Goods2022,바다 L홀더,Rank3_NoBG
-3,5덕신,2,8,113,1013,7,23,3,23,2000,5000,500,1500,Goods3031,초롱 아크릴 스탠드,Rank4_NoBG
-4,진짜,2,10,787,1800,7,30,2,25,2000,7000,1500,3000,Goods2042,바다 태피스트리,Rank5_NoBG
-5,끝,0,10,0,1800,0,30,0,25,3000,10000,0,3000,0,0,Rank5_NoBG
+﻿CSVNum,RankNum,RankName,GuestPlus,Guest,GoldPlus,Gold,FeverTimePlus,FeverGauge,FeverTimeGuestPlus,FeverTimeGuest,RankGoldPlus,RankGold,TicketGoldPlus,TicketGold,Ranktest,RanktestName,MainImage
+0,1,민간인,0,2,0,135,0,10,0,20,0,0,0,100,0,0,Rank1_NoBG
+1,2,입덕 부정기,2,4,479,614,3,13,0,20,1500,1500,400,500,Goods1011,수아 컵홀더,Rank2_NoBG
+2,3,일반인 포기 선언,2,6,286,900,3,16,0,20,1500,3000,500,1000,Goods2022,바다 L홀더,Rank3_NoBG
+3,4,5덕신,2,8,113,1013,7,23,3,23,2000,5000,500,1500,Goods3031,초롱 아크릴 스탠드,Rank4_NoBG
+4,5,진짜,2,10,787,1800,7,30,2,25,2000,7000,1500,3000,Goods2042,바다 태피스트리,Rank5_NoBG
+5,5,끝,0,10,0,1800,0,30,0,25,3000,10000,0,3000,0,0,Rank5_NoBG
