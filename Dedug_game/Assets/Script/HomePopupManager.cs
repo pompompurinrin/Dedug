@@ -10,6 +10,10 @@ public class HomePopupManager : MonoBehaviour
     int NowRank;
     public Text GamePopuptext;
     public Text GamePopuptext2;
+    public Text GamePopuptext3;
+    public Text GamePopuptext4;
+    public Text GamePopuptext5;
+
 
 
 
@@ -73,6 +77,10 @@ public class HomePopupManager : MonoBehaviour
 
         GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
         GamePopuptext2.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
+        GamePopuptext3.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
+        GamePopuptext4.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
+        GamePopuptext5.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
+
 
         if (GamePopups != null)
         {

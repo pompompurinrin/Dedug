@@ -14727,9 +14727,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC624\uB79C\uB9CC\uC5D0 \uAEBC\uB0B8 \uCC45\uC0AC\uC774\uC5D0\uC11C \uC6B0\uC218\uC218
-    \uB5A8\uC5B4\uC9C4 \uD3EC\uD1A0\uCE74\uB4DC\uB4E4. \uB4A4\uC8FD\uBC15\uC8FD \uB41C
-    \uD3EC\uD1A0\uCE74\uB4DC\uB4E4\uC744  \uC815\uB9AC\uD574\uBCF4\uC790!"
+  m_Text: "\uADF9\uC7A5\uD310 \uCD5C\uC560\uC758 \uC218\uC544 \uAC1C\uBD09!\n\uC218\uC544\uC758
+    \uBAA8\uD5D8\uC744 \uB530\uB77C\n\uB364\uC73C\uB85C \uAD00\uB78C \uD2B9\uC804\uAE4C\uC9C0
+    \uC5BB\uC5B4\uBD10!"
 --- !u!222 &584913904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22691,9 +22691,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC624\uB79C\uB9CC\uC5D0 \uAEBC\uB0B8 \uCC45\uC0AC\uC774\uC5D0\uC11C \uC6B0\uC218\uC218
-    \uB5A8\uC5B4\uC9C4 \uD3EC\uD1A0\uCE74\uB4DC\uB4E4. \uB4A4\uC8FD\uBC15\uC8FD \uB41C
-    \uD3EC\uD1A0\uCE74\uB4DC\uB4E4\uC744  \uC815\uB9AC\uD574\uBCF4\uC790!"
+  m_Text: "\uAC11\uC790\uAE30 \uD559\uAD50\uB85C \uBAB0\uB824\uB4DC\uB294 \uB9C8\uBB3C\uB4E4!\n\uCD08\uB871\uC774\uAC00
+    \uCD9C\uB3D9\uD55C\uB2E4!\n\uBAA8\uB450 \uC5EC\uAE30\uB85C \uC640\uC11C \uCE58\uC720\uBC1B\uC544!"
 --- !u!222 &899127909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31704,6 +31703,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamePopuptext: {fileID: 386316467}
   GamePopuptext2: {fileID: 2003163812}
+  GamePopuptext3: {fileID: 1872810445}
+  GamePopuptext4: {fileID: 940044166}
+  GamePopuptext5: {fileID: 1065215615}
   GoodsBuy: {fileID: 1135631846}
   GamePopups: {fileID: 1119631174}
   GanbareBada: {fileID: 1076843906}
@@ -44011,7 +44013,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB7AD\uD06C \uC5C5"
+  m_Text: "\uC2B9\uAE09"
 --- !u!222 &1694479910
 CanvasRenderer:
   m_ObjectHideFlags: 0
