@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class YJ2MiniGameManager : MonoBehaviour
@@ -160,6 +158,17 @@ public class YJ2MiniGameManager : MonoBehaviour
     public Button stopOk;
     public Button stopNo;
 
+    // 결과창 아이템 배경
+    public Image reward1BG;
+    public Image reward2BG;
+    public Image reward3BG;
+
+    // 일시정지 배경
+    public Image PauseBG;
+
+    // 일시정지 슬라이더
+    public Slider timerSlider;
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -248,6 +257,7 @@ public class YJ2MiniGameManager : MonoBehaviour
     {
         // UI 업데이트 (제한시간, 점수)
         timerText.text = timer.ToString();
+        timerSlider.value = timer;
         scoreText.text = "Score: " + score.ToString();
     }
 
@@ -309,6 +319,7 @@ public class YJ2MiniGameManager : MonoBehaviour
         {
             // 타이머 감소
             timer--;
+            timerSlider.value = timer;
 
             if (eventStart == true)
             {
@@ -951,18 +962,27 @@ public class YJ2MiniGameManager : MonoBehaviour
         if (score >= 8) // 바꿔
         {
             _count = 3;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(true);
+            reward3BG.gameObject.SetActive(true);
 
         }
         else if (score < 8 && score >= 4)
         {
             _count = 2;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(true);
+            reward3BG.gameObject.SetActive(false);
         }
         else
         {
             _count = 1;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(false);
+            reward3BG.gameObject.SetActive(false);
         }
 
-        GetGoods(_count);
+            GetGoods(_count);
 
 
     }
@@ -1177,6 +1197,7 @@ public class YJ2MiniGameManager : MonoBehaviour
             Time.timeScale = 0;
             // 게임 일시정지 UI 활성화
             stopBg.gameObject.SetActive(true);
+            PauseBG.gameObject.SetActive(true);
         }
     }
 
@@ -1191,6 +1212,7 @@ public class YJ2MiniGameManager : MonoBehaviour
 
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
+        PauseBG.gameObject.SetActive(false);
     }
 
     // 굿즈구매로 돌아가기 버튼 함수
@@ -1214,6 +1236,7 @@ public class YJ2MiniGameManager : MonoBehaviour
 
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);
+        PauseBG.gameObject.SetActive(false);
     }
 
     // 도감으로 돌아가기 처리

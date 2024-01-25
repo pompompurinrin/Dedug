@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -120,6 +116,21 @@ public class HJYJMinigameManager : MonoBehaviour
     public AudioSource fail;
     public AudioSource clickSuccess;
     public AudioSource sua_BGM;
+
+
+    // 게임 결과 아이템 배경
+    public Image reward1BG;
+    public Image reward2BG;
+    public Image reward3BG;
+
+    // 타이머 텍스트
+    public Text timerText;
+
+    // 일시정지 뒷배경
+    public Image PauseBG;
+
+    // 성공 실패 뒷배경
+    public Image feedBackBg;
 
 
     public void Awake()
@@ -258,6 +269,7 @@ public class HJYJMinigameManager : MonoBehaviour
             // 타이머 카운트다운
             timer -= 1;
             timerSlider.value = timer;
+            timerText.text = timer.ToString();
 
             if (timer == 0)
             {
@@ -287,6 +299,7 @@ public class HJYJMinigameManager : MonoBehaviour
         // 게임 시작 시 호출
         clickList.Clear(); // 리스트 초기화
 
+        feedBackBg.gameObject.SetActive(false);
         successImg.gameObject.SetActive(false);
         failImg.gameObject.SetActive(false);
 
@@ -459,6 +472,7 @@ public class HJYJMinigameManager : MonoBehaviour
 
         score++;
         scoreText.text = score.ToString();
+        feedBackBg.gameObject.SetActive(true);
         successImg.gameObject.SetActive(true);
 
         Invoke("GameStart", 1f);
@@ -476,6 +490,7 @@ public class HJYJMinigameManager : MonoBehaviour
         }
 
         scoreText.text = score.ToString();
+        feedBackBg.gameObject.SetActive(true);
         failImg.gameObject.SetActive(true);
 
         Invoke("GameStart", 1f);
@@ -673,15 +688,25 @@ public class HJYJMinigameManager : MonoBehaviour
         if (score >= 8) // 바꿔
         {
             _count = 3;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(true);
+            reward3BG.gameObject.SetActive(true);
 
         }
         else if (score < 8 && score >= 4)
         {
             _count = 2;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(true);
+            reward3BG.gameObject.SetActive(false);
         }
         else
         {
             _count = 1;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(false);
+            reward3BG.gameObject.SetActive(false);
+        
         }
 
         GetGoods(_count);
@@ -899,6 +924,7 @@ public class HJYJMinigameManager : MonoBehaviour
             Time.timeScale = 0;
             // 게임 일시정지 UI 활성화
             stopBg.gameObject.SetActive(true);
+            PauseBG.gameObject.SetActive(true);
         }
     }
 
@@ -913,6 +939,7 @@ public class HJYJMinigameManager : MonoBehaviour
 
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
+        PauseBG.gameObject.SetActive(false);
     }
 
     // 굿즈구매로 돌아가기 버튼 함수
@@ -936,6 +963,7 @@ public class HJYJMinigameManager : MonoBehaviour
 
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);
+        PauseBG.gameObject.SetActive(false);
     }
 
     // 도감으로 돌아가기 처리

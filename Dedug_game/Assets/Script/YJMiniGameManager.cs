@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening.Core.Easing;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -83,6 +80,8 @@ public class YJMiniGameManager : MonoBehaviour
     public Button keepGoing;
     public Button goTitle;
 
+    public Image PauseBG;
+
     public Image realStopBg;
     public Button stopOk;
     public Button stopNo;
@@ -159,6 +158,13 @@ public class YJMiniGameManager : MonoBehaviour
     // 일시정지 수정
     public bool isPuse = false;
 
+    // 타이머 슬라이더 추가
+    public Slider timerSlider;
+
+    // 리워드 배경 변수
+    public Image reward1BG;
+    public Image reward2BG;
+    public Image reward3BG;
 
     public void Awake()
     {
@@ -312,6 +318,7 @@ public class YJMiniGameManager : MonoBehaviour
             // 1. 실시간 카운트다운 갱신 및 BGM 재생
             countDown.text = gameTime.ToString();
             gameTime--;
+            timerSlider.value = gameTime;
         }
 
         // 2. bongTime 동안 랜덤한 colorEffect 활성화
@@ -769,6 +776,7 @@ public class YJMiniGameManager : MonoBehaviour
     {
         // UI 업데이트 (제한시간, 점수)
         countDown.text = gameTime.ToString();
+        timerSlider.value = gameTime;
         costText.text = "Score: " + score.ToString();
     }
 
@@ -855,6 +863,7 @@ public class YJMiniGameManager : MonoBehaviour
             Time.timeScale = 0;
             // 게임 일시정지 UI 활성화
             stopBg.gameObject.SetActive(true);
+            PauseBG.gameObject.SetActive(true);
         }
     }
 
@@ -869,6 +878,7 @@ public class YJMiniGameManager : MonoBehaviour
 
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
+        PauseBG.gameObject.SetActive(false);
     }
 
     // 굿즈구매로 돌아가기 버튼 함수
@@ -892,6 +902,7 @@ public class YJMiniGameManager : MonoBehaviour
 
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);
+        PauseBG.gameObject.SetActive(false);
     }
 
     // 도감으로 돌아가기 처리
@@ -1072,15 +1083,24 @@ public class YJMiniGameManager : MonoBehaviour
         if (score >= 8) // 바꿔
         {
             _count = 3;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(true);
+            reward3BG.gameObject.SetActive(true);
 
         }
         else if (score < 8 && score >= 4)
         {
             _count = 2;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(true);
+            reward3BG.gameObject.SetActive(false);
         }
         else
         {
             _count = 1;
+            reward1BG.gameObject.SetActive(true);
+            reward2BG.gameObject.SetActive(false);
+            reward3BG.gameObject.SetActive(false);
         }
 
         GetGoods(_count);
