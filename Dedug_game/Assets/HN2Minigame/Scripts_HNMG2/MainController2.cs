@@ -68,6 +68,8 @@ public class MainController2 : MonoBehaviour
     public float delta = 0;
     int randPrefab = 0;
 
+    public GameObject GoldlackPopup;
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -228,6 +230,90 @@ public class MainController2 : MonoBehaviour
         {
             span = 1;
         }
+    }
+
+    public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
+    {
+
+        if (DataManager.Instance.nowRank == 0)
+        {
+            if (DataManager.Instance.nowGold >= 100)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
+
+                Save();
+                StartGame();
+            }
+            else if (DataManager.Instance.nowGold < 100)
+            {
+
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 1)
+        {
+            if (DataManager.Instance.nowGold >= 500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
+
+                Save();
+                StartGame();
+
+
+            }
+            else if (DataManager.Instance.nowGold < 500)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 2)
+        {
+            if (DataManager.Instance.nowGold >= 1000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
+
+                Save();
+                StartGame();
+            }
+            else if (DataManager.Instance.nowGold < 1000)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+
+        else if (DataManager.Instance.nowRank == 3)
+        {
+            if (DataManager.Instance.nowGold >= 1500)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
+
+                Save();
+                StartGame();
+            }
+            else if (DataManager.Instance.nowGold < 1500)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
+        else if (DataManager.Instance.nowRank == 4)
+        {
+            if (DataManager.Instance.nowGold >= 3000)
+            {
+                DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
+
+                Save();
+                StartGame();
+            }
+            else if (DataManager.Instance.nowGold < 3000)
+            {
+                GoldlackPopup.SetActive(true);
+            }
+        }
+
     }
 
 

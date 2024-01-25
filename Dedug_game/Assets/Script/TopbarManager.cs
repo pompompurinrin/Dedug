@@ -47,11 +47,10 @@ public class TopbarManager : MonoBehaviour
     public GameObject HelpGradeinfoPopup;
     public GameObject HelpGradeconditonPopup;
 
-    
-
-
-    public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
+    public AudioSource bgm1AudioSource;
+
+
 
     public string NowimageFileName;
 
@@ -118,6 +117,10 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.feverNum = PlayerPrefs.GetInt("FeverNum");
         DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
         DataManager.Instance.first = PlayerPrefs.GetInt("First");
+
+        DataManager.Instance.bgm = PlayerPrefs.GetInt("BGM");
+        DataManager.Instance.sfx = PlayerPrefs.GetInt("SFX");
+
         NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
     }
     public void TopBar()
@@ -211,43 +214,50 @@ public class TopbarManager : MonoBehaviour
 
     }
 
-    public GameObject soundOff;
-    public GameObject BGMOff;
+    public GameObject sfxOff;
+    public GameObject bgmOff;
+
+    public AudioManager audioManager;
 
     public bool isSoundPlaying = false;
-    public void PlaySFX1()
-    {
-        
-        if (isSoundPlaying == true)
-        { 
-            sfx1AudioSource.Pause(); // 소리를 일시 정지
-            soundOff.gameObject.SetActive(true);
-        }
-        else
-        { 
-            sfx1AudioSource.UnPause(); // 일시 정지된 소리를 다시 재생
-            soundOff.gameObject.SetActive(false);
-        } 
 
+    public void ClickSFX()
+    {
+        sfx1AudioSource.Play();
     }
-    public void StopBGM1()
+    public void PlaySFX()
     {
-        
-
-        if (bgm1AudioSource.isPlaying)
-        { 
-            bgm1AudioSource.Pause(); // 소리를 일시 정지
-            BGMOff.gameObject.SetActive(true);
-        } 
-
-        else
+        ClickSFX();
+        if (DataManager.Instance.sfx == 0)
         {
-            bgm1AudioSource.UnPause(); // 일시 정지된 소리를 다시 재생
-            BGMOff.gameObject.SetActive(false);
-
+            DataManager.Instance.sfx = 1;
+            sfxOff.gameObject.SetActive(true);
         }
+        else if(DataManager.Instance.sfx == 1)
+        {
+            DataManager.Instance.sfx = 0;
+            sfxOff.gameObject.SetActive(false);
+        }
+        Save();
 
     }
+    public void PlayBGM()
+    {
+        ClickSFX();
+        if (DataManager.Instance.bgm == 0)
+        {
+            DataManager.Instance.bgm = 1;
+            bgmOff.gameObject.SetActive(true);
+        } 
+
+        else if (DataManager.Instance.bgm == 1)        
+        {
+            DataManager.Instance.bgm = 0;
+            bgmOff.gameObject.SetActive(false);
+        }
+        Save();
+    }
+
     private int GetIntValue(string key)
     {
         // CSV 데이터에서 특정 키의 정수값을 가져오는 메서드
@@ -290,52 +300,52 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_SettingPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 세팅 팝업을 활성화
         SettingPopCanvas.SetActive(true);
     }
 
     public void OnButtonClick_OffSettingPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         //세팅 팝업을 비활성화
         SettingPopCanvas.SetActive(false);
     }
     public void OnButtonClick_MenuUI()
     {
-        PlaySFX1();
+        ClickSFX();
         // 메뉴 팝업을 활성화
         MenuUI.SetActive(true);
     }
 
     public void OnButtonClick_OffMenuUI()
     {
-        PlaySFX1();
+        ClickSFX();
         // 메뉴 팝업을 비활성화
         MenuUI.SetActive(false);
     }
 
     public void OnButtonClick_OnHelpUI()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도움말 UI 활성화
         HelpUI.SetActive(true);
     }
     public void OnButtonClick_OffHelpUI()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도움말 UI 비활성화
         HelpUI.SetActive(false);
     }
     public void OnButtonClick_OnCredit()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도움말 UI 활성화
         Credit.SetActive(true);
     }
     public void OnButtonClick_OffCredit()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도움말 UI 비활성화
         Credit.SetActive(false);
     }
@@ -345,70 +355,70 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHomePopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 홈 팝업 활성화
         HomePopup.SetActive(true);    
     }
 
     public void OnButtonClick_OffHomePopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 홈 팝업 비활성화
         HomePopup.SetActive(false);
     }
 
     public void OnButtonClick_OnCollectionPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도감 팝업 활성화
         CollectionPopup.SetActive(true);
     }
 
     public void OnButtonClick_OffCollectionPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도감 팝업 비활성화
         CollectionPopup.SetActive(false);
     }
 
     public void OnButtonClick_OnCommisionPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 커미션 팝업 활성화
         CommisionPopup.SetActive(true);
     }
 
     public void OnButtonClick_OffCommisionPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 커미션 팝업 비활성화
         CommisionPopup.SetActive(false);
     }
 
     public void OnButtonClick_OnOtakuPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 덕질 팝업 활성화
         OtakuPopup.SetActive(true);
     }
 
     public void OnButtonClick_OffOtakuPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 덕질 팝업 비활성화
         OtakuPopup.SetActive(false);
     }
 
     public void OnButtonClick_OnRankupPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 덕질 팝업 활성화
         RankupPopup.SetActive(true);
     }
 
     public void OnButtonClick_OffRankupPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 덕질 팝업 비활성화
         RankupPopup.SetActive(false);
     }
@@ -417,7 +427,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffAllMenuPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         HelpUI.SetActive(false);
         HomePopup.SetActive(false);
         CollectionPopup.SetActive(false);
@@ -429,7 +439,7 @@ public class TopbarManager : MonoBehaviour
     //설명 팝업
     public void OnButtonClick_OnHelpTopbarPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 탑바 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpTopbarPopup.SetActive(true);
@@ -437,7 +447,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpTopbarPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 탑바 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpTopbarPopup.SetActive(false);
@@ -445,7 +455,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpMenuPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 메뉴 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpMenuPopup.SetActive(true);
@@ -453,7 +463,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpMenuPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 메뉴 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpMenuPopup.SetActive(false);
@@ -461,7 +471,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpCharacterPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 캐릭터 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpCharacterPopup.SetActive(true);
@@ -469,7 +479,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpCharacterPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 캐릭터 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpCharacterPopup.SetActive(false);
@@ -477,7 +487,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpGoodsPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 굿즈 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpGoodsPopup.SetActive(true);
@@ -485,7 +495,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpGoodsPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 굿즈 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpGoodsPopup.SetActive(false);
@@ -493,7 +503,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpStoryPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 스토리 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpStoryPopup.SetActive(true);
@@ -501,7 +511,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpStoryPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 스토리 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpStoryPopup.SetActive(false);
@@ -509,7 +519,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpUserImgPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 유저 이미지 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpUserImgPopup.SetActive(true);
@@ -517,7 +527,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpUserImgPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 유저 이미지 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpUserImgPopup.SetActive(false);
@@ -525,7 +535,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpCustomerPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 손님 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpCustomerPopup.SetActive(true);
@@ -533,7 +543,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpCustomerPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 손님 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpCustomerPopup.SetActive(false);
@@ -541,7 +551,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpFevertimePopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 피버 타임 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpFevertimePopup.SetActive(true);
@@ -549,7 +559,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpFevertimePopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 피버 타임 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpFevertimePopup.SetActive(false);
@@ -557,7 +567,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpHelpPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도움말 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpHelpPopup.SetActive(true);
@@ -565,7 +575,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpHelpPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 도움말 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpHelpPopup.SetActive(false);
@@ -573,7 +583,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpMinigamePopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 미니게임 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpMinigamePopup.SetActive(true);
@@ -581,7 +591,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpMinigamePopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 미니게임 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpMinigamePopup.SetActive(false);
@@ -589,7 +599,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpGradeinfoPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 등급 안내 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpGradeinfoPopup.SetActive(true);
@@ -597,7 +607,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpGradeinfoPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 등급 안내 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpGradeinfoPopup.SetActive(false);
@@ -605,7 +615,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OnHelpGradeconditonPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 승급 조건 설명 팝업 활성화
         SpecificPopup.SetActive(true);
         HelpGradeconditonPopup.SetActive(true);
@@ -613,7 +623,7 @@ public class TopbarManager : MonoBehaviour
 
     public void OnButtonClick_OffHelpGradeconditonPopup()
     {
-        PlaySFX1();
+        ClickSFX();
         // 승급 조건 설명 팝업 비활성화
         SpecificPopup.SetActive(false);
         HelpGradeconditonPopup.SetActive(false);
@@ -688,13 +698,13 @@ public class TopbarManager : MonoBehaviour
 
     public void HomeClick()
     {
-        PlaySFX1();
+        ClickSFX();
         SceneManager.LoadScene("HomeScene");
     }
     
     public void Clear()
     {
-        PlaySFX1();
+        ClickSFX();
         DataManager.Instance.nowRank = 0;
         DataManager.Instance.nowGold = 0;
         DataManager.Instance.feverNum = 0;
@@ -760,6 +770,8 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.firstGoodsBuy = 0;
         DataManager.Instance.firstRequest = 0;
         DataManager.Instance.firstRank = 0;
+        DataManager.Instance.sfx = 0;
+        DataManager.Instance.bgm = 0;
         Save();
     }
 
@@ -829,6 +841,11 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("FirstGoodsBuy", DataManager.Instance.firstGoodsBuy);
         PlayerPrefs.SetInt("FirstRequest", DataManager.Instance.firstRequest);
         PlayerPrefs.SetInt("FirstRank", DataManager.Instance.firstRank);
+
+        PlayerPrefs.SetInt("BGM", DataManager.Instance.bgm);
+        PlayerPrefs.SetInt("SFX", DataManager.Instance.sfx);
+
+        
         PlayerPrefs.Save();
     }
 
