@@ -116,6 +116,7 @@ public class HJYJMinigameManager : MonoBehaviour
     public AudioSource fail;
     public AudioSource clickSuccess;
     public AudioSource sua_BGM;
+    public AudioSource before;
 
 
     // 게임 결과 아이템 배경
@@ -251,6 +252,7 @@ public class HJYJMinigameManager : MonoBehaviour
         }
         else
         {
+            before.Play();
             // 대기시간 텍스트 갱신
             beforeCountText.text = beforeCount.ToString();
         }
