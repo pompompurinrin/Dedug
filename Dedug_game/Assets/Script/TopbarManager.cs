@@ -60,10 +60,7 @@ public class TopbarManager : MonoBehaviour
 
     public string NowimageFileName;
 
-    public Text StateText1;
-    public Text StateText2;
-    public Text StateText3;
-   
+
 
 
     Dictionary<int, Sprite> rankDic = new Dictionary<int, Sprite>();
@@ -177,47 +174,11 @@ public class TopbarManager : MonoBehaviour
         PopupRankName.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
         PopupRankImage.sprite = Resources.Load<Sprite>(NowimageFileName);
         PopupRankNum.text = "Rank. " + data_Dialog[DataManager.Instance.nowRank]["RankNum"].ToString();
-
-        if(DataManager.Instance.nowRank == 0)
-        {
-            StateText1.text = "Ä¿¹Ì¼Ç µîÀå ¼Õ´Ô :   3¸í";
-            StateText2.text = "ÇÇ¹öÅ¸ÀÓ ÆÄ¿ö :   10";
-            StateText3.text = "ºñ½Ñ ±ÂÁî È¹µæ :   1´Ü°è";
-
-        }
-        else if (DataManager.Instance.nowRank == 1)
-        {
-            StateText1.text = "Ä¿¹Ì¼Ç µîÀå ¼Õ´Ô :   7¸í";
-            StateText2.text = "ÇÇ¹öÅ¸ÀÓ ÆÄ¿ö :   20";
-            StateText3.text = "ºñ½Ñ ±ÂÁî È¹µæ :   2´Ü°è";
-
-        }
-        else if (DataManager.Instance.nowRank == 2)
-        {
-            StateText1.text = "Ä¿¹Ì¼Ç µîÀå ¼Õ´Ô :   11¸í";
-            StateText2.text = "ÇÇ¹öÅ¸ÀÓ ÆÄ¿ö :   30";
-            StateText3.text = "ºñ½Ñ ±ÂÁî È¹µæ :   3´Ü°è";
-
-        }
-        else if (DataManager.Instance.nowRank == 3)
-        {
-            StateText1.text = "Ä¿¹Ì¼Ç µîÀå ¼Õ´Ô :   15¸í";
-            StateText2.text = "ÇÇ¹öÅ¸ÀÓ ÆÄ¿ö :   30";
-            StateText3.text = "ºñ½Ñ ±ÂÁî È¹µæ :   4´Ü°è";
-
-        }
-        else if (DataManager.Instance.nowRank == 4)
-        {
-            StateText1.text = "Ä¿¹Ì¼Ç µîÀå ¼Õ´Ô :   20¸í";
-            StateText2.text = "ÇÇ¹öÅ¸ÀÓ ÆÄ¿ö :   40";
-            StateText3.text = "ºñ½Ñ ±ÂÁî È¹µæ :   5´Ü°è";
-
-        }
-
     }
 
     void Start()
     {
+       
         
         data_Dialog = CSVReader.Read(RankFileName);
         RankImage();
@@ -789,26 +750,80 @@ public class TopbarManager : MonoBehaviour
         ClickSFX();
         SceneManager.LoadScene("HomeScene");
     }
-
-    public Canvas ClearCanvas;
-    public void ClearBtnClick()
-    {
-        ClickSFX();
-        ClearCanvas.gameObject.SetActive(true);
-    }
-
-    public void ClearBtnClick_Back()
-    {
-        ClickSFX();
-        ClearCanvas.gameObject.SetActive(false);
-    }
-
+    
     public void Clear()
     {
         ClickSFX();
+        DataManager.Instance.nowRank = 0;
+        DataManager.Instance.nowGold = 0;
+        DataManager.Instance.feverNum = 0;
+        DataManager.Instance.goods1011 = 0;
+        DataManager.Instance.goods2011 = 0;
+        DataManager.Instance.goods3011 = 0;
+        DataManager.Instance.goods1012 = 0;
+        DataManager.Instance.goods2012 = 0;
+        DataManager.Instance.goods3012 = 0;
+        DataManager.Instance.goods1021 = 0;
+        DataManager.Instance.goods2021 = 0;
+        DataManager.Instance.goods3021 = 0;
+        DataManager.Instance.goods1022 = 0;
+        DataManager.Instance.goods2022 = 0;
+        DataManager.Instance.goods3022 = 0;
+        DataManager.Instance.goods1031 = 0;
+        DataManager.Instance.goods2031 = 0;
+        DataManager.Instance.goods3031 = 0;
+        DataManager.Instance.goods1032 = 0;
+        DataManager.Instance.goods2032 = 0;
+        DataManager.Instance.goods3032 = 0;
+        DataManager.Instance.goods1041 = 0;
+        DataManager.Instance.goods2041 = 0;
+        DataManager.Instance.goods3041 = 0;
+        DataManager.Instance.goods1042 = 0;
+        DataManager.Instance.goods2042 = 0;
+        DataManager.Instance.goods3042 = 0;
+        DataManager.Instance.goods1041 = 0;
+        DataManager.Instance.goods2041 = 0;
+        DataManager.Instance.goods3041 = 0;
+        DataManager.Instance.goods1051 = 0;
+        DataManager.Instance.goods2051 = 0;
+        DataManager.Instance.goods3051 = 0;
+        DataManager.Instance.goods1052 = 0;
+        DataManager.Instance.goods2052 = 0;
+        DataManager.Instance.goods3052 = 0;
+        DataManager.Instance.goods4051 = 0;
+        DataManager.Instance.goods4052 = 0;
+        DataManager.Instance.goods4053 = 0;
+        DataManager.Instance.goods4054 = 0;
+        DataManager.Instance.goods4055 = 0;
+        DataManager.Instance.goods4056 = 0;
+        DataManager.Instance.goods4057 = 0;
+        DataManager.Instance.goods4058 = 0;
+        DataManager.Instance.goods4059 = 0;
+        DataManager.Instance.goods4060 = 0;
+        DataManager.Instance.story1_1 = 0;
+        DataManager.Instance.story1_2 = 0;
+        DataManager.Instance.story1_3 = 0;
+        DataManager.Instance.story2_1 = 0;
+        DataManager.Instance.story2_2 = 0;
+        DataManager.Instance.story2_3 = 0;
+        DataManager.Instance.story3_1 = 0;
+        DataManager.Instance.story3_2 = 0;
+        DataManager.Instance.story3_3 = 0;
+        DataManager.Instance.story4_1 = 0;
+        DataManager.Instance.story4_2 = 0;
+        DataManager.Instance.story4_3 = 0;
+        DataManager.Instance.storyID = 0;
         DataManager.Instance.first = 0;
+        DataManager.Instance.firstHome = 0;
+        DataManager.Instance.firstDG = 0;
+        DataManager.Instance.firstGoodsBuy = 0;
+        DataManager.Instance.firstRequest = 0;
+        DataManager.Instance.firstRank = 0;
+        DataManager.Instance.ending = 0;
+        DataManager.Instance.ending1 = 0;
+        DataManager.Instance.sfx = 0;
+        DataManager.Instance.bgm = 0;
         Save();
-        SceneManager.LoadScene("StartScene");
     }
 
     public void Save()

@@ -64,7 +64,8 @@ public class StartManager : MonoBehaviour
         sfx1AudioSource.Play();
         if (DataManager.Instance.first == 0)
         {
-            Clear();
+            DataManager.Instance.storyID = 0;
+            PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
             Save();
             SceneManager.LoadScene("StoryScene");
 
