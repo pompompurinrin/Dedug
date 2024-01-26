@@ -18,6 +18,7 @@ public class StoryManager : MonoBehaviour
     public string ChrRName;
     public string ChrMName;
     public Image StoryBG;
+    public GameObject Select;
 
     public Sprite Story_BG1;
     public Sprite Story_BG2;
@@ -29,11 +30,17 @@ public class StoryManager : MonoBehaviour
     public Sprite Story_BG8;
     public Sprite Story_BG9;
     public Sprite Story_BG10;
+    public Sprite Story_BG11;
+    public Sprite Story_BG12;
+    public Sprite Story_BG13;
+    public Sprite Story_BG14;
 
     public Button SkipBtn;
     public Button PopUPCancelBtn;
     public Button PopUPSkipBtn;
     public Image SkipImg;
+
+    public AudioSource SFX1;
 
     public int ClickNum;
 
@@ -49,7 +56,11 @@ public class StoryManager : MonoBehaviour
 
     private void Start()
     {
-
+        if(DataManager.Instance.storyID == 99)
+        {
+            SkipBtn.gameObject.SetActive(false);
+        }
+        Select.gameObject.SetActive(false);
         BGM = transform.GetComponentInChildren<AudioSource>();
         SkipImg.gameObject.SetActive(false);
         data_Dialog = CSVReader.Read(StoryFileName);
@@ -71,7 +82,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 13)
         {
-            ClickNum = 196;
+            ClickNum = 195;
            
 
         }
@@ -87,7 +98,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 23)
         {
-            ClickNum = 343;
+            ClickNum = 342;
             
         }
         else if (DataManager.Instance.storyID == 31)
@@ -97,12 +108,12 @@ public class StoryManager : MonoBehaviour
         }
         else if (DataManager.Instance.storyID == 32)
         {
-            ClickNum = 432;
+            ClickNum = 430;
             
         }
         else if (DataManager.Instance.storyID == 33)
         {
-            ClickNum = 483;
+            ClickNum = 481;
             
         }
         else if (DataManager.Instance.storyID == 41)
@@ -183,13 +194,28 @@ public class StoryManager : MonoBehaviour
         {
             StoryBG.sprite = Story_BG10;
         }
+        else if (data_Dialog[ClickNum]["TalkBG"].ToString() == "11")
+        {
+            StoryBG.sprite = Story_BG11;
+        }
+        else if (data_Dialog[ClickNum]["TalkBG"].ToString() == "12")
+        {
+            StoryBG.sprite = Story_BG12;
+        }
+        else if (data_Dialog[ClickNum]["TalkBG"].ToString() == "13")
+        {
+            StoryBG.sprite = Story_BG13;
+        }
+        else if (data_Dialog[ClickNum]["TalkBG"].ToString() == "14")
+        {
+            StoryBG.sprite = Story_BG14;
+        }
 
     }
 
     public void TextClick()
     {
        
-
         TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
         NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
         ChangeBG();
@@ -211,7 +237,6 @@ public class StoryManager : MonoBehaviour
         }
         else if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()) && DataManager.Instance.storyID == 99)
         {
-            
             SceneManager.LoadScene("StartScene");
         }
         else if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()))
@@ -219,23 +244,62 @@ public class StoryManager : MonoBehaviour
             SceneManager.LoadScene("DG_Scene");
         }
 
+        object BtnID;
+        bool hasBtnID = data_Dialog[ClickNum].TryGetValue("Ending", out BtnID);
+        if (hasBtnID && BtnID != null && !string.IsNullOrEmpty(BtnID.ToString()))
+        {
+            Select.gameObject.SetActive(true);
+        }
+
+        SFX1.Play();
         ClickNum++;
        
 
     }    
 
+    public void EndingBtn1()
+    {
+        //ClickNum = ;
+        TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
+        NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
+        ChangeBG();
+        ChangeBGM();
+        ChrLName = data_Dialog[ClickNum]["ChrL"].ToString();
+        ChrL.sprite = Resources.Load<Sprite>(ChrLName);
+        ChrRName = data_Dialog[ClickNum]["ChrR"].ToString();
+        ChrR.sprite = Resources.Load<Sprite>(ChrRName);
+        ChrMName = data_Dialog[ClickNum]["ChrM"].ToString();
+        ChrM.sprite = Resources.Load<Sprite>(ChrMName);
+        SFX1.Play();
+    }
+
+    public void EndingBtn2()
+    {
+        //ClickNum = ;
+        TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
+        NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
+        ChangeBG();
+        ChangeBGM();
+        ChrLName = data_Dialog[ClickNum]["ChrL"].ToString();
+        ChrL.sprite = Resources.Load<Sprite>(ChrLName);
+        ChrRName = data_Dialog[ClickNum]["ChrR"].ToString();
+        ChrR.sprite = Resources.Load<Sprite>(ChrRName);
+        ChrMName = data_Dialog[ClickNum]["ChrM"].ToString();
+        ChrM.sprite = Resources.Load<Sprite>(ChrMName);
+        SFX1.Play();
+    }
+
+
     public void SkipBtnClick()
     {
         SkipImg.gameObject.SetActive(true);
+        SFX1.Play();
     }
 
     public void PopUPSkipBtnClick()
     {
-        if (DataManager.Instance.storyID == 99)
-        {
-            SceneManager.LoadScene("StartScene");
-        }
-        else if (DataManager.Instance.storyID == 0)
+        
+        if (DataManager.Instance.storyID == 0)
         {
             DataManager.Instance.first = 1;
             PlayerPrefs.SetInt("First", DataManager.Instance.first);
@@ -245,11 +309,13 @@ public class StoryManager : MonoBehaviour
         {
             SceneManager.LoadScene("DG_Scene");
         }
+        SFX1.Play();
     }
 
     public void PopUPCancelBtnClick()
     {
         SkipImg.gameObject.SetActive(false);
+        SFX1.Play();
     }
 
     public AudioSource BGM;
