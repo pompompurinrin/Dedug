@@ -66,12 +66,15 @@ public class StartManager : MonoBehaviour
         {
             DataManager.Instance.storyID = 0;
             PlayerPrefs.SetInt("StoryID", DataManager.Instance.storyID);
+            Save();
             SceneManager.LoadScene("StoryScene");
 
         }
         else if(DataManager.Instance.ending1 == 1)
         {
             Clear();
+            DataManager.Instance.first = 1;
+            Save();
             SceneManager.LoadScene("HomeScene");
         }
         else

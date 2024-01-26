@@ -820,6 +820,7 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.firstRequest = 0;
         DataManager.Instance.firstRank = 0;
         DataManager.Instance.ending = 0;
+        DataManager.Instance.ending1 = 0;
         DataManager.Instance.sfx = 0;
         DataManager.Instance.bgm = 0;
         Save();
@@ -892,7 +893,7 @@ public class TopbarManager : MonoBehaviour
         PlayerPrefs.SetInt("FirstRequest", DataManager.Instance.firstRequest);
         PlayerPrefs.SetInt("FirstRank", DataManager.Instance.firstRank);
         PlayerPrefs.SetInt("Ending", DataManager.Instance.ending);
-
+        PlayerPrefs.SetInt("Ending1", DataManager.Instance.ending1);
         PlayerPrefs.SetInt("BGM", DataManager.Instance.bgm);
         PlayerPrefs.SetInt("SFX", DataManager.Instance.sfx);
 

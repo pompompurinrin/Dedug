@@ -34,6 +34,7 @@ public class StoryManager : MonoBehaviour
     public Sprite Story_BG12;
     public Sprite Story_BG13;
     public Sprite Story_BG14;
+    public Sprite Story_BG15;
 
     public Button SkipBtn;
     public Button PopUPCancelBtn;
@@ -51,7 +52,8 @@ public class StoryManager : MonoBehaviour
     private void Awake()
     {
         DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
-        
+        DataManager.Instance.ending1 = PlayerPrefs.GetInt("Ending1");
+
     }
 
     private void Start()
@@ -210,6 +212,10 @@ public class StoryManager : MonoBehaviour
         {
             StoryBG.sprite = Story_BG14;
         }
+        else if (data_Dialog[ClickNum]["TalkBG"].ToString() == "15")
+        {
+            StoryBG.sprite = Story_BG15;
+        }
 
     }
 
@@ -227,12 +233,29 @@ public class StoryManager : MonoBehaviour
         ChrMName = data_Dialog[ClickNum]["ChrM"].ToString();
         ChrM.sprite = Resources.Load<Sprite>(ChrMName);
 
+        object BtnID;
+        bool hasBtnID = data_Dialog[ClickNum].TryGetValue("Btn", out BtnID);
+        if (hasBtnID && BtnID != null && !string.IsNullOrEmpty(BtnID.ToString()))
+        {
+            Select.gameObject.SetActive(true);
+        }
+
         object EndID;
         bool hasEndID = data_Dialog[ClickNum].TryGetValue("End", out EndID);
+        object EndingID;
+        bool hasEndingID = data_Dialog[ClickNum].TryGetValue("Ending", out EndingID);
+        if (hasEndingID && EndingID != null && !string.IsNullOrEmpty(EndingID.ToString()) && DataManager.Instance.storyID == 99)
+        {
+            DataManager.Instance.ending1 = 1;
+            PlayerPrefs.SetInt("Ending1", DataManager.Instance.ending1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("StartScene");
+        }
         if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()) && DataManager.Instance.storyID == 0)
         {
             DataManager.Instance.first = 1;
             PlayerPrefs.SetInt("First", DataManager.Instance.first);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("HomeScene");
         }
         else if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()) && DataManager.Instance.storyID == 99)
@@ -244,12 +267,6 @@ public class StoryManager : MonoBehaviour
             SceneManager.LoadScene("DG_Scene");
         }
 
-        object BtnID;
-        bool hasBtnID = data_Dialog[ClickNum].TryGetValue("Ending", out BtnID);
-        if (hasBtnID && BtnID != null && !string.IsNullOrEmpty(BtnID.ToString()))
-        {
-            Select.gameObject.SetActive(true);
-        }
 
         SFX1.Play();
         ClickNum++;
@@ -259,7 +276,7 @@ public class StoryManager : MonoBehaviour
 
     public void EndingBtn1()
     {
-        //ClickNum = ;
+        Select.gameObject.SetActive(false);
         TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
         NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
         ChangeBG();
@@ -275,7 +292,8 @@ public class StoryManager : MonoBehaviour
 
     public void EndingBtn2()
     {
-        //ClickNum = ;
+        ClickNum = 647;
+        Select.gameObject.SetActive(false);
         TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
         NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
         ChangeBG();
