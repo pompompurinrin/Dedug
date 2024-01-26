@@ -141,6 +141,7 @@ public class MainController : MonoBehaviour
    
     private void Start()
     {
+
         StartGame();
 
         Main_BGM2.Play();    // 메인 BGM 재생
@@ -154,6 +155,8 @@ public class MainController : MonoBehaviour
         RewardsImage.Add(Reward1);
         RewardsImage.Add(Reward2);
         RewardsImage.Add(Reward3);
+
+        Input.multiTouchEnabled = false;
 
         Setting();
 

@@ -34,8 +34,8 @@ public class TimerController: MonoBehaviour
         readyCount_SFX.Stop();
 
         // 레디 카운트를 1초 뒤에 1초마다 실행
-        InvokeRepeating("ReadyCounter", 0, 1f);                
-       
+        InvokeRepeating("ReadyCounter", 0, 1f);
+        Input.multiTouchEnabled = false;
     }
 
     public void ReadyCounter()

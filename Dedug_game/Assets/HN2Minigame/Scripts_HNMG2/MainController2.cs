@@ -71,6 +71,7 @@ public class MainController2 : MonoBehaviour
 
     public void Awake()
     {
+        Input.multiTouchEnabled = false;
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
         DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
         DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");

@@ -23,6 +23,7 @@ public class TimeController2 : MonoBehaviour
 
     private void Awake()
     {
+        Input.multiTouchEnabled = false;
         this.Player = GameObject.Find("Player");
     }
 
