@@ -276,6 +276,7 @@ public class StoryManager : MonoBehaviour
 
     public void EndingBtn1()
     {
+        SFX1.Play();
         Select.gameObject.SetActive(false);
         TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
         NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
@@ -288,10 +289,12 @@ public class StoryManager : MonoBehaviour
         ChrMName = data_Dialog[ClickNum]["ChrM"].ToString();
         ChrM.sprite = Resources.Load<Sprite>(ChrMName);
         SFX1.Play();
+        ClickNum++;
     }
 
     public void EndingBtn2()
     {
+        SFX1.Play();
         ClickNum = 647;
         Select.gameObject.SetActive(false);
         TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
@@ -305,6 +308,7 @@ public class StoryManager : MonoBehaviour
         ChrMName = data_Dialog[ClickNum]["ChrM"].ToString();
         ChrM.sprite = Resources.Load<Sprite>(ChrMName);
         SFX1.Play();
+        ClickNum++;
     }
 
 
