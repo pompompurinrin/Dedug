@@ -183,13 +183,31 @@ public class TopbarManager : MonoBehaviour
         data_Dialog = CSVReader.Read(RankFileName);
         RankImage();
         RankSetupInfo();
-       
-        GameObject MenuUI = GameObject.Find("MenuUI");
+        
+         GameObject MenuUI = GameObject.Find("MenuUI");
         GameObject SettingPopupCanvas = GameObject.Find("SettingPopupCanvas");
         GameObject HelpUI = GameObject.Find("HelpUI");
         GameObject PopupCanvas = GameObject.Find("PopupCanvas");
 
+        if (DataManager.Instance.sfx == 0)
+        {
+            
+            sfxOff.gameObject.SetActive(false);
+        }
+        else if (DataManager.Instance.sfx == 1)
+        {
+            sfxOff.gameObject.SetActive(true);
+        }
 
+        if (DataManager.Instance.bgm == 0)
+        {
+
+            bgmOff.gameObject.SetActive(false);
+        }
+        else if (DataManager.Instance.bgm == 1)
+        {
+            bgmOff.gameObject.SetActive(true);
+        }
 
         if (MenuUI != null)
         {

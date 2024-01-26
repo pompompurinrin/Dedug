@@ -13,6 +13,8 @@ public class StartManager : MonoBehaviour
     public AudioSource sfx1AudioSource;
     public AudioSource bgm1AudioSource;
 
+    public TopbarManager topbarManager;
+
     private void Awake()
     {
         DataManager.Instance.storyID = PlayerPrefs.GetInt("StoryID");
@@ -26,6 +28,10 @@ public class StartManager : MonoBehaviour
         sfx1AudioSource.Stop();
     }
 
+   public void ClearClick()
+    {
+        topbarManager.Clear();
+    }
     IEnumerator BlinkImage()
     {
         while (true)
