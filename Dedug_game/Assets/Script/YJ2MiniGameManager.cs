@@ -342,17 +342,13 @@ public class YJ2MiniGameManager : MonoBehaviour
             // 타이머가 0이면 게임 종료
             if (timer == 0)
             {
-                fin.gameObject.SetActive(true);
-
-                Invoke("EndGame", 1f);
+                EndGame();
             }
 
             // 스코어가 8이면 게임 종료
             if (score >= 8)
             {
-                fin.gameObject.SetActive(true);
-
-                Invoke("EndGame", 1f);
+                EndGame();
             }
 
             if (timer < 0)
@@ -1330,6 +1326,9 @@ public class YJ2MiniGameManager : MonoBehaviour
         {
             isPuse = true;
             Time.timeScale = 0;
+
+            sua_BGM.Pause();
+
             // 게임 일시정지 UI 활성화
             stopBg.gameObject.SetActive(true);
             PauseBG.gameObject.SetActive(true);
@@ -1344,6 +1343,8 @@ public class YJ2MiniGameManager : MonoBehaviour
             isPuse = false;
             Time.timeScale = 1;
         }
+
+        sua_BGM.Play();
 
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
@@ -1368,6 +1369,8 @@ public class YJ2MiniGameManager : MonoBehaviour
             isPuse = false;
             Time.timeScale = 1;
         }
+
+        sua_BGM.Play();
 
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);

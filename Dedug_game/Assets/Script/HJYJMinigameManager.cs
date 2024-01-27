@@ -517,6 +517,8 @@ public class HJYJMinigameManager : MonoBehaviour
 
         // 게임 종료 처리
 
+        sua_BGM.Stop();
+
         Score();
 
         ResultCanvas.SetActive(true);
@@ -1064,6 +1066,9 @@ public class HJYJMinigameManager : MonoBehaviour
         {
             isPuse = true;
             Time.timeScale = 0;
+
+            sua_BGM.Pause();
+
             // 게임 일시정지 UI 활성화
             stopBg.gameObject.SetActive(true);
             PauseBG.gameObject.SetActive(true);
@@ -1078,6 +1083,8 @@ public class HJYJMinigameManager : MonoBehaviour
             isPuse = false;
             Time.timeScale = 1;
         }
+
+        sua_BGM.Play();
 
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
@@ -1102,6 +1109,8 @@ public class HJYJMinigameManager : MonoBehaviour
             isPuse = false;
             Time.timeScale = 1;
         }
+
+        sua_BGM.Play();
 
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);

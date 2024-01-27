@@ -56,7 +56,7 @@ public class YJMiniGameManager : MonoBehaviour
 
     // 응원봉 타임!
     private bool isGameRunning = false;
-    private float bongTime = 2.0f;
+    // private float bongTime = 2.0f;
     private bool isBongTimeActive = false;
 
     // 하드 응원봉 타임!
@@ -869,6 +869,9 @@ public class YJMiniGameManager : MonoBehaviour
         {
             isPuse = true;
             Time.timeScale = 0;
+
+            gameAudioSource.Pause();
+
             // 게임 일시정지 UI 활성화
             stopBg.gameObject.SetActive(true);
             PauseBG.gameObject.SetActive(true);
@@ -883,6 +886,8 @@ public class YJMiniGameManager : MonoBehaviour
             isPuse = false;
             Time.timeScale = 1;
         }
+
+        gameAudioSource.Play();
 
         // 게임 일시정지 UI 비활성화
         stopBg.gameObject.SetActive(false);
@@ -907,6 +912,8 @@ public class YJMiniGameManager : MonoBehaviour
             isPuse = false;
             Time.timeScale = 1;
         }
+
+        gameAudioSource.Play();
 
         // 리얼스톱Bg 활성화
         realStopBg.gameObject.SetActive(false);
