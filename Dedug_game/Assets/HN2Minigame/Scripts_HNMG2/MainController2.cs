@@ -10,20 +10,33 @@ using UnityEngine.SocialPlatforms.Impl;
 
 
 public class MainController2 : MonoBehaviour
-{        
-    // 스코어 초기값
-    public int score = 0;
+{
+    
+    public int score = 0;                // 스코어 초기값
+    public float span = 1;                   // 오브젝트 생성되는 주기
 
+    int _count = 0;                      // 몇개 줄 지 설정하는 변수
+    int randPrefab;                      // 떨어지는 오브젝트 랜덤 변수
+
+    // 타이머
+    public float gameTimer = 60;         // 게임 시간 60초 설정
+    public float readyCounter = 4;       // 대기 시간 3초 설정
+    public Slider gameTimerSlider;       // 게임 시간 UI 슬라이더 연결
+    public Text gameTimerText;           // 게임 시간 출력
+    public Text readyCount;              // 대기 시간 출력
+    public Image readyCountBG;           // 대기 시간 BG
+    
     // 사운드
-    public AudioSource Main_BGM;    // 메인 BGM
-    public AudioSource heal_sfx;    // 매칭 성공 사운드
-    public AudioSource hit_sfx;     // 매칭 에러 사운드
+    public AudioSource Main_BGM;         // 메인 BGM
+    public AudioSource heal_sfx;         // 매칭 성공 사운드
+    public AudioSource hit_sfx;          // 매칭 에러 사운드
+    public AudioSource readyCount_SFX;   // 대기 시간 효과음
 
     // 이펙트
-    public GameObject heal_fx;      // 힐 효과
-    public GameObject hit_fx;       // 피격 효과
+    public GameObject heal_fx;           // 힐 효과
+    public GameObject hit_fx;            // 피격 효과
 
-    // UI 요소들
+    // 결과창 UI
     public Image ResultBGBG;
     public Image ScoreBG;
     public Text Scoretxt;
@@ -49,9 +62,27 @@ public class MainController2 : MonoBehaviour
     public Image Reward2BG;
     public Image Reward3BG;
 
+    // 일시정지 관련 변수   
+    public Image pauseBG;
+    public Image stopBg;
+    public Button stop;
+    public Button keepGoing;
+    public Button goTitle;
+
+    public Image realStopBg;
+    public Button stopOk;
+    public Button stopNo;
+
     // 리워드 리스트 선언을 여기서 시킴
     public List<Image> RewardsImage = new List<Image>();
     public List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
+
+    public List<Sprite> rewardGoods = new List<Sprite>();
+    public List<Sprite> goodsSprites = new List<Sprite>();
+
+    public List<int> gatchIdList;
+    public List<int> gatchPerList;
+    public List<int> rewards; // 줄 애들
 
     public bool isGameRunnig = false;
 
@@ -65,13 +96,11 @@ public class MainController2 : MonoBehaviour
     int randomObstacleImage;
     int randomStudentImage;
 
-    public float span = 4;  // 오브젝트 생성되는 주기
-    public float delta = 0;
-    int randPrefab = 0;
-
     public void Awake()
     {
+        // 멀티터치 방지
         Input.multiTouchEnabled = false;
+
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
         DataManager.Instance.goods1012 = PlayerPrefs.GetInt("Goods1012");
         DataManager.Instance.goods1021 = PlayerPrefs.GetInt("Goods1021");
@@ -121,15 +150,26 @@ public class MainController2 : MonoBehaviour
     }
    
     private void Start()
-    {           
-        StartGame(); // 게임 시작
+    {
+        Debug.Log("스타트");
+        Debug.Log("초기화");
 
-        Main_BGM.Play();    // 메인 BGM 재생
-        heal_sfx.Stop();  // correct_sfx 정지
-        hit_sfx.Stop();    // correct_sfx 정지
+        //초기화
+        score = 0;
+        span = 1;
 
-        // 오브젝트 생성 주기
-        span = 4;
+        Main_BGM.Play();        
+        heal_sfx.Stop();        
+        hit_sfx.Stop();         
+        readyCount_SFX.Stop();  
+
+        gameTimer = 60f;
+        readyCounter = 4f;   
+
+        // 레디 카운트를 1초 뒤에 1초마다 실행
+        InvokeRepeating("ReadyCounter", 0, 1);
+
+        //------------------------------------------------//
 
         //PercentageTable_1에서 배열을 사용할게
         data_Dialog = CSVReader.Read("PercentageTable");
@@ -141,105 +181,157 @@ public class MainController2 : MonoBehaviour
 
         Setting();
 
+        //------------------------------------------------//
     }
 
-    // 게임이 시작될 때 호출되는 함수
-    private void StartGame()
+    public void ReadyCounter()
     {
+        Debug.Log("ReadyCounter");
+
         // 게임이 일시 정지 중일 경우 반환
         if (isGamePaused)
             return;
 
-        else
+        readyCounter -= 1f;                             // 대기 시간 1초씩 감소
+        readyCountBG.gameObject.SetActive(true);        // 대기 시간 BG 띄워
+        readyCount.text = readyCounter.ToString();      // 대기 시간 출력
+        readyCount_SFX.Play();                          // 대기 시간 효과음 넣어
+
+        if (readyCounter == 0)
         {
-            Debug.Log("초롱아 도와줘 게임 진짜 시작");
-            isGameRunnig = true;
+            readyCounter = 0;                           // 대기 시간 0
+            readyCount_SFX.Stop();                      // 대기 시간 효과음 멈춰
+            readyCountBG.gameObject.SetActive(false);   // 대기 시간 BG 내려
+            CancelInvoke("ReadyCounter");
+
+            // 타이머를 1초 뒤에 1초마다 실행
+            InvokeRepeating("GamePlay", 0, 1);
+            
+
         }
     }
-
-    // 오브젝트 생성소
-    void Update()
+    public void GamePlay()
     {
-        if (isGamePaused || !isGameRunnig)
+        // 게임 시작!
+        isGameRunnig = true;
+
+        Debug.Log("GamePlay");
+
+        // 게임이 일시 정지 중일 경우 반환
+        if (isGamePaused)
             return;
 
-        this.delta += Time.deltaTime;
-        
+        gameTimer -= 1f;                                 // 타이머 감소
+        gameTimerText.text = gameTimer.ToString("F0");   // 1의 자리부터 표현 
+        gameTimerSlider.maxValue = gameTimer;
+        gameTimerSlider.value = gameTimer;
 
-        if (this.delta > this.span)
+        randPrefab = Random.Range(0, 3);
+
+        if (randPrefab == 0)
         {
-            this.delta = 0;
-            randPrefab = Random.Range(0, 3);
-            transform.Translate(0, -0.1f, 0);
-
-
-            if (randPrefab == 0)
+            randomStudentImage = Random.Range(0, StudentSprites.Length);
+            GameObject go = Instantiate(StudentPrefab);
+            go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
+            int px = Random.Range(-2, 2);
+            go.transform.position = new Vector3(px, 4, 1);
+            Transform healFxTransform = go.transform.Find("heal_fx");
+            if (healFxTransform != null)
             {
-                transform.Translate(0, -0.1f, 0);
-                randomStudentImage = Random.Range(0, StudentSprites.Length);
-                GameObject go = Instantiate(StudentPrefab);
-                go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
-                int px = Random.Range(-2, 2);
-                go.transform.position = new Vector3(px, 4, 1);
-                Transform healFxTransform = go.transform.Find("heal_fx");
-                if (healFxTransform != null)
-                {
-                    healFxTransform.gameObject.SetActive(true);
-                }
+                healFxTransform.gameObject.SetActive(true);
             }
-            else if (randPrefab == 1)
+        }
+        else if (randPrefab == 1)
+        {
+            randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
+            GameObject go2 = Instantiate(ObstaclePrefab);
+            go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
+            int px = Random.Range(-2, 2);
+            go2.transform.position = new Vector3(px, 4, 1);
+            Transform hitfxTransform = go2.transform.Find("hit_fx");
+            if (hitfxTransform != null)
             {
-                transform.Translate(0, -0.2f, 0);
-                randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
-                GameObject go2 = Instantiate(ObstaclePrefab);
-                go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
-                int px = Random.Range(-2, 2);
-                go2.transform.position = new Vector3(px, 4, 1);
-                Transform hitfxTransform = go2.transform.Find("hit_fx");
-                if (hitfxTransform != null)
-                {
-                    hitfxTransform.gameObject.SetActive(true);
-                }
-            }
-
-            else
-            {
-                transform.Translate(0, -0.5f, 0);
-                randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
-                GameObject go3 = Instantiate(MagicalGirlsPrefab);
-                go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
-                int px = Random.Range(-2, 2);
-                go3.transform.position = new Vector3(px, 4, 1);
-                Transform healFxTransform = go3.transform.Find("heal_fx");
-                if (healFxTransform != null)
-                {
-                    healFxTransform.gameObject.SetActive(true);
-                }
+                hitfxTransform.gameObject.SetActive(true);
             }
         }
 
-        else if (this.delta >= 3)
+        else
         {
-            span = 1;
+            randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
+            GameObject go3 = Instantiate(MagicalGirlsPrefab);
+            go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
+            int px = Random.Range(-2, 2);
+            go3.transform.position = new Vector3(px, 4, 1);
+            Transform healFxTransform = go3.transform.Find("heal_fx");
+            if (healFxTransform != null)
+            {
+                healFxTransform.gameObject.SetActive(true);
+            }
         }
+
+        // 타이머가 끝나면 (0까지 보기 위해 -1로 설정)
+        if (gameTimer <= -1)
+        {
+            gameTimer = -1;
+            CancelInvoke("GamePlay");
+            TimeOver();
+            
+        }
+
     }
 
-    public void Click_OnRestartPopup() //리스타트 팝업 활성화
+    // 시간이 다 되면 게임 오버 화면을 활성화
+    public void TimeOver()
+    {
+        // 게임 끝!
+        isGameRunnig = false;
+
+        Debug.Log("타임 오버");
+
+        Score();
+        Main_BGM.Stop();
+
+        isGameRunnig = false;
+        pauseBG.gameObject.SetActive(true);
+        ResultBGBG.gameObject.SetActive(true);
+
+        MagicalGirlsPrefab.transform.position = new Vector3(0, -5000, 1);
+        ObstaclePrefab.transform.position = new Vector3(0, -5000, 1);
+        StudentPrefab.transform.position = new Vector3(0, -5000, 1);
+
+        heal_fx.transform.position = new Vector3(0, -5000, 1);
+        hit_fx.transform.position = new Vector3(0, -5000, 1);
+
+        // 어떤 컴포넌트에 배정할거임?
+        ResultBGBG = GameObject.Find("ResultBGBG").GetComponent<Image>();
+        ScoreBG = GameObject.Find("ScoreBG").GetComponent<Image>();
+        Restart = GameObject.Find("Restart").GetComponent<Button>();
+        HomeBtn = GameObject.Find("Home").GetComponent<Button>();
+        UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
+    }
+
+
+    // 리스타트 팝업 활성화
+    public void OnRestartPopup() 
     {
         GoldText();
         RestartPopup.gameObject.SetActive(true);
     }
 
-    public void Click_OffRestartPopup() //리스타트 팝업 비활성화
+    // 리스타트 팝업 비활성화
+    public void OffRestartPopup() 
     {
         RestartPopup.gameObject.SetActive(false);
     }
 
-    public void Click_OffGoldlack() //골드 부족 팝업 비활성화
+    // 골드 부족 팝업 비활성화
+    public void OffGoldlack() 
     {
         GoldlackPopup.gameObject.SetActive(false);
     }
-    public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
+
+    // 진수: 리얼리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
+    public void RestartClick() 
     {
 
         if (DataManager.Instance.nowRank == 0)
@@ -288,7 +380,6 @@ public class MainController2 : MonoBehaviour
             }
         }
 
-
         else if (DataManager.Instance.nowRank == 3)
         {
             if (DataManager.Instance.nowGold >= 1500)
@@ -296,6 +387,7 @@ public class MainController2 : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
 
                 Save();
+
                 SceneManager.LoadScene("HN2MiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1500)
@@ -318,10 +410,10 @@ public class MainController2 : MonoBehaviour
                 GoldlackPopup.SetActive(true);
             }
         }
-
     }
 
-    public void GoldText() //다시 시작 팝업에서 필요한 골드량을 나타내는 스크립트
+    // 다시 시작 팝업에서 필요한 골드량을 나타내는 스크립트
+    public void GoldText() 
     {
         if (DataManager.Instance.nowRank == 0)
         {
@@ -350,30 +442,17 @@ public class MainController2 : MonoBehaviour
         }
     }
 
-
+    // 홈클릭
     public void HomeClick()
     {
         SceneManager.LoadScene("HomeScene");
     }
 
+    // 재시작 클릭
     public void RequestClick()
     {
         SceneManager.LoadScene("RequestScene");
     }
-
-
-    // 게임 일시정지 관련 변수   
-    public Image pauseBG;
-    public Image stopBg;
-    public Button stop;
-    public Button keepGoing;
-    public Button goTitle;
-
-    public Image realStopBg;
-    public Button stopOk;
-    public Button stopNo;
-
-    [SerializeField] private TimeController2 timeController2;
 
     // 게임 일시정지 상태를 나타내는 변수
     public bool isGamePaused = false;
@@ -388,7 +467,6 @@ public class MainController2 : MonoBehaviour
         }
         else if (isGamePaused)
         {
-
             // 게임 재개
             Time.timeScale = 1;
             pauseBG.gameObject.SetActive(false);
@@ -408,8 +486,6 @@ public class MainController2 : MonoBehaviour
         pauseBG.gameObject.SetActive(true);
         stopBg.gameObject.SetActive(true);
         Main_BGM.Pause();
-
-
     }
 
     // 게임으로 돌아가기 버튼 함수
@@ -431,7 +507,6 @@ public class MainController2 : MonoBehaviour
         pauseBG.gameObject.SetActive(false);
         stopBg.gameObject.SetActive(false);
 
-
         // 리얼스톱Bg 활성화
         pauseBG.gameObject.SetActive(true);
         realStopBg.gameObject.SetActive(true);
@@ -449,21 +524,14 @@ public class MainController2 : MonoBehaviour
         isGamePaused = false;
         Main_BGM.Play();
     }
-    public HomeManager homeManager;
-    // 굿즈구매로 버튼 함수
+
+    // 홈으로 버튼 함수
     public void stopOkClick()
     {
         Time.timeScale = 1;
         isGamePaused = false;
         SceneManager.LoadScene("HomeScene");
         //homeManager.OnButtonClick_OnGoodsBuy();
-    }
-
-    // 게임 재개 처리
-    private void ResumeGame()
-    {
-        isGamePaused = false;
-        Main_BGM.Play();
     }
 
     // 굿즈 개수 증가 메서드
@@ -488,20 +556,15 @@ public class MainController2 : MonoBehaviour
     public void CountDown()
     {
         score--;
+        if (score < 0)
+        {
+            score = 0;
+        }
         Scoretxt.text = "Score : " + score.ToString();
         hit_sfx.Play();
         hit_fx.gameObject.SetActive(true);
         heal_fx.gameObject.SetActive(false);
     }
-
-
-
-
-    public List<Sprite> goodsSprites = new List<Sprite>();
-
-    public List<int> gatchIdList;
-    public List<int> gatchPerList;
-    public List<int> rewards; // 줄 애들
 
     void Setting() // 씬 들어가자마자 한번 하면 됨
     {
@@ -659,9 +722,6 @@ public class MainController2 : MonoBehaviour
         }
     }
 
-    public List<Sprite> rewardGoods = new List<Sprite>();
-
-    public int _count = 0;// 몇개 줄 지 설정하는 변수
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
         UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
@@ -675,14 +735,14 @@ public class MainController2 : MonoBehaviour
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(true);
         }
-        else if (score < 100 && score >= 90)
+        else if (score < 110 && score >= 90)
         {
             _count = 2;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(false);
         }
-        else if (score < 60 && score >= 0)
+        else if (score < 90 && score >= 0)
         {
             _count = 1;
             Reward1BG.gameObject.SetActive(true);
@@ -692,10 +752,10 @@ public class MainController2 : MonoBehaviour
 
         else
         {
+            score = 0;
         }
 
         GetGoods(_count);
-
     }
 
     public void Save()
@@ -882,7 +942,8 @@ public class MainController2 : MonoBehaviour
         // PlayerPrefs에 현재 값 저장
         PlayerPrefs.Save();
 
-        //Debug.Log("미니게임 결과:" +  DataManager.Instance.goods1011); //특정 굿즈 오류 체크용
+        /*
+        Debug.Log("미니게임 결과:" +  DataManager.Instance.goods1011); //특정 굿즈 오류 체크용
         Debug.Log(DataManager.Instance.goods1011);
         Debug.Log(DataManager.Instance.goods1012);
         Debug.Log(DataManager.Instance.goods2011);
@@ -923,8 +984,8 @@ public class MainController2 : MonoBehaviour
         Debug.Log(DataManager.Instance.goods4058);
         Debug.Log(DataManager.Instance.goods4059);
         Debug.Log(DataManager.Instance.goods4060);
+        */
 
     }
-
 
 }
