@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.ParticleSystem;
-using UnityEditor.PackageManager.Requests;
+
 
 
 public class StartManager : MonoBehaviour
