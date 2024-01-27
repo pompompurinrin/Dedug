@@ -140,7 +140,7 @@ public class HomeManager : MonoBehaviour
             }
         }
 
-        if (DataManager.Instance.nowRank == 5)
+        if (DataManager.Instance.nowRank == 4)
         {
             LockChar4Btn.SetActive(false);
         }
