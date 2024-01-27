@@ -164,7 +164,10 @@ public class MainController2 : MonoBehaviour
         readyCount_SFX.Stop();  
 
         gameTimer = 60f;
-        readyCounter = 4f;   
+        readyCounter = 4f;
+
+        gameTimerSlider.maxValue = gameTimer;
+        gameTimerSlider.value = gameTimer;
 
         // 레디 카운트를 1초 뒤에 1초마다 실행
         InvokeRepeating("ReadyCounter", 0, 1);
@@ -223,7 +226,6 @@ public class MainController2 : MonoBehaviour
 
         gameTimer -= 1f;                                 // 타이머 감소
         gameTimerText.text = gameTimer.ToString("F0");   // 1의 자리부터 표현 
-        gameTimerSlider.maxValue = gameTimer;
         gameTimerSlider.value = gameTimer;
 
         randPrefab = Random.Range(0, 3);
