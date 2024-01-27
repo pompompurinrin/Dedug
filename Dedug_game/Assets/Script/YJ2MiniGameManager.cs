@@ -381,6 +381,12 @@ public class YJ2MiniGameManager : MonoBehaviour
             fail_SFX.Play();
 
             score--;
+
+            if (score < 0)
+            {
+                score = 0;
+            }
+
             UpdateUI();
             
             fail.gameObject.SetActive(true);

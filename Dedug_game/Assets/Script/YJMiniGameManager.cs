@@ -615,6 +615,11 @@ public class YJMiniGameManager : MonoBehaviour
         if (isHardBongTimeButtonClick == true || nomalStart == true)
         {
             score--;
+            if (score < 0)
+            {
+                score = 0;
+                costText.text = score.ToString();
+            }
             costText.text = score.ToString();
 
             // 오답 이미지 활성화
@@ -697,6 +702,13 @@ public class YJMiniGameManager : MonoBehaviour
             {
                 // 버튼이 클릭되지 않았을 때의 처리
                 score--;  // 스코어 감소
+
+                if (score < 0)
+                {
+                    score = 0;
+                    costText.text = score.ToString();
+                }
+
                 costText.text = score.ToString();  // UI 업데이트
                 isBongTimeActive = false;  // bongTime 동안 클릭 여부 추적 변수 초기화
                 DeactivateColorEffect();  // colorEffect 비활성화
@@ -752,6 +764,13 @@ public class YJMiniGameManager : MonoBehaviour
 
                 // 버튼이 잘못 클릭되었을 때
                 score--;
+
+                if (score < 0)
+                {
+                    score = 0;
+                    costText.text = score.ToString();
+                }
+                
                 costText.text = score.ToString();
 
                 // 오답 이미지 활성화
