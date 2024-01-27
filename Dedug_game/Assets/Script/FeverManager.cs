@@ -436,29 +436,88 @@ public class FeverManager : MonoBehaviour
     }
 
     void SetImageFromResultImg(string resultImgValue)
-    {
-        // 예시: "FeverImg1" 값에 따라 이미지를 설정
-        if (resultImgValue == "1")
-        {
-            endImg.sprite = Resources.Load<Sprite>("FeverImg1");
-        }
+    {   // 예시: "FeverImg1" 값에 따라 이미지를 설정
 
-        else if (resultImgValue == "2")
-        {
-            endImg.sprite = Resources.Load<Sprite>("FeverImg2");
-        }
+            if (resultImgValue == "1")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg1");
+            }
 
-        else if (resultImgValue == "3")
-        {
-            endImg.sprite = Resources.Load<Sprite>("FeverImg3");
-        }
+            else if (resultImgValue == "2")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg2");
+            }
 
+            else if (resultImgValue == "3")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg3");
+            }
+            
+            else if (resultImgValue == "4")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg4");
+            }
 
-        // 예외 처리: "ResultImg" 열의 값이 예상하지 못한 값인 경우
-        else
-        {
-            Debug.LogError("Unexpected ResultImg value: " + resultImgValue);
-        }
+            else if (resultImgValue == "5")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg5");
+            }
+
+            else if (resultImgValue == "6")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg6");
+            }
+            
+            else if (resultImgValue == "7")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg7");
+            }
+
+            else if (resultImgValue == "8")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg8");
+            }
+
+            else if (resultImgValue == "9")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg9");
+            }
+
+            else if (resultImgValue == "10")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg10");
+            }
+
+            else if (resultImgValue == "11")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg11");
+            }
+
+            else if (resultImgValue == "12")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg12");
+            }
+
+            else if (resultImgValue == "13")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg13");
+            }
+
+            else if (resultImgValue == "14")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg14");
+            }
+
+            else if (resultImgValue == "15")
+            {
+                endImg.sprite = Resources.Load<Sprite>("FeverImg15");
+            }
+
+            // 예외 처리: "ResultImg" 열의 값이 예상하지 못한 값인 경우
+            else
+            {
+                Debug.LogError("Unexpected ResultImg value: " + resultImgValue);
+            }
     }
 
 
