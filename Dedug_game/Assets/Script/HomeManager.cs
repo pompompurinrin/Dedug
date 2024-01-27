@@ -18,6 +18,7 @@ public class HomeManager : MonoBehaviour
     public AudioSource sfx1AudioSource;
     public Text PurposeBtnText;
     public Text PurposeBtnCompleteText;
+    public GameObject LockChar4Btn;
 
     public Text charDialogue;
     public Text charName;
@@ -139,6 +140,10 @@ public class HomeManager : MonoBehaviour
             }
         }
 
+        if (DataManager.Instance.nowRank == 5)
+        {
+            LockChar4Btn.SetActive(false);
+        }
 
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);
 
