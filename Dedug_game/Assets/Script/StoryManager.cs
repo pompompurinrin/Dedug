@@ -40,6 +40,7 @@ public class StoryManager : MonoBehaviour
     public Button PopUPCancelBtn;
     public Button PopUPSkipBtn;
     public Image SkipImg;
+    public GameObject RealEnding1;
 
     public AudioSource SFX1;
 
@@ -277,7 +278,14 @@ public class StoryManager : MonoBehaviour
     public void EndingBtn1()
     {
         SFX1.Play();
+        RealEnding1.gameObject.SetActive(true);
+    }
+
+    public void RealEndingBtn()
+    {
+        SFX1.Play();
         Select.gameObject.SetActive(false);
+        RealEnding1.gameObject.SetActive(false);
         TalkText.text = data_Dialog[ClickNum]["TalkText"].ToString();
         NameText.text = data_Dialog[ClickNum]["ChaName"].ToString();
         ChangeBG();
@@ -291,8 +299,14 @@ public class StoryManager : MonoBehaviour
         SFX1.Play();
         ClickNum++;
     }
+    public void RealEndingExitBtn()
+    {
+        SFX1.Play();
+        RealEnding1.gameObject.SetActive(false);
+    }
 
-    public void EndingBtn2()
+
+        public void EndingBtn2()
     {
         SFX1.Play();
         ClickNum = 647;

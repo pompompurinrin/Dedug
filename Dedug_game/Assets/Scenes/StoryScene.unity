@@ -1247,7 +1247,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 787424185}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
-        m_MethodName: PopUPSkipBtnClick
+        m_MethodName: RealEndingBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1601,11 +1601,12 @@ MonoBehaviour:
   Story_BG12: {fileID: 21300000, guid: 5ce11987a898f3d46acc7e705eecc119, type: 3}
   Story_BG13: {fileID: 21300000, guid: 4a3129197f12cb54abdb46838f2b386a, type: 3}
   Story_BG14: {fileID: 21300000, guid: b7df75d6690511c458dc0d3ce42f10e4, type: 3}
-  Story_BG15: {fileID: 0}
+  Story_BG15: {fileID: 21300000, guid: 6e1d4cd5fcc60f24380602f48b07f27c, type: 3}
   SkipBtn: {fileID: 1036289512}
   PopUPCancelBtn: {fileID: 280610677}
   PopUPSkipBtn: {fileID: 789048725}
   SkipImg: {fileID: 428033386}
+  RealEnding1: {fileID: 2077695399}
   SFX1: {fileID: 610464010}
   ClickNum: 0
   BGM: {fileID: 456987988}
@@ -3448,7 +3449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2077695400}
   m_Layer: 0
-  m_Name: SelectEnd (1)
+  m_Name: SelectEndReal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3637,7 +3638,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 787424185}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
-        m_MethodName: PopUPCancelBtnClick
+        m_MethodName: RealEndingExitBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
