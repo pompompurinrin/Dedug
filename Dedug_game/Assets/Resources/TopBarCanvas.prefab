@@ -28478,7 +28478,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8808958594342079984}
         m_TargetAssemblyTypeName: TopbarManager, Assembly-CSharp
-        m_MethodName: OnButtonClick_OffSettingPopup
+        m_MethodName: ClearBtnClick_Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

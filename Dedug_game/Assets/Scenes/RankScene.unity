@@ -5192,6 +5192,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8808958594342079984, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
+      propertyPath: bgm1AudioSource
+      value: 
+      objectReference: {fileID: 754341819}
+    - target: {fileID: 8808958594342079984, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
+      propertyPath: sfx1AudioSource
+      value: 
+      objectReference: {fileID: 1693074665}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
 --- !u!1 &194641682
@@ -6948,8 +6956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -180}
-  m_SizeDelta: {x: 0, y: -360}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598024284
 MonoBehaviour:
