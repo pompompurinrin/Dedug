@@ -170,15 +170,12 @@ public class MainController2 : MonoBehaviour
         {
             this.delta = 0;
             randPrefab = Random.Range(0, 3);
+            transform.Translate(0, -0.1f, 0);
 
-            if (this.delta == 3)
-            {
-                span = 0.5f;
-            }
 
             if (randPrefab == 0)
             {
-                span = 0.5f;
+                transform.Translate(0, -0.1f, 0);
                 randomStudentImage = Random.Range(0, StudentSprites.Length);
                 GameObject go = Instantiate(StudentPrefab);
                 go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
@@ -192,7 +189,7 @@ public class MainController2 : MonoBehaviour
             }
             else if (randPrefab == 1)
             {
-                span = 0.2f;
+                transform.Translate(0, -0.2f, 0);
                 randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
                 GameObject go2 = Instantiate(ObstaclePrefab);
                 go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
@@ -207,7 +204,7 @@ public class MainController2 : MonoBehaviour
 
             else
             {
-                span = 1f;
+                transform.Translate(0, -0.5f, 0);
                 randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
                 GameObject go3 = Instantiate(MagicalGirlsPrefab);
                 go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
@@ -671,21 +668,21 @@ public class MainController2 : MonoBehaviour
 
 
         //±ÂÁî Áö±Þ
-        if (score >= 10) // ¹Ù²ã
+        if (score >= 110) // ¹Ù²ã
         {
             _count = 3;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(true);
         }
-        else if (score < 10 && score >= 3)
+        else if (score < 100 && score >= 90)
         {
             _count = 2;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(false);
         }
-        else if (score < 3 && score >= 0)
+        else if (score < 60 && score >= 0)
         {
             _count = 1;
             Reward1BG.gameObject.SetActive(true);
