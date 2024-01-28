@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MagicalGirlsController : MonoBehaviour
 {
-    GameObject Player;  // 플레이어 오브젝트를 참조하기 위한 변수
-    public float span;
+    GameObject Player;          // 플레이어 오브젝트를 참조하기 위한 변수
+    public float span;          // 오브젝트 생성되는 주기
+
     void Start()
     {
         // 플레이어 오브젝트를 찾아서 변수에 할당
@@ -16,14 +14,12 @@ public class MagicalGirlsController : MonoBehaviour
     void Update()
     {
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.1f, 0);
-        span = 5;
-        // 화면 밖으로 나오면 오브젝트를 소멸시킨다
-        if (transform.position.y < -5.0f)
-        {
-            Destroy(gameObject);
-        }
+        transform.Translate(0, -0.05f, 0);
 
+        // 생성 주기
+        span = 0.1f;
+
+        // 화면 밖으로 나오면 오브젝트를 소멸시킨다
         if (transform.position.y < -5.0f)
         {
             Destroy(gameObject);
@@ -33,6 +29,7 @@ public class MagicalGirlsController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         // 충돌 판정
         Vector2 p1 = transform.position;              // 현재 오브젝트의 중심 좌표
         Vector2 p2 = Player.transform.position;  // 플레이어의 중심 좌표
@@ -46,7 +43,10 @@ public class MagicalGirlsController : MonoBehaviour
 
         if (d < r1 + r2)
         {
-            if (director != null) { director.GetComponent<MainController2>().DoubleCountUP(); }
+            if (director != null)
+            { 
+                director.GetComponent<MainController2>().DoubleCountUP();
+            }
             Destroy(gameObject);  // 현재 오브젝트를 지운다
         }
         

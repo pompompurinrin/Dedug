@@ -1,22 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
-using UnityEngine.SocialPlatforms.Impl;
-
-
-
+using System;
 
 public class MainController2 : MonoBehaviour
 {
     
     public int score = 0;                // 스코어 초기값
-    public float span = 1;                   // 오브젝트 생성되는 주기
+
 
     int _count = 0;                      // 몇개 줄 지 설정하는 변수
     int randPrefab;                      // 떨어지는 오브젝트 랜덤 변수
+    public float span;                   // 떨어지는 오브젝트 생성되는 주기
 
     // 타이머
     public float gameTimer = 60;         // 게임 시간 60초 설정
@@ -156,12 +152,9 @@ public class MainController2 : MonoBehaviour
 
         //초기화
         score = 0;
-        span = 1;
 
         Main_BGM.Play();        
-        heal_sfx.Stop();        
-        hit_sfx.Stop();         
-        readyCount_SFX.Stop();
+
         hit_fx.gameObject.SetActive(false);
         heal_fx.gameObject.SetActive(false);
 
@@ -210,8 +203,7 @@ public class MainController2 : MonoBehaviour
             CancelInvoke("ReadyCounter");
 
             // 타이머를 1초 뒤에 1초마다 실행
-            InvokeRepeating("GamePlay", 0, 1);
-            
+            InvokeRepeating("GamePlay", 0, 1);           
 
         }
     }
@@ -226,18 +218,20 @@ public class MainController2 : MonoBehaviour
         if (isGamePaused)
             return;
 
+        span = 0.2f;
+
         gameTimer -= 1f;                                 // 타이머 감소
         gameTimerText.text = gameTimer.ToString("F0");   // 1의 자리부터 표현 
         gameTimerSlider.value = gameTimer;
 
-        randPrefab = Random.Range(0, 3);
+        randPrefab = UnityEngine.Random.Range(0, 3);
 
         if (randPrefab == 0)
         {
-            randomStudentImage = Random.Range(0, StudentSprites.Length);
+            randomStudentImage = UnityEngine.Random.Range(0, StudentSprites.Length);
             GameObject go = Instantiate(StudentPrefab);
             go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
-            int px = Random.Range(-2, 2);
+            int px = UnityEngine.Random.Range(-2, 2);
             go.transform.position = new Vector3(px, 4, 1);
             Transform healFxTransform = go.transform.Find("heal_fx");
             if (healFxTransform != null)
@@ -247,10 +241,10 @@ public class MainController2 : MonoBehaviour
         }
         else if (randPrefab == 1)
         {
-            randomObstacleImage = Random.Range(0, ObstacleSprites.Length);
+            randomObstacleImage = UnityEngine.Random.Range(0, ObstacleSprites.Length);
             GameObject go2 = Instantiate(ObstaclePrefab);
             go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
-            int px = Random.Range(-2, 2);
+            int px = UnityEngine.Random.Range(-2, 2);
             go2.transform.position = new Vector3(px, 4, 1);
             Transform hitfxTransform = go2.transform.Find("hit_fx");
             if (hitfxTransform != null)
@@ -261,10 +255,10 @@ public class MainController2 : MonoBehaviour
 
         else
         {
-            randomMagicalGirlsImage = Random.Range(0, MagicalGirlsSprites.Length);
+            randomMagicalGirlsImage = UnityEngine.Random.Range(0, MagicalGirlsSprites.Length);
             GameObject go3 = Instantiate(MagicalGirlsPrefab);
             go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
-            int px = Random.Range(-2, 2);
+            int px = UnityEngine.Random.Range(-2, 2);
             go3.transform.position = new Vector3(px, 4, 1);
             Transform healFxTransform = go3.transform.Find("heal_fx");
             if (healFxTransform != null)
@@ -543,6 +537,7 @@ public class MainController2 : MonoBehaviour
     {
         score++;
         Scoretxt.text = "Score : " + score.ToString();
+        Debug.Log("CountUP");
         heal_sfx.Play();
         heal_fx.gameObject.SetActive(true);
         hit_fx.gameObject.SetActive(false);
@@ -552,6 +547,7 @@ public class MainController2 : MonoBehaviour
     {
         score += 2;
         Scoretxt.text = "Score : " + score.ToString();
+        Debug.Log("DoubleCountUP");
         heal_sfx.Play();
         heal_fx.gameObject.SetActive(true);
         hit_fx.gameObject.SetActive(false);
@@ -565,6 +561,8 @@ public class MainController2 : MonoBehaviour
             score = 0;
         }
         Scoretxt.text = "Score : " + score.ToString();
+        Debug.Log("CountDown");
+
         hit_sfx.Play();
         hit_fx.gameObject.SetActive(true);
         heal_fx.gameObject.SetActive(false);
