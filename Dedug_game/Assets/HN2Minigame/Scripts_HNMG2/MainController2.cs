@@ -218,7 +218,7 @@ public class MainController2 : MonoBehaviour
         if (isGamePaused)
             return;
 
-        span = 0.2f;
+        span = 0.8f;
  
 
         gameTimer -= 1f;                                 // 타이머 감소
