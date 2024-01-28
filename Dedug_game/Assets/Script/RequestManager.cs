@@ -540,8 +540,6 @@ public class RequestManager : MonoBehaviour
     {
         if (requestList.Contains(request))
         {
-            requestPrefabCount--;
-
             // 슬라이딩 애니메이션 적용
             StartCoroutine(SlideAndDeleteRequest(request));
         }
@@ -612,6 +610,7 @@ public class RequestManager : MonoBehaviour
         // 실제 삭제
         Destroy(request);
         requestList.Remove(request);
+        requestPrefabCount--;
 
         RearrangeRequest();
     }
