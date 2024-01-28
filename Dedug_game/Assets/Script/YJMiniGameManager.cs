@@ -173,6 +173,8 @@ public class YJMiniGameManager : MonoBehaviour
     public GameObject GoldlackPopup;
     public Text RestartGoldText;
 
+    public bool MessageGo;
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -256,6 +258,10 @@ public class YJMiniGameManager : MonoBehaviour
         // 게임 시간, 점수 초기화
         gameTime = 60;
         score = 0;
+
+        isHardBongTimeActive = false;
+        nomalStart = false;
+
 
         // 게임 UI 업데이트
         UpdateUI();
@@ -838,7 +844,13 @@ public class YJMiniGameManager : MonoBehaviour
 
     public void OnMessage01ButtonClick()
     {
-        if (isBongTimeActive == false && isGameRunning == true)
+
+        if (isHardBongTimeActive == true || nomalStart == true)
+        {
+            return;
+        }
+
+            if (nomalStart == false && isGameRunning == true || isHardBongTimeActive == false && isGameRunning == true)
         {
             badamessage01_SFX.Play();
             // message01 버튼 클릭 시 호출되는 함수
@@ -848,7 +860,13 @@ public class YJMiniGameManager : MonoBehaviour
 
     public void OnMessage02ButtonClick02()
     {
-        if (isBongTimeActive == false && isGameRunning == true)
+
+        if (isHardBongTimeActive == true || nomalStart == true)
+        {
+            return;
+        }
+
+        if (nomalStart == false && isGameRunning == true || isHardBongTimeActive == false && isGameRunning == true)
         {
             badamessage02_SFX.Play();
             // message02 버튼 클릭 시 호출되는 함수

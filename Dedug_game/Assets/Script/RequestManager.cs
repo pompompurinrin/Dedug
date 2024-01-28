@@ -136,11 +136,11 @@ public class RequestManager : MonoBehaviour
         }
         else if (DataManager.Instance.nowRank == 1)
         {
-            FeverSlider.maxValue = 13;
+            FeverSlider.maxValue = 15;
         }
         else if (DataManager.Instance.nowRank == 2)
         {
-            FeverSlider.maxValue = 16;
+            FeverSlider.maxValue = 20;
         }
         else if (DataManager.Instance.nowRank == 3)
         {
@@ -148,7 +148,7 @@ public class RequestManager : MonoBehaviour
         }
         else if (DataManager.Instance.nowRank == 4)
         {
-            FeverSlider.maxValue = 30;
+            FeverSlider.maxValue = 25;
         }
     }
 
