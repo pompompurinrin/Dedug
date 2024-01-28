@@ -59,7 +59,7 @@ public class HomeManager : MonoBehaviour
 
             ClickTutorial();
             TutorialImg.sprite = TutorialImage1;
-            TutorialClickNum++;
+
         }
         else
         {
@@ -246,6 +246,7 @@ public class HomeManager : MonoBehaviour
             PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
             TutorialCanvas.gameObject.SetActive(false);
         }
+
 
         TutorialClickNum++;
     }

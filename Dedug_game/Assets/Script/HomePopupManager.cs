@@ -68,7 +68,6 @@ public class HomePopupManager : MonoBehaviour
             
             ClickTutorial();
             TutorialImg.sprite = TutorialImage1;
-            TutorialClickNum++;
         }
         else
         {
@@ -152,6 +151,10 @@ public class HomePopupManager : MonoBehaviour
             TutorialImg.sprite = TutorialImage8;
         }
         else if (TutorialClickNum == 8)
+        {
+            TutorialImg.sprite = TutorialImage9;
+        }
+        else if (TutorialClickNum == 9)
         {
             DataManager.Instance.firstGoodsBuy = 1;
             Save();

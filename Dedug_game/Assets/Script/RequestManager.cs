@@ -114,7 +114,7 @@ public class RequestManager : MonoBehaviour
 
             ClickTutorial();
             TutorialImg.sprite = TutorialImage1;
-            TutorialClickNum++;
+
         }
         else
         {
@@ -179,7 +179,8 @@ public class RequestManager : MonoBehaviour
     public Sprite TutorialImage9;
 
     public void ClickTutorial()
-    {
+    {    
+
         if (TutorialClickNum == 1)
         {
             TutorialImg.sprite = TutorialImage2;
@@ -210,15 +211,11 @@ public class RequestManager : MonoBehaviour
         }
         else if (TutorialClickNum == 8)
         {
-            TutorialImg.sprite = TutorialImage9;
-        }
-        else if (TutorialClickNum == 9)
-        {
             DataManager.Instance.firstRequest = 1;
             Save();
             TutorialCanvas.gameObject.SetActive(false);
         }
-
+        
         TutorialClickNum++;
     }
 

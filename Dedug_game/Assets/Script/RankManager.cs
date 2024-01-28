@@ -99,7 +99,6 @@ public class RankManager : MonoBehaviour
 
             ClickTutorial();
             TutorialImg.sprite = TutorialImage1;
-            TutorialClickNum++;
         }
         else
         {
@@ -138,6 +137,7 @@ public class RankManager : MonoBehaviour
     public Sprite TutorialImage3;
     public Sprite TutorialImage4;
     public Sprite TutorialImage5;
+    public Sprite TutorialImage6;
     
 
     public void ClickTutorial()

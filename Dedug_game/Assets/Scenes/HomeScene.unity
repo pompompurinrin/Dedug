@@ -25211,10 +25211,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 348456166322729896, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3315226373554655626, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -25302,10 +25298,6 @@ PrefabInstance:
     - target: {fileID: 3450589949846902241, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
       propertyPath: m_Name
       value: TopBarCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3450589949846902241, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5858014573013768610, guid: 2b3d41809dd5da04db7ac71adf7e33b1, type: 3}
       propertyPath: m_Camera
