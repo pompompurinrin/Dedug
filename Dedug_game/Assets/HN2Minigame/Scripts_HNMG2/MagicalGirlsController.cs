@@ -14,7 +14,7 @@ public class MagicalGirlsController : MonoBehaviour
     void Update()
     {
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.05f, 0);
+        transform.Translate(0, -0.8f, 0);
 
         // 생성 주기
         span = 0.1f;
@@ -31,8 +31,15 @@ public class MagicalGirlsController : MonoBehaviour
         }
 
         // 충돌 판정
-        Vector2 p1 = transform.position;              // 현재 오브젝트의 중심 좌표
-        Vector2 p2 = Player.transform.position;  // 플레이어의 중심 좌표
+        Vector2 p1 = Player.transform.position;       // 플레이어의 중심 좌표
+        Vector2 p2 = transform.position;              // 현재 오브젝트의 중심 좌표
+
+        // 플레이어의 중심 좌표를 현재보다 조금 위로 조절
+        p1.y += 1.2f;
+
+        // 현재 오브젝트의 중심 좌표를 현재보다 조금 아래로 조절
+        p2.y -= 1.2f;
+
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;  // 두 좌표 간 거리
         float r1 = 0.25f;  // 현재 오브젝트의 반경
