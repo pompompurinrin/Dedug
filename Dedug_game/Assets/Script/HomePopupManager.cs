@@ -28,6 +28,7 @@ public class HomePopupManager : MonoBehaviour
     public Canvas PopupCanvas;
 
     public Canvas GanbareHowTo;
+    public Canvas MagicPortionHowTo;
     public Canvas CardHowTo;
     public Canvas TutorialCanvas;
     public Button TutorialBtn;
@@ -952,6 +953,97 @@ public class HomePopupManager : MonoBehaviour
             BestSuaClickNum = 0;
         }
         BestSuaHowToExplain();
+    }
+
+    int MagicPortionHowToClickNum = 0;
+    public Text MagicPortionHowToText;
+    public Image MagicPortionHowToImage;
+    public Sprite MagicPortionHowToImage1;
+    public Sprite MagicPortionHowToImage2;
+    public Sprite MagicPortionHowToImage3;
+    public Sprite MagicPortionHowToImage4;
+    public Sprite MagicPortionHowToImage5;
+    public Sprite MagicPortionHowToImage6;
+    public Sprite MagicPortionHowToImage7;
+    public Sprite MagicPortionHowToImage8;
+    public void MagicPortionHowToExplain()
+    {
+        if (MagicPortionHowToClickNum == 0)
+        {
+            MagicPortionHowToText.text = "마법약을 부탁해!는 수아가 알려주는 레시피에 맞춰 마법약을 만드는 게임입니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage1;
+        }
+        else if (MagicPortionHowToClickNum == 1)
+        {
+            MagicPortionHowToText.text = "수아가 알려주는 레시피를 확인합니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage2;
+        }
+        else if (MagicPortionHowToClickNum == 2)
+        {
+            MagicPortionHowToText.text = "레시피와 같은 버튼을 순서대로 클릭해 마법약을 제조합니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage3;
+        }
+        else if (MagicPortionHowToClickNum == 3)
+        {
+            MagicPortionHowToText.text = "레시피 별 제한 시간 내에 레시피의 버튼을 순서대로 클릭하면 1점을 얻습니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage4;
+        }
+        else if (MagicPortionHowToClickNum == 4)
+        {
+            MagicPortionHowToText.text = "레시피 별 제한 시간 내에 아무 버튼을 클릭하지 않거나,";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage5;
+        }
+        else if (MagicPortionHowToClickNum == 5)
+        {
+            MagicPortionHowToText.text = " 레시피의 버튼을 순서대로 클릭하지 못하면 1점을 잃습니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage6;
+        }
+        else if (MagicPortionHowToClickNum == 6)
+        {
+            MagicPortionHowToText.text = "60초의 제한 시간이 지나거나 8점을 획득하면 게임은 종료됩니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage7;
+        }
+        else if (MagicPortionHowToClickNum == 7)
+        {
+            MagicPortionHowToText.text = "8점은 굿즈 3개, 4~7점은 굿즈 2개, 그 이하는 굿즈 1개를 획득합니다.";
+            MagicPortionHowToImage.sprite = MagicPortionHowToImage8;
+        }
+
+    }
+
+
+    public void MagicPortionHowToClick()
+    {
+        PlaySFX1();
+        MagicPortionHowToClickNum = 0;
+        MagicPortionHowToExplain();
+        MagicPortionHowTo.gameObject.SetActive(true);
+
+    }
+    public void MagicPortionHowToExit()
+    {
+        PlaySFX1();
+        MagicPortionHowTo.gameObject.SetActive(false);
+    }
+    public void MagicPortionHowToLclick()
+    {
+        PlaySFX1();
+        MagicPortionHowToClickNum--;
+        if (MagicPortionHowToClickNum < 0)
+        {
+            MagicPortionHowToClickNum = 7;
+        }
+        MagicPortionHowToExplain();
+    }
+    public void MagicPortionHowToRclick()
+    {
+        PlaySFX1();
+        MagicPortionHowToClickNum++;
+        if (MagicPortionHowToClickNum > 7)
+        {
+            MagicPortionHowToClickNum = 0;
+        }
+        MagicPortionHowToExplain();
     }
 
 }

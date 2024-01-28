@@ -1041,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3381848937885914438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14909,6 +14909,7 @@ MonoBehaviour:
   PopupRankNum: {fileID: 2394830712535641482}
   PopupRankImage: {fileID: 901545821896389216}
   SettingPopCanvas: {fileID: 620480697656169546}
+  ClearPopupCanvas: {fileID: 348456166322729896}
   Credit: {fileID: 8824972202167155263}
   MenuUI: {fileID: 2975403560037561260}
   HelpUI: {fileID: 5348222374348835279}

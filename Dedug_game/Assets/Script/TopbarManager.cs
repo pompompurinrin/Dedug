@@ -24,6 +24,7 @@ public class TopbarManager : MonoBehaviour
 
 
     public GameObject SettingPopCanvas;
+    public GameObject ClearPopupCanvas;
     public GameObject Credit;
     public GameObject MenuUI;
     public GameObject HelpUI;
@@ -52,6 +53,8 @@ public class TopbarManager : MonoBehaviour
     public GameObject HelpMinigamePopup;
     public GameObject HelpGradeinfoPopup;
     public GameObject HelpGradeconditonPopup;
+
+
 
     public AudioSource sfx1AudioSource;
     public AudioSource bgm1AudioSource;
@@ -385,7 +388,9 @@ public class TopbarManager : MonoBehaviour
         ClickSFX();
         //세팅 팝업을 비활성화
         SettingPopCanvas.SetActive(false);
-    }
+        ClearPopupCanvas.SetActive(false); ;
+
+}
     public void OnButtonClick_MenuUI()
     {
         ClickSFX();
