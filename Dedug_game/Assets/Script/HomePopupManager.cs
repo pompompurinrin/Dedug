@@ -30,6 +30,7 @@ public class HomePopupManager : MonoBehaviour
     public Canvas GanbareHowTo;
     public Canvas MagicPortionHowTo;
     public Canvas CardHowTo;
+    public Canvas HelpChorongHowto;
     public Canvas TutorialCanvas;
     public Button TutorialBtn;
 
@@ -864,6 +865,88 @@ public class HomePopupManager : MonoBehaviour
             CardClickNum = 0;
         }
         CardHowToExplain();
+    }
+
+    int HelpChorongClickNum = 0;
+    public Text HelpChorongHowtoText;
+    public Image HelpChorongHowtoImage;
+    public Sprite HelpChorongHowtoImage1;
+    public Sprite HelpChorongHowtoImage2;
+    public Sprite HelpChorongHowtoImage3;
+    public Sprite HelpChorongHowtoImage4;
+    public Sprite HelpChorongHowtoImage5;
+    public Sprite HelpChorongHowtoImage6;
+    public Sprite HelpChorongHowtoImage7;
+    public void HelpChorongHowtoExplain()
+    {
+        if (HelpChorongClickNum == 0)
+        {
+            HelpChorongHowtoText.text = "구해줘 초롱! 은 학교의 장애물을 피해 친구들을 구하는 게임입니다.";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage1;
+        }
+        else if (CardClickNum == 1)
+        {
+            HelpChorongHowtoText.text = "60초 동안 여러 오브젝트들이 나오며";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage2;
+        }
+        else if (CardClickNum == 2)
+        {
+            HelpChorongHowtoText.text = "각각의 오브젝트마다 얻는 점수가 달라집니다.";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage3;
+        }
+        else if (CardClickNum == 3)
+        {
+            HelpChorongHowtoText.text = "친구들을 만나면 1점, 마법 소녀를 만나면 2점을 획득하고";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage4;
+        }
+        else if (CardClickNum == 4)
+        {
+            HelpChorongHowtoText.text = "장애물을 만나면 1점이 감소합니다.";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage5;
+        }
+        else if (CardClickNum == 5)
+        {
+            HelpChorongHowtoText.text = "60초가 지나면 게임은 종료 되며 얻은 점수를 합산 합니다.";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage6;
+        }
+        else if (CardClickNum == 6)
+        {
+            HelpChorongHowtoText.text = "50점 이상은 굿즈 3개, 40 ~ 49점은 2개, 39점 이하는 1개를 획득할 수 있습니다.";
+            HelpChorongHowtoImage.sprite = HelpChorongHowtoImage7;
+        }
+    }
+
+
+    public void HelpChorongHowtoClick()
+    {
+        PlaySFX1();
+        HelpChorongClickNum = 0;
+        HelpChorongHowtoExplain();
+        HelpChorongHowto.gameObject.SetActive(true);
+
+    }
+    public void HelpChorongHowtoExit()
+    {
+        PlaySFX1();
+        HelpChorongHowto.gameObject.SetActive(false);
+    }
+    public void HelpChorongHowtoLclick()
+    {
+        HelpChorongClickNum--;
+        if (HelpChorongClickNum < 0)
+        {
+            HelpChorongClickNum = 6;
+        }
+        HelpChorongHowtoExplain();
+    }
+    public void HelpChorongHowtoRclick()
+    {
+        HelpChorongClickNum++;
+        if (HelpChorongClickNum > 6)
+        {
+            HelpChorongClickNum = 0;
+        }
+        HelpChorongHowtoExplain();
     }
 
     public GameObject BestSuaHowTo;
