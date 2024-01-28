@@ -398,6 +398,9 @@ public class RequestManager : MonoBehaviour
     public void OnRequestButtonClick(GameObject clickedButton, int goldValue)
     {
 
+        if (Input.touchCount > 1)
+            return;
+
         if (requestPrefabCount == 0)
         {
             GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(true);
