@@ -219,6 +219,7 @@ public class MainController2 : MonoBehaviour
             return;
 
         span = 0.2f;
+ 
 
         gameTimer -= 1f;                                 // 타이머 감소
         gameTimerText.text = gameTimer.ToString("F0");   // 1의 자리부터 표현 
