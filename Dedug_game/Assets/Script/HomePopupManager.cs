@@ -699,42 +699,48 @@ public class HomePopupManager : MonoBehaviour
     public Sprite GanbareHowToImage5;
     public Sprite GanbareHowToImage6;
     public Sprite GanbareHowToImage7;
+    public Sprite GanbareHowToImage8;
     public void GanbareHowToExplain()
     {
         if (GanbareClickNum == 0)
         {
-            GanbareHowToText.text = "간바레 바다짱!!은 바다의 콘서트에서 나오는 불빛에 맞춰서 응원봉을 휘둘러 바다를 응원하는 게임입니다.";
+            GanbareHowToText.text = "빛나라! 바다쨩!은 바다의 콘서트에서 나오는 불빛에 맞춰서 응원봉을 휘둘러 바다를 응원하는 게임입니다.";
             GanbareHowToImage.sprite = GanbareHowToImage1;
         }
         else if (GanbareClickNum == 1)
         {
-            GanbareHowToText.text = "콘서트장 불빛의 색을 기억합니다.";
+            GanbareHowToText.text = "화면에 보이는 콘서트장 불빛의 색을 기억합니다.";
             GanbareHowToImage.sprite = GanbareHowToImage2;
         }
         else if (GanbareClickNum == 2)
         {
-            GanbareHowToText.text = "응원봉에 불이 켜지면 기억했던 색의 응원봉을 순서대로 클릭합니다.";
+            GanbareHowToText.text = "응원봉 색이 켜지면 방금 기억했던 색과 같은 색의 응원봉을 순서대로 터치합니다.";
             GanbareHowToImage.sprite = GanbareHowToImage3;
         }
         else if (GanbareClickNum == 3)
         {
-            GanbareHowToText.text = "타이밍에 맞춰 올바른 색의 응원봉을 클릭하면 1점을 얻습니다. 타이밍에 맞추지 못하거나 다른 색의 응원봉을 클릭하면 1점을 잃습니다.";
+            GanbareHowToText.text = "응원봉 색이 켜져 있는 동안 같은 색의 응원봉을 순서대로 터치하면 1점을 얻습니다.";
             GanbareHowToImage.sprite = GanbareHowToImage4;
         }
         else if (GanbareClickNum == 4)
         {
-            GanbareHowToText.text = "60초의 제한시간이 지나거나 8점을 획득하면 게임이 종료됩니다.";
+            GanbareHowToText.text = "응원봉 색이 켜져 있는 동안 아무 응원봉도 터치하지 않거나 틀린 색의 응원봉을 터치하면 1점을 잃습니다.";
             GanbareHowToImage.sprite = GanbareHowToImage5;
         }
         else if (GanbareClickNum == 5)
         {
-            GanbareHowToText.text = "'간바레', '카와이' 버튼을 클릭하면 바다짱이 기뻐할지도..?";
+            GanbareHowToText.text = "60초의 제한시간이 지나거나 8점을 획득하면 게임은 종료됩니다.";
             GanbareHowToImage.sprite = GanbareHowToImage6;
         }
         else if (GanbareClickNum == 6)
         {
-            GanbareHowToText.text = "8점은 굿즈 3개, 4 ~ 7점은 2개, 3점 이하는 1개를 획득할 수 있습니다.";
+            GanbareHowToText.text = "'응원해', '최고야' 버튼을 클릭하면 바다쨩이 기뻐할지도…? (점수 획득은 없습니다)";
             GanbareHowToImage.sprite = GanbareHowToImage7;
+        }
+        else if (GanbareClickNum == 7)
+        {
+            GanbareHowToText.text = "8점은 굿즈 3개, 4 ~ 7점은 2개, 3점 이하는 1개를 획득합니다.";
+            GanbareHowToImage.sprite = GanbareHowToImage8;
         }
 
     }
@@ -759,7 +765,7 @@ public class HomePopupManager : MonoBehaviour
         GanbareClickNum--;
         if(GanbareClickNum < 0)
         {
-            GanbareClickNum = 6;
+            GanbareClickNum = 7;
         }
         GanbareHowToExplain();
     }
@@ -767,7 +773,7 @@ public class HomePopupManager : MonoBehaviour
     {
         PlaySFX1();
         GanbareClickNum++;
-        if (GanbareClickNum > 6)
+        if (GanbareClickNum > 7)
         {
             GanbareClickNum = 0;
         }
@@ -854,6 +860,98 @@ public class HomePopupManager : MonoBehaviour
             CardClickNum = 0;
         }
         CardHowToExplain();
+    }
+
+    public GameObject BestSuaHowTo;
+    int BestSuaClickNum = 0;
+    public Text BestSuaHowToText;
+    public Image BestSuaHowToImage;
+    public Sprite BestSuaHowToImage1;
+    public Sprite BestSuaHowToImage2;
+    public Sprite BestSuaHowToImage3;
+    public Sprite BestSuaHowToImage4;
+    public Sprite BestSuaHowToImage5;
+    public Sprite BestSuaHowToImage6;
+    public Sprite BestSuaHowToImage7;
+    public Sprite BestSuaHowToImage8;
+    public void BestSuaHowToExplain()
+    {
+        if (BestSuaClickNum == 0)
+        {
+            BestSuaHowToText.text = "극장판 최애의 수아가 개봉했습니다. 최애의 수아는 버튼을 연타해 수아의 모험을 도와주는 게임입니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage1;
+        }
+        else if (BestSuaClickNum == 1)
+        {
+            BestSuaHowToText.text = "버튼을 클릭하면 마법 머신이 돌아가기 시작합니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage2;
+        }
+        else if (BestSuaClickNum == 2)
+        {
+            BestSuaHowToText.text = "마법 머신이 돌아갈 때 버튼을 계속 클릭해 연타하면 마법 머신이 더 빠르게 돌아갑니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage3;
+        }
+        else if (BestSuaClickNum == 3)
+        {
+            BestSuaHowToText.text = "버튼 위에 보이는 바가 왼쪽으로 모두 줄어들면 아이콘 3개가 나타납니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage4;
+        }
+        else if (BestSuaClickNum == 4)
+        {
+            BestSuaHowToText.text = "화면에 보이는 아이콘과 같은 아이콘을 2개 이상 띄우게 되면 1점을 얻고 화면의 아이콘은 다음 아이콘으로 교체됩니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage5;
+        }
+        else if (BestSuaClickNum == 5)
+        {
+            BestSuaHowToText.text = "화면에 보이는 제한 시간 내에 같은 아이콘을 2개 이상 띄우지 못하면 1점을 잃고 화면의 아이콘은 다음 아이콘으로 교체됩니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage6;
+        }
+        else if (BestSuaClickNum == 6)
+        {
+            BestSuaHowToText.text = "60초의 제한시간이 지나거나 8점을 획득하면 게임은 종료됩니다. 제한 시간 안에 최대한 버튼을 연타해 더 많은 점수를 얻어보세요!";
+            BestSuaHowToImage.sprite = BestSuaHowToImage7;
+        }
+        else if (BestSuaClickNum == 7)
+        {
+            BestSuaHowToText.text = "8점은 굿즈 3개, 4 ~ 7점은 2개, 3점 이하는 1개를 획득합니다.";
+            BestSuaHowToImage.sprite = BestSuaHowToImage8;
+        }
+
+    }
+
+
+    public void BestSuaHowToClick()
+    {
+        PlaySFX1();
+        BestSuaClickNum = 0;
+        BestSuaHowToExplain();
+        BestSuaHowTo.gameObject.SetActive(true);
+
+    }
+    public void BestSuaHowToExit()
+    {
+        PlaySFX1();
+        BestSuaHowTo.gameObject.SetActive(false);
+    }
+    public void BestSuaHowToLclick()
+    {
+        PlaySFX1();
+        BestSuaClickNum--;
+        if (BestSuaClickNum < 0)
+        {
+            BestSuaClickNum = 7;
+        }
+        BestSuaHowToExplain();
+    }
+    public void BestSuaHowToRclick()
+    {
+        PlaySFX1();
+        BestSuaClickNum++;
+        if (BestSuaClickNum > 7)
+        {
+            BestSuaClickNum = 0;
+        }
+        BestSuaHowToExplain();
     }
 
 }
