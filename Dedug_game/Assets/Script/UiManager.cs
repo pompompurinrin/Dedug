@@ -196,7 +196,7 @@ public class UiManager : MonoBehaviour
 
             ClickTutorial();
             TutorialImg.sprite = TutorialImage1;
-            TutorialClickNum++;
+            
         }
         else
         {
