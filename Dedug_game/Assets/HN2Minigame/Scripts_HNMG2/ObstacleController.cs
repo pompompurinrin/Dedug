@@ -15,11 +15,11 @@ public class ObstacleController : MonoBehaviour
     {
         // 숫자가 커질수록 빨라짐
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.05f, 0);
+        transform.Translate(0, -0.2f, 0);
 
         // 생성 주기
         // 숫자가 커질수록 주기가 짧아짐 (많이 나옴).
-        span = 0.8f;
+        span = 3f;
 
         // 화면 밖으로 나오면 오브젝트를 소멸시킨다
         if (transform.position.y < -5.0f)

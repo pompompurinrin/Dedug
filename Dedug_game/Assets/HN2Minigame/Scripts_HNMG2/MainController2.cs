@@ -6,9 +6,8 @@ using System;
 
 public class MainController2 : MonoBehaviour
 {
-    
-    public int score = 0;                // 스코어 초기값
 
+    public int score = 0;                // 스코어 초기값
 
     int _count = 0;                      // 몇개 줄 지 설정하는 변수
     int randPrefab;                      // 떨어지는 오브젝트 랜덤 변수
@@ -207,8 +206,6 @@ public class MainController2 : MonoBehaviour
         }
     }
 
-    // 이미지를 배치할 부모 객체
-    //public Transform parent;
     public void GamePlay()
     {
         // 게임 시작!
@@ -220,9 +217,8 @@ public class MainController2 : MonoBehaviour
         if (isGamePaused)
             return;
 
-        span = 0.8f;
+        span = 3f;
  
-
         gameTimer -= 1f;                                 // 타이머 감소
         gameTimerText.text = gameTimer.ToString("F0");   // 1의 자리부터 표현 
         gameTimerSlider.value = gameTimer;
@@ -295,16 +291,8 @@ public class MainController2 : MonoBehaviour
         Score();
         Main_BGM.Stop();
 
-        isGameRunnig = false;
         pauseBG.gameObject.SetActive(true);
         ResultBGBG.gameObject.SetActive(true);
-
-        MagicalGirlsPrefab.transform.position = new Vector3(0, -5000, 1);
-        ObstaclePrefab.transform.position = new Vector3(0, -5000, 1);
-        StudentPrefab.transform.position = new Vector3(0, -5000, 1);
-
-        heal_fx.transform.position = new Vector3(0, -5000, 1);
-        hit_fx.transform.position = new Vector3(0, -5000, 1);
 
         // 어떤 컴포넌트에 배정할거임?
         ResultBGBG = GameObject.Find("ResultBGBG").GetComponent<Image>();

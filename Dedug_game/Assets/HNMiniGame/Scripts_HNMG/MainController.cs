@@ -569,7 +569,6 @@ public class MainController : MonoBehaviour
         isGamePaused = false;
         Main_BGM2.Play();
     }
-    public HomeManager homeManager;
     // 굿즈구매로 버튼 함수
     public void stopOkClick()
     {
@@ -577,7 +576,6 @@ public class MainController : MonoBehaviour
         isGamePaused = false;
 
         SceneManager.LoadScene("HomeScene");
-        //homeManager.OnButtonClick_OnGoodsBuy();
     }
 
     // 게임 재개 처리

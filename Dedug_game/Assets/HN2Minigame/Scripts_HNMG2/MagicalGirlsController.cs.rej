@@ -1,0 +1,10 @@
+diff a/Dedug_game/Assets/HN2Minigame/Scripts_HNMG2/MagicalGirlsController.cs b/Dedug_game/Assets/HN2Minigame/Scripts_HNMG2/MagicalGirlsController.cs	(rejected hunks)
+@@ -19,7 +19,7 @@
+ 
+         // ���� �ֱ�
+         // ���ڰ� Ŀ������ �ֱⰡ ª���� (���� ����).
+-        span = 0.4f;
++        span = 0.8f;
+ 
+         // ȭ�� ������ ������ ������Ʈ�� �Ҹ��Ų��
+         if (transform.position.y < -5.0f)
