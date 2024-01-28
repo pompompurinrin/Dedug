@@ -93,7 +93,6 @@ public class YJMiniGameManager : MonoBehaviour
     public AudioSource gameAudioSource;  // 게임 중 재생될 사운드
 
     public AudioSource badamessage01_SFX;
-    public AudioSource badamessage02_SFX;
 
     public AudioSource badasucces_SFX;
     public AudioSource badafail_SFX;
@@ -103,6 +102,8 @@ public class YJMiniGameManager : MonoBehaviour
     public AudioSource bongtime01;
     public AudioSource bongtime02;
     public AudioSource bongtime03;
+
+    public AudioSource Result_SFX;
 
     // 게임 종료 시
     public GameObject ResultCanvas;
@@ -832,6 +833,7 @@ public class YJMiniGameManager : MonoBehaviour
         // 게임 종료 시 호출되는 함수
         // badaResult = true;
         Score();
+        Result_SFX.Play();
         ResultCanvas.SetActive(true);
 
         //어떤 컴포넌트에 배정할거임?
@@ -868,7 +870,7 @@ public class YJMiniGameManager : MonoBehaviour
 
         if (nomalStart == false && isGameRunning == true || isHardBongTimeActive == false && isGameRunning == true)
         {
-            badamessage02_SFX.Play();
+            badamessage01_SFX.Play();
             // message02 버튼 클릭 시 호출되는 함수
             StartCoroutine(DisplayMessage02());
         }

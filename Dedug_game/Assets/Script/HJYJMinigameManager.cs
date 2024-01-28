@@ -117,6 +117,7 @@ public class HJYJMinigameManager : MonoBehaviour
     public AudioSource clickSuccess;
     public AudioSource sua_BGM;
     public AudioSource before;
+    public AudioSource Result_SFX;
 
 
     // 게임 결과 아이템 배경
@@ -520,6 +521,7 @@ public class HJYJMinigameManager : MonoBehaviour
         sua_BGM.Stop();
 
         Score();
+        Result_SFX.Play();
 
         ResultCanvas.SetActive(true);
 

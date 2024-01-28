@@ -105,6 +105,7 @@ public class YJ2MiniGameManager : MonoBehaviour
     public AudioSource eventChange_SFX;
     public AudioSource fail_SFX;
     public AudioSource count_SFX;
+    public AudioSource Result_SFX;
 
     // 게임 종료 애니메이션
     public Image fin;
@@ -790,7 +791,7 @@ public class YJ2MiniGameManager : MonoBehaviour
 
         sua_BGM.Stop();
         Score();
-
+        Result_SFX.Play();
         ResultCanvas.SetActive(true);
 
         //어떤 컴포넌트에 배정할거임?
