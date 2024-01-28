@@ -27,6 +27,8 @@ public class MainController : MonoBehaviour
 
     // 사운드
     public AudioSource Main_BGM2;        // 메인 BGM
+    public AudioSource Result_SFX;       // 결과 사운드
+
     public AudioSource correct_sfx;      // 매칭 성공 사운드
     public AudioSource error_sfx;        // 매칭 에러 사운드
     public AudioSource readyCount_SFX;   // 대기 시간 효과음
@@ -155,9 +157,11 @@ public class MainController : MonoBehaviour
 
         StartGame();
 
-        Main_BGM2.Play();    // 메인 BGM 재생
-        correct_sfx.Stop();  // correct_sfx 정지
-        error_sfx.Stop();    // correct_sfx 정지
+        Main_BGM2.Play();         // 메인 BGM 재생
+        correct_sfx.Stop();       // correct_sfx 정지
+        error_sfx.Stop();         // error_sfx 정지
+        Result_SFX.Stop();        // Result_SFX 정지
+        readyCount_SFX.Stop();    // readyCount_SFX 정지
 
         //PercentageTable_1에서 배열을 사용할게
         data_Dialog = CSVReader.Read("PercentageTable");
@@ -173,7 +177,7 @@ public class MainController : MonoBehaviour
 
         // 초기화
         gameTimer = 30f;
-        readyCounter = 3f;
+        readyCounter = 4f;
         showCounter = 4f;
         gameTimerSlider.maxValue = gameTimer;
         gameTimerSlider.value = gameTimer;
@@ -181,7 +185,7 @@ public class MainController : MonoBehaviour
         readyCount_SFX.Stop();
 
         // 레디 카운트를 1초 뒤에 1초마다 실행
-        InvokeRepeating("ReadyCounter", 0, 1f);
+        InvokeRepeating("ReadyCounter", 1, 1f);
         Input.multiTouchEnabled = false;
 
     }
@@ -314,6 +318,8 @@ public class MainController : MonoBehaviour
                 ResultBGBG.gameObject.SetActive(true);
                 pauseBG.gameObject.SetActive(true);
                 Main_BGM2.Stop();
+                Result_SFX.Stop();
+
                 isGameRunnig = false;
 
                 //어떤 컴포넌트에 배정할거임?

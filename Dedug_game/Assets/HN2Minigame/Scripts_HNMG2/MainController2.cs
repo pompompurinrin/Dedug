@@ -26,6 +26,7 @@ public class MainController2 : MonoBehaviour
     public AudioSource heal_sfx;         // 매칭 성공 사운드
     public AudioSource hit_sfx;          // 매칭 에러 사운드
     public AudioSource readyCount_SFX;   // 대기 시간 효과음
+    public AudioSource Result_SFX;       // 결과 사운드
 
     // 이펙트
     public GameObject heal_fx;           // 힐 효과
@@ -293,6 +294,7 @@ public class MainController2 : MonoBehaviour
 
         pauseBG.gameObject.SetActive(true);
         ResultBGBG.gameObject.SetActive(true);
+        Result_SFX.Play();
 
         // 어떤 컴포넌트에 배정할거임?
         ResultBGBG = GameObject.Find("ResultBGBG").GetComponent<Image>();
@@ -724,21 +726,21 @@ public class MainController2 : MonoBehaviour
 
 
         //굿즈 지급
-        if (score >= 110) // 바꿔
+        if (score >= 50) // 바꿔
         {
             _count = 3;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(true);
         }
-        else if (score < 110 && score >= 90)
+        else if (score < 50  && score >= 40)
         {
             _count = 2;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(false);
         }
-        else if (score < 90 && score >= 0)
+        else if (score < 40 && score >= 0)
         {
             _count = 1;
             Reward1BG.gameObject.SetActive(true);

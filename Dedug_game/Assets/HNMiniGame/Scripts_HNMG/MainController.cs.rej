@@ -1,10 +1,10 @@
 diff a/Dedug_game/Assets/HNMiniGame/Scripts_HNMG/MainController.cs b/Dedug_game/Assets/HNMiniGame/Scripts_HNMG/MainController.cs	(rejected hunks)
-@@ -28,7 +28,7 @@
-     public int score = 0;
+@@ -185,7 +185,7 @@
+         readyCount_SFX.Stop();
  
-     // ���� BGM
--    public AudioSource Main_BGM2;
-+    //public AudioSource Main_BGM2;
+         // ���� ī��Ʈ�� 1�� �ڿ� 1�ʸ��� ����
+-        InvokeRepeating("ReadyCounter", 0, 1f);
++        InvokeRepeating("ReadyCounter", 1, 1f);
+         Input.multiTouchEnabled = false;
  
-     // ���� ���� �̹��� �� ���� ��������Ʈ �迭
-     public MainImageScript mainImageScript;
+     }
