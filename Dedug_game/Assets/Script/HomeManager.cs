@@ -19,6 +19,7 @@ public class HomeManager : MonoBehaviour
     public Text PurposeBtnText;
     public Text PurposeBtnCompleteText;
     public GameObject LockChar4Btn;
+    public GameObject UpdatePopup;
 
     public Text charDialogue;
     public Text charName;
@@ -301,6 +302,19 @@ public class HomeManager : MonoBehaviour
         GoodsBuy.gameObject.SetActive(true);
     }
 
+    public void OnButtonClick_OnUpdate()
+    {
+        // 추후 업데이트 예정 팝업 활성화
+        PlaySFX1();
+        UpdatePopup.gameObject.SetActive(true);
+    }
+
+    public void OnButtonClick_OffUpdate()
+    {
+        // 추후 업데이트 예정 팝업 비활성화
+        PlaySFX1();
+        UpdatePopup.gameObject.SetActive(false);
+    }
 
     public void SpriteChange()
     {
