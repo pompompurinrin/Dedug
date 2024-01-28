@@ -14,7 +14,7 @@ public class MagicalGirlsController : MonoBehaviour
     void Update()
     {
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.1f, 0);
+        transform.Translate(0, -0.2f, 0);
 
         // 생성 주기
         span = 0.1f;
@@ -35,10 +35,10 @@ public class MagicalGirlsController : MonoBehaviour
         Vector2 p2 = transform.position;              // 현재 오브젝트의 중심 좌표
 
         // 플레이어의 중심 좌표를 현재보다 조금 위로 조절
-        p1.y += 1.2f;
+        p1.y += 1f;
 
         // 현재 오브젝트의 중심 좌표를 현재보다 조금 아래로 조절
-        p2.y -= 1.2f;
+        p2.y -= 1f;
 
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;  // 두 좌표 간 거리

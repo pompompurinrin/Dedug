@@ -14,7 +14,7 @@ public class ObstacleController : MonoBehaviour
     void Update()
     {
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.1f, 0);
+        transform.Translate(0, -0.2f, 0);
 
         // 생성 주기
         span = 0.2f;
