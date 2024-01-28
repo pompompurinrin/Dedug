@@ -202,7 +202,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC04\uBC14\uB808!!!"
+  m_Text: "\uC751\uC6D0\uD574!!!"
 --- !u!1 &78442348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,7 +2305,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE74\uC640\uC774~"
+  m_Text: "\uCD5C\uACE0\uC57C~"
 --- !u!1 &536837462
 GameObject:
   m_ObjectHideFlags: 0

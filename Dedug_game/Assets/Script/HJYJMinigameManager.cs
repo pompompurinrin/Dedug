@@ -480,7 +480,7 @@ public class HJYJMinigameManager : MonoBehaviour
         magicTimer++;
 
         score++;
-        scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
         feedBackBg.gameObject.SetActive(true);
         successImg.gameObject.SetActive(true);
 
@@ -498,7 +498,7 @@ public class HJYJMinigameManager : MonoBehaviour
             score = 0;
         }
 
-        scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
         feedBackBg.gameObject.SetActive(true);
         failImg.gameObject.SetActive(true);
 
@@ -693,7 +693,7 @@ public class HJYJMinigameManager : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        Scoretxt.text = score.ToString();
+        Scoretxt.text = "Score: " + score.ToString();
 
         //굿즈 지급
         if (score >= 8) // 바꿔

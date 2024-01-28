@@ -364,7 +364,7 @@ public class YJMiniGameManager : MonoBehaviour
         if (score < 0)
         {
             score = 0;
-            costText.text = score.ToString();
+            costText.text = "Score: " + score.ToString();
         }
 
         // meChar를 Y 축을 기준으로 왕복하도록 만드는 코드
@@ -618,9 +618,9 @@ public class YJMiniGameManager : MonoBehaviour
             if (score < 0)
             {
                 score = 0;
-                costText.text = score.ToString();
+                costText.text = "Score: " + score.ToString();
             }
-            costText.text = score.ToString();
+            costText.text = "Score: " + score.ToString();
 
             // 오답 이미지 활성화
             fail.gameObject.SetActive(true);
@@ -706,10 +706,10 @@ public class YJMiniGameManager : MonoBehaviour
                 if (score < 0)
                 {
                     score = 0;
-                    costText.text = score.ToString();
+                    costText.text = "Score: " + score.ToString();
                 }
 
-                costText.text = score.ToString();  // UI 업데이트
+                costText.text = "Score: " + score.ToString();  // UI 업데이트
                 isBongTimeActive = false;  // bongTime 동안 클릭 여부 추적 변수 초기화
                 DeactivateColorEffect();  // colorEffect 비활성화
 
@@ -746,7 +746,7 @@ public class YJMiniGameManager : MonoBehaviour
 
                 // 버튼이 올바른 순서로 클릭되었을 때
                 score++;
-                costText.text = score.ToString();
+                costText.text = "Score: " + score.ToString();
 
                 // 정답 이미지 활성화
                 success.gameObject.SetActive(true);
@@ -768,10 +768,10 @@ public class YJMiniGameManager : MonoBehaviour
                 if (score < 0)
                 {
                     score = 0;
-                    costText.text = score.ToString();
+                    costText.text = "Score: " + score.ToString();
                 }
                 
-                costText.text = score.ToString();
+                costText.text = "Score: " + score.ToString();
 
                 // 오답 이미지 활성화
                 fail.gameObject.SetActive(true);
@@ -1111,7 +1111,7 @@ public class YJMiniGameManager : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        Scoretxt.text = score.ToString();
+        Scoretxt.text = "Score: " + score.ToString();
 
         //굿즈 지급
         if (score >= 8) // 바꿔
