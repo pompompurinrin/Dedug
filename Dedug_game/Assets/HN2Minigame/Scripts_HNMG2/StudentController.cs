@@ -19,7 +19,7 @@ public class StudentController : MonoBehaviour
 
         // 생성 주기
         // 숫자가 커질수록 주기가 짧아짐 (많이 나옴).
-        span = 1.2f;
+        span = 0.8f;
 
         // 화면 밖으로 나오면 오브젝트를 소멸시킨다
         if (transform.position.y < -5.0f)
