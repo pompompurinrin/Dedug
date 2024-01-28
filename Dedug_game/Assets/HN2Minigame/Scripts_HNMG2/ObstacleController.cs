@@ -16,7 +16,7 @@ public class ObstacleController : MonoBehaviour
     void Update()
     {
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -1f, 0);
+        transform.Translate(0, -0.1f, 0);
         span = 1;
         // 화면 밖으로 나오면 오브젝트를 소멸시킨다
         if (transform.position.y < -5.0f)
@@ -37,7 +37,7 @@ public class ObstacleController : MonoBehaviour
         float r2 = 0.25f;  // 플레이어의 반경
         float distance = Vector2.Distance(p1, p2);  // 두 좌표 간 거리 계산
 
-        GameObject director = GameObject.Find("DropGoodsGenerator");
+        GameObject director = GameObject.Find("MainController2");
 
         if (d < r1 + r2)
         {

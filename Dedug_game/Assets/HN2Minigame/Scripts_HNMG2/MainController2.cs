@@ -161,7 +161,9 @@ public class MainController2 : MonoBehaviour
         Main_BGM.Play();        
         heal_sfx.Stop();        
         hit_sfx.Stop();         
-        readyCount_SFX.Stop();  
+        readyCount_SFX.Stop();
+        hit_fx.gameObject.SetActive(false);
+        heal_fx.gameObject.SetActive(false);
 
         gameTimer = 60f;
         readyCounter = 4f;
