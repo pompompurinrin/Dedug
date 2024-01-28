@@ -163,6 +163,19 @@ public class RequestManager : MonoBehaviour
         }
         
         FeverSlider.value = DataManager.Instance.feverNum;
+
+
+        if (requestPrefabCount > 0)
+        {
+            GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(false);
+        }
+
+        if (requestPrefabCount == 0)
+        {
+            GameObject.Find("nullBg").transform.Find("nullSysText").gameObject.SetActive(true);
+        }
+
+
     }
     int TutorialClickNum = 0;
     public Canvas TutorialCanvas;
@@ -534,7 +547,7 @@ public class RequestManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SlideAndDeleteRequest(GameObject request)
+/*    private IEnumerator SlideAndDeleteRequest(GameObject request)
     {
         isDeleting = true;
 
@@ -544,6 +557,48 @@ public class RequestManager : MonoBehaviour
 
         while (elapsedTime < slideDuration)
         {
+            // 현재 위치에서 왼쪽으로 슬라이드 애니메이션 적용
+            float newX = Mathf.Lerp(originalPosition.x, originalPosition.x - Screen.width, elapsedTime / slideDuration);
+            rectTransform.anchoredPosition = new Vector2(newX, originalPosition.y); // Y축 기준으로 변하지 않도록 수정
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isDeleting = false;
+
+        // 실제 삭제
+        Destroy(request);
+        requestList.Remove(request);
+
+        RearrangeRequest();
+    }*/
+
+    private IEnumerator SlideAndDeleteRequest(GameObject request)
+    {
+        if (request == null)
+        {
+            yield break; // 이미 파괴된 객체에 대해 중단
+        }
+
+        isDeleting = true;
+
+        RectTransform rectTransform = request.GetComponent<RectTransform>();
+        if (rectTransform == null)
+        {
+            yield break; // RectTransform이 없는 경우 중단
+        }
+
+        Vector2 originalPosition = rectTransform.anchoredPosition;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < slideDuration)
+        {
+            if (request == null)
+            {
+                yield break; // 애니메이션 중간에 객체가 파괴된 경우 중단
+            }
+
             // 현재 위치에서 왼쪽으로 슬라이드 애니메이션 적용
             float newX = Mathf.Lerp(originalPosition.x, originalPosition.x - Screen.width, elapsedTime / slideDuration);
             rectTransform.anchoredPosition = new Vector2(newX, originalPosition.y); // Y축 기준으로 변하지 않도록 수정
