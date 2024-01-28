@@ -153,10 +153,9 @@ public class MainController2 : MonoBehaviour
         //초기화
         score = 0;
 
-        Main_BGM.Play();        
-
-        hit_fx.gameObject.SetActive(false);
-        heal_fx.gameObject.SetActive(false);
+        Main_BGM.Play();                        // 메인 BGM 재생
+        hit_fx.gameObject.SetActive(false);     // hit_fx 정지
+        heal_fx.gameObject.SetActive(false);    // heal_fx 정지
 
         gameTimer = 60f;
         readyCounter = 4f;
@@ -207,6 +206,9 @@ public class MainController2 : MonoBehaviour
 
         }
     }
+
+    // 이미지를 배치할 부모 객체
+    //public Transform parent;
     public void GamePlay()
     {
         // 게임 시작!
@@ -232,8 +234,10 @@ public class MainController2 : MonoBehaviour
             randomStudentImage = UnityEngine.Random.Range(0, StudentSprites.Length);
             GameObject go = Instantiate(StudentPrefab);
             go.GetComponent<SpriteRenderer>().sprite = StudentSprites[randomStudentImage];
+
             int px = UnityEngine.Random.Range(-2, 2);
-            go.transform.position = new Vector3(px, 4, 1);
+            go.transform.position = new Vector3(px, 4, 9);
+
             Transform healFxTransform = go.transform.Find("heal_fx");
             if (healFxTransform != null)
             {
@@ -246,7 +250,8 @@ public class MainController2 : MonoBehaviour
             GameObject go2 = Instantiate(ObstaclePrefab);
             go2.GetComponent<SpriteRenderer>().sprite = ObstacleSprites[randomObstacleImage];
             int px = UnityEngine.Random.Range(-2, 2);
-            go2.transform.position = new Vector3(px, 4, 1);
+            go2.transform.position = new Vector3(px, 4, 9);
+
             Transform hitfxTransform = go2.transform.Find("hit_fx");
             if (hitfxTransform != null)
             {
@@ -260,7 +265,7 @@ public class MainController2 : MonoBehaviour
             GameObject go3 = Instantiate(MagicalGirlsPrefab);
             go3.GetComponent<SpriteRenderer>().sprite = MagicalGirlsSprites[randomMagicalGirlsImage];
             int px = UnityEngine.Random.Range(-2, 2);
-            go3.transform.position = new Vector3(px, 4, 1);
+            go3.transform.position = new Vector3(px, 4, 9);
             Transform healFxTransform = go3.transform.Find("heal_fx");
             if (healFxTransform != null)
             {

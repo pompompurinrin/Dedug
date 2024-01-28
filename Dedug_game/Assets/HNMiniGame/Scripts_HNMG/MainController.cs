@@ -15,14 +15,25 @@ public class MainController : MonoBehaviour
     // 스코어 초기값
     public int score = 0;
 
+    // 타이머
+    public float gameTimer = 30f;        // 게임 시간 30초 설정
+    public float readyCounter = 3f;      // 대기 시간 3초 설정
+    public float showCounter = 3f;       // 쇼잉 시간 3초 설정
+    public Slider gameTimerSlider;       // 게임 시간 UI 슬라이더 연결
+    public Text gameTimerText;           // 게임 시간 출력
+    public Text readyCount;              // 대기 시간 출력
+    public Text showMessage;             // 쇼잉 메세지 출력
+    public Image readyCountBG;           // 대기 시간 BG
+
     // 사운드
-    public AudioSource Main_BGM2;       // 메인 BGM
-    public AudioSource correct_sfx;     // 매칭 성공 사운드
-    public AudioSource error_sfx;       // 매칭 에러 사운드
+    public AudioSource Main_BGM2;        // 메인 BGM
+    public AudioSource correct_sfx;      // 매칭 성공 사운드
+    public AudioSource error_sfx;        // 매칭 에러 사운드
+    public AudioSource readyCount_SFX;   // 대기 시간 효과음
 
     // 이펙트
-    public GameObject correct_fx;    // 매칭 성공 효과
-    public GameObject error_fx;      // 매칭 에러 효과
+    public GameObject correct_fx;        // 매칭 성공 효과
+    public GameObject error_fx;          // 매칭 에러 효과
 
     // 게임 보드의 열과 행의 수
     public const int columns = 4;
@@ -159,6 +170,19 @@ public class MainController : MonoBehaviour
         Input.multiTouchEnabled = false;
 
         Setting();
+
+        // 초기화
+        gameTimer = 30f;
+        readyCounter = 3f;
+        showCounter = 4f;
+        gameTimerSlider.maxValue = gameTimer;
+        gameTimerSlider.value = gameTimer;
+
+        readyCount_SFX.Stop();
+
+        // 레디 카운트를 1초 뒤에 1초마다 실행
+        InvokeRepeating("ReadyCounter", 0, 1f);
+        Input.multiTouchEnabled = false;
 
     }
 
