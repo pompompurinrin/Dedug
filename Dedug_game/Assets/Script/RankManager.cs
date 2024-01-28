@@ -201,7 +201,7 @@ public class RankManager : MonoBehaviour
             NextRankName.text = data_Dialog[nextRank]["RankName"].ToString();
 
             // 각종 효과 및 비용 텍스트 설정
-            PlusGuestState.text = "커미션 등장 손님 2종 상승";
+            PlusGuestState.text = "커미션 등장 손님 4종 상승";
             PlusFeverTime.text = $"피버타임 파워 수치 10 상승";
             PlusGoods.text = $"비싼 굿즈 획득 확률 상승";
 
@@ -352,7 +352,7 @@ public class RankManager : MonoBehaviour
 
         NowRankName2.text = data_Dialog[DataManager.Instance.nowRank]["RankName"].ToString();
 
-        ResultPlusGuestState.text = $"커미션 등장 손님 2종 상승";
+        ResultPlusGuestState.text = $"커미션 등장 손님 4종 상승";
         ResultPlusFeverTime.text = $"피버타임 파워 수치 10 상승";
         ResultPlusGoods.text = $"좋은 굿즈 획득 확률 상승";
         PopUPText.text = "정말 " + data_Dialog[nextRank]["RankName"].ToString() + "(으)로 승급하시겠습니까?";
