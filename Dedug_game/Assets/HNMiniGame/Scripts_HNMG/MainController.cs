@@ -11,18 +11,29 @@ using UnityEditor;
 
 
 public class MainController : MonoBehaviour
-{
+{   
     // 스코어 초기값
     public int score = 0;
 
+    // 타이머
+    public float gameTimer = 30f;        // 게임 시간 30초 설정
+    public float readyCounter = 3f;      // 대기 시간 3초 설정
+    public float showCounter = 3f;       // 쇼잉 시간 3초 설정
+    public Slider gameTimerSlider;       // 게임 시간 UI 슬라이더 연결
+    public Text gameTimerText;           // 게임 시간 출력
+    public Text readyCount;              // 대기 시간 출력
+    public Text showMessage;             // 쇼잉 메세지 출력
+    public Image readyCountBG;           // 대기 시간 BG
+
     // 사운드
-    public AudioSource Main_BGM2;       // 메인 BGM
-    public AudioSource correct_sfx;     // 매칭 성공 사운드
-    public AudioSource error_sfx;       // 매칭 에러 사운드
+    public AudioSource Main_BGM2;        // 메인 BGM
+    public AudioSource correct_sfx;      // 매칭 성공 사운드
+    public AudioSource error_sfx;        // 매칭 에러 사운드
+    public AudioSource readyCount_SFX;   // 대기 시간 효과음
 
     // 이펙트
-    public GameObject correct_fx;    // 매칭 성공 효과
-    public GameObject error_fx;      // 매칭 에러 효과
+    public GameObject correct_fx;        // 매칭 성공 효과
+    public GameObject error_fx;          // 매칭 에러 효과
 
     // 게임 보드의 열과 행의 수
     public const int columns = 4;
@@ -34,13 +45,13 @@ public class MainController : MonoBehaviour
     // 이미지 사이의 간격 설정
     public const float Xspace = 260f;
     public const float Yspace = -310f;
-
+    
     // 게임 시작 이미지 및 사용될 스프라이트 배열
     public MainImageScript mainImageScript;
     public Sprite[] images;
 
     public Button Card_Front;
-
+    
     // UI 요소들
     public Image ResultBGBG;
     public Image ScoreBG;
@@ -138,7 +149,7 @@ public class MainController : MonoBehaviour
         DataManager.Instance.nowRank = PlayerPrefs.GetInt("NowRank");
     }
 
-
+   
     private void Start()
     {
 
@@ -159,6 +170,19 @@ public class MainController : MonoBehaviour
         Input.multiTouchEnabled = false;
 
         Setting();
+
+        // 초기화
+        gameTimer = 30f;
+        readyCounter = 3f;
+        showCounter = 4f;
+        gameTimerSlider.maxValue = gameTimer;
+        gameTimerSlider.value = gameTimer;
+
+        readyCount_SFX.Stop();
+
+        // 레디 카운트를 1초 뒤에 1초마다 실행
+        InvokeRepeating("ReadyCounter", 0, 1f);
+        Input.multiTouchEnabled = false;
 
     }
 
@@ -243,16 +267,16 @@ public class MainController : MonoBehaviour
             StartCoroutine(CheckGuessed());
         }
     }
-
+  
     // 이미지 일치 여부를 확인하고 처리하는 코루틴
     private IEnumerator CheckGuessed()
     {
         if (firstOpen.spriteId == secondOpen.spriteId) // 두 이미지의 스프라이트 ID 비교
         {
-
+            
             score++;                                         // 일치하면 점수 증가
-            Scoretxt.text = "Score : " + score.ToString();    // 실시간 스코어 텍스트로 출력
-
+            Scoretxt.text= "Score : " + score.ToString();    // 실시간 스코어 텍스트로 출력
+            
             correct_sfx.Play();                              // correct_sfx 재생
 
             MainImageScript card1 = firstOpen;
@@ -261,29 +285,29 @@ public class MainController : MonoBehaviour
             Vector3 originalScale = new Vector3(1, 1, 1);
             Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
 
+           
+                    
+
+                card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                {
+                    card1.transform.DOScale(originalScale, 0.2f);
+                    card1.correct_fx.gameObject.SetActive(true);
+                                           
+                });
 
 
+                card2.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+                {
+                    card2.transform.DOScale(originalScale, 0.2f);
+                    card2.correct_fx.gameObject.SetActive(true);
+                    secondOpen = null;  // 변수 초기화 추가
+                });
 
-            card1.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
+            
+             
+        if (score == 10) 
             {
-                card1.transform.DOScale(originalScale, 0.2f);
-                card1.correct_fx.gameObject.SetActive(true);
-
-            });
-
-
-            card2.transform.DOScale(targetScale, 0.2f).OnComplete(() => // 람다식
-            {
-                card2.transform.DOScale(originalScale, 0.2f);
-                card2.correct_fx.gameObject.SetActive(true);
-                secondOpen = null;  // 변수 초기화 추가
-            });
-
-
-
-            if (score == 10)
-            {
-
+                
                 Score();
                 isGameRunnig = false;
                 score = 0;
@@ -298,7 +322,7 @@ public class MainController : MonoBehaviour
                 Restart = GameObject.Find("Restart").GetComponent<Button>();
                 HomeBtn = GameObject.Find("Home").GetComponent<Button>();
                 UserScore = GameObject.Find("UserScoretxt").GetComponent<Text>();
-
+               
 
             }
         }
@@ -309,7 +333,7 @@ public class MainController : MonoBehaviour
 
             firstOpen.Close();
             secondOpen.Close();
-            error_sfx.Play();
+            error_sfx.Play();                        
         }
 
         // 열려진 이미지 변수 초기화
@@ -342,7 +366,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 100;
 
                 Save();
-                SceneManager.LoadScene("HNMiniGameScene");
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 100)
             {
@@ -358,7 +382,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 500;
 
                 Save();
-                SceneManager.LoadScene("HNMiniGameScene");
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 500)
             {
@@ -373,7 +397,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1000;
 
                 Save();
-                SceneManager.LoadScene("HNMiniGameScene");
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1000)
             {
@@ -389,7 +413,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 1500;
 
                 Save();
-                SceneManager.LoadScene("HNMiniGameScene");
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 1500)
             {
@@ -404,7 +428,7 @@ public class MainController : MonoBehaviour
                 DataManager.Instance.nowGold = DataManager.Instance.nowGold - 3000;
 
                 Save();
-                SceneManager.LoadScene("HNMiniGameScene");
+               SceneManager.LoadScene("HNMiniGameScene");
             }
             else if (DataManager.Instance.nowGold < 3000)
             {
@@ -731,7 +755,7 @@ public class MainController : MonoBehaviour
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
         UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
-
+        
 
         //굿즈 지급
         if (score >= 10) // 바꿔
@@ -757,11 +781,11 @@ public class MainController : MonoBehaviour
         }
 
         else
-        {
+        {            
         }
-
+       
         GetGoods(_count);
-
+       
     }
 
     public void Save()
@@ -770,7 +794,7 @@ public class MainController : MonoBehaviour
         {
             int rewardId = rewards[i];
             Debug.Log("리워드 아이디 " + rewardId);
-
+            
             // 보상을 ID에 따라 DataManager.Instance에 매핑
             switch (rewardId)
             {
