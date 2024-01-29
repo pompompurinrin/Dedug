@@ -15,7 +15,7 @@ public class MagicalGirlsController : MonoBehaviour
     {
         // 숫자가 커질수록 빨라짐
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.2f, 0);
+        transform.Translate(0, -0.3f, 0);
 
         // 생성 주기
         // 숫자가 커질수록 주기가 짧아짐 (많이 나옴).
