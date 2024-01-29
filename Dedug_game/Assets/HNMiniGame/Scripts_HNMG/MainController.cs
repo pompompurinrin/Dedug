@@ -78,6 +78,8 @@ public class MainController : MonoBehaviour
     public Image Reward2BG;
     public Image Reward3BG;
 
+    public AudioSource Result_SFX;
+
 
 
     // 리워드 리스트 선언을 여기서 시킴
@@ -311,6 +313,9 @@ public class MainController : MonoBehaviour
                 Score();
                 isGameRunnig = false;
                 score = 0;
+
+                Result_SFX.Play();
+
                 ResultBGBG.gameObject.SetActive(true);
                 pauseBG.gameObject.SetActive(true);
                 Main_BGM2.Stop();

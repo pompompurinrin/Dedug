@@ -638,6 +638,7 @@ MonoBehaviour:
   Reward1BG: {fileID: 4540239031255518467}
   Reward2BG: {fileID: 4540239029888124712}
   Reward3BG: {fileID: 4540239031289368038}
+  Result_SFX: {fileID: 2089459817}
   RewardsImage: []
   pauseBG: {fileID: 504929017}
   stopBg: {fileID: 3695021051925754265}
@@ -647,7 +648,7 @@ MonoBehaviour:
   realStopBg: {fileID: 4335664196525921171}
   stopOk: {fileID: 4335664197581313473}
   stopNo: {fileID: 4335664198231707621}
-  timerController: {fileID: 0}
+  timerController: {fileID: 1767782008844054315}
   isGamePaused: 0
   isGameRunnig: 0
   timeScale: 0
@@ -2103,7 +2104,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 702c55b232da869479be758c4ea68798, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -26893,6 +26894,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1767782008839345586, guid: 3a789facffddbe34eb2bad992cbe73ac, type: 3}
+      propertyPath: Result_SFX
+      value: 
+      objectReference: {fileID: 2089459817}
+    - target: {fileID: 1767782008839345586, guid: 3a789facffddbe34eb2bad992cbe73ac, type: 3}
       propertyPath: readyCount
       value: 
       objectReference: {fileID: 1282691967}
@@ -26938,6 +26943,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1767782008844054315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1767782008839345586, guid: 3a789facffddbe34eb2bad992cbe73ac, type: 3}
+  m_PrefabInstance: {fileID: 1767782008844054312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c4c18f5e897c74dad4556a7bcfd657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!199 &2171497952925918104

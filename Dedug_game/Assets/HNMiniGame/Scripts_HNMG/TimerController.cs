@@ -20,8 +20,9 @@ public class TimerController: MonoBehaviour
     public Text showMessage;             // 쇼잉 메세지 출력
     public Image readyCountBG;           // 대기 시간 BG
     public AudioSource readyCount_SFX;   // 대기 시간 효과음
+    public AudioSource Result_SFX;
 
-    
+
     public void Start()
     {
         // 초기화
@@ -106,6 +107,9 @@ public class TimerController: MonoBehaviour
     public void TimeOver()
     {
         mainController.Score();
+
+        Result_SFX.Play();
+
         mainController.Main_BGM2.Stop();
         mainController.isGameRunnig = false;
         mainController.ResultBGBG.gameObject.SetActive(true);
