@@ -3994,7 +3994,7 @@ MonoBehaviour:
   clickSuccess: {fileID: 961417203}
   sua_BGM: {fileID: 1458444554}
   before: {fileID: 1359604676}
-  Result_SFX: {fileID: 0}
+  Result_SFX: {fileID: 2062928058}
   reward1BG: {fileID: 2000784876}
   reward2BG: {fileID: 2000784875}
   reward3BG: {fileID: 2000784873}
