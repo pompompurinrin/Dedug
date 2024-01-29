@@ -7676,7 +7676,7 @@ MonoBehaviour:
   eventChange_SFX: {fileID: 1530598059}
   fail_SFX: {fileID: 420548666}
   count_SFX: {fileID: 192573642}
-  Result_SFX: {fileID: 0}
+  Result_SFX: {fileID: 1815067773}
   fin: {fileID: 360236836}
   ResultBG: {fileID: 2016409105}
   ScoreBG: {fileID: 2016409104}
