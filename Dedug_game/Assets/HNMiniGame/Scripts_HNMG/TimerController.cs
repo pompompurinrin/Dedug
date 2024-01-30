@@ -27,7 +27,7 @@ public class TimerController: MonoBehaviour
     {
         // 초기화
         timer = 30f;
-        readyCounter = 3f;
+        readyCounter = 4f;
         showCounter = 4f;
         timerSlider.maxValue = timer;
         timerSlider.value = timer;
@@ -53,7 +53,7 @@ public class TimerController: MonoBehaviour
         // 슬라이더 값 갱신
         timerSlider.value = timer;
 
-        if (readyCounter < 0)
+        if (readyCounter <= 0)
         {
             readyCounter = 0;
             readyCount_SFX.Stop();
