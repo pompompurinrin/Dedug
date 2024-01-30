@@ -218,8 +218,9 @@ public class MainController2 : MonoBehaviour
         if (isGamePaused)
             return;
 
-        span = 3f;
- 
+        span = 0.8f;
+        Debug.Log(span);
+
         gameTimer -= 1f;                                 // 타이머 감소
         gameTimerText.text = gameTimer.ToString("F0");   // 1의 자리부터 표현 
         gameTimerSlider.value = gameTimer;

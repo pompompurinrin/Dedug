@@ -15,11 +15,12 @@ public class MagicalGirlsController : MonoBehaviour
     {
         // 숫자가 커질수록 빨라짐
         // 프레임마다 등속으로 낙하시킨다 
-        transform.Translate(0, -0.1f, 0);
+        transform.Translate(0, -0.15f, 0);
 
         // 생성 주기
         // 숫자가 커질수록 주기가 짧아짐 (많이 나옴).
         span = 0.8f;
+        Debug.Log(span);
 
         // 화면 밖으로 나오면 오브젝트를 소멸시킨다
         if (transform.position.y < -5.0f)
@@ -40,7 +41,7 @@ public class MagicalGirlsController : MonoBehaviour
         p1.y += 0.7f;
 
         // 현재 오브젝트의 중심 좌표를 현재보다 조금 아래로 조절
-        p2.y -= 0.8f;
+        p2.y -= 0.7f;
 
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;  // 두 좌표 간 거리
