@@ -36,6 +36,7 @@ public class YJMiniGameManager : MonoBehaviour
     public Image meChar01;
     public Image meChar02;
     public Image meChar03;
+    public Image meChar04;
 
     // 게임 버튼
     public Button message01;
@@ -176,6 +177,11 @@ public class YJMiniGameManager : MonoBehaviour
 
     public bool MessageGo;
 
+    // 응원봉 불빛 안내 문구 추가
+    public Image touch01;
+    public Image touch02;
+
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -308,12 +314,25 @@ public class YJMiniGameManager : MonoBehaviour
         // 초기 제한시간 설정
         countDown.text = gameTime.ToString();
 
+        touch01.gameObject.SetActive(true);
+        touch02.gameObject.SetActive(true);
+
+        Invoke("TouchSet", 3f);
+
+
         // 1초마다 UpdateGame 메소드 호출
         InvokeRepeating("UpdateGame", 1.0f, 1.0f);
 
         gameAudioSource.Play();
 
 
+    }
+
+
+    public void TouchSet()
+    {
+        touch01.gameObject.SetActive(false);
+        touch02.gameObject.SetActive(false);
     }
 
 
@@ -408,6 +427,15 @@ public class YJMiniGameManager : MonoBehaviour
             Vector3 newPos = meChar03.transform.position;
             newPos.y = yOffset;
             meChar03.transform.position = newPos;
+        }
+
+        // meChar를 Y 축을 기준으로 왕복하도록 만드는 코드
+        if (isGameRunning)
+        {
+            float yOffset = Mathf.PingPong(Time.time * shakeSpeed, shakeRange * 2) - shakeRange;
+            Vector3 newPos = meChar04.transform.position;
+            newPos.y = yOffset;
+            meChar04.transform.position = newPos;
         }
 
         // 바다쨩 좌우로 흔들리게 만드는 코드

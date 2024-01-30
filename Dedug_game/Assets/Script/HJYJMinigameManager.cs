@@ -223,7 +223,7 @@ public class HJYJMinigameManager : MonoBehaviour
 
         // 게임 시간, 점수 초기화
         timer = 60;
-        magicTimer = 5;
+        magicTimer = 4;
         score = 0;
 
         // 1초마다 CountDownBeforeGame 메소드 호출
@@ -331,7 +331,7 @@ public class HJYJMinigameManager : MonoBehaviour
         magicBookImg04.GetComponent<Image>().sprite = magicBook[3].GetComponent<Image>().sprite;
 
         // 레시피 타이머 초기화
-        magicTimer = 5;
+        magicTimer = 4;
         magicTimerSlider.value = magicTimer;
     }
 
@@ -476,7 +476,7 @@ public class HJYJMinigameManager : MonoBehaviour
     {
         success.Play();
 
-        magicTimer = 10;
+        magicTimer = 4;
         magicTimerSlider.value = magicTimer;
         magicTimer++;
 

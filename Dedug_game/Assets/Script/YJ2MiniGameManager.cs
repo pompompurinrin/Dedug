@@ -110,6 +110,10 @@ public class YJ2MiniGameManager : MonoBehaviour
     // 게임 종료 애니메이션
     public Image fin;
 
+    // 터치 안내
+    public Image touch;
+    public Image touch1;
+
 
     // 결과 연결
 
@@ -312,6 +316,11 @@ public class YJ2MiniGameManager : MonoBehaviour
         // 초기 제한시간 설정
         timerText.text = timer.ToString();
 
+        touch.gameObject.SetActive(true);
+        touch1.gameObject.SetActive(true);
+
+        Invoke("TouchSet", 2f);
+
         // 1초마다 UpdateGame 메소드 호출
         InvokeRepeating("UpdateGame", 1.0f, 1.0f);
 
@@ -319,6 +328,11 @@ public class YJ2MiniGameManager : MonoBehaviour
         ActivateRandomEvent();
     }
 
+    public void TouchSet()
+    {
+        touch.gameObject.SetActive(false);
+        touch1.gameObject.SetActive(false);
+    }
 
     public void UpdateGame()
     {
@@ -633,6 +647,7 @@ public class YJ2MiniGameManager : MonoBehaviour
 
                 // 일치하면 스코어 증가
                 score++;
+                eventTimer++;
                 UpdateUI();
 
                 slotResulySuccess_SFX.Play();
