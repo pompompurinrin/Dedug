@@ -11,6 +11,7 @@ public class UiManager : MonoBehaviour
     public Canvas PopUpBG_MainStory;
     public Canvas PopUpBG_Goldplus;
     public Canvas Test;
+    public Canvas Bg_Home;
     public Canvas BG_Cha1;
     public Canvas BG_Cha2;
     public Canvas BG_Cha3;
@@ -298,32 +299,36 @@ public class UiManager : MonoBehaviour
     {
         sfx1AudioSource.Play();
         BG_MainStory.gameObject.SetActive(true);
+        Bg_Home.gameObject.SetActive(false);
     }
 
     public void Cha_1_BtnClick()
     {
         sfx1AudioSource.Play();
         BG_Cha1.gameObject.SetActive(true);
-
-            }
+        Bg_Home.gameObject.SetActive(false);
+    }
     
 
     public void Cha_2_BtnClick()
     {
         sfx1AudioSource.Play();
         BG_Cha2.gameObject.SetActive(true);
+        Bg_Home.gameObject.SetActive(false);
     }
 
     public void Cha_3_BtnClick()
     {
         sfx1AudioSource.Play();
         BG_Cha3.gameObject.SetActive(true);
+        Bg_Home.gameObject.SetActive(false);
     }
 
     public void SpecialGoods_BtnClick()
     {
         sfx1AudioSource.Play();
         BG_SpecialGoods.gameObject.SetActive(true);
+        Bg_Home.gameObject.SetActive(false);
     }
 
     //홈 화면으로 가는 버튼
@@ -335,6 +340,7 @@ public class UiManager : MonoBehaviour
         BG_Cha2.gameObject.SetActive(false);
         BG_Cha3.gameObject.SetActive(false);
         BG_SpecialGoods.gameObject.SetActive(false);
+        Bg_Home.gameObject.SetActive(true);
     }
     
 
@@ -540,6 +546,7 @@ public class UiManager : MonoBehaviour
     public void OnCha_1_Story_BtnClick()
     {
         sfx1AudioSource.Play();
+        BG_Cha1.gameObject.SetActive(false);
         BG_Cha1_Story.gameObject.SetActive(true);
     }
     
