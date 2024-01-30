@@ -16462,12 +16462,12 @@ MonoBehaviour:
   GanbareHowToImage8: {fileID: 21300000, guid: 9b2bed74cb28bd84f8e55656980fdcda, type: 3}
   CardHowToText: {fileID: 80608411}
   CardHowToImage: {fileID: 1562874172}
-  CardHowToImage1: {fileID: 21300000, guid: d55349bcf7775f2459ea900438b1dc8f, type: 3}
-  CardHowToImage2: {fileID: 21300000, guid: 5a2b672fcbb51644cbdc1199b23b07b8, type: 3}
-  CardHowToImage3: {fileID: 21300000, guid: 3beb1c009f1367442b2e4082ea694a2f, type: 3}
-  CardHowToImage4: {fileID: 21300000, guid: 568389e3aaec0df439b49056159fbc7f, type: 3}
-  CardHowToImage5: {fileID: 21300000, guid: 47b0006dc0714314bb002ea0f0d8ea39, type: 3}
-  CardHowToImage6: {fileID: 21300000, guid: cbfceac0a4fa77148a8d43ed8b827fdb, type: 3}
+  CardHowToImage1: {fileID: 21300000, guid: 859cc93acd75c2248933bf227a659510, type: 3}
+  CardHowToImage2: {fileID: 21300000, guid: 6b413692c9a3a484eb804c9249ba8304, type: 3}
+  CardHowToImage3: {fileID: 21300000, guid: b29a17620ef83aa41a9b79c612f605fc, type: 3}
+  CardHowToImage4: {fileID: 21300000, guid: 92937595ae8bfdb428f52c72fb907e65, type: 3}
+  CardHowToImage5: {fileID: 21300000, guid: f974b65834608374aa907e8130dbcaad, type: 3}
+  CardHowToImage6: {fileID: 21300000, guid: ed88b634f49b59241be590deb9871482, type: 3}
   CardHowToImage7: {fileID: 21300000, guid: f3078945499085046a2db34a8e1eba1d, type: 3}
   HelpChorongHowtoText: {fileID: 819046839}
   HelpChorongHowtoImage: {fileID: 1398945406}
