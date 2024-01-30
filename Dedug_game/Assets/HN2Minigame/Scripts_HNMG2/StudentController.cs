@@ -41,7 +41,7 @@ public class StudentController : MonoBehaviour
         p1.y += 0.7f;
 
         // 현재 오브젝트의 중심 좌표를 현재보다 조금 아래로 조절
-        p2.y -= 0.7f;
+        p2.y -= 0.6f;
 
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;  // 두 좌표 간 거리
