@@ -799,7 +799,7 @@ public class HomePopupManager : MonoBehaviour
     {
         if (CardClickNum == 0)
         {
-            CardHowToText.text = "시크릿!! 카드 걸즈는 흩어진 포토카드를 정리하는 게임입니다.";
+            CardHowToText.text = "시크릿!! 카드 걸즈는 \n흩어진 포토카드를 정리하는 게임입니다.";
             CardHowToImage.sprite = CardHowToImage1;
 }
         else if (CardClickNum == 1)
@@ -814,7 +814,7 @@ public class HomePopupManager : MonoBehaviour
         }
         else if (CardClickNum == 3)
         {
-            CardHowToText.text = "뒤집은 두 장의 카드의 그림이 같으면 1점을 획득합니다.";
+            CardHowToText.text = "뒤집은 두 장의 카드의 그림이 같으면 \n1점을 획득합니다.";
             CardHowToImage.sprite = CardHowToImage4;
         }
         else if (CardClickNum == 4)
@@ -824,12 +824,12 @@ public class HomePopupManager : MonoBehaviour
         }
         else if (CardClickNum == 5)
         {
-            CardHowToText.text = "모든 카드를 뒤집거나 제한시간이 지나면 게임은 종료됩니다.";
+            CardHowToText.text = "모든 카드를 뒤집거나 제한시간이 지나면 \n게임은 종료됩니다.";
             CardHowToImage.sprite = CardHowToImage6;
         }
         else if (CardClickNum == 6)
         {
-            CardHowToText.text = "10점은 굿즈 3개, 3 ~ 9점은 2개, 2점 이하는 1개를 획득할 수 있습니다.";
+            CardHowToText.text = "10점은 굿즈 3개, 3 ~ 9점은 2개, \n2점 이하는 1개를 획득할 수 있습니다.";
             CardHowToImage.sprite = CardHowToImage7;
         }
     }
@@ -881,7 +881,7 @@ public class HomePopupManager : MonoBehaviour
     {
         if (HelpChorongClickNum == 0)
         {
-            HelpChorongHowtoText.text = "구해줘 초롱! 은 학교의 장애물을 피해 친구들을 구하는 게임입니다.";
+            HelpChorongHowtoText.text = "구해줘 초롱! 은 학교의 장애물을 피해 \n친구들을 구하는 게임입니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage1;
         }
         else if (HelpChorongClickNum == 1)
@@ -896,22 +896,22 @@ public class HomePopupManager : MonoBehaviour
         }
         else if (HelpChorongClickNum == 3)
         {
-            HelpChorongHowtoText.text = "친구들을 만나면 1점, 마법 소녀를 만나면 2점을 획득하고";
+            HelpChorongHowtoText.text = "친구들을 만나면 1점, \n마법 소녀를 만나면 2점을 획득하고";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage4;
         }
         else if (HelpChorongClickNum == 4)
         {
-            HelpChorongHowtoText.text = "장애물을 만나면 1점이 감소합니다.";
+            HelpChorongHowtoText.text = "몬스터를 만나면 1점이 감소합니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage5;
         }
         else if (HelpChorongClickNum == 5)
         {
-            HelpChorongHowtoText.text = "60초가 지나면 게임은 종료 되며 얻은 점수를 합산 합니다.";
+            HelpChorongHowtoText.text = "60초가 지나면 게임은 종료 되며 \n총 얻은 점수를 합산 합니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage6;
         }
         else if (HelpChorongClickNum == 6)
         {
-            HelpChorongHowtoText.text = "50점 이상은 굿즈 3개, 40 ~ 49점은 2개, 39점 이하는 1개를 획득할 수 있습니다.";
+            HelpChorongHowtoText.text = "60점 이상은 굿즈 3개, 50 ~ 59점은 2개, \n49점 이하는 1개를 획득할 수 있습니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage7;
         }
     }

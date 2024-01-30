@@ -817,7 +817,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f1205e45e94bb8f4eb4f63a259bb9940, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d4fcc945775ec934bb3ed42389df9af5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2255,7 +2255,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 394a08110f0c5994191d92afa5f9bee1, type: 3}
   - {fileID: 21300000, guid: a7f6cbc8cac44d845bc69cfc11dd5c87, type: 3}
   ObstacleSprites:
-  - {fileID: 21300000, guid: 682f2e95e037d264da58737cf6a89abe, type: 3}
+  - {fileID: 21300000, guid: e47ad0b71502e6649af17327dd62b07d, type: 3}
   - {fileID: 21300000, guid: c48df3bef8899cf419e2dafab453889a, type: 3}
   - {fileID: 21300000, guid: a34e3a29ccf37b24fa83ff5232fd5685, type: 3}
   StudentSprites:

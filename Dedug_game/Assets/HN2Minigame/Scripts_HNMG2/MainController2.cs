@@ -727,21 +727,21 @@ public class MainController2 : MonoBehaviour
 
 
         //±ÂÁî Áö±Þ
-        if (score >= 50) // ¹Ù²ã
+        if (score >= 60) // ¹Ù²ã
         {
             _count = 3;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(true);
         }
-        else if (score < 50  && score >= 40)
+        else if (score < 60  && score >= 50)
         {
             _count = 2;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(false);
         }
-        else if (score < 40 && score >= 0)
+        else if (score < 50 && score >= 0)
         {
             _count = 1;
             Reward1BG.gameObject.SetActive(true);
