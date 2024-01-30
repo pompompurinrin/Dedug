@@ -1,0 +1,9 @@
+diff a/Dedug_game/Assets/HN2Minigame/Scripts_HNMG2/MagicalGirlsController.cs b/Dedug_game/Assets/HN2Minigame/Scripts_HNMG2/MagicalGirlsController.cs	(rejected hunks)
+@@ -15,6 +15,7 @@
+     {
+         // ���ڰ� Ŀ������ ������
+         // �����Ӹ��� ������� ���Ͻ�Ų�� 
++        transform.Translate(0, -0.05f, 0);
+ 
+         // ���� �ֱ�
+         // ���ڰ� Ŀ������ �ֱⰡ ª���� (���� ����).

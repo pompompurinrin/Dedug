@@ -15,7 +15,7 @@ public class StudentController : MonoBehaviour
     {
         // 숫자가 커질수록 빨라짐
         // 프레임마다 등속으로 낙하시킨다.
-        transform.Translate(0, -0.07f, 0);
+        transform.Translate(0, -0.1f, 0);
 
         // 생성 주기
         // 숫자가 커질수록 주기가 짧아짐 (많이 나옴).
@@ -37,15 +37,15 @@ public class StudentController : MonoBehaviour
         Vector2 p2 = transform.position;              // 현재 오브젝트의 중심 좌표
 
         // 플레이어의 중심 좌표를 현재보다 조금 위로 조절
-        p1.y += 0.9f;
+        p1.y += 0.7f;
 
         // 현재 오브젝트의 중심 좌표를 현재보다 조금 아래로 조절
-        p2.y -= 1f;
+        p2.y -= 0.8f;
 
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;  // 두 좌표 간 거리
-        float r1 = 0.5f;  // 현재 오브젝트의 반경
-        float r2 = 0.5f;  // 플레이어의 반경
+        float r1 = 0.3f;  // 현재 오브젝트의 반경
+        float r2 = 0.6f;  // 플레이어의 반경
         float distance = Vector2.Distance(p1, p2);  // 두 좌표 간 거리 계산
 
         GameObject director = GameObject.Find("MainController2");
