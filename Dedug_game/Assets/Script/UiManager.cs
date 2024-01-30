@@ -632,6 +632,8 @@ public class UiManager : MonoBehaviour
     {
         sfx1AudioSource.Play();
         BG_Cha2_Story.gameObject.SetActive(true);
+        BG_Cha2.gameObject.SetActive(false);
+
     }
 
 
@@ -695,6 +697,7 @@ public class UiManager : MonoBehaviour
     {
         sfx1AudioSource.Play();
         BG_Cha3_Story.gameObject.SetActive(true);
+        BG_Cha3.gameObject.SetActive(false);
     }
 
 
@@ -704,18 +707,21 @@ public class UiManager : MonoBehaviour
     {
         sfx1AudioSource.Play();
         BG_Cha1_Story.gameObject.SetActive(false);
+        BG_Cha1.gameObject.SetActive(true);
     }
 
     public void OnBack2Cha_2_btnClick()
     {
         sfx1AudioSource.Play();
         BG_Cha2_Story.gameObject.SetActive(false);
+        BG_Cha2.gameObject.SetActive(true);
     }
 
     public void OnBack2Cha_3_btnClick()
     {
         sfx1AudioSource.Play();
         BG_Cha3_Story.gameObject.SetActive(false);
+        BG_Cha3.gameObject.SetActive(true);
     }
     //PopUpBG_GoodsInfo 나가는 버튼
     public void OnPopUpExit_BtnClick()
