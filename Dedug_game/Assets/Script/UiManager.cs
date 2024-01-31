@@ -175,6 +175,8 @@ public class UiManager : MonoBehaviour
         DataManager.Instance.story4_3 = PlayerPrefs.GetInt("Story4_3");
 
         DataManager.Instance.firstDG = PlayerPrefs.GetInt("FirstDG");
+        DataManager.Instance.charStory = PlayerPrefs.GetInt("CharStory");
+        DataManager.Instance.charGoods = PlayerPrefs.GetInt("CharGoods");
     }
 
     void Start()
@@ -266,6 +268,72 @@ public class UiManager : MonoBehaviour
         else
         {
             PopUpBG_Goldplus.gameObject.SetActive(false);
+        }
+
+
+        //홈에서 스토리 바로가기 버튼 클릭 시 경우
+       
+        if (DataManager.Instance.charStory == 1)
+        {
+            
+            Bg_Home.gameObject.SetActive(false);
+            BG_Cha1_Story.gameObject.SetActive(true);
+            DataManager.Instance.charStory = 0;
+            Save();
+        }
+        else if (DataManager.Instance.charStory == 2)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_Cha2_Story.gameObject.SetActive(true);
+            DataManager.Instance.charStory = 0;
+            Save();
+        }
+        else if(DataManager.Instance.charStory == 3)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_Cha3_Story.gameObject.SetActive(true);
+            DataManager.Instance.charStory = 0;
+            Save();
+        }
+        else if(DataManager.Instance.charStory == 4)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_MainStory.gameObject.SetActive(true);
+            DataManager.Instance.charStory = 0;
+            Save();
+        }
+
+        Debug.Log(DataManager.Instance.charGoods + "ddddd");
+
+        //홈에서 굿즈 바로가기 버튼 클릭 시 경우
+        
+        if (DataManager.Instance.charGoods == 1)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_Cha1.gameObject.SetActive(true);
+            DataManager.Instance.charGoods = 0;
+            Save();
+        }
+        else if (DataManager.Instance.charGoods == 2)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_Cha2.gameObject.SetActive(true);
+            DataManager.Instance.charGoods = 0;
+            Save();
+        }
+        else if (DataManager.Instance.charGoods == 3)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_Cha3.gameObject.SetActive(true);
+            DataManager.Instance.charGoods = 0;
+            Save();
+        }
+        else if (DataManager.Instance.charGoods == 4)
+        {
+            Bg_Home.gameObject.SetActive(false);
+            BG_SpecialGoods.gameObject.SetActive(true);
+            DataManager.Instance.charGoods = 0;
+            Save();
         }
         Save();
         Debug.Log(DataManager.Instance.story1_1);
@@ -797,6 +865,10 @@ public class UiManager : MonoBehaviour
         PlayerPrefs.SetInt("Story4_2", DataManager.Instance.story4_2);
         PlayerPrefs.SetInt("Story4_3", DataManager.Instance.story4_3);
         PlayerPrefs.SetInt("FirstDG", DataManager.Instance.firstDG);
+        PlayerPrefs.SetInt("CharStory", DataManager.Instance.charStory);
+        PlayerPrefs.SetInt("CharGoods", DataManager.Instance.charGoods);
+
+        PlayerPrefs.Save();
     }    
    
     public void Clear()

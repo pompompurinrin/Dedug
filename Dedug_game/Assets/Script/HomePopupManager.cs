@@ -61,26 +61,14 @@ public class HomePopupManager : MonoBehaviour
     void Start()
     {
         data_Dialog = CSVReader.Read(RankFileName);
-        if(DataManager.Instance.firstGoodsBuy == 0)
-        {
-            TutorialCanvas.gameObject.SetActive(true);
-            
-            Debug.Log("퍼홈" + DataManager.Instance.firstHome.ToString());
-            
-            ClickTutorial();
-            TutorialImg.sprite = TutorialImage1;
-        }
-        else
-        {
-            TutorialCanvas.gameObject.SetActive(false);
-        }
+        
         Debug.Log("퍼홈" + DataManager.Instance.firstHome.ToString());
 
-        GamePopuptext.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
-        GamePopuptext2.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
-        GamePopuptext3.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
-        GamePopuptext4.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
-        GamePopuptext5.text = "Start -" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString() + "Gold";
+        GamePopuptext.text = "-" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
+        GamePopuptext2.text = "-" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
+        GamePopuptext3.text = "-" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
+        GamePopuptext4.text = "-" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
+        GamePopuptext5.text = "-" + data_Dialog[DataManager.Instance.nowRank]["TicketGold"].ToString();
 
 
         if (GamePopups != null)
@@ -106,64 +94,7 @@ public class HomePopupManager : MonoBehaviour
 
 
     }
-    int TutorialClickNum = 0;
-
-    public Image TutorialImg;
-
-    public Sprite TutorialImage1;
-    public Sprite TutorialImage2;
-    public Sprite TutorialImage3;
-    public Sprite TutorialImage4;
-    public Sprite TutorialImage5;
-    public Sprite TutorialImage6;
-    public Sprite TutorialImage7;
-    public Sprite TutorialImage8;
-    public Sprite TutorialImage9;
-
-    public void ClickTutorial()
-    {
-        
-        if (TutorialClickNum == 1)
-        {
-            TutorialImg.sprite = TutorialImage2;
-        }
-        else if (TutorialClickNum == 2)
-        {
-            TutorialImg.sprite = TutorialImage3;
-        }
-        else if (TutorialClickNum == 3)
-        {
-            TutorialImg.sprite = TutorialImage4;
-        }
-        else if (TutorialClickNum == 4)
-        {
-            TutorialImg.sprite = TutorialImage5;
-        }
-        else if (TutorialClickNum == 5)
-        {
-            TutorialImg.sprite = TutorialImage6;
-        }
-        else if (TutorialClickNum == 6)
-        {
-            TutorialImg.sprite = TutorialImage7;
-        }
-        else if (TutorialClickNum == 7)
-        {
-            TutorialImg.sprite = TutorialImage8;
-        }
-        else if (TutorialClickNum == 8)
-        {
-            TutorialImg.sprite = TutorialImage9;
-        }
-        else if (TutorialClickNum == 9)
-        {
-            DataManager.Instance.firstGoodsBuy = 1;
-            Save();
-            TutorialCanvas.gameObject.SetActive(false);
-        }
-
-        TutorialClickNum++;
-    }
+    
 
     public void PlaySFX1()
     {

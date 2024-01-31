@@ -12,7 +12,9 @@ public class HomeManager : MonoBehaviour
     public GameObject ChangeCharPopup;
     public GameObject GoodsBuy;
     public Sprite[] homeImgs;
+    public Sprite[] chrIconImgs;
     public Image homeImg;
+    public Image chrIconImg;
     public Canvas PopupCanvas;
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
@@ -44,6 +46,7 @@ public class HomeManager : MonoBehaviour
     {
         DataManager.Instance.firstHome = PlayerPrefs.GetInt("FirstHome");
         DataManager.Instance.ending = PlayerPrefs.GetInt("Ending");
+        DataManager.Instance.firstGoodsBuy = PlayerPrefs.GetInt("FirstGoodsBuy");
     }
 
 
@@ -59,12 +62,13 @@ public class HomeManager : MonoBehaviour
 
             ClickTutorial();
             TutorialImg.sprite = TutorialImage1;
-
+            TutorialClickNum++;
         }
         else
         {
             TutorialCanvas.gameObject.SetActive(false);
         }
+
         Debug.Log("홈:" + DataManager.Instance.goods1011);
         GameObject ChangeCharPopup = GameObject.Find("ChangeCharPopup");
         GameObject MenuUI = GameObject.Find("MenuUI");
@@ -244,6 +248,7 @@ public class HomeManager : MonoBehaviour
         {
             DataManager.Instance.firstHome = 1;
             PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
+            PlayerPrefs.Save();
             TutorialCanvas.gameObject.SetActive(false);
         }
 
@@ -297,11 +302,89 @@ public class HomeManager : MonoBehaviour
 
     public void OnButtonClick_OnGoodsBuy()
     {
+        if (DataManager.Instance.firstGoodsBuy == 0)
+        {
+            TutorialGoodsCanvas.gameObject.SetActive(true);
+
+            Debug.Log("퍼홈" + DataManager.Instance.firstHome.ToString());
+
+            ClickTutorial();
+            TutorialGoodsImg.sprite = TutorialGoodsImage1;
+
+
+        }
+        else
+        {
+            TutorialGoodsCanvas.gameObject.SetActive(false);
+        }
         // 굿즈 구매 팝업 활성화
         PlaySFX1();
         PopupCanvas.gameObject.SetActive(true);
         GoodsBuy.gameObject.SetActive(true);
+
+        
     }
+    int TutorialGoodsClickNum = 0;
+    public Canvas TutorialGoodsCanvas;
+    public Image TutorialGoodsImg;
+
+    public Sprite TutorialGoodsImage1;
+    public Sprite TutorialGoodsImage2;
+    public Sprite TutorialGoodsImage3;
+    public Sprite TutorialGoodsImage4;
+    public Sprite TutorialGoodsImage5;
+    public Sprite TutorialGoodsImage6;
+    public Sprite TutorialGoodsImage7;
+    public Sprite TutorialGoodsImage8;
+    public Sprite TutorialGoodsImage9;
+
+    public void ClickGoodsTutorial()
+    {
+
+        if (TutorialGoodsClickNum == 1)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage2;
+        }
+        else if (TutorialGoodsClickNum == 2)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage3;
+        }
+        else if (TutorialGoodsClickNum == 3)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage4;
+        }
+        else if (TutorialGoodsClickNum == 4)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage5;
+        }
+        else if (TutorialGoodsClickNum == 5)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage6;
+        }
+        else if (TutorialGoodsClickNum == 6)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage7;
+        }
+        else if (TutorialGoodsClickNum == 7)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage8;
+        }
+        else if (TutorialGoodsClickNum == 8)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage9;
+        }
+        else if (TutorialGoodsClickNum == 9)
+        {
+            DataManager.Instance.firstGoodsBuy = 1;
+            PlayerPrefs.SetInt("FirstGoodsBuy", DataManager.Instance.firstGoodsBuy);
+            PlayerPrefs.Save();
+            TutorialGoodsCanvas.gameObject.SetActive(false);
+
+        }
+
+        TutorialGoodsClickNum++;
+    }
+
 
     public void OnButtonClick_OnUpdate()
     {
@@ -321,9 +404,76 @@ public class HomeManager : MonoBehaviour
     {
         
         DataManager.Instance.homeChr = PlayerPrefs.GetInt("HomeChr");
+        DataManager.Instance.homeChr = PlayerPrefs.GetInt("ChrIcon");
         homeImg.sprite = homeImgs[DataManager.Instance.homeChr];
+        chrIconImg.sprite = chrIconImgs[DataManager.Instance.homeChr];
         charName.text = nameList[DataManager.Instance.homeChr];
         TextChange();
+    }
+    public void Onclick_ChrIconStory()
+    {
+        if (DataManager.Instance.homeChr == 0)
+        {
+            DataManager.Instance.charStory = 1;
+            PlayerPrefs.SetInt("CharStory", DataManager.Instance.charStory);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+        else if (DataManager.Instance.homeChr == 1)
+        {
+            DataManager.Instance.charStory = 2;
+            PlayerPrefs.SetInt("CharStory", DataManager.Instance.charStory);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+        else if (DataManager.Instance.homeChr == 2)
+        {
+            DataManager.Instance.charStory = 3;
+            PlayerPrefs.SetInt("CharStory", DataManager.Instance.charStory);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+        else if (DataManager.Instance.homeChr == 3)
+        {
+            DataManager.Instance.charStory = 4;
+            PlayerPrefs.SetInt("CharStory", DataManager.Instance.charStory);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+
+    }
+
+    public void Onclick_ChrIconGoods()
+    {
+        if (DataManager.Instance.homeChr == 0)
+        {
+            DataManager.Instance.charGoods = 1;
+            PlayerPrefs.SetInt("CharGoods", DataManager.Instance.charGoods);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+        else if (DataManager.Instance.homeChr == 1)
+        {
+            DataManager.Instance.charGoods = 2;
+            PlayerPrefs.SetInt("CharGoods", DataManager.Instance.charGoods);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+        else if (DataManager.Instance.homeChr == 2)
+        {
+            DataManager.Instance.charGoods = 3;
+            PlayerPrefs.SetInt("CharGoods", DataManager.Instance.charGoods);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+        else if (DataManager.Instance.homeChr == 3)
+        {
+            DataManager.Instance.charGoods = 4;
+            PlayerPrefs.SetInt("CharGoods", DataManager.Instance.charGoods);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("DG_Scene");
+        }
+
     }
 
     public void TextChange()
@@ -334,6 +484,7 @@ public class HomeManager : MonoBehaviour
     {
         PlaySFX1();
         PlayerPrefs.SetInt("HomeChr", ImgNumber);
+        PlayerPrefs.SetInt("ChrIcon", ImgNumber);
 
         SpriteChange();
         nextDia = 0;

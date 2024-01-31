@@ -43,6 +43,7 @@ public class ResultManager : MonoBehaviour
     public Button HomeBtn;
     public GameObject RestartPopup;
     public GameObject GoldlackPopup;
+    public GameObject DGPopup;
     public Text RestartGoldText;
 
     // 각종 효과 및 결과를 나타내는 텍스트들
@@ -546,6 +547,16 @@ public class ResultManager : MonoBehaviour
         GoldlackPopup.gameObject.SetActive(false);
     }
 
+    public void Click_OnDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(false);
+    }
+
     public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
     {
 
@@ -657,10 +668,7 @@ public class ResultManager : MonoBehaviour
         }
     }
    
-    /*public void RestartClick() 
-    {
-        SceneManager.LoadScene("DG_Scene"); //일단은 도감으로 연결해뒀던거라 다시 시작할 거면 이 부분 바꿔주어야 함
-    }*/
+    /**/
 
     public void HomeClick()
     {
@@ -670,6 +678,11 @@ public class ResultManager : MonoBehaviour
     public void RequestClick()
     {
         SceneManager.LoadScene("RequestScene");
+    }
+
+    public void DGClick()
+    {
+        SceneManager.LoadScene("DG_Scene");
     }
 
 }
