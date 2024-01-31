@@ -13,8 +13,12 @@ public class HomeManager : MonoBehaviour
     public GameObject GoodsBuy;
     public Sprite[] homeImgs;
     public Sprite[] chrIconImgs;
+    public Sprite[] storyIconImgs;
+    public Sprite[] goodsIconImgs;
     public Image homeImg;
     public Image chrIconImg;
+    public Image storyIconImg;
+    public Image goodsIconImg;
     public Canvas PopupCanvas;
     public AudioSource bgm1AudioSource;
     public AudioSource sfx1AudioSource;
@@ -405,8 +409,13 @@ public class HomeManager : MonoBehaviour
         
         DataManager.Instance.homeChr = PlayerPrefs.GetInt("HomeChr");
         DataManager.Instance.homeChr = PlayerPrefs.GetInt("ChrIcon");
+        DataManager.Instance.homeChr = PlayerPrefs.GetInt("StoryIcon");
+        DataManager.Instance.homeChr = PlayerPrefs.GetInt("GoodsIcon");
         homeImg.sprite = homeImgs[DataManager.Instance.homeChr];
         chrIconImg.sprite = chrIconImgs[DataManager.Instance.homeChr];
+        storyIconImg.sprite = storyIconImgs[DataManager.Instance.homeChr];
+        goodsIconImg.sprite = goodsIconImgs[DataManager.Instance.homeChr];
+
         charName.text = nameList[DataManager.Instance.homeChr];
         TextChange();
     }
@@ -485,6 +494,9 @@ public class HomeManager : MonoBehaviour
         PlaySFX1();
         PlayerPrefs.SetInt("HomeChr", ImgNumber);
         PlayerPrefs.SetInt("ChrIcon", ImgNumber);
+        PlayerPrefs.SetInt("StoryIcon", ImgNumber);
+        PlayerPrefs.SetInt("GoodsIcon", ImgNumber);
+        Debug.Log(DataManager.Instance.homeChr);
 
         SpriteChange();
         nextDia = 0;
