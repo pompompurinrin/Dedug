@@ -5001,8 +5001,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD06C\uB798\uB527 \uB0B4\uC6A9\uC744 \uCC44\uC6CC\uBD05\uC2DC\uB2E4 \n\uB77C\uB77C\uB77C\uB77C\uB77C\uB77C\uB77C\uB77C\uB77C\n\n\uB514\uB354\uADF8\uD654\uC774\uD305\n\uBAA8\uC544\uBAA8\uC544\uD050
-    \uD654\uC774\uD305"
+  m_Text: " \uC81C\uC791\r\n\nPD/PM\n\uAE40\uD61C\uB9B0\r\n\n      \uCEE8\uD150\uCE20     
+    \n\uAE40\uD61C\uB9B0 \uAE40\uC724\uC815 \uAE40\uD55C\uB098\r\n \uC7A5\uC9C0\uC6D0
+    \uC804\uD61C\uC9C4 \uD64D\uC9C4\uC218\r\n\n\uC2DC\uC2A4\uD15C\n\uAE40\uD61C\uB9B0
+    \uAE40\uC724\uC815 \uAE40\uD55C\uB098\r\n\n  \uC2DC\uB098\uB9AC\uC624 \n \uC804\uD61C\uC9C4\r\n\n     
+    \uBC38\uB7F0\uC2A4      \n\uC7A5\uC9C0\uC6D0\r\n\n             UI             
+    \n\uD64D\uC9C4\uC218\r\n\n         \uC544\uD2B8          \n\uD64D\uC9C4\uC218\r\n\r\nSpecial
+    Thanks\n\r\n \uD558\uC580 \uBE0C\uB85C\uCF5C\uB9AC\r\nJack\r  \n\uAC15\uC6B0\uB9AC\r
+    \n\uC774\uC900\uD601\r\nGPT-3.5\nDALL\xB7E\r\n Evgeny Zimin/Shutterstock.com\r\nann_ounce/Shutterstock.com\r\n
+    Creative_Bird/Shutterstock.com\r\n Lerha/Shutterstock.com\r\naiven studio/Shutterstock.com"
 --- !u!1 &1202383593853156853
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,8 +6687,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.016967773}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -274.75}
+  m_SizeDelta: {x: 0, y: 549.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8898986980720249680
 CanvasRenderer:
