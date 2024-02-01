@@ -190,6 +190,16 @@ public class RequestManager : MonoBehaviour
     public Sprite TutorialImage7;
     public Sprite TutorialImage8;
     public Sprite TutorialImage9;
+    public Sprite TutorialImage10;
+    public Sprite TutorialImage11;
+    public Sprite TutorialImage12;
+    public Sprite TutorialImage13;
+    public Sprite TutorialImage14;
+    public Sprite TutorialImage15;
+    public Sprite TutorialImage16;
+    public Sprite TutorialImage17;
+    public Sprite TutorialImage18;
+    public Sprite TutorialImage19;
 
     public void ClickTutorial()
     {    
@@ -223,6 +233,46 @@ public class RequestManager : MonoBehaviour
             TutorialImg.sprite = TutorialImage8;
         }
         else if (TutorialClickNum == 8)
+        {
+            TutorialImg.sprite = TutorialImage9;
+        }
+        else if (TutorialClickNum == 9)
+        {
+            TutorialImg.sprite = TutorialImage10;
+        }
+        else if (TutorialClickNum == 10)
+        {
+            TutorialImg.sprite = TutorialImage11;
+        }
+        else if (TutorialClickNum == 11)
+        {
+            TutorialImg.sprite = TutorialImage12;
+        }
+        else if (TutorialClickNum == 12)
+        {
+            TutorialImg.sprite = TutorialImage13;
+        }
+        else if (TutorialClickNum == 13)
+        {
+            TutorialImg.sprite = TutorialImage14;
+        }
+        else if (TutorialClickNum == 14)
+        {
+            TutorialImg.sprite = TutorialImage15;
+        }
+        else if (TutorialClickNum == 15)
+        {
+            TutorialImg.sprite = TutorialImage16;
+        }
+        else if (TutorialClickNum == 16)
+        {
+            TutorialImg.sprite = TutorialImage17;
+        }
+        else if (TutorialClickNum == 17)
+        {
+            TutorialImg.sprite = TutorialImage18;
+        }
+        else if (TutorialClickNum == 18)
         {
             DataManager.Instance.firstRequest = 1;
             Save();
