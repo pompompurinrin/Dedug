@@ -257,7 +257,7 @@ public class StoryManager : MonoBehaviour
             DataManager.Instance.first = 1;
             PlayerPrefs.SetInt("First", DataManager.Instance.first);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("HomeScene");
+            SceneManager.LoadScene("RequestScene");
         }
         else if (hasEndID && EndID != null && !string.IsNullOrEmpty(EndID.ToString()) && DataManager.Instance.storyID == 99)
         {
@@ -339,7 +339,7 @@ public class StoryManager : MonoBehaviour
         {
             DataManager.Instance.first = 1;
             PlayerPrefs.SetInt("First", DataManager.Instance.first);
-            SceneManager.LoadScene("HomeScene");
+            SceneManager.LoadScene("RequestScene");
         }
         else
         {

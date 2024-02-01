@@ -274,6 +274,10 @@ public class RequestManager : MonoBehaviour
         }
         else if (TutorialClickNum == 18)
         {
+            TutorialImg.sprite = TutorialImage19;
+        }
+        else if (TutorialClickNum == 19)
+        {
             DataManager.Instance.firstRequest = 1;
             Save();
             TutorialCanvas.gameObject.SetActive(false);

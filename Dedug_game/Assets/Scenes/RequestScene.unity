@@ -8118,15 +8118,25 @@ MonoBehaviour:
   FeverSlider: {fileID: 26684581}
   TutorialCanvas: {fileID: 2034159358}
   TutorialImg: {fileID: 1128197888}
-  TutorialImage1: {fileID: 21300000, guid: 96b8646d6d698cf4ab90679eddf39c06, type: 3}
-  TutorialImage2: {fileID: 21300000, guid: 9f476f3b7a9e6f54989a0c379d7244c6, type: 3}
-  TutorialImage3: {fileID: 21300000, guid: bd450389914b848488213af539a3bfa6, type: 3}
-  TutorialImage4: {fileID: 21300000, guid: 1ec45af3dadcb9f4bbe426c687dbcbe8, type: 3}
-  TutorialImage5: {fileID: 21300000, guid: 05aac0c703413a54fa9d845669f6c335, type: 3}
-  TutorialImage6: {fileID: 21300000, guid: 20f395915b3b3ac41ad91919420ed9fd, type: 3}
-  TutorialImage7: {fileID: 21300000, guid: ae5c7fd9eb1785c4397c094c7dcb99b5, type: 3}
-  TutorialImage8: {fileID: 21300000, guid: 5c4b2b96b692f404f986ac7e15ac62fe, type: 3}
-  TutorialImage9: {fileID: 21300000, guid: bcede6e8fadcee44ead9514ee766c537, type: 3}
+  TutorialImage1: {fileID: 21300000, guid: 0173bc4176b5c2f469621e1bff10fdd5, type: 3}
+  TutorialImage2: {fileID: 21300000, guid: 592908a7ff9a6b0449743f6a5f00287a, type: 3}
+  TutorialImage3: {fileID: 21300000, guid: ddceb5946b9b9f14ab9377ba4587378e, type: 3}
+  TutorialImage4: {fileID: 21300000, guid: d26c524cd3cba884396113df2560e05b, type: 3}
+  TutorialImage5: {fileID: 21300000, guid: f61e877c2757d69448a4e2211c404099, type: 3}
+  TutorialImage6: {fileID: 21300000, guid: 5ef9b773beb7d5a42acf11b9f83fd2d8, type: 3}
+  TutorialImage7: {fileID: 21300000, guid: 6c5de0075c232a14bac7c136814e8a22, type: 3}
+  TutorialImage8: {fileID: 21300000, guid: 91298495fdeb1774e92338151da86aa6, type: 3}
+  TutorialImage9: {fileID: 21300000, guid: 21e3fa2cbe3bbac42949b3b4fe93330f, type: 3}
+  TutorialImage10: {fileID: 21300000, guid: 278e7e0d7e6231d40a39b9e2cacb4367, type: 3}
+  TutorialImage11: {fileID: 21300000, guid: 898cfd16c0384b54fb71a61bb75c2f2a, type: 3}
+  TutorialImage12: {fileID: 21300000, guid: a3fb76bc8e226a84da23e9b8d5a93f30, type: 3}
+  TutorialImage13: {fileID: 21300000, guid: f20e4f7ee199c55449f9a0a451552ee7, type: 3}
+  TutorialImage14: {fileID: 21300000, guid: ba4a08f45519ba04d9eba27d05f9c173, type: 3}
+  TutorialImage15: {fileID: 21300000, guid: 693784e86396f7e42933b7f6ec8bc16f, type: 3}
+  TutorialImage16: {fileID: 21300000, guid: 31f56efde1d8f3d48ab438071a6aee2d, type: 3}
+  TutorialImage17: {fileID: 21300000, guid: 186ec475c8c7f664594082cc1c2e9cdc, type: 3}
+  TutorialImage18: {fileID: 21300000, guid: 6aa9a7b868587dc49b7b3e1fd71834be, type: 3}
+  TutorialImage19: {fileID: 21300000, guid: b8fe00239ee423b46b024c01bd613432, type: 3}
 --- !u!1 &2099618973
 GameObject:
   m_ObjectHideFlags: 0

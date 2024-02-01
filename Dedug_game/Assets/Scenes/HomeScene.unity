@@ -1655,16 +1655,8 @@ MonoBehaviour:
   charName: {fileID: 782978725}
   TutorialCanvas: {fileID: 1295231997}
   TutorialImg: {fileID: 605431579}
-  TutorialImage1: {fileID: 21300000, guid: 69a9e429afd81874a95cf61f162c229b, type: 3}
-  TutorialImage2: {fileID: 21300000, guid: d0456d3faacd55b41a16ec6185592c89, type: 3}
-  TutorialImage3: {fileID: 21300000, guid: 63ef1af75d0fef848821b648d1deb5b3, type: 3}
-  TutorialImage4: {fileID: 21300000, guid: 520737ffcba6f044bab93c124618a2d9, type: 3}
-  TutorialImage5: {fileID: 21300000, guid: 93c31ba42d18b314bab35dd1de9e59a6, type: 3}
-  TutorialImage6: {fileID: 21300000, guid: 0821de48dedd3ef41a826cd7e81228b1, type: 3}
-  TutorialImage7: {fileID: 21300000, guid: 1ab9ba7cc90e35e47b4e567d66bdfc41, type: 3}
-  TutorialImage8: {fileID: 21300000, guid: c14d39bcab000e44e9f9c46d9344bec4, type: 3}
-  TutorialImage9: {fileID: 21300000, guid: b12df82f75cfb614e9101c6230e32698, type: 3}
-  TutorialImage10: {fileID: 21300000, guid: 46c1f77ddf3283d44adafdd786b8fcb1, type: 3}
+  TutorialImage1: {fileID: 21300000, guid: ba6ad70b3ae13fa4f911e9689a4b9330, type: 3}
+  TutorialImage2: {fileID: 0}
   TutorialGoodsCanvas: {fileID: 1329149757}
   TutorialGoodsImg: {fileID: 1080337443}
   TutorialGoodsImage1: {fileID: 21300000, guid: 7988bba7d036a7543b3b94f2629b6f26, type: 3}

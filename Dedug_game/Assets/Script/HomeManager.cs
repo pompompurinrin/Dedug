@@ -196,14 +196,7 @@ public class HomeManager : MonoBehaviour
 
     public Sprite TutorialImage1;
     public Sprite TutorialImage2;
-    public Sprite TutorialImage3;
-    public Sprite TutorialImage4;
-    public Sprite TutorialImage5;
-    public Sprite TutorialImage6;
-    public Sprite TutorialImage7;
-    public Sprite TutorialImage8;
-    public Sprite TutorialImage9;
-    public Sprite TutorialImage10;
+
     public void ClickTutorial()
     {
         
@@ -211,39 +204,8 @@ public class HomeManager : MonoBehaviour
         {
             TutorialImg.sprite = TutorialImage2;
         }
+
         else if (TutorialClickNum == 2)
-        {
-            TutorialImg.sprite = TutorialImage3;
-        }
-        else if (TutorialClickNum == 3)
-        {
-            TutorialImg.sprite = TutorialImage4;
-        }
-        else if (TutorialClickNum == 4)
-        {
-            TutorialImg.sprite = TutorialImage5;
-        }
-        else if (TutorialClickNum == 5)
-        {
-            TutorialImg.sprite = TutorialImage6;
-        }
-        else if (TutorialClickNum == 6)
-        {
-            TutorialImg.sprite = TutorialImage7;
-        }
-        else if (TutorialClickNum == 7)
-        {
-            TutorialImg.sprite = TutorialImage8;
-        }
-        else if (TutorialClickNum == 8)
-        {
-            TutorialImg.sprite = TutorialImage9;
-        }
-        else if (TutorialClickNum == 9)
-        {
-            TutorialImg.sprite = TutorialImage10;
-        }
-        else if (TutorialClickNum == 10)
         {
             DataManager.Instance.firstHome = 1;
             PlayerPrefs.SetInt("FirstHome", DataManager.Instance.firstHome);
