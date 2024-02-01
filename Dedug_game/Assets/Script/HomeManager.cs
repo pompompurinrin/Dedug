@@ -102,7 +102,7 @@ public class HomeManager : MonoBehaviour
         }
         else if (DataManager.Instance.nowRank == 1)
         {
-            PurposeBtnText.text = "¹Ù´Ù L È¦´õ È¹µæÇÏ±â";
+            PurposeBtnText.text = "¹Ù´Ù LÀÚ È¦´õ È¹µæÇÏ±â";
             if (DataManager.Instance.goods2022 > 0)
             {
                 PurposeBtnCompleteText.gameObject.SetActive(true);
@@ -298,6 +298,10 @@ public class HomeManager : MonoBehaviour
     public Sprite TutorialGoodsImage7;
     public Sprite TutorialGoodsImage8;
     public Sprite TutorialGoodsImage9;
+    public Sprite TutorialGoodsImage10;
+    public Sprite TutorialGoodsImage11;
+    public Sprite TutorialGoodsImage12;
+    public Sprite TutorialGoodsImage13;
 
     public void ClickGoodsTutorial()
     {
@@ -335,6 +339,22 @@ public class HomeManager : MonoBehaviour
             TutorialGoodsImg.sprite = TutorialGoodsImage9;
         }
         else if (TutorialGoodsClickNum == 9)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage10;
+        }
+        else if (TutorialGoodsClickNum == 10)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage11;
+        }
+        else if (TutorialGoodsClickNum == 11)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage12;
+        }
+        else if (TutorialGoodsClickNum == 12)
+        {
+            TutorialGoodsImg.sprite = TutorialGoodsImage13;
+        }
+        else if (TutorialGoodsClickNum == 13)
         {
             DataManager.Instance.firstGoodsBuy = 1;
             PlayerPrefs.SetInt("FirstGoodsBuy", DataManager.Instance.firstGoodsBuy);

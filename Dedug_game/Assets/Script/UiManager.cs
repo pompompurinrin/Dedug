@@ -802,14 +802,12 @@ public class UiManager : MonoBehaviour
     int TutorialClickNum = 0;
 
     public Image TutorialImg;
-
     public Sprite TutorialImage1;
     public Sprite TutorialImage2;
     public Sprite TutorialImage3;
     public Sprite TutorialImage4;
     public Sprite TutorialImage5;
     public Sprite TutorialImage6;
-    public Sprite TutorialImage7;
     public Canvas TutorialCanvas;
     public void ClickTutorial()
     {
@@ -835,10 +833,6 @@ public class UiManager : MonoBehaviour
             TutorialImg.sprite = TutorialImage6;
         }
         else if (TutorialClickNum == 6)
-        {
-            TutorialImg.sprite = TutorialImage7;
-        }
-        else if (TutorialClickNum == 7)
         {
             DataManager.Instance.firstDG = 1;
             Save();

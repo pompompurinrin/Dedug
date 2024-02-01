@@ -1659,15 +1659,19 @@ MonoBehaviour:
   TutorialImage2: {fileID: 0}
   TutorialGoodsCanvas: {fileID: 1329149757}
   TutorialGoodsImg: {fileID: 1080337443}
-  TutorialGoodsImage1: {fileID: 21300000, guid: 7988bba7d036a7543b3b94f2629b6f26, type: 3}
-  TutorialGoodsImage2: {fileID: 21300000, guid: c8f50cc7fa2fd1341965448f09840b28, type: 3}
-  TutorialGoodsImage3: {fileID: 21300000, guid: 8630b03ad5d9b1e418c12af7ae80bf47, type: 3}
-  TutorialGoodsImage4: {fileID: 21300000, guid: 24829c49f79505947a8b55a92edd2b27, type: 3}
-  TutorialGoodsImage5: {fileID: 21300000, guid: 3ad719b9cc836c04baed346c6d596d53, type: 3}
-  TutorialGoodsImage6: {fileID: 21300000, guid: 8b81dc2dbceff244fb49c197dfd6dac5, type: 3}
-  TutorialGoodsImage7: {fileID: 21300000, guid: cd81bc96befe2854a956a22535b6d281, type: 3}
-  TutorialGoodsImage8: {fileID: 21300000, guid: b2f7ed382a81b4a4680924b13b043b32, type: 3}
-  TutorialGoodsImage9: {fileID: 21300000, guid: 7ef4bafb2de981e429180b8173eafd48, type: 3}
+  TutorialGoodsImage1: {fileID: 21300000, guid: 26aa4599fba725242a025e51a786d893, type: 3}
+  TutorialGoodsImage2: {fileID: 21300000, guid: 00bd50b2f23d71e4d93820d0852cbff5, type: 3}
+  TutorialGoodsImage3: {fileID: 21300000, guid: 0d2abbf56fe976d42ad3ca7da78be268, type: 3}
+  TutorialGoodsImage4: {fileID: 21300000, guid: f5ed553695312eb4282833f9104d5b85, type: 3}
+  TutorialGoodsImage5: {fileID: 21300000, guid: 940356a0976c3014ab862c0d391c26e7, type: 3}
+  TutorialGoodsImage6: {fileID: 21300000, guid: 79794d17d223fb74a8522fdd419d45ec, type: 3}
+  TutorialGoodsImage7: {fileID: 21300000, guid: 9627386ab1d761244a99dd619312b358, type: 3}
+  TutorialGoodsImage8: {fileID: 21300000, guid: 592bed539eaed9e4cb4310a72b1191b2, type: 3}
+  TutorialGoodsImage9: {fileID: 21300000, guid: f7b699768c4111a41970c691791cda47, type: 3}
+  TutorialGoodsImage10: {fileID: 21300000, guid: 338e5b06b4a3b6646aea64ac5cb4bac1, type: 3}
+  TutorialGoodsImage11: {fileID: 21300000, guid: 40c458520478075428059ca95a070ec0, type: 3}
+  TutorialGoodsImage12: {fileID: 21300000, guid: 81713a16c90279546bd09a2865b0572a, type: 3}
+  TutorialGoodsImage13: {fileID: 21300000, guid: 2f15c1f81284628428977b129ff234cd, type: 3}
 --- !u!114 &91685926
 MonoBehaviour:
   m_ObjectHideFlags: 0

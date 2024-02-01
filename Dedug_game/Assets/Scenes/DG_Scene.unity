@@ -18675,13 +18675,12 @@ MonoBehaviour:
   - {fileID: 783259757}
   - {fileID: 473288561}
   TutorialImg: {fileID: 596445867}
-  TutorialImage1: {fileID: 21300000, guid: a81e2f308bea3db4b89ca73e0a111f8a, type: 3}
-  TutorialImage2: {fileID: 21300000, guid: 0989eb94bea2af44d904a6b45700f10f, type: 3}
-  TutorialImage3: {fileID: 21300000, guid: 36f35ae2c98d638469f4c9459c88f504, type: 3}
-  TutorialImage4: {fileID: 21300000, guid: eba7d16033542824db8b98f3f0805813, type: 3}
-  TutorialImage5: {fileID: 21300000, guid: b6f630b2c960eef4a908a0e121426420, type: 3}
-  TutorialImage6: {fileID: 21300000, guid: f543ae5338d75534a90c9cc2839aecae, type: 3}
-  TutorialImage7: {fileID: 21300000, guid: f4ba20d965048754a9e132417a5f80fd, type: 3}
+  TutorialImage1: {fileID: 21300000, guid: efa1a53906dc0fd49b070274d9414a11, type: 3}
+  TutorialImage2: {fileID: 21300000, guid: fdeb72774906cae41a66fbbd915ef12c, type: 3}
+  TutorialImage3: {fileID: 21300000, guid: 097dd80529af7fa4cab6360b99d416a1, type: 3}
+  TutorialImage4: {fileID: 21300000, guid: 813ebb0a9ab50f2478c0fab4734d18fa, type: 3}
+  TutorialImage5: {fileID: 21300000, guid: 280613ce4c92859448bfe4d6a19d070e, type: 3}
+  TutorialImage6: {fileID: 21300000, guid: 022b78cfcb0e5a944885a726d7be17b7, type: 3}
   TutorialCanvas: {fileID: 1652987271}
 --- !u!114 &680742928
 MonoBehaviour:
