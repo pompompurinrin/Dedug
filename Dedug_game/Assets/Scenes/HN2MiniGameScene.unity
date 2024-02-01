@@ -1878,6 +1878,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2048998662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6069567803353226762, guid: 2720fb1104a984b45b6a827d4e0a07b5, type: 3}
+  m_PrefabInstance: {fileID: 6069567802915302613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2109831192 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6069567802852463821, guid: 2720fb1104a984b45b6a827d4e0a07b5, type: 3}
@@ -2263,8 +2274,8 @@ MonoBehaviour:
   hit_fx: {fileID: 1316701637025737387}
   ResultBGBG: {fileID: 5629101797731033074}
   ScoreBG: {fileID: 5578784619615312468}
-  Scoretxt: {fileID: 5578784620043596139}
-  UserScore: {fileID: 5578784619723279457}
+  Scoretxt: {fileID: 2048998662}
+  UserScore: {fileID: 2048998662}
   Rewardtxt: {fileID: 5578784619635047906}
   Restart: {fileID: 5578784619316120523}
   HomeBtn: {fileID: 5578784620232525609}
@@ -2798,17 +2809,6 @@ GameObject:
 --- !u!114 &5578784619723279457 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6183758490640671014, guid: 8b057dcb8356198438c262c1f5fa83cb, type: 3}
-  m_PrefabInstance: {fileID: 1781961556900556103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5578784620043596139 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6183758490958945324, guid: 8b057dcb8356198438c262c1f5fa83cb, type: 3}
   m_PrefabInstance: {fileID: 1781961556900556103}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

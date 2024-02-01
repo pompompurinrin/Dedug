@@ -740,7 +740,7 @@ public class MainController2 : MonoBehaviour
 
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
+        UserScoretxt.text = "0" + score.ToString("F0");      // 최종 유저 스코어 텍스트로 출력
 
 
         //굿즈 지급
@@ -764,6 +764,10 @@ public class MainController2 : MonoBehaviour
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(false);
             Reward3BG.gameObject.SetActive(false);
+            if (score == 0)
+            {
+                UserScoretxt.text = "0" + score.ToString("F0");
+            }
         }
 
         else
