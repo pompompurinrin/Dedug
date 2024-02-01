@@ -842,7 +842,7 @@ public class HomePopupManager : MonoBehaviour
         }
         else if (HelpChorongClickNum == 6)
         {
-            HelpChorongHowtoText.text = "60점 이상은 굿즈 3개, 50 ~ 59점은 2개, \n49점 이하는 1개를 획득할 수 있습니다.";
+            HelpChorongHowtoText.text = "50점 이상은 굿즈 3개, 40 ~ 49점은 2개, \n39점 이하는 1개를 획득할 수 있습니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage7;
         }
     }
