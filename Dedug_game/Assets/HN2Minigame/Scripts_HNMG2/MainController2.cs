@@ -42,6 +42,7 @@ public class MainController2 : MonoBehaviour
     public Button HomeBtn;
     public GameObject RestartPopup;
     public GameObject GoldlackPopup;
+    public GameObject DGPopup;
     public Text RestartGoldText;
 
     // 각종 효과 및 결과를 나타내는 텍스트들
@@ -325,6 +326,16 @@ public class MainController2 : MonoBehaviour
         GoldlackPopup.gameObject.SetActive(false);
     }
 
+    public void Click_OnDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(false);
+    }
+
     // 진수: 리얼리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
     public void RestartClick() 
     {
@@ -449,6 +460,12 @@ public class MainController2 : MonoBehaviour
         SceneManager.LoadScene("RequestScene");
     }
 
+    // 도감 클릭
+    public void DGClick()
+    {
+        SceneManager.LoadScene("DG_Scene");
+    }
+
     // 게임 일시정지 상태를 나타내는 변수
     public bool isGamePaused = false;
 
@@ -526,7 +543,7 @@ public class MainController2 : MonoBehaviour
         Time.timeScale = 1;
         isGamePaused = false;
         SceneManager.LoadScene("HomeScene");
-        //homeManager.OnButtonClick_OnGoodsBuy();
+
     }
 
     // 굿즈 개수 증가 메서드

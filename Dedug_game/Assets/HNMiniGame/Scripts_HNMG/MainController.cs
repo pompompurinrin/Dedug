@@ -62,6 +62,7 @@ public class MainController : MonoBehaviour
     public Button HomeBtn;
     public GameObject RestartPopup;
     public GameObject GoldlackPopup;
+    public GameObject DGPopup;
     public Text RestartGoldText;
 
     // 각종 효과 및 결과를 나타내는 텍스트들
@@ -361,6 +362,16 @@ public class MainController : MonoBehaviour
     {
         GoldlackPopup.gameObject.SetActive(false);
     }
+
+    public void Click_OnDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(false);
+    }
     public void RestartClick() //진수: 리스타트 클릭 시 현재 랭크에 맞추어 그에 해당하는 골드를 소모하는 스크립트
     {
 
@@ -482,6 +493,11 @@ public class MainController : MonoBehaviour
         SceneManager.LoadScene("RequestScene");
     }
 
+    public void DGClick()
+    {
+        SceneManager.LoadScene("DG_Scene");
+    }
+
 
     // 게임 일시정지 관련 변수   
     public Image pauseBG;
@@ -574,7 +590,7 @@ public class MainController : MonoBehaviour
         isGamePaused = false;
         Main_BGM2.Play();
     }
-    public HomeManager homeManager;
+
     // 굿즈구매로 버튼 함수
     public void stopOkClick()
     {
@@ -582,7 +598,7 @@ public class MainController : MonoBehaviour
         isGamePaused = false;
 
         SceneManager.LoadScene("HomeScene");
-        //homeManager.OnButtonClick_OnGoodsBuy();
+
     }
 
     // 게임 재개 처리
@@ -759,7 +775,7 @@ public class MainController : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        UserScoretxt.text = score.ToString("F0");      // 최종 유저 스코어 텍스트로 출력
+        UserScoretxt.text = "0" + score.ToString("F0");      // 최종 유저 스코어 텍스트로 출력
         
 
         //굿즈 지급
