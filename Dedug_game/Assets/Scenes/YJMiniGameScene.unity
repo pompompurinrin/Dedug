@@ -3092,7 +3092,7 @@ PrefabInstance:
     - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
       propertyPath: SFX2
       value: 
-      objectReference: {fileID: 1906747571}
+      objectReference: {fileID: 1711875777}
     - target: {fileID: 461321539999059961, guid: 76b557165aa3c9c42bb52357e4363c02, type: 3}
       propertyPath: SFX3
       value: 

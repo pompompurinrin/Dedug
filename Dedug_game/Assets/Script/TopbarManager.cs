@@ -134,6 +134,16 @@ public class TopbarManager : MonoBehaviour
         DataManager.Instance.sfx = PlayerPrefs.GetInt("SFX");
 
         NowRankImage = GameObject.Find("GradeImg").GetComponent<Image>();
+
+        DataManager.Instance.firstDG = PlayerPrefs.GetInt("FirstDG");
+        DataManager.Instance.firstHome = PlayerPrefs.GetInt("FirstHome");
+        DataManager.Instance.firstGoodsBuy = PlayerPrefs.GetInt("FirstGoodsBuy");
+        DataManager.Instance.firstRequest = PlayerPrefs.GetInt("FirstRequest");
+        DataManager.Instance.firstRank = PlayerPrefs.GetInt("FirstRank");
+        DataManager.Instance.ending = PlayerPrefs.GetInt("Ending");
+        DataManager.Instance.ending1 = PlayerPrefs.GetInt("Ending1");
+
+
     }
     public void TopBar()
     {
