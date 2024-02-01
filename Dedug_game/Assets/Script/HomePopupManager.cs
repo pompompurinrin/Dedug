@@ -640,7 +640,7 @@ public class HomePopupManager : MonoBehaviour
     {
         if (GanbareClickNum == 0)
         {
-            GanbareHowToText.text = "빛나라! 바다쨩!은 바다의 콘서트에서 나오는 불빛에 맞춰서 응원봉을 휘둘러 바다를 응원하는 게임입니다.";
+            GanbareHowToText.text = "빛나라! 바다쨩!은 바다의 콘서트에서 나오는 불빛에 맞춰서 응원봉을 흔들어 바다를 응원하는 게임입니다.";
             GanbareHowToImage.sprite = GanbareHowToImage1;
         }
         else if (GanbareClickNum == 1)
