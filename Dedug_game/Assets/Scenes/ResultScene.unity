@@ -175,11 +175,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1039171810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1039171810, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-  m_PrefabInstance: {fileID: 7626182810353357682}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1070607520
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,22 +334,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 641072376, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7626182810353357686}
-    - target: {fileID: 641072376, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Click_OnDGPopup
-      objectReference: {fileID: 0}
-    - target: {fileID: 641072376, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ResultManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 641072376, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7626182808949886313, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -402,10 +381,6 @@ PrefabInstance:
     - target: {fileID: 7626182809262610575, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7626182809301203881, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 850
       objectReference: {fileID: 0}
     - target: {fileID: 7626182809733294304, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
       propertyPath: m_Pivot.x
@@ -499,10 +474,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1378893123}
-    - target: {fileID: 7626182809859503888, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-      propertyPath: DGPopup
-      value: 
-      objectReference: {fileID: 1039171810}
     - target: {fileID: 7626182809891557421, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -569,14 +540,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
---- !u!114 &7626182810353357686 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7626182809859503888, guid: e1347f1ac79a09f49aae36577fbc88ad, type: 3}
-  m_PrefabInstance: {fileID: 7626182810353357682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570b1b4b2ba96eb4abce2f66686d6975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

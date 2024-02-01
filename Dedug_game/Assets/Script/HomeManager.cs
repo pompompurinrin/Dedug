@@ -149,11 +149,6 @@ public class HomeManager : MonoBehaviour
             }
         }
 
-        if (DataManager.Instance.nowRank == 4)
-        {
-            LockChar4Btn.SetActive(false);
-        }
-
         homeDiaSample = CSVReader.Read(homeDiaSampleFileName);
 
         bgm1AudioSource.Play();

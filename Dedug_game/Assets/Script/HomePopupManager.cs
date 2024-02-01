@@ -812,7 +812,7 @@ public class HomePopupManager : MonoBehaviour
     {
         if (HelpChorongClickNum == 0)
         {
-            HelpChorongHowtoText.text = "구해줘 초롱! 은 학교의 장애물을 피해 \n친구들을 구하는 게임입니다.";
+            HelpChorongHowtoText.text = "구해줘 초롱! 은 학교에 나타난 마물을 피해 \n친구들을 구하는 게임입니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage1;
         }
         else if (HelpChorongClickNum == 1)
@@ -832,7 +832,7 @@ public class HomePopupManager : MonoBehaviour
         }
         else if (HelpChorongClickNum == 4)
         {
-            HelpChorongHowtoText.text = "몬스터를 만나면 1점이 감소합니다.";
+            HelpChorongHowtoText.text = "마물을 만나면 1점이 감소합니다.";
             HelpChorongHowtoImage.sprite = HelpChorongHowtoImage5;
         }
         else if (HelpChorongClickNum == 5)

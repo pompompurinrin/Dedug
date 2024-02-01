@@ -411,13 +411,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7626182809859503913}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 7626182809859503888}
+        m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
+        m_MethodName: Click_OnDGPopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11561,7 +11561,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 800, y: 250}
+  m_SizeDelta: {x: 850, y: 250}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &7626182809318737385
 GameObject:
@@ -12564,7 +12564,7 @@ MonoBehaviour:
   HomeBtn: {fileID: 7626182810745962967}
   RestartPopup: {fileID: 7626182810214835869}
   GoldlackPopup: {fileID: 7626182809379289065}
-  DGPopup: {fileID: 0}
+  DGPopup: {fileID: 1039171810}
   RestartGoldText: {fileID: 7626182809283164762}
   UserScoretxt: {fileID: 7626182810112330399}
   imageFileName: 
