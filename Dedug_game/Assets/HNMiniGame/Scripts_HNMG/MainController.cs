@@ -312,7 +312,7 @@ public class MainController : MonoBehaviour
                 
                 Score();
                 isGameRunnig = false;
-                score = 0;
+                score = 00;
 
                 Result_SFX.Play();
 
@@ -759,7 +759,7 @@ public class MainController : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     public void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        UserScoretxt.text = "0" + score.ToString();      // 최종 유저 스코어 텍스트로 출력
+        UserScoretxt.text = score.ToString("F0");      // 최종 유저 스코어 텍스트로 출력
         
 
         //굿즈 지급
@@ -777,16 +777,21 @@ public class MainController : MonoBehaviour
             Reward2BG.gameObject.SetActive(true);
             Reward3BG.gameObject.SetActive(false);
         }
-        else if (score < 3 && score >= 0)
+        else if (score < 3 && score >= 0 )
         {
             _count = 1;
             Reward1BG.gameObject.SetActive(true);
             Reward2BG.gameObject.SetActive(false);
             Reward3BG.gameObject.SetActive(false);
+            if (score == 0)
+            {
+                UserScoretxt.text = "0" + score.ToString("F0");
+            }
         }
 
-        else
-        {            
+        else 
+        {
+           
         }
        
         GetGoods(_count);

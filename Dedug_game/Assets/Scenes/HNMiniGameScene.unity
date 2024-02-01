@@ -417,6 +417,7 @@ Transform:
   - {fileID: 987100314}
   - {fileID: 696393979}
   - {fileID: 148106761}
+  - {fileID: 2089459818}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2194,13 +2195,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089459816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.013021, z: -9.994792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 218399453}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141821025
 GameObject:
@@ -26892,6 +26893,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1767782008839345586, guid: 3a789facffddbe34eb2bad992cbe73ac, type: 3}
+      propertyPath: timer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767782008839345586, guid: 3a789facffddbe34eb2bad992cbe73ac, type: 3}
       propertyPath: Result_SFX
       value: 
       objectReference: {fileID: 2089459817}
@@ -28675,6 +28680,7 @@ MonoBehaviour:
   HomeBtn: {fileID: 4540239030742846352}
   RestartPopup: {fileID: 4540239031290899674}
   GoldlackPopup: {fileID: 4540239029374860718}
+  DGPopup: {fileID: 0}
   RestartGoldText: {fileID: 4540239030091903005}
   UserScoretxt: {fileID: 4540239030772629720}
   imageFileName: 
