@@ -111,7 +111,6 @@ public class YJMiniGameManager : MonoBehaviour
     public static bool badaResult;
 
 
-
     // 결과 연결
 
     // UI 요소들
@@ -181,6 +180,7 @@ public class YJMiniGameManager : MonoBehaviour
     public Image touch01;
     public Image touch02;
 
+    public GameObject DGPopup;
 
     public void Awake()
     {
@@ -1159,7 +1159,7 @@ public class YJMiniGameManager : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        Scoretxt.text = "Score: " + score.ToString();
+        Scoretxt.text = "0" + score.ToString();
 
         //굿즈 지급
         if (score >= 8) // 바꿔
@@ -1504,6 +1504,16 @@ public class YJMiniGameManager : MonoBehaviour
         }
     }
 
+    public void Click_OnDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(false);
+    }
+
     public void RequestClick()
     {
         SceneManager.LoadScene("RequestScene");
@@ -1512,6 +1522,11 @@ public class YJMiniGameManager : MonoBehaviour
     public void HomeClick()
     {
         SceneManager.LoadScene("HomeScene");
+    }
+
+    public void DGClick()
+    {
+        SceneManager.LoadScene("DG_Scene");
     }
 
 }

@@ -179,6 +179,8 @@ public class YJ2MiniGameManager : MonoBehaviour
     public GameObject GoldlackPopup;
     public Text RestartGoldText;
 
+    public GameObject DGPopup;
+
     public void Awake()
     {
         DataManager.Instance.goods1011 = PlayerPrefs.GetInt("Goods1011");
@@ -980,7 +982,7 @@ public class YJ2MiniGameManager : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        Scoretxt.text = score.ToString();
+        Scoretxt.text = "0" + score.ToString();
 
         //굿즈 지급
         if (score >= 8) // 바꿔
@@ -1340,6 +1342,11 @@ public class YJ2MiniGameManager : MonoBehaviour
         SceneManager.LoadScene("HomeScene");
     }
 
+    public void DGClick()
+    {
+        SceneManager.LoadScene("DG_Scene");
+    }
+
 
     // 게임 일시정지 버튼 클릭 시 호출되는 함수
     public void StopButtonClick()
@@ -1407,6 +1414,16 @@ public class YJ2MiniGameManager : MonoBehaviour
         Time.timeScale = 1;
 
         SceneManager.LoadScene("HomeScene");
+    }
+
+    public void Click_OnDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(false);
     }
 
 }

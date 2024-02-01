@@ -140,6 +140,7 @@ public class HJYJMinigameManager : MonoBehaviour
     public GameObject GoldlackPopup;
     public Text RestartGoldText;
 
+    public GameObject DGPopup;
 
     public void Awake()
     {
@@ -695,7 +696,7 @@ public class HJYJMinigameManager : MonoBehaviour
     public int _count = 0;// 몇개 줄 지 설정하는 변수
     void Score() // 이름 바꿔. => 점수에 따라 가챠 수량 설정 하는 부분이라서
     {
-        Scoretxt.text = "Score: " + score.ToString();
+        Scoretxt.text = "0" + score.ToString();
 
         //굿즈 지급
         if (score >= 8) // 바꿔
@@ -1046,6 +1047,15 @@ public class HJYJMinigameManager : MonoBehaviour
             RestartGoldText.text = "다시 시도할 경우 3000골드가 소모됩니다.";
         }
     }
+    public void Click_OnDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(true);
+    }
+
+    public void Click_OffDGPopup() //도감 팝업 비활성화
+    {
+        DGPopup.gameObject.SetActive(false);
+    }
 
     public void HomeClick()
     {
@@ -1057,7 +1067,10 @@ public class HJYJMinigameManager : MonoBehaviour
         SceneManager.LoadScene("RequestScene");
     }
 
-
+    public void DGClick()
+    {
+        SceneManager.LoadScene("DG_Scene");
+    }
 
 
 
